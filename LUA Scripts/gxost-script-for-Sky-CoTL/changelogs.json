@@ -1,0 +1,67 @@
+{
+	"0.1.0" : {
+		"content" : "What's New in v0.1.0:\n- Script menu system update.\n- Added Wing Light related features.\n- Feature to help with collecting Eden Statues.\n- Added \"Open (UI)\" menu section.\n- \"Settings\" now works.\n- and More"
+	},
+	"0.1.1" : {
+		"content" : "Hotifx v0.1.1:\n- Added Valley Temple CR."
+	},
+	"0.1.2" : {
+		"content" : "Hotifx v0.1.2:\n- Updated to the latest version of Sky (199070)\n- Temporarily removed \"Read Chats\"\n- Temporarily Removed \"Teleport Statues to yourself\"\n- New features will Come Soon"
+	},
+	"0.1.3" : {
+		"content" : "Tiny update v0.1.3:\n- Added \"Read Chat\" again in \"Fun\" menu"
+	},
+	"0.1.4" : {
+		"content" : "Update v0.1.4:\n- Changes to Isle CR points\n- Changes to Trials Cave CR points\n- Changes to Prairie Village CR points\n- Changes to 8 player puzzle CR points\n- Fix in Forest's Brook CR point, where player would fall underground\n- \"No prop recharge\" has been fixed and moved to \"Settings\"\n- Added \"Old Style Sitting\" in \"Settings\" menu."
+	},
+	"0.1.5" : {
+		"content" : {
+			"en" : "Update v0.1.5:\n- Aiming script to make it multilangual, only English and Russian are available (not fully supported)\n- Returned \"Teleport statues to yourself\". Currently, only 60 statues will be teleported (yes I know, I am lazy, and you can't change me)\n- \"God Mode\" was merged with \"Unlimited Energy\"\n- Added \"GG visible\" option in settings. Now it is possible to use gg and script at the same time (hope you understood)\n- Removed \"Old Style Sitting\", because no use and buggy\n- Improved \"Read Chats\"\n- A bit menu enhancement",
+			"ru" : "Обновление v0.1.5\n- Скрипт направлен на то, чтобы сделать его многоязычным, доступны только английский и русский языки (поддерживается не полностью)\n- Вернулся назад \"Телепорт всех статуй к себе\". На данный момент будет телепортировано всего 60 статуй (да я знаю, я ленивый, и вы не сможете меня изменить)\n- \"Режим Бога\" был объединен с \"Неограниченной энергией\"\n- В настройках добавлена опция \"Показать GG\". Теперь можно использовать gg и скрипт одновременно (надеюсь вы поняли)\n- Убрано \"Сидение по старому стилю\", т.к. оно бесполезно и глючит.\n- Улучшено \"Читать чат\"\n- Небольшое улучшение меню"
+		}
+	},
+	"0.1.6" : {
+		"content" : {
+			"en" : "Hotfix v0.1.6:\n- Updated (kinda) to the latest version of Sky\n- Added \"Español\" language (Not Full)\n- Added New \"Change Map\" method (in case the first won't work)",
+			"ru" : "Исправление v0.1.6:\n- Обновлено (вроде бы) до последней версии Sky\n- Добавлен язык \"Español\" (неполный)\n- Добавлен новый метод \"Сменить Карту\" (в случае, если первый не работает)"
+		}
+	},
+	"0.1.6a" : {
+		"content" : {
+			"en" : "Tiny Update v0.1.6a\n- Added \"Chinese\" language\n- Added \"Player Brightness\" in \"Fun\" menu (Client sided only, I guess...)\n- Added new feature \"Always candles\". Allow you to keep candle on your hand and not disappear. Customizable for AutoCR in Settings\n- Added ability to AutoCR \"Wind Paths\" (Thanks to SKYSHOT)\n\n Full language compatibility will come in update v0.1.7",
+			"ru" : "Маленькое Обновление v0.1.6a\n- Добавлен \"Китайский\" язык\n- Добавлена \"Яркость игрока\" в меню \"Веселье\" (только на стороне клиента, наверное...)\n- Добавлена новая функция \"Держать на руке свечу\". Позволяет держать свечу на руке всегда. Можно настроить в Настройках для Фарма\n- Добавлена возможность Фарма \"Wind Paths\" (спасибо SKYSHOT-у)\n\nПолная языковая совместимость появится в обновлении v0.1.7"
+		}
+	},
+	"0.1.7" : {
+		"content" : {
+			"en" : "Update: v0.1.7 (lazyyyyy)\n- Added new \"Camera\" section.\n- A bit language engine updates\n- Full language compatibility will come in the future (not in this update, sor...)\n\nSo guys, as you all know, many players are using Canvas now and I think it is making a huge progress in sphere of hacking Sky. Mods started being created and will be more in the future. Not sure if GG is still used and even if it is used, not as before. I might probably stop developing this script. BTW anyone can learn from the script, offsets are free to use. Enjoy :)",
+			"ru" : "Обновление v0.1.7 (леньььььь)\n- Добавлен новый меню \"Камера\"\n- Улучшение языкового движка\n- Полная поддержка языков будет доступен в будущем"
+		}
+	},
+	"0.1.7a" : {
+		"content" : {
+			"en" : "Update 0.1.7a\n- Updated for the latest version of Sky (202986)\n- Added \"Spam Sparkle\" in fun menu\n- Removed \"Unlock Elders\" due to changes in Sky\n- Removed \"Unlock Emotes\"\n- Removed \"TP statues to yourself\" (will be added later)",
+			"ru" : "Обновление v0.1.7a\n- Обновлено до последней версии Sky\n- Добавлен \"Спам блеска\"\n- Удалено \"Разблокировать Старейшин\" изза сильных изменений в Sky\n- Удалено \"Разблокировка Эмоции\"\n- Удалено \"Телепорт всех статуй к себе\" (Будет добавлен позже)"
+		}
+	},
+	"0.1.7b" : {
+		"content" : {
+			"en" : "Update v0.1.7b\n- Added \"Japanese\" language support (thanks to yutodadil https://github.com/yutodadil)\n- Added \"Break Cutscenes\" in \"Camera\" menu\n- Added \"FreeFly\" mode. Speed can be adjusted in settings\n- Added new Aurora maps\n- Fixed \"Change map (I)\"\n!- v0.1.7c will come out soon",
+			"ru" : "Обновление v0.1.7b\n- Добавлен Японский язык (Благодаря yutodadil https://github.com/yutodadil)\n- Добавлен \"Убрать кат-сцены\" в меню \"Камера\"\n- Добавлен режим \"Свободный палёт\". Скорость можно настроить в настройках\n- Добавлены новые карты Авроры\n- Исправлен \"Сменить карту (I)\"\n!- v0.1.7v будет доступна скоро"
+		}
+	},
+	"0.1.7c" : {
+		"content" : {
+			"en" : "Update v0.1.7c\n- Added New Spells (Including Cat spells)\n- Added \"Teleport Statues to yourself\" back (Sorry, only 60 statues. LAZYY)\n- Added SemiCR for statues in Eden\n- \"Break Cutscene\" feature was moved to Settings\n- Fixed Unlock Emotes\n- (for devs) It is possible to dump spells in Settings.\n\n!Known Issue!\n- Cancelling one spell can cancel all other spells too.\n\nWait for the update v0.1.7d (yes, it will go till z until next update of sky comes)",
+			"ru" : "Обновление v0.1.7c\n- Добавлены новые заклинания (включая заклинания кошек)\n- Добавлены \"Телепортировать статуи к себе\" назад (только 60 статуй. Леньь)\n- Добавлен SemiCR для статуй в Эдеме\n- Функция \"Break Cutscene\" была перенесена в настройки\n- Исправлен проблема с разблокировкой всех эмоции \n- (для разработчиков) В настройках можно дампить заклинания.\n\n!Известная проблема!\n- Отмена одного заклинания может отменить все другие заклинания тоже.\n\nЖдите обновления v0.1.7d (да, оно будет идти до z, пока не выйдет следующее обновление Неба)"
+		}
+	},
+	"0.1.7d" : {
+		"content" : {
+			"en" : "Update v0.1.7d\n- Fixed \"Spam Sparkles\" from cousing other spells to cancel when disabling it\n- More organized \"Spell\" menu\n- Added \"Spam Call / Super Shout\" in \"Fun\" menu\n- Added Friendship nodes offering and requesting without being friends with others. (Note that when you request a friendship node, other players won't see it even when you hug/pat/piggyback/etc. In order to make them see you should light them)\n- Added \"Save Spells\" in Settings. Returns last active spells from your previous game when you run the script.\n\n!! Still issue with spells exist\n\nv0.1.7e will arrive in the nearest future",
+			"ru" : "Update v0.1.7d\nлень перевести, простите...\n\n- Fixed \"Spam Sparkles\" from cousing other spells to cancel when disabling it\n- More organized \"Spell\" menu\n- Added \"Spam Call / Super Shout\" in \"Fun\" menu\n- Added Friendship nodes offering and requesting without being friends with others. (Note that when you request a friendship node, other players won't see it even when you hug/pat/piggyback/etc. In order to make them see you should light them)\n- Added \"Save Spells\" in Settings. Returns last active spells from your previous game when you run the script.\n\n!! Still issue with spells exist\n\nv0.1.7e will arrive in the nearest future"
+		}
+	}
+}
+
+

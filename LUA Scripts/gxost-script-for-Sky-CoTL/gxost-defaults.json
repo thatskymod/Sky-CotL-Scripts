@@ -1,0 +1,26 @@
+{
+	"wbdistance" : 5.0,
+	"useautoburn" : true,
+	"show_coords" : false,
+	"fastitem" : false,
+	"menuaftercr" : true,
+	"langcode" : "?",
+	"ggvisible" : false,
+	"tpimg" : "Black",
+	"alwayscandle" : true,
+	"fly_speed" : 20.0,
+	"bscenes" : false,
+	"save_spells" : false,
+	"version" : "?",
+
+	"saved_spells" : [
+		[1, 0, "❌none"],
+		[2, 0, "❌none"],
+		[3, 0, "❌none"],
+		[4, 0, "❌none"],
+		[5, 0, "❌none"],
+		[6, 0, "❌none"],
+		[7, 0, "❌none"],
+		[8, 0, "❌none"],
+	]
+}
