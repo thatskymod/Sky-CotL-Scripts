@@ -1,4 +1,4 @@
-gg.alert("Bana ihtiyacın olursa ben buradayım unutma seni çok seviyorum")
+gg.alert("bir ara sana eşlik etmeme izin ver")
 
 scriptv = {process = {live = 'com.tgc.sky.android', canvas = "git.artdeell.skymodloader", beta = "com.tgc.sky.android.test.gold"}}
 gameinfo = gg.getTargetInfo()
@@ -6460,18 +6460,14 @@ gx.add_menu({
 		{"[🚀] Rapid Farm", {rapidfarm}},
 		{"[🕯️] Slow Farm", {slowfarm}},
 		{"[🌎] Go to", {_goto}},
+		{"[🌀] Change_Map", {changemap}},
 		{"[🦋] Wings run", {rapidwings}},
 		{"[🕯️] Old run", {Oldrun}},
-		{"[🕯️] Coliseum Fragments", {Frun}},
-		{"[🌎] Go to", {_goto}}, 
-        {"[🌀] Change_Map", {changemap}},
+		{"[🕯️] Coliseum Fragments", {Frun}},        
         {"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
-		--{"[📣] Super shout", {supershout}},
-        --{"[☀️] Absorb wax (deprecated)", {collect_waxes}},
-        --{"[🦋] absorb wings", {absorb_wings}},
 		{"[📍] Show location", {show_location}}
 	},
-	menu_repeat = false,
+	menu_repeat = true,
 	type = "back",
 })
 
@@ -6516,7 +6512,7 @@ gx.add_menu({
 	menu = {
 		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
 		{"[🌟] Ultra rapid farm!!", {ydks}},
-		{"[👥]Friendsnode and Chats", {node}},
+		{"[👥]Friendsnode and Chats {gxsign}", {node}},
 		{"[🔋]floating and charge", {wing_charge}},
 		--{"[😍]Super jump {gxsign}", {jumping}},
 		--{"[😍]Remove clouds", {clouds}},
@@ -6570,6 +6566,6 @@ gx.add_menu({
 	menu_repeat = true
 })
 
-gg.toast("SKYSHOT LOADED!!")
+gg.toast("ONE-SHOT LOADED!!")
 
 gx.loop(500)
