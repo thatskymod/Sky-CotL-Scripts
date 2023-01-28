@@ -35,6 +35,7 @@ To update your existing mods (files ending in *.so), do the following:
 ## Credits & Resources:
 Telegram - AutoWax EN: https://t.me/skyautowax  
 Telegram - AutoWax RU: https://t.me/ruautowax  
+Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
 Discord - Official Sky Server: https://discord.com/invite/thatskygame  
 Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX  
 Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ  
