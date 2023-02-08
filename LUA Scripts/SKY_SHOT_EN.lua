@@ -1,4 +1,4 @@
-gg.alert("Welcome to Skyshot")
+gg.alert("Sky-shot + SUI script")
 
 scriptv = {process = {live = 'com.tgc.sky.android', canvas = "git.artdeell.skymodloader", beta = "com.tgc.sky.android.test.gold"}}
 gameinfo = gg.getTargetInfo()
@@ -927,10 +927,6 @@ crpoints = {
 	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = -69.29006958007812, y = 1050.3668212890625, z = 111.15153503417969},
 	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = -100.14618682861328, y = 1038.383544921875, z = 155.33790588378906},
 	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 450.38140869140625, y = 474.96917724609375, z = -423.32904052734375},
-	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 450.38140869140625, y = 474.96917724609375, z = -423.32904052734375},
-	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 450.38140869140625, y = 474.96917724609375, z = -423.32904052734375},
-    {family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 450.38140869140625, y = 474.96917724609375, z = -423.32904052734375},
-    {family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 450.38140869140625, y = 474.96917724609375, z = -423.32904052734375},
 	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 418.3880615234375, y = 446.617919921875, z = -401.19354248046875},
 	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 385.9672546386719, y = 406.02825927734375, z = -324.0826721191406},
 	{family = "Valley", name = "Valley Fly Race", map = "Sunset_FlyRace", x = 216.13739013671875, y = 273.684814453125, z = -141.75169372558594},
@@ -943,11 +939,6 @@ crpoints = {
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 416.1005554199219, y = 832.7763061523438, z = 158.046630859375},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -26.074161529541016, y = 747.139404296875, z = 110.09693145751953},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -324.5790100097656, y = 662.9506225585938, z = 209.0755157470703},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -570.6597900390625, y = 584.18701171875, z = 260.3428955078125},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 424.5173645019531, y = 320.4500427246094, z = 2.0229508876800537},
@@ -4957,39 +4948,103 @@ function clothes()
 	end
 end
 
+
 function wingsunlimited()
-	if wing == on then 
-	  wing = off
-	  for i, v in ipairs(wings) do
-		v.value = '1'
-		v.freeze = true
-	  end
-	  gg.addListItems(wings)
-	  gg.toast('wings deactivated')
-	else
-	  wing = on
-	  if str1 then
-		for i, v in ipairs(wings) do
-		  v.value = '50000'
-		  v.freeze = true
-		end
-		gg.addListItems(wings)
-		gg.toast('wings activated')
-	  else
-		str1 = true
-		gg.setRanges(gg.REGION_C_ALLOC | gg.REGION_ANONYMOUS | gg.REGION_OTHER)
-		gg.searchNumber('30;1;1;20::13', gg.TYPE_FLOAT)
-		gg.refineNumber(1, gg.TYPE_FLOAT)
-		wings = gg.getResults(1000)
-		for i, v in ipairs(wings) do
-		  v.value = '50000'
-		  v.freeze = true
-		end
-		gg.addListItems(wings)
-		gg.clearResults()
-		gg.toast('wings activated 1')
-	  end
-	end
+    if suiw1 == on then
+      suiw1 = off
+    else
+      suiw1 = on
+    end
+    if suiw1 == on then
+      gg.alert("Invisible to other players")
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159544
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159548
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159552
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159556
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159560
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159564
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159568
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159572
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159576
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159580
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159584
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159588
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159592
+      setvalue(so + py, 4, 0)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159596
+      setvalue(so + py, 4, 0)
+      gg.toast("Enabled - Maximum Wing Level")
+    else
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159544
+      setvalue(so + py, 4, 1)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159548
+      setvalue(so + py, 4, 2)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159552
+      setvalue(so + py, 4, 5)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159556
+      setvalue(so + py, 4, 10)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159560
+      setvalue(so + py, 4, 20)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159564
+      setvalue(so + py, 4, 35)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159568
+      setvalue(so + py, 4, 55)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159572
+      setvalue(so + py, 4, 75)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159576
+      setvalue(so + py, 4, 100)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159580
+      setvalue(so + py, 4, 120)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159584
+      setvalue(so + py, 4, 150)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159588
+      setvalue(so + py, 4, 200)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159592
+      setvalue(so + py, 4, 250)
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 19159596
+      setvalue(so + py, 4, 300)
+      gg.toast("Disabled - Maximum Wing Level")
+    end
 end
 
 function wingpower()
@@ -5695,11 +5750,15 @@ function setvalue(address, flags, value)
 	gg.setValues(tt)
 end
 
-local on = "● "
-local off = "○ "
+local on = "¦😼¦"
+local off = "¦❌¦"
 suiu1 = off
 suiu2 = off
 suiu3 = off
+
+suiwo1 = off
+suiwo2 = off
+suiwo3 = off
 
 suiv1 = off
 
@@ -5714,8 +5773,8 @@ suia2 = off
 
 suip1 = off
 
-suiwo1 = off
-suiwo2 = off
+--suiwo1 = off
+--suiwo2 = off
 
 suio1 = off
 suio2 = off
@@ -5827,63 +5886,6 @@ function SIUplayers()
     end
 end
 
-function SUIwind()
-	if suiwo1 == on then
-	  suiwo1 = off
-	else
-	   suiwo1 = on
-	end
-	if suiwo1 == on then
-		so = gg.getRangesList("libBootloader.so")[1].start
-		 py = 7340432
-		setvalue(so + py, 16, 8.84170772E-21)
-		gg.toast("Enabled - Remove Wind")
-	else
-		so = gg.getRangesList("libBootloader.so")[1].start
-		py = 7340432
-		setvalue(so + py, 16, 1.26007106E28)
-		gg.toast("Disable - Remove Wind")
-	end
-end
-
-function SUIbarrier()
-    if suiwo2 == on then
-      suiwo2 = off
-    else
-      suiwo2 = on
-    end
-    if suiwo2 == on then
-      so = gg.getRangesList("libBootloader.so")[1].start
-      py = 6484576
-      setvalue(so + py, 16, -9010873890000)
-      gg.toast("Enabled - Remove Barrier")
-    else
-      so = gg.getRangesList("libBootloader.so")[1].start
-      py = 6484576
-      setvalue(so + py, 16, 1.19211677E-7)
-      gg.toast("Disable - Remove Barrier")
-    end
-end
-
-function SIUfire()
-    if suio1 == on then
-      suio1 = off
-    else
-      suio1 = on
-    end
-    if suio1 == on then
-      so = gg.getRangesList("libBootloader.so")[1].start
-      py = 9195060
-      setvalue(so + py, 16, 1.8629458E-9)
-      gg.toast("Enabled - Unlimited Fireworks")
-    else
-      so = gg.getRangesList("libBootloader.so")[1].start
-      py = 9195060
-      setvalue(so + py, 16, 6.33927605E29)
-      gg.toast("Disable - Unlimited Fireworks")
-    end
-end
-
 function online()
     if sui1 == on then
       sui1 = off
@@ -5903,28 +5905,351 @@ function online()
     end
 end
 
-function Absorbwax()
-    if suic3 == on then
-      suic3 = off
+function suimenuu()
+	local suiu = gg.choice({
+	  suiu1 .. "Skin Unlock",
+	  suiu2 .. "Emote level Unlock",
+	  suiu3 .. "Friendship Unlock"
+	}, nil, "Unlock")
+	if suiu == nil then
+	elseif suiu == 1 then
+	    if suiu1 == on then
+		  suiu1 = off
+	    else
+		  suiu1 = on
+	    end
+	    if suiu1 == on then
+		  gg.alert("Invisible to other players except for placed items")
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 4173492
+		  setvalue(so + py, 16, 274878956000)
+		  gg.toast("Enabled - Skin Unlock")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 4173492
+		  setvalue(so + py, 16, 6.57735814E-23)
+		  gg.toast("Disabled - Skin Unlock")
+	    end
+	elseif suiu == 2 then
+	    if suiu2 == on then
+		  suiu2 = off
+	    else
+		  suiu2 = on
+	    end
+	    if suiu2 == on then
+		  gg.alert("Skin Unlock must be enabled")
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 11195264
+		  setvalue(so + py, 16, 274878956000)
+		  gg.toast("Enabled - Emote level Unlock")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 11195264
+		  setvalue(so + py, 16, -1.8326764E-4)
+		  gg.toast("Disabled - Emote level Unlock")
+	    end
+	elseif suiu == 3 then
+	    if suiu3 == on then
+		  suiu3 = off
+	    else
+		  suiu3 = on
+	    end
+	    if suiu3 == on then
+		  gg.alert("Unlock only from yourself\n\nUse warp ×  See chat ×")
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 8865744
+		  setvalue(so + py, 16, 274878956000)
+		  gg.toast("Enabled - Friendship Unlock")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 8865744
+		  setvalue(so + py, 16, 1.19210767E-7)
+		  gg.toast("Disabled - Friendship Unlock")
+	    end
+	end
+end
+
+function suimenuc()
+	local suic = gg.choice({
+	  suic1 .. "Burn Candle",
+	  suic2 .. "Burn Plant",
+	  suic3 .. "Absord Wax"
+	}, nil, "Wax")
+	if suic == nil then
+	elseif suic == 1 then
+	    if suic1 == on then
+		  suic1 = off
+	    else
+		  suic1 = on
+	    end
+	    if suic1 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 7382148
+		  setvalue(so + py, 16, -9010873890000)
+		  gg.toast("Enabled - Burn Candle")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 7382148
+		  setvalue(so + py, 16, 1.19212586E-7)
+		  gg.toast("Disabled - Burn Candle")
+	    end
+	elseif suic == 2 then
+	    if suic2 == on then
+		  suic2 = off
+	    else
+		  suic2 = on
+	    end
+	    if suic2 == on then
+		  gg.alert("If there are other players, it is difficult to burn due to the server")
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 6666920
+		  setvalue(so + py, 16, 1.41233962E-13)
+		  gg.toast("Enabled - Burn Plant")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 6666920
+		  setvalue(so + py, 16, -1.8342321E-4)
+		  gg.toast("Disabled - Burn Plant")
+	    end
+	elseif suic == 3 then
+	    if suic3 == on then
+		  suic3 = off
+	    else
+		  suic3 = on
+	    end
+	    if suic3 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 12509020
+		  setvalue(so + py, 16, 9.45302004E-21)
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 19494116
+		  setvalue(so + py, 16, 9999.9)
+		  gg.toast("Enabled - Absord Wax")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 12509020
+		  setvalue(so + py, 16, 1.25233015E28)
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 19494116
+		  setvalue(so + py, 16, 3.5)
+		  gg.toast("Disabled - Absord Wax")
+	    end
+	end
+end
+
+function suimenuc()
+	local suic = gg.choice({
+	  suic1 .. "Burn Candle",
+	  suic2 .. "Burn Plant",
+	  suic3 .. "Absord Wax"
+	}, nil, "Wax")
+	if suic == nil then
+	elseif suic == 1 then
+	    if suic1 == on then
+		  suic1 = off
+	    else
+		  suic1 = on
+	    end
+	    if suic1 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 7382148
+		  setvalue(so + py, 16, -9010873890000)
+		  gg.toast("Enabled - Burn Candle")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 7382148
+		  setvalue(so + py, 16, 1.19212586E-7)
+		  gg.toast("Disabled - Burn Candle")
+	    end
+	elseif suic == 2 then
+	    if suic2 == on then
+		  suic2 = off
+	    else
+		  suic2 = on
+	    end
+	    if suic2 == on then
+		  gg.alert("If there are other players, it is difficult to burn due to the server")
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 6666920
+		  setvalue(so + py, 16, 1.41233962E-13)
+		  gg.toast("Enabled - Burn Plant")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 6666920
+		  setvalue(so + py, 16, -1.8342321E-4)
+		  gg.toast("Disabled - Burn Plant")
+	    end
+	elseif suic == 3 then
+	    if suic3 == on then
+		  suic3 = off
+	    else
+		  suic3 = on
+	    end
+	    if suic3 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 12509020
+		  setvalue(so + py, 16, 9.45302004E-21)
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 19494116
+		  setvalue(so + py, 16, 9999.9)
+		  gg.toast("Enabled - Absord Wax")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 12509020
+		  setvalue(so + py, 16, 1.25233015E28)
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 19494116
+		  setvalue(so + py, 16, 3.5)
+		  gg.toast("Disabled - Absord Wax")
+	    end
+	end
+end
+
+function suimenuwo()
+	local suiwo = gg.choice({
+	  suiwo1 .. "Remove Wind Wall",
+	  suiwo2 .. "Remove Barrier",
+	  suiwo3 .. "Remove Cloud"
+	}, nil, "World (Not reflected to other players)")
+	if suiwo == nil then
+	elseif suiwo == 1 then
+	    if suiwo1 == on then
+		  suiwo1 = off
+	    else
+		  suiwo1 = on
+	    end
+	    if suiwo1 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 7340432
+		  setvalue(so + py, 16, 8.84170772E-21)
+		  gg.toast("Enabled - Remove Wind")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 7340432
+		  setvalue(so + py, 16, 1.26007106E28)
+		  gg.toast("Disabled - Remove Wind")
+	    end
+	elseif suiwo == 2 then
+	    if suiwo2 == on then
+		  suiwo2 = off
+	    else
+		  suiwo2 = on
+	    end
+	    if suiwo2 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 6484576
+		  setvalue(so + py, 16, -9010873890000)
+		  gg.toast("Enabled - Remove Barrier")
+	    else
+	  	  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 6484576
+		  setvalue(so + py, 16, 1.19211677E-7)
+		  gg.toast("Disabled - Remove Barrier")
+	    end
+	elseif suiwo == 3 then
+	    if suiwo3 == on then
+		  suiwo3 = off
+	    else
+		  suiwo3 = on
+	    end
+	    if suiwo3 == on then
+		  so = gg.getRangesList("libBootloader.so")[3].start
+		  py = 74456
+		  setvalue(so + py, 4, 0)
+		  gg.toast("Enabled - Remove Cloud")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[3].start
+		  py = 74456
+		  setvalue(so + py, 4, 1)
+		  gg.toast("Disabled - Remove Cloud")
+	    end
+	end
+end
+
+function suikrills()
+    if suio2 == on then
+      suio2 = off
     else
-      suic3 = on
+      suio2 = on
     end
-    if suic3 == on then
+    if suio2 == on then
       so = gg.getRangesList("libBootloader.so")[1].start
-      py = 12509020
-      setvalue(so + py, 16, 9.45302004E-21)
+      py = 5497196
+      setvalue(so + py, 16, 274877907000)
       so = gg.getRangesList("libBootloader.so")[1].start
-      py = 19494116
-      setvalue(so + py, 16, 9999.9)
-      gg.toast("Enabled - Wax Absord")
+      py = 5497200
+      setvalue(so + py, 16, -61301799800000)
+      gg.toast("Enabled - Immune krill attack")
     else
       so = gg.getRangesList("libBootloader.so")[1].start
-      py = 12509020
-      setvalue(so + py, 16, 1.25233015E28)
+      py = 5497196
+      setvalue(so + py, 16, -1.27424102E34)
       so = gg.getRangesList("libBootloader.so")[1].start
-      py = 19494116
-      setvalue(so + py, 16, 3.5)
-      gg.toast("Disable - Wax Absord")
+      py = 5497200
+      setvalue(so + py, 16, -2.87131023E-14)
+      gg.toast("Disabled - Immune krill attack")
+    end
+end
+
+function suimenua()
+	local suia = gg.choice({
+	  suia1 .. "Strong Jump",
+	  suia2 .. "Fast Dive Speed"
+	}, nil, "Power")
+	if suia == nil then
+	elseif suia == 1 then
+	    if suia1 == on then
+		  suia1 = off
+	    else
+		  suia1 = on
+	    end
+	    if suia1 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 10116444
+		  setvalue(so + py, 16, 8.60598709E-21)
+		  gg.toast("Enabled - Strong Jump")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 10116444
+		  setvalue(so + py, 16, 8.9153793E-21)
+		  gg.toast("Disabled - Strong Jump")
+	    end
+	elseif suia == 2 then
+	    if suia2 == on then
+		  suia2 = off
+	    else
+		  suia2 = on
+	    end
+	    if suia2 == on then
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 10155388
+		  setvalue(so + py, 16, 8.71186621E-21)
+		  gg.toast("Enabled - Fast Dive Speed")
+	    else
+		  so = gg.getRangesList("libBootloader.so")[1].start
+		  py = 10155388
+		  setvalue(so + py, 16, -0.04694215581)
+		  gg.toast("Disabled - Fast Dive Speed")
+	    end
+	end
+end
+
+function SIUfire()
+    if suio1 == on then
+      suio1 = off
+    else
+      suio1 = on
+    end
+    if suio1 == on then
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 9195060
+      setvalue(so + py, 16, 1.8629458E-9)
+      gg.toast("Enabled - Unlimited Fireworks")
+    else
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 9195060
+      setvalue(so + py, 16, 6.33927605E29)
+      gg.toast("Disabled - Unlimited Fireworks")
     end
 end
 
@@ -5944,13 +6269,34 @@ gx.add_menu({
 		{"[👥] Farming with friends", {gx.open_menu, {"farmmenu"}}},
 		{"[🌎] World", {gx.open_menu, {"worldmenu"}}},
 		{"[👤] Player mods", {gx.open_menu, {"Playermenu"}}},
-		{"[📍]  Show location", {show_location}},
+		{"[📝] SUIscript ", {gx.open_menu, {"Suiscript"}}},
 		--{"[💫] Developer", {gx.open_menu, {"Developer"}}},
 		--{"[💫] Spells Hacks", {gx.open_menu, {"spellsmenu"}}},		
 		--{"[👖] Closet", {gx.open_menu, {"closetmenu"}}},				
 		--{"[🦋] Wings Hacks", {gx.open_menu, {"wingsmenu"}}},
 	},
 	type = "choice"
+})
+
+gx.add_menu({
+	title = "SkyCOTL Sui Script 1.9.3: ",
+	name = "Suiscript",
+	menu = {
+		{"[📶] Online", {online}},
+		{"[👤] Player view", {SIUplayers}},
+		{"[👔] Unlock", {suimenuu}},
+		{"[😍] Maximum Wing Level {gxsign}", {wingsunlimited}},
+		{"[⚡] Energy", {SUIenergy}},
+		{"[🔥] Wax", {suimenuc}},
+		{"[👊] Power", {suimenua}},
+		{"[🌟] Unlimited Fireworks {gxsign}", {SIUfire}},
+		{"[🦐] Immune Krill Attack {gxsign}", {suikrills}},
+		{"[🌎] World", {suimenuwo}},
+		{"[👀] View", {SUIamazing}},
+		{"[⚡] Energy", {SUIenergy}}
+	},
+	menu_repeat = true,
+	type = "xback",
 })
 
 gx.add_menu({
@@ -6021,8 +6367,6 @@ gx.add_menu({
 		{"[🌎] Go to", {_goto}},
 		{"[🌀] Change_Map", {changemap}},
 		{"[🌎] View", {SUIamazing}},
-		{"[💨] Remove Wind Wall", {SUIwind}},
-		{"[🌎] Remove Barrier", {SUIbarrier}},
 		{"[☁️] Remove Clouds ", {gx.editor.switch, {tostring(clouds_results[1].address).."a 1D | 0D", "{gxbool}"}}},
 		{"[📍]  Show location", {show_location}}
 	},
@@ -6042,7 +6386,7 @@ gx.add_menu({
 		{"[🕯️] Absorb wax", {Absorbwax}},
 		{"[🌟] Ultra rapid farm!!", {ydks}},
 		{"[🕯️] Coliseum Fragments", {Frun}},
-		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
+		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}}
 	},
 	menu_repeat = false,
 	type = "back",
@@ -6067,18 +6411,12 @@ gx.add_menu({
 	title = "Player menu: ",
 	name = "Playermenu",
 	menu = {
-		{"[📶] Online", {online}},
-		{"[👤] Player view", {SIUplayers}},
 		{"[👥] Friendsnode and Chats {gxsign}", {node}},
-		{"[🌟] Unlimited Fireworks", {SIUfire}},
-		{"[⚡] Energy", {SUIenergy}},
 		{"[🔋] Floating and charge", {wing_charge}},
-		{"[😍] Wings unlimited {gxsign}", {wingsunlimited}},
 		{"[😍] Wings power", {wingpower}},
 		{"[👔] Unlock clothes", {clothes}},
-		{"[🎉] Unlock season", {UnlockSeason}},
-		{"[⚡] Quick steps {gxsign}", {gx.editor.switch, {tostring(quick_results[1].address).."a 3.5F | 200F", "{gxbool}"}}},
-		{"[😍] Quick steps 2 {gxsign}", {quick}},
+		{"[🎉] Unlock season", {UnlockSeason}}
+		--{"[😍] Quick steps  {gxsign}", {quick}}
 	},
 	menu_repeat = true,
 	type = "xback",
@@ -6119,6 +6457,6 @@ gx.add_menu({
 	menu_repeat = true
 })
 
-gg.toast("Skyshot reload !!")
+gg.toast("Sky-Sui loaded !!")
 
 gx.loop(500)
