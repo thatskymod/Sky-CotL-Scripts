@@ -7187,6 +7187,27 @@ function Suihearts()
 	end
 end
 
+
+function Suiemote()
+    if suiu2 == on then
+      suiu2 = off
+    else
+      suiu2 = on
+    end
+    if suiu2 == on then
+      gg.alert("Active = Unlock clothes (Bian)")
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 11195264
+      setvalue(so + py, 16, 274878956000)
+      gg.toast("Enabled - Emote level Unlock")
+    else
+      so = gg.getRangesList("libBootloader.so")[1].start
+      py = 11195264
+      setvalue(so + py, 16, -1.8326764E-4)
+      gg.toast("Disabled - Emote level Unlock")
+    end
+end
+
 gx.vars.settings = {
 	wdistance = settings.wdistance,
 	w = 0
@@ -7297,6 +7318,8 @@ gx.add_menu({
 		{"[🧯] Unlimited Oxygen (SUI) {gxsign}", {SuiOxygen}},
 		{"[❤️] Flashing Heart (SUI) {gxsign}", {Suihearts}},
 		{"[👥] Friendsnode and Chats {gxsign}", {node}},
+		{"[👥] Emote level Unlock (SUI) {gxsign}", {Suiemote}},
+		{"[👥] Skin Unlock (SUI) {gxsign}", {Suiskins}},
 		{"[🔋] Floating and charge", {wing_charge}},
 		{"[👊] Power (SUI)", {suimenua}},
 		{"[👤] Player view (SUI) {gxsign}", {SIUplayers}},
