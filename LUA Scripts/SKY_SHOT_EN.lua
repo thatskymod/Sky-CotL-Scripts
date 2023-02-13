@@ -1,4 +1,4 @@
-gg.alert("Welcome to Sui-Skyshot")
+gg.alert("Happy season of love and friendship!!")
 
 scriptv = {process = {live = 'com.tgc.sky.android', canvas = "git.artdeell.skymodloader", beta = "com.tgc.sky.android.test.gold"}}
 gameinfo = gg.getTargetInfo()
@@ -152,30 +152,39 @@ function ydxg()
 end
 
 function ydks()
-ydxg()
-gg.alert("Click anywhere to continue")
-qt(1)--括号里的是地图。
-jiasu(90)--毫秒单位--改了这行变快的
-  local time=os.clock()
-  for i, v in pairs(resulta) do
-    gg.setValues({{address=dtaddr ,flags = 4 ,value= v[1] }})--先修改第一个地图id
-    for k=0, (#v-1)/32 do
-      local sendid={}
-      for j=1,32 do
-        if v[j+(1+k*32)]~=nil then
-          sendid[j]={address=dtaddr +j*4 ,flags = 4 ,value=v[j+(1+k*32)]}
-         else
-          break--32个ID如果有空，中断填入
-        end
-      end
-      sendid[33]={address=dtaddr + 33*4,flags = 4 , value=#sendid}
-      gg.setValues(sendid)
-      gg.toast("\nmap progress  :  "..i.." / "..#resulta.."current chart candle  :  "..((k+1)*100/((#v-1)/32+1)).." % ")
-      while gg.getValues(sendid)[33].value~=0 do end
-    end
-  end
-  qt(1)
-  gg.alert("time cost:  "..string.format("%.2f",os.clock()-time).."Second")
+	--qt(53)--括号里的是地图。
+	jiasu(90)--毫秒单位--改了这行变快的
+	  local time=os.clock()
+	  for i, v in pairs(resulta) do
+		if gg.isVisible(true) then
+			break;
+		end
+		gg.setValues({{address=dtaddr ,flags = 4 ,value= v[1] }})--先修改第一个地图id
+		for k=0, (#v-1)/32 do
+		  local sendid={}
+		  for j=1,32 do
+			if v[j+(1+k*32)]~=nil then
+			  sendid[j]={address=dtaddr +j*4 ,flags = 4 ,value=v[j+(1+k*32)]}
+			 else
+			  break--32个ID如果有空，中断填入
+			end
+		  end
+		  sendid[33]={address=dtaddr + 33*4,flags = 4 , value=#sendid}
+		  gg.setValues(sendid)
+		  --gg.toast("\n地图进度  :  "..i.." / "..#resulta.." 当前图烛光  :  "..((k+1)*100/((#v-1)/32+1)).." % ")
+		  while gg.getValues(sendid)[33].value~=0 do end
+		end
+	end
+	
+	set_game_speed(10)
+	gg.sleep(1000)
+	set_game_speed(1)
+	gg.sleep(1000)
+	set_game_speed(1)
+	gg.sleep(1000)
+	set_game_speed(1)
+	
+	gg.toast("Farming complete ,congratulation!!")
 end
 
 function search(...) local sousuo1 = {...} gg.searchNumber(sousuo1[1],sousuo1[2],false, gg.SIGN_EQUAL,0x1000000000,fanwei) end
@@ -379,7 +388,7 @@ function M_mfmf()
         end
         if menu ~= nil then
             A_mfmf(Magic_id[menu_mf][2][menu][2])
-            gg.toast("【" .. Magic_id[menu_mf][2][menu][1] .. "】Use successfully")
+            --gg.toast("【" .. Magic_id[menu_mf][2][menu][1] .. "】Use successfully")
         end
     end
 end
@@ -6615,7 +6624,7 @@ function setvalue(address, flags, value)
 	gg.setValues(tt)
 end
 
-local on = "¦😼¦"
+local on = "¦❤️¦"
 local off = "¦❌¦"
 suiu1 = off
 suiu2 = off
@@ -6643,6 +6652,9 @@ suip1 = off
 
 suio1 = off
 suio2 = off
+suio3 = off
+suio4 = off
+suio5 = off
 
 suih1 = off
 
@@ -7118,11 +7130,68 @@ function SIUfire()
     end
 end
 
+function iosphone()
+	if suio1 == on then
+	   suio1 = off
+	else
+	   suio1 = on 
+	end
+	if suio1 == on then
+	  so=gg.getRangesList('libBootloader.so')[1].start
+	  py=0x541350
+	  setvalue(so+py,16,8.71186621e-21)
+	  gg.toast("Enabled - iOS Headphone")
+	else
+	  so=gg.getRangesList('libBootloader.so')[1].start
+	  py=0x541350
+	  setvalue(so+py,16,8.84170772e-21)
+	  gg.toast("Disabled - iOS Headphone")
+	end
+end
+
+function SuiOxygen()
+	if suio3 == on then
+	  suio3 = off
+	else
+	  suio3 = on 
+	end
+	if suio3 == on then
+	  so=gg.getRangesList('libBootloader.so')[1].start
+	  py=0x53CAF8
+	  setvalue(so+py,16,8.65892665e-21)
+	  gg.toast("Enabled - Unlimited Oxygen")
+	else
+	  so=gg.getRangesList('libBootloader.so')[1].start
+	  py=0x53CAF8
+	  setvalue(so+py,16,8.84111318e-21)
+	  gg.toast("Disabled - Unlimited Oxygen")
+	end
+end
+
+function Suihearts()
+	if suio5 == on then
+	  suio5 = off
+	else
+	  suio5 = on 
+	end
+	if suio5 == on then
+	  so=gg.getRangesList('libBootloader.so')[1].start
+	  py=0x53C794
+	  setvalue(so+py,16,8.71186621e-21)
+	  gg.toast("Enabled - Flashing Heart")
+	else
+	  so=gg.getRangesList('libBootloader.so')[1].start
+	  py=0x53C794
+	  setvalue(so+py,16,8.49522244e-21)
+	  gg.toast("Disabled - Flashing Heart")
+	end
+end
+
 gx.vars.settings = {
 	wdistance = settings.wdistance,
 	w = 0
 }
-gx.set_signs({[false] = '¦❌¦', [true] = '¦😼¦'})
+gx.set_signs({[false] = '¦❌¦', [true] = '¦❤️¦'})
 gx.set_back_text("|⬅️| Back")
 
 gx.add_menu({
@@ -7134,34 +7203,12 @@ gx.add_menu({
 		{"[👥] Farming with friends", {gx.open_menu, {"farmmenu"}}},
 		{"[💫] magic", {M_mfmf}},
 		{"[🌎] World", {gx.open_menu, {"worldmenu"}}},
-		{"[👤] Player mods", {gx.open_menu, {"Playermenu"}}},
-		{"[📝] SUIscript ", {gx.open_menu, {"Suiscript"}}},
-		--{"[💫] Developer", {gx.open_menu, {"Developer"}}},
-		--{"[💫] Spells Hacks", {gx.open_menu, {"spellsmenu"}}},		
+		{"[👤] Fun stuff", {gx.open_menu, {"Fun"}}},
+		--{"[💫] Developer", {gx.open_menu, {"Developer"}}},		
 		--{"[👖] Closet", {gx.open_menu, {"closetmenu"}}},				
 		--{"[🦋] Wings Hacks", {gx.open_menu, {"wingsmenu"}}},
 	},
 	type = "choice"
-})
-
-gx.add_menu({
-	title = "SkyCOTL Sui Script 1.9.3: ",
-	name = "Suiscript",
-	menu = {
-		{"[📶] Online", {online}},
-		{"[👤] Player view", {SIUplayers}},
-		{"[👔] Unlock", {suimenuu}},
-		{"[😍] Maximum Wing Level {gxsign}", {wingsunlimited}},
-		{"[⚡] Energy", {SUIenergy}},
-		{"[🔥] Wax", {suimenuc}},
-		{"[👊] Power", {suimenua}},
-		{"[🌟] Unlimited Fireworks {gxsign}", {SIUfire}},
-		{"[🦐] Immune Krill Attack {gxsign}", {suikrills}},
-		{"[🌎] World", {suimenuwo}},
-		{"[👀] View", {SUIamazing}},
-	},
-	menu_repeat = true,
-	type = "xback",
 })
 
 gx.add_menu({
@@ -7206,33 +7253,14 @@ gx.add_menu({
 })
 
 gx.add_menu({
-	title = "Spells menu:",
-	name = "spellsmenu",
-	f = {dospell, {"{gxindex}", "{gxbool}"}},
-	menu = {
-		{"[👖] Pants "},
-		{"[👺] Mask"},
-		{"[🦱] Hairs"},
-		{"[🧣] Capes" },
-		{"[🪑] props"},
-		{"[❓] others"},
-		{"[✨] sparks {gxsign}"},
-		{"[✍️] manual"},
-		{"[❌] remove"}		
-	},
-	use_single_function = true,
-	menu_repeat = true,
-	type = "back"
-})
-
-gx.add_menu({
 	title = "world menu: ",
 	name = "worldmenu",
 	menu = {
 		{"[🌎] Go to", {_goto}},
 		{"[🌀] Change_Map", {changemap}},
-		{"[🌎] View", {SUIamazing}},
-		{"[☁️] Remove Clouds ", {gx.editor.switch, {tostring(clouds_results[1].address).."a 1D | 0D", "{gxbool}"}}},
+		{"[🌎] World (SUI)", {suimenuwo}},
+		{"[👀] View (SUI)", {SUIamazing}},
+		--{"[☁️] Remove Clouds ", {gx.editor.switch, {tostring(clouds_results[1].address).."a 1D | 0D", "{gxbool}"}}},
 		{"[📍]  Show location", {show_location}}
 	},
 	type = "xback"
@@ -7248,40 +7276,36 @@ gx.add_menu({
 		{"[🌎] Go to", {_goto}},
 		{"[🌀] Change_Map", {changemap}},
 		{"[🦋] Wings run", {rapidwings}},
-		{"[🕯️] Absorb wax", {Absorbwax}},
+		{"[🕯️] Absorb wax (SUI) {gxsign}", {Absorbwax}},
 		{"[🌟] Ultra rapid farm!!", {ydks}},
 		{"[🕯️] Coliseum Fragments", {Frun}},
-		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}}
+		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
+		{"[🔥] Wax (SUI)", {suimenuc}},
 	},
 	menu_repeat = false,
 	type = "back",
 })
 
 gx.add_menu({
-	title = "Closet menu:",
-	name = "closetmenu",
-	f = {opencloset, {"{gxindex}"}},
+	title = "Fun stuff: ",
+	name = "Fun",
 	menu = {
-		{"[👖] Pants"},
-		{"[👺] Masks"},
-		{"[🦱] Hairs"},
-		{"[🧣] Capes"},
-		{"[🪑] Props"}
-	},
-	use_single_function = true,
-	type = "back"
-})
-
-gx.add_menu({
-	title = "Player menu: ",
-	name = "Playermenu",
-	menu = {
+		{"[📶] Online (SUI)", {online}},
+		{"[🌟] Unlimited Fireworks (SUI) {gxsign}", {SIUfire}},
+		{"[🦐] Immune Krill Attack (SUI) {gxsign}", {suikrills}},
+		{"[🎧] iOS Headphone (SUI) {gxsign}", {iosphone}},
+		{"[🧯] Unlimited Oxygen (SUI) {gxsign}", {SuiOxygen}},
+		{"[❤️] Flashing Heart (SUI) {gxsign}", {Suihearts}},
 		{"[👥] Friendsnode and Chats {gxsign}", {node}},
 		{"[🔋] Floating and charge", {wing_charge}},
+		{"[👊] Power (SUI)", {suimenua}},
+		{"[👤] Player view (SUI) {gxsign}", {SIUplayers}},
+		{"[⚡] Energy (SUI)", {SUIenergy}},
 		{"[😍] Wings power", {wingpower}},
-		{"[👔] Unlock clothes", {clothes}},
-		{"[🎉] Unlock season", {UnlockSeason}},
-		{"[😍] Quick steps  {gxsign}", {quick}}
+		{"[👔] Unlock clothes (Bian) {gxsign}", {clothes}},
+		{"[🎉] Unlock season (Bian) {gxsign}", {UnlockSeason}},
+		{"[😍] Quick steps  {gxsign}", {quick}},
+		--{"[🦋] Cape spam", {capespam}}
 	},
 	menu_repeat = true,
 	type = "xback",
