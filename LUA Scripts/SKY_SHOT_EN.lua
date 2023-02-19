@@ -1824,9 +1824,6 @@ crpoints = {
 	{family = "Forest", name = "Boneyard", map = "RainMid", x = 218.6438751220703, y = 135.57656860351562, z = 48.81428146362305},
 	{family = "Forest", name = "Boneyard", map = "RainMid", x = 220.6811981201172, y = 135.22120666503906, z = 25.96380615234375},
 	{family = "Forest", name = "Boneyard", map = "RainMid", x = 194.08200073242188, y = 137.43736267089844, z = 3.8758304119110107},
-	{family = "Forest", name = "Boneyard", map = "RainMid", x = 59.3, y = 149.8, z = -51.6},
-	{family = "Forest", name = "Boneyard", map = "RainMid", x = 157.5, y = 178.7, z = 117.7},
-	{family = "Forest", name = "Boneyard", map = "RainMid", x = 273.1, y = 142.1, z = -21.6},
 
 	{family = "Forest", name = "Forest Temple", map = "RainEnd", x = -11.367512702941895, y = 104.92166900634766, z = 7.069022178649902},
 	{family = "Forest", name = "Forest Temple", map = "RainEnd", x = -16.14753532409668, y = 110.67167663574219, z = 15.755743026733398},
@@ -1957,8 +1954,6 @@ crpoints = {
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -324.5790100097656, y = 662.9506225585938, z = 209.0755157470703},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -421.6092834472656, y = 630.8012084960938, z = 195.69529724121094},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = -570.6597900390625, y = 584.18701171875, z = 260.3428955078125},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 424.5173645019531, y = 320.4500427246094, z = 2.0229508876800537},
-	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 424.5173645019531, y = 320.4500427246094, z = 2.0229508876800537},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 424.5173645019531, y = 320.4500427246094, z = 2.0229508876800537},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 388.1941223144531, y = 313.3712463378906, z = 11.490737915039062},
 	{family = "Valley", name = "Valley Race", map = "SunsetRace", x = 265.34466552734375, y = 268.7123107910156, z = 10.775996208190918},
@@ -4841,6 +4836,7 @@ function set_autoburn(b)
 		gg.setValues(plants)
 		gg.addListItems(plants)
 
+		gg.toast("Enabled")
 	else
 		autoburn = off
 
@@ -4859,6 +4855,8 @@ function set_autoburn(b)
 
 		gg.setValues(plants)
 		gg.removeListItems(plants)
+
+		gg.toast("Disable")
 	end
 end
 
@@ -7221,7 +7219,8 @@ gx.add_menu({
 	name = "main",
 	menu = {
 		{"[⬆️] Break wall: {gx:settings.wdistance}", {pmove, {"{gx:settings.wdistance}"}}},
-		{"[👥] Farming with friends", {gx.open_menu, {"farmmenu"}}},
+		{"[👥] Collect candles", {gx.open_menu, {"farmmenu"}}},
+		{"[🌎] Go to", {_goto}},
 		{"[💫] magic", {M_mfmf}},
 		{"[🌎] World", {gx.open_menu, {"worldmenu"}}},
 		{"[👤] Fun stuff", {gx.open_menu, {"Fun"}}},
@@ -7291,20 +7290,14 @@ gx.add_menu({
 	title = "God Farming: ",
 	name = "farmmenu",
 	menu = {
-		{"[⬆️] Break wall: {gx:settings.wdistance}", {pmove, {"{gx:settings.wdistance}"}}},
 		{"[🚀] Rapid Farm", {rapidfarm}},
-		{"[🕯️] Slow Farm", {slowfarm}},
-		{"[🌎] Go to", {_goto}},
-		{"[🌀] Change_Map", {changemap}},
+		{"[🕯️] Slow Farm", {slowfarm}},	
 		{"[🦋] Wings run", {rapidwings}},
-		{"[🕯️] Absorb wax (SUI) {gxsign}", {Absorbwax}},
-		{"[🌟] Ultra rapid farm!!", {ydks}},
 		{"[🕯️] Coliseum Fragments", {Frun}},
-		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
-		{"[🔥] Wax (SUI)", {suimenuc}},
+		{"[🕯️] Absorb wax (SUI) {gxsign}", {Absorbwax}},			
 	},
 	menu_repeat = false,
-	type = "back",
+	type = "xback",
 })
 
 gx.add_menu({
@@ -7312,12 +7305,15 @@ gx.add_menu({
 	name = "Fun",
 	menu = {
 		{"[📶] Online (SUI)", {online}},
+		{"[👥] Friendsnode and Chats {gxsign}", {node}},
+		{"[🌟] Ultra rapid farm!!", {ydks}},
+		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
+		{"[🔥] Wax (SUI)", {suimenuc}},
 		{"[🌟] Unlimited Fireworks (SUI) {gxsign}", {SIUfire}},
 		{"[🦐] Immune Krill Attack (SUI) {gxsign}", {suikrills}},
 		{"[🎧] iOS Headphone (SUI) {gxsign}", {iosphone}},
 		{"[🧯] Unlimited Oxygen (SUI) {gxsign}", {SuiOxygen}},
 		{"[❤️] Flashing Heart (SUI) {gxsign}", {Suihearts}},
-		{"[👥] Friendsnode and Chats {gxsign}", {node}},
 		{"[👥] Emote level Unlock (SUI) {gxsign}", {Suiemote}},
 		{"[👥] Skin Unlock (SUI) {gxsign}", {Suiskins}},
 		{"[🔋] Floating and charge", {wing_charge}},
