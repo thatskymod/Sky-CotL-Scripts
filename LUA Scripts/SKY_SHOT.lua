@@ -7101,6 +7101,13 @@ function Suiemote()
     end
 end
 
+function Readchats()
+	so = gg.getRangesList("libBootloader.so")[1].start
+	py = 0x6199A0
+	setvalue(so + py, 16, 2.74878956e11)
+	gg.toast("Read chats active")
+end
+
 gx.vars.settings = {
 	wdistance = settings.wdistance,
 	w = 0
@@ -7206,8 +7213,9 @@ gx.add_menu({
 		{"[📶] Online (SUI)", {online}},
 		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
 		{"[👤] Player view (SUI) {gxsign}", {SIUplayers}},
-		{"[👥] Friendsnode and Chats {gxsign}", {node}},
+		{"[📜] Read chats {gxsign}", {Readchats}},
 		{"[👤] Emotes lvl 4 (SUI) {gxsign}", {Suiemote}},
+		{"[👥] Friendsnode {gxsign}", {node}},
 		{"[👊] Power (SUI)", {suimenua}},
 		--{"[🔥] Wax (SUI)", {suimenuc}},
 		{"[🌟] Unlimited Fireworks (SUI) {gxsign}", {SIUfire}},
