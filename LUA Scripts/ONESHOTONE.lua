@@ -1870,7 +1870,6 @@ crpoints = {
 	{family = "Valley", name = "Valley Citadel", map = "Sunset_Citadel", x = -158.2747344970703, y = 495.3871765136719, z = 155.22164916992188},
 	{family = "Valley", name = "Valley Citadel", map = "Sunset_Citadel", x = -143.93162536621094, y = 495.333984375, z = 174.9748077392578},
 	{family = "Valley", name = "Valley Citadel", map = "Sunset_Citadel", x = -203.8780059814453, y = 491.9259338378906, z = 206.35220336914062},
-	{family = "Valley", name = "Valley Citadel", map = "Sunset_Citadel", x = 400.564208984375, y = 1187.0576171875, z = 191.08363342285156},
 
 	{family = "Valley", name = "Valley Colosseum", map = "SunsetColosseum", x = -259.9415283203125, y = 167.48284912109375, z = -20.542476654052734},
 	{family = "Valley", name = "Valley Colosseum", map = "SunsetColosseum", x = -148.1111602783203, y = 167.48284912109375, z = 3.6986045837402344},
