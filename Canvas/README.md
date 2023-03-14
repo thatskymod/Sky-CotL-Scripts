@@ -1,7 +1,19 @@
 # Welcome to Canvas!
 
 ## What's Canvas?
-- **Canvas** is a lightweight wrapper around the Sky app made by [@artdeell](https://github.com/artdeell) and [@lukas0x1](https://github.com/lukas0x1). It takes up a sole **~15 MB** of your phone's storage and hooks into Sky at runtime, thus acting as "middleware" and providing an interface that devs can build plug-ins on top of. It's completely modular, so you can load existing plug-ins or write your own. Some involve Auto CRing, spell modification, teleport to any map, or virtually anything as per your liking.
+- ⚙️ **Canvas**, also known as **Sky Modloader**, is a lightweight wrapper around the Sky app made by [@artdeell](https://github.com/artdeell) and [@lukas0x1](https://github.com/lukas0x1). It takes up a sole **~15 MB** of your phone's storage and hooks into Sky at runtime, thus acting as "bridge" and providing an interface that developers can build plug-ins on top of. It's completely modular, so you can load existing plug-ins or write your own. The main advantage of Canvas over traditional mods is that it doesn't require elevated privileges or any specific programming skills. Canvas is important, but requires libs to be fully operational.
+
+## Libs?
+- 📚 **Userlibs**, or simply **Libs**, are fan-made helper programs (libraries) for Canvas that actually unleash its true power. Some of these libs include Auto CRing, melting, spell modification, or virtually anything as per your liking.
+
+## Available Libs:
+- **Autowax** (aka. **libaw4c**) - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
+- **reHell** or **libgxost** - Universal mod with many great features
+- **libRomanBeta** - Universal mod for Sky Beta
+- **libRomanDev** - Substitutes the Beta server with the Dev one (an even more private server, originally only for TGC devs)
+- **libfun** - Universal mod, but paid and poorly maintained
+
+⬆️ <ins>It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.</ins> ⬆️
 
 ## System Requirements:
 - A mobile phone capable of running Sky and Android not less than version 7.1
