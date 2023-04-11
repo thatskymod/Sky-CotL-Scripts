@@ -22,7 +22,7 @@
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/lukas0x1/SML-filehost/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1049046311640502322/libaw4c.1.2.0.so).
+1. Download **Canvas.apk** from [here](https://github.com/lukas0x1/SML-filehost/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1095175331972927568/libaw4c.1.3.4.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Hit **"Done"** *(don't open yet!)*.
