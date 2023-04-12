@@ -1,10 +1,9 @@
 ---
-name: Feature request
-about: Suggest a New Mod
+name: Feature Request
+about: Suggest a new mod
 title: ''
 labels: enhancement
 assignees: ''
-
 ---
 
 ### Suggest a New Mod

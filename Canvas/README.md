@@ -8,10 +8,13 @@
 
 ## Available Libs:
 - **Autowax** (aka. **libaw4c**) - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
-- **reHell** or **libgxost** - Universal mod with many great features
+- **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc.
 - **libRomanBeta** - Universal mod for Sky Beta
 - **libRomanDev** - Substitutes the Beta server with the Dev one (an even more private server, originally only for TGC devs)
 - **libfun** - Universal mod, but paid and poorly maintained
+
+Discontinued **(do not use!)**
+- **reHell** or **libgxost** - Universal mod with many great features
 
 ⬆️ <ins>It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.</ins> ⬆️
 
@@ -22,7 +25,7 @@
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/lukas0x1/SML-filehost/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1095175331972927568/libaw4c.1.3.4.so).
+1. Download **Canvas.apk** from [here](https://github.com/lukas0x1/SML-filehost/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1097612001032818870/libaw4c.1.3.5.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Hit **"Done"** *(don't open yet!)*.
@@ -42,7 +45,7 @@ To update your existing mods (files ending in *.so), do the following:
 6. Your mod is updated and ready to use!
 
 ## Is Canvas safe?
-- Yes, Canvas unto itself is completely [safe](https://www.virustotal.com/gui/file/d0a99a03e0e6cab81ce1401ada6ec2c651dfafe13a4cd984c7c9b071dea7c395/). However, it allows mods, whether third-party or not, to have full control of your active Sky instance, be able to read your account info and such. So it's advisable to use your brain and pay attention to people's reviews before use. Moreover, some mods offer features that are considered "risky", such spam honk, teleportation by coordinates, auto melt,... which can draw other's attention and make them report you to tgc. Again, stay away from openly showing or talking about cheats, and you should be fine.
+- Yes, Canvas unto itself is completely [safe](https://www.virustotal.com/gui/file/e24a22aa90f069c2d169c490a475dcaf25f1ad6d0fb1d38c7c3aa341aae23d39/). However, it allows mods, whether third-party or not, to have full control of your active Sky instance, be able to read your account info and such. So it's advisable to use your brain and pay attention to people's reviews before use. Moreover, some mods offer features that are considered "risky", such spam honk, teleportation by coordinates, auto melt,... which can draw other's attention and make them report you to tgc. Again, stay away from openly showing or talking about cheats, and you should be fine.
 
 ## Credits & Resources:
 Telegram - AutoWax EN: https://t.me/skyautowax  
