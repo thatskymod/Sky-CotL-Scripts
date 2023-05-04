@@ -45,7 +45,7 @@ To update your existing mods (files ending in *.so), do the following:
 6. Your mod is updated and ready to use!
 
 ## Is Canvas safe?
-- Yes, Canvas unto itself is completely [safe](https://www.virustotal.com/gui/file/e24a22aa90f069c2d169c490a475dcaf25f1ad6d0fb1d38c7c3aa341aae23d39/). However, it allows mods, whether third-party or not, to have full control of your active Sky instance, be able to read your account info and such. So it's advisable to use your brain and pay attention to people's reviews before use. Moreover, some mods offer features that are considered "risky", such spam honk, teleportation by coordinates, auto melt,... which can draw other's attention and make them report you to tgc. Again, stay away from openly showing or talking about cheats, and you should be fine.
+- Yes, Canvas unto itself is completely [safe](https://www.virustotal.com/gui/file-analysis/Nzc3NWU2ZTE1NjdmNDM3NTcyYzY0YzdiN2ZlNmRhNzk6MTY4MzIwODIzNQ==). However, it allows mods, whether third-party or not, to have full control of your active Sky instance, be able to read your account info and such. So it's advisable to use your brain and pay attention to people's reviews before use. Moreover, some mods offer features that are considered "risky", such spam honk, teleportation by coordinates, auto melt,... which can draw other's attention and make them report you to tgc. Again, stay away from openly showing or talking about cheats, and you should be fine.
 
 ## Credits & Resources:
 Telegram - AutoWax EN: https://t.me/skyautowax  
