@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout current repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -21,9 +21,10 @@ jobs:
           asset_name=$(echo "$response" | jq -r '.assets[0].name')
           asset_url=$(echo "$response" | jq -r '.assets[0].browser_download_url')
           tag_name=$(echo "$response" | jq -r '.tag_name')
-          echo "::set-output name=asset_name::$asset_name"
-          echo "::set-output name=asset_url::$asset_url"
-          echo "::set-output name=tag_name::$tag_name"
+          env:
+            asset_name: ${{ steps.get_release.outputs.asset_name }}
+            asset_url: ${{ steps.get_release.outputs.asset_url }}
+            tag_name: ${{ steps.get_release.outputs.tag_name }}
 
       - name: Check if the latest release has already been merged
         id: check_merged
