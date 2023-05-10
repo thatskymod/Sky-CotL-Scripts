@@ -7,10 +7,37 @@ if gg.isVisible(true) then
 	gg.setVisible(false)
 end
     
-function doAction(method) load(method .. "()")() end
-function MOM0choice(cd,name) tmp={} for k,v in pairs(cd)do tmp[#tmp + 1] = {}  tmp[#tmp] = cd[k][1] end SN=gg.choice(tmp,nil,name) if SN then doAction(cd[SN][2]) end end
-function addrjump(a,b) tem=gg.getValues({[1]={address=a+b,flags=32}})[1].value return tem end function doAction(method) load(method .. "()")() end
-function gucichoice(cd,name) tmp={}  for k,v in pairs(cd) do tmp[#tmp + 1] = {}  tmp[#tmp] = cd[k][1]  end  SN=gg.choice(tmp,nil,name)  if SN then doAction(cd[SN][2]) end end
+function doAction(method)
+	local actionFunction = load(method .. "()")
+	actionFunction()
+end
+function MOM0choice(cd, name)
+	local tmp = {}
+	for k, v in pairs(cd) do
+	  tmp[#tmp + 1] = {}
+	  tmp[#tmp] = cd[k][1]
+	end
+	local SN = gg.choice(tmp, nil, name)
+	if SN then
+	  doAction(cd[SN][2])
+	end
+end
+function addrjump(a, b)
+	local value = gg.getValues({[1] = {address = a + b, flags = 32}})[1].value
+	return value
+end
+function gucichoice(cd, name)
+	local tmp = {}
+	for k, v in pairs(cd) do
+	  tmp[#tmp + 1] = {}
+	  tmp[#tmp] = cd[k][1]
+	end
+	local SN = gg.choice(tmp, nil, name)
+	if SN then
+	  doAction(cd[SN][2])
+	end
+end
+  
 function search(a,b) gg.searchNumber(a,b,false,gg.SIGN_EQUAL,Start,End) end
 function searchaddr(nclx,sj,lx,py1,pylx,pysj,py2,name) gg.clearResults() gg.setRanges(nclx) if nclx == 4 then gg.setRanges(4|-2080896) search(sj,lx) else gg.searchNumber(sj,lx) end local tmp = {}
 for k, v in ipairs(gg.getResults(gg.getResultCount())) do tmp[k] = { address = v.address + py1, flags = pylx } end for k, v in ipairs(gg.getValues(tmp)) do  if v.value == pysj then gg.toast(name.."成功✔️") return v.address+py2 end end gg.toast(name.."️失败") end local init_tabkey={"address","flags","value","freeze"} 
@@ -30,8 +57,7 @@ request = function(fb, fbpya, fbpyb, fbz) local sc = {} get(sc, fbdz + 0x8, 32, 
 utfrequest = function(utf, fb, fbpy, fbpya, fbpyb, fbz) for i = 1, #utf do local wb, wbs = {utf[i]:byte(0,-1)}, {} for v = 1, 24 do get(wbs,fb + v - (fbpy or 1),1,wb[v] or 0)end gg['setValues'](wbs) request(fb,fbpya,fbpyb,fbz) end end
 -- 数值发包
 namerequest = function(name, fb, fbpya, fbpyb, fbz) local sc = {} for i = 1, #name do get(sc,fb + ((i - 1) * 4),4,name[i]) end gg['setValues'](sc) request(fb,fbpya,fbpyb,fbz)end
---local sz="https://pan.axxpan.com/api/v3/file/get/37260/%E6%95%B0%E7%BB%84.txt?sign=QA5pGRKYXtTX6_47RSQTSoH_UG99OQsuMezitpwkRVA%3D%3A0"
---pcall(load(gg.makeRequest(sz).content))
+
 local so=gg.getRangesList('libBootloader.so')[1].start
 rwdz=addrjump(addrjump(so,0x161BED0)+0x4CED40,0)+0x20C--人物核心
 gg.addListItems({{address=rwdz ,flags = 32,name="rwdz"}})
@@ -163,6 +189,7 @@ offsets = {
 	wind_off = -0x87A6CC
 }
 
+
 function wzpd()
   weizhi = gg.getValues(dqwzaddr)
   for i = Beginning , #map do
@@ -249,7 +276,7 @@ end
 function search(...) local sousuo1 = {...} gg.searchNumber(sousuo1[1],sousuo1[2],false, gg.SIGN_EQUAL,0x1000000000,fanwei) end
 function searchaddr(nclx,sj,lx,py1,pylx,pysj,py2,name) gg.clearResults() gg.setRanges(nclx) if nclx == 4 then gg.setRanges(4|-2080896) search(sj,lx) else  gg.searchNumber(sj,lx)  end local tmp = {} for k, v in ipairs(gg.getResults(gg.getResultCount())) do  tmp[k] = { address = v.address + py1, flags = pylx   } end for k, v in ipairs(gg.getValues(tmp)) do if v.value == pysj then gg.toast(name.."成功✔️") return v.address+py2 end  end    gg.toast(name.."️失败")  end        
 local init_tabkey={"address","flags","value","freeze"}  function seaio(t,a,b,c,d)  t[#t+1]={}  t[#t][init_tabkey[1]]=a  t[#t][init_tabkey[2]]=b  if c then t[#t][init_tabkey[3]]=c end if d then t[#t][init_tabkey[4]]=d end end
-function seaio(t,a,b,c,d) t[#t+1]={} t[#t][init_tabkey[1]]=a t[#t][init_tabkey[2]]=b if c then t[#t][init_tabkey[3]]=c end if d then t[#t][init_tabkey[4]]=d end end
+function forseaio(i,j,t,a,py,xhpy,b,c,d) for k=i,j do seaio(t,a+py+xhpy*k,b,c,d) end end
 
 function M_rycs()
   FX = "M_rycs"
@@ -560,6 +587,891 @@ maps = {
 	{"!!! Orbit 2 !!!", "OrbitEnd"},
 	{"!!! Heaven !!!", "CandleSpaceEnd"},
 	{"Credits map", "Credits"}
+}
+
+btk={"🌤️","⛅","🌥️","☁️","🌦️","🌧️","⛈️","🌩️","🌨️","❄️"}
+--功能开关
+wxnlkg="未开启"--无限能量
+hzkg ="未开启"--实时画质
+ejkg ="未开启"--耳机
+hjkg ="未开启"--家
+sjkg="未开启"--缩放视角
+ydkg="未开启"--云朵
+judalzkg="未开启"--蜡烛
+dpdlkg="未开启"--斗篷点亮
+Kg_mf_dshh = "use one spell to see the effect"--闪电火花
+Tukg="未开启"--图腾
+wtkg="未开启"--清除物体
+on = "开启中"
+off = "未开启"
+maxlvwing = off
+
+
+
+
+
+
+map = {
+    --map[x] = {("文本"),代码,("名称"),花,光翼，烛火}
+	{("CandleSpace"),-768833570,("home"),0,0,1}--1
+	,{'Dawn',1649439303,("isle"),1,1,1}--2
+	,{'Prairie_ButterflyFields',-1817621630,("Prairie ButterflyFields"),0,1,1}--3
+	,{'Prairie_Village',-1944435120,("Prairie Village"),1,1,1}
+	,{'Prairie_Cave',-1050035699,("Prairie Cave"),0,1,1}
+	,{'Prairie_NestAndKeeper',312004957,("Prairie NestAndKeeper"),0,1,1}
+	,{'DayHubCave',-1900248111,'DayHubCave',0,1,1}
+	,{'DayEnd',1190972738,("DayEnd"),0,0,1}
+	,{("Rain"),164626931,("Rain"),1,1,1}
+	,{("RainForest"),-1455381650,'Rain Forest',1,1,1}
+	,{("RainShelter"),-1574275404,'Rain Shelter',1,1,1}
+	,{("Rain_Cave"),-161371567,'Rain Cave',1,1,1}
+	,{("RainMid"),-2135324521,'Rain Mid',1,1,1}
+	,{("RainEnd"),128844448,'Rain end',1,1,1}
+	,{("Sunset"),1638008359,'sunset',0,1,1}
+	,{("Sunset_Citadel"),-2115418256,'Citadel',0,1,1}
+	,{("Sunset_FlyRace"),1844499196,'sunset fly Race',0,1,1}
+	,{("SunsetRace"),571720490,'sunset Race',0,1,0}
+	,{("SunsetEnd"),-1934656620,'sunset end',0,1,1}
+	,{("SunsetEnd2"),507487826,'sunset end2',1,1,1}
+	,{("DuskStart"),817373972,'Dusk Start',0,0,1}
+	,{("Dusk"),1147491976,'Dusk',1,1,1}
+	,{("DuskOasis"),170656205,'Dusk oasis',1,1,1}
+	,{("DuskGraveyard"),864432821,'Dusk Graveyard',1,1,1}
+	,{("Dusk_CrabField"),-1644045427,'Crab Field',1,1,1}
+	,{("DuskMid"),1597085778,'Dusk mid',1,1,1}
+	,{("DuskEnd"),-136010643,'Dusk end',1,1,1}
+	,{("Night"),-1936060159,'Vault',0,1,1}
+	,{("NightArchive"),2518601,'Night archive',0,1,1}
+	,{("Night2"),-1987505335,'night2',0,1,1}
+	,{("NightEnd"),-2027781754,'Night end',0,0,0}
+	,{("TGCOffice"),295816905,'office',1,0,1}
+	,{("StormStart"),-1184245578,'strom Start',0,1,0}
+	,{("Storm"),1705189686,'strom',1,1,0}
+	,{("StormEnd"),-815180717,'strom End',0,0,0}
+	,{("OrbitMid"),-857831781,'orbit mid',0,0,0}
+	,{("OrbitEnd"),567986524,'Orbit End',0,0,0}
+	,{("CandleSpaceEnd"),-2043682661,'Candle space end',0,0,0}
+	,{("Credits"),261807733,'Credits',0,0,0}
+	,{'Prairie_Island',-1237641587,("prairie island"),1,1,1}
+	,{("DawnCave"),748712866,"Dawn cave",0,1,0}
+	,{("Dawn_TrialsWater"),-410824576,"Trial Water",0,1,1}
+	,{("Dawn_TrialsEarth"),1887730855,"Trial earth",0,1,1}
+	,{("Dawn_TrialsAir"),2050064391,"Trial Air",0,1,1}
+	,{("Dawn_TrialsFire"),1241316521,"Trial fire",0,0,1}
+	,{("SunsetVillage"),1759178769,"sunset village",0,1,0}
+	,{("Sunset_YetiPark"),649101397,"sunset yeti Park",0,1,0}
+	,{("SunsetColosseum"),263580627,"Colosseum",0,0,0}
+	,{("Rain_BaseCamp"),-977706424,"Rain Basecamp",0,0,0}----49
+	,{("NightDesert"),2060214456,"Night Desert",0,0}--50
+	,{("NightDesert_Beach"), -1243448568,"NightDesert Beach" ,0,0}--51
+	,{("Night_JarCave"), - 1036005362,"Night jarCave",0,0}--52
+	,{("NightDesert_Planets"),- 1470196160,"planets" ,0,0}--53
+	,{"Event_DaysOfMischief",-1212213378,"Helloween",0,0}--54
+	,{("Nintendo_CandleSpace"),-2095104762,"Nintendo",0,0,0}--55
+	,{"Skyway",2081768701,"Sky Way",0,0}--56
+	,{"Event_DaysOfMischief",-1212213378,"Helloween",0,0}--57
+    ,{("Dusk_Triangle"),-224855659,"Dusk Triangle ",0,0,0,58}--58
+    ,{"Sunset_Theater",1612139937,"Dusk Theater",0,0,0}--59
+    ,{'Prairie_Island',-1237641587,"Prairie island",1,1,1}--60
+	,{("NightDesert"),2060214456,"Night Desert",0,0}--61
+	,{"StormEvent_VoidSpace",-366570631,"Void space",0,0}--62
+	,{"Event_DaysOfMischief",-1212213378,"Helloween",0,0}--63
+	,{("SunsetVillage_MusicShop"),1323747701,"sunset music shop",61}--64
+}
+
+----任意门颜色
+dtcolor={
+	"Cyan",
+	"Yellow", 
+	"UIBar",	
+	"UIBGGalaxy",	
+	"UIEye",	
+	"UIFade",	
+	"UILogo",
+	"UiMiscBubbleB",	
+	"UiMiscCircle",	
+	"UiMiscCircleFade",
+	"UIRing",	
+	"UIRingBigMedium",	
+	"UIRingBigThick",	
+	"UIRingBigThin",	
+	"UIRingBigThinner",	
+	"UIRingBloom",	
+	"UIRingBold",
+	"UISphere",	
+	"UISphereFade",
+	"UISpot",
+	"UIStarGlow",
+	"Blue",
+	"Red",
+	"Green",
+	"White",
+	"Black",
+	"Portal",
+	"CliffWetSh",
+	"Consolas32",
+	"Wisteria",
+	"DawnIntroGateSh",
+	"WallBrick",
+	"CloudFarTex",
+	"GlacierSh",
+	"CloudThinTex",
+	"Rainbow",
+	"AttribGloss",
+	"ParticleAtlas",
+	"TiktokLogo",
+	"StoneBaseMotif",
+	"FMODLogoLight",
+	"UILogo",
+	"TGCLogoFlat"
+}
+
+
+
+
+wipeid1={--光翼文本
+    --重生翼
+    {'l_CandleSpace_0'},
+    --晨岛5个
+    {'l_Dawn_0'},{'l_Dawn_1'},{'l_Dawn_2'},{'l_Dawn_3'},{'l_Dawn_4'},
+    --湖水的试炼
+    {'l_Dawn_TrialsWater_0'},
+    --️土地的试炼
+    {'l_Dawn_TrialsEarth_0'},
+    --空气的试炼
+    {'l_Dawn_TrialsAir_0'},
+    --火焰的试炼
+    {'l_Dawn_TrialsFire_0'},
+    --云野一图3个
+    {'l_Prairie_ButterflyFields_0'},{'l_Prairie_ButterflyFields_1'},{'l_Prairie_ButterflyFields_2'},
+    --云野右图2个
+    {'l_Prairie_NestAndKeeper_0'},{'l_Prairie_NestAndKeeper_1'},
+    --圣域群岛8个
+    {'l_Prairie_Island_0'},{'l_Prairie_Island_1'},{'l_Prairie_Island_2'},{'l_Prairie_Island_3'},
+    {'l_Prairie_Island_4'},{'l_Prairie_Island_5'},{'l_Prairie_Island_6'},{'l_Prairie_Island_7'},
+    --云野左图2个
+    {'l_Prairie_Cave_0'},{'l_Prairie_Cave_1'},
+    --云野三塔5个
+    {'l_Prairie_Village_0'},{'l_Prairie_Village_1'},{'l_Prairie_Village_2'},{'l_Prairie_Village_3'},{'l_Prairie_Village_4'},
+    --八人门1个
+    {'l_DayHubCave_0'},
+    --雨林一图2个
+    {'l_Rain_0'},{'l_Rain_1'},
+    --大树屋2个
+    {'l_Rain_BaseCamp_0'},{'l_Rain_BaseCamp_1'},
+    --雨林二图4个
+    {'l_RainForest_0'},{'l_RainForest_1'},{'l_RainForest_2'},{'l_RainForest_3'},
+    --雨林副本2个
+    {'l_RainShelter_0'},{'l_RainShelter_1'},
+    --雨林地下副本4个
+    {'l_Rain_Cave_0'},{'l_Rain_Cave_1'},{'l_Rain_Cave_2'},{'l_Rain_Cave_3'},
+    --雨林水母图3个
+    {'l_RainMid_0'},{'l_RainMid_1'},{'l_RainMid_2'},
+    --雨林神殿1个
+    {'l_RainEnd_0'},
+    --雨林新图1个
+    {'l_Skyway_0'},
+    --霞谷一图3个
+    {'l_Sunset_0'},{'l_Sunset_1'},{'l_Sunset_2'},
+    --霞光城2个
+    {'l_Sunset_Citadel_0'},{'l_Sunset_Citadel_1'},
+    --飞行赛道2个
+    {'l_Sunset_FlyRace_0'},{'l_Sunset_FlyRace_1'},
+    --滑行赛道1个
+    {'l_SunsetRace_0'},
+    --赛道结尾2个
+    {'l_SunsetEnd_0'},{'l_SunsetEnd_1'},
+    --颁奖台1个
+    {'l_SunsetColosseum_0'},
+    --圆梦村3个
+    {'l_SunsetVillage_0'},{'l_SunsetVillage_1'},{'l_SunsetVillage_2'},
+    --隐士山谷2个
+    {'l_Sunset_YetiPark_0'},{'l_Sunset_YetiPark_1'},
+    --霞谷神殿1个
+    {'l_SunsetEnd2_0'},
+    --暮土破庙2个
+    {'l_Dusk_0'},{'l_Dusk_1'},
+    --失落方舟2个
+    {'l_DuskOasis_0'},{'l_DuskOasis_1'},
+    --暮土龙图6个
+    {'l_DuskGraveyard_0'},{'l_DuskGraveyard_1'},{'l_DuskGraveyard_2'},
+    {'l_DuskGraveyard_3'},{'l_DuskGraveyard_4'},{'l_DuskGraveyard_5'},
+    --暮土沉船3个
+    {'l_Dusk_CrabField_0'},{'l_Dusk_CrabField_1'},{'l_Dusk_CrabField_2'},
+    --暮土古战场2个
+    {'l_DuskMid_0'},{'l_DuskMid_1'},
+    --暮土神庙1个
+    {'l_DuskEnd_0'},
+    --禁阁低层2个
+    {'l_Night_0'},{'l_Night_1'},
+    --禁阁地下室2个
+    {'l_NightArchive_0'},{'l_NightArchive_1'},
+    --禁阁高层4个
+    {'l_Night2_0'},{'l_Night2_1'},{'l_Night2_2'},{'l_Night2_3'},
+    --星漠3个
+    {'l_NightDesert_0'},{'l_NightDesert_1'},{'l_NightDesert_2'},
+    --暴风眼1图1个
+    {'l_StormStart_0'},
+    --暴风眼二图9个
+    {'l_Storm_0'},{'l_Storm_1'},{'l_Storm_2'},{'l_Storm_3'},
+    {'l_Storm_4'},{'l_Storm_5'},{'l_Storm_6'},{'l_Storm_7'},
+    {'l_Storm_8'},
+	
+    --晨岛3先祖3光翼
+    {'s_point'},{'s_nothanks'},{'s_come'},
+    --云野8先祖10光翼
+    {'s_yawn'},{'s_butterfly'},{'s_butterfly_02'},{'s_bird'},{'s_beacon'},{'s_wave'},{'s_wave_02'},{'s_laugh'},{'s_thumbsup'},{'s_wipe'},
+    --雨林8先祖12光翼
+    {'s_cry'},{'s_cry_02'},{'s_ohno'},{'s_ohno_02'},{'s_sorry'},{'s_pout'},{'s_pout_02'},{'s_seek'},{'s_seek_02'},{'s_shy'},{'s_cold'},{'s_whale'},
+    --霞谷7先祖9光翼
+    {'s_strong'},{'s_bow'},{'s_backflip'},{'s_proud'},{'s_proud_02'},{'s_cheer'},{'s_handstand'},{'s_handstand_02'},{'s_manta'},
+    --暮土6先祖8光翼
+    {'s_die'},{'s_brave'},{'s_brave_02'},{'s_sneaky'},{'s_sneaky_02'},{'s_salute'},{'s_scared'},{'s_lookaround'},
+    --禁阁5先祖7光翼
+    {'s_float'},{'s_force'},{'s_ghost'},{'s_ghost_02'},{'s_love'},{'s_pray'},{'s_pray_02'},
+    --感恩季6先祖6光翼
+    {'s_sass'},{'s_joy'},{'s_acknowledge'},{'s_kungfu'},{'s_sarcastic'},{'s_salutation'},
+    --追光季6先祖6光翼
+    {'s_carry'},{'s_lazycool'},{'s_tripleaxel'},{'s_doublefive'},{'s_crabvoice'},{'s_shh'},
+    --归属季6先祖6光翼
+    {'s_loopdance'},{'s_sparkler'},{'s_celebrate'},{'s_dontgo'},{'s_hairtousle'},{'s_wise'},
+    --凛冬季6先祖6光翼
+    {'s_dance'},{'s_juggle'},{'s_think'},{'s_kiss'},{'s_welcome'},{'s_respect'},
+    --魔法季6先祖6光翼
+    {'s_nod'},{'s_scare'},{'s_playfight'},{'s_shrug'},{'s_crabwalk'},{'s_doze'},
+    --圣岛季6先祖6光翼
+    {'s_jelly'},{'s_timid'},{'s_rally'},{'s_grumpy'},{'s_gratitude'},{'s_bellyscratch'},
+    --预言季4先祖4光翼
+    {'s_chestpound'},{'s_balance'},{'s_dustoff'},{'s_deepbreath'},
+    --梦想季4先祖4光翼
+    {'s_peek'},{'s_spintrick'},{'s_showdance'},{'s_bearhug'},
+    --重组季6先祖6光翼
+    {'s_eww'},{'s_chuckle'},{'s_marching'},{'s_bubbles'},{'s_tsktsk'},{'s_facepal'},
+    --王子季6先祖6光翼
+    {'s_beckon'},{'s_gloat'},{'s_stretch'},{'s_slouch'},{'s_sneeze'},{'s_scheme'},
+    --飞行季4先祖4光翼
+    {"s_nerdy"},{"s_babymanta"},{"s_pointup"},{"s_voila"}
+    
+}	
+	
+
+wipeid={
+{512616054;{30;108;95;67;97;110;100;108;101;83;112;97;99;101;95;48}},
+{1410860937;{16;108;95;68;97;119;110;95;48}},
+{1394083318;{16;108;95;68;97;119;110;95;49}},
+{1377305699;{16;108;95;68;97;119;110;95;50}},
+{1360528080;{16;108;95;68;97;119;110;95;51}},
+{1477971413;{16;108;95;68;97;119;110;95;52}},
+--{-393036770;{108;95;80;114;97;105;114;105;101;95;66;117;116;116;101;114;102;108;121;70;105;101;108;100;115;95;48}},
+--{-376259151;{108;95;80;114;97;105;114;105;101;95;66;117;116;116;101;114;102;108;121;70;105;101;108;100;115;95;49}},
+--{-426592008;{108;95;80;114;97;105;114;105;101;95;66;117;116;116;101;114;102;108;121;70;105;101;108;100;115;95;50}},
+{-967613476;{38;108;95;80;114;97;105;114;105;101;95;86;105;108;108;97;103;101;95;48}},
+{-950835857;{38;108;95;80;114;97;105;114;105;101;95;86;105;108;108;97;103;101;95;49}},
+{-934058238;{38;108;95;80;114;97;105;114;105;101;95;86;105;108;108;97;103;101;95;50}},
+{-917280619;{38;108;95;80;114;97;105;114;105;101;95;86;105;108;108;97;103;101;95;51}},
+{-1034723952;{38;108;95;80;114;97;105;114;105;101;95;86;105;108;108;97;103;101;95;52}},
+{-1028750625;{32;108;95;80;114;97;105;114;105;101;95;67;97;118;101;95;48}},
+{-1045528244;{32;108;95;80;114;97;105;114;105;101;95;67;97;118;101;95;49}},
+--{1618037161;{108;95;80;114;97;105;114;105;101;95;78;101;115;116;65;110;100;75;101;101;112;101;114;95;48}},
+--{1601259542;{108;95;80;114;97;105;114;105;101;95;78;101;115;116;65;110;100;75;101;101;112;101;114;95;49}},
+{306445191;{28;108;95;68;97;121;72;117;98;67;97;118;101;95;48}},
+{-1262545883;{16;108;95;82;97;105;110;95;48}},
+{-1279323502;{16;108;95;82;97;105;110;95;49}},
+{-1181740300;{28;108;95;82;97;105;110;70;111;114;101;115;116;95;48}},
+{-1164962681;{28;108;95;82;97;105;110;70;111;114;101;115;116;95;49}},
+{-1148185062;{28;108;95;82;97;105;110;70;111;114;101;115;116;95;50}},
+{-1131407443;{28;108;95;82;97;105;110;70;111;114;101;115;116;95;51}},
+{1753107140;{30;108;95;82;97;105;110;83;104;101;108;116;101;114;95;48}},
+{1769884759;{30;108;95;82;97;105;110;83;104;101;108;116;101;114;95;49}},
+{-211931771;{26;108;95;82;97;105;110;95;67;97;118;101;95;48}},
+{-228709390;{26;108;95;82;97;105;110;95;67;97;118;101;95;49}},
+{-245487009;{26;108;95;82;97;105;110;95;67;97;118;101;95;50}},
+{-262264628;{26;108;95;82;97;105;110;95;67;97;118;101;95;51}},
+{1285839375;{22;108;95;82;97;105;110;77;105;100;95;48}},
+{1269061756;{22;108;95;82;97;105;110;77;105;100;95;49}},
+{1319394613;{22;108;95;82;97;105;110;77;105;100;95;50}},
+{1048054992;{22;108;95;82;97;105;110;69;110;100;95;48}},
+{810451365;{20;108;95;83;117;110;115;101;116;95;48}},
+{793673746;{20;108;95;83;117;110;115;101;116;95;49}},
+{776896127;{20;108;95;83;117;110;115;101;116;95;50}},
+{164899642;{36;108;95;83;117;110;115;101;116;95;67;105;116;97;100;101;108;95;48}},
+{181677261;{36;108;95;83;117;110;115;101;116;95;67;105;116;97;100;101;108;95;49}},
+{-1675758746;{36;108;95;83;117;110;115;101;116;95;70;108;121;82;97;99;101;95;48}},
+{-1658981127;{36;108;95;83;117;110;115;101;116;95;70;108;121;82;97;99;101;95;49}},
+{532052832;{28;108;95;83;117;110;115;101;116;82;97;99;101;95;48}},
+{470655312;{26;108;95;83;117;110;115;101;116;69;110;100;95;48}},
+{487432931;{26;108;95;83;117;110;115;101;116;69;110;100;95;49}},
+{52101496;{28;108;95;83;117;110;115;101;116;69;110;100;50;95;48}},
+{1780015338;{16;108;95;68;117;115;107;95;48}},
+{1796792957;{16;108;95;68;117;115;107;95;49}},
+{1348287321;{26;108;95;68;117;115;107;79;97;115;105;115;95;48}},
+{1331509702;{26;108;95;68;117;115;107;79;97;115;105;115;95;49}},
+{1375827425;{34;108;95;68;117;115;107;71;114;97;118;101;121;97;114;100;95;48}},
+{1359049806;{34;108;95;68;117;115;107;71;114;97;118;101;121;97;114;100;95;49}},
+{1342272187;{34;108;95;68;117;115;107;71;114;97;118;101;121;97;114;100;95;50}},
+{1325494568;{34;108;95;68;117;115;107;71;114;97;118;101;121;97;114;100;95;51}},
+{1442937901;{34;108;95;68;117;115;107;71;114;97;118;101;121;97;114;100;95;52}},
+{1426160282;{34;108;95;68;117;115;107;71;114;97;118;101;121;97;114;100;95;53}},
+{1682121875;{36;108;95;68;117;115;107;95;67;114;97;98;70;105;101;108;100;95;48}},
+{1665344256;{36;108;95;68;117;115;107;95;67;114;97;98;70;105;101;108;100;95;49}},
+{1715677113;{36;108;95;68;117;115;107;95;67;114;97;98;70;105;101;108;100;95;50}},
+{-1262151990;{22;108;95;68;117;115;107;77;105;100;95;48}},
+{-1245374371;{22;108;95;68;117;115;107;77;105;100;95;49}},
+{-500996611;{22;108;95;68;117;115;107;69;110;100;95;48}},
+{1961279477;{18;108;95;78;105;103;104;116;95;48}},
+{1944501858;{18;108;95;78;105;103;104;116;95;49}},
+{-1353818545;{32;108;95;78;105;103;104;116;65;114;99;104;105;118;101;95;48}},
+{-1370596164;{32;108;95;78;105;103;104;116;65;114;99;104;105;118;101;95;49}},
+{-1200190953;{20;108;95;78;105;103;104;116;50;95;48}},
+{-1216968572;{20;108;95;78;105;103;104;116;50;95;49}},
+{-1166635715;{20;108;95;78;105;103;104;116;50;95;50}},
+{-1183413334;{20;108;95;78;105;103;104;116;50;95;51}},
+{-1517843040;{28;108;95;83;116;111;114;109;83;116;97;114;116;95;48}},
+{-1105636086;{18;108;95;83;116;111;114;109;95;48}},
+{-1088858467;{18;108;95;83;116;111;114;109;95;49}},
+{-1139191324;{18;108;95;83;116;111;114;109;95;50}},
+{-1122413705;{18;108;95;83;116;111;114;109;95;51}},
+{-1172746562;{18;108;95;83;116;111;114;109;95;52}},
+{-1155968943;{18;108;95;83;116;111;114;109;95;53}},
+{-1206301800;{18;108;95;83;116;111;114;109;95;54}},
+{-1189524181;{18;108;95;83;116;111;114;109;95;55}},
+{-1239857038;{18;108;95;83;116;111;114;109;95;56}},
+{2100520363;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;48}},
+{2083742744;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;49}},
+{2134075601;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;50}},
+{2117297982;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;51}},
+{-2127336457;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;52}},
+{-2144114076;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;53}},
+{-2093781219;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;54}},
+{-2110558838;{36;108;95;80;114;97;105;114;105;101;95;73;115;108;97;110;100;95;55}},
+{-1387412954;{40;108;95;68;97;119;110;95;84;114;105;97;108;115;87;97;116;101;114;95;48}},
+{95407741;{40;108;95;68;97;119;110;95;84;114;105;97;108;115;69;97;114;116;104;95;48}},
+{-267775443;{36;108;95;68;97;119;110;95;84;114;105;97;108;115;65;105;114;95;48}},
+{1619538469;{38;108;95;68;97;119;110;95;84;114;105;97;108;115;70;105;114;101;95;48}},
+{429675935;{38;108;95;83;117;110;115;101;116;67;111;108;111;115;115;101;117;109;95;48}},
+{-1651396975;{34;108;95;83;117;110;115;101;116;86;105;108;108;97;103;101;95;48}},
+{-1668174594;{34;108;95;83;117;110;115;101;116;86;105;108;108;97;103;101;95;49}},
+{-1684952213;{34;108;95;83;117;110;115;101;116;86;105;108;108;97;103;101;95;50}},
+{922931817;{38;108;95;83;117;110;115;101;116;95;89;101;116;105;80;97;114;107;95;48}},
+{906154198;{38;108;95;83;117;110;115;101;116;95;89;101;116;105;80;97;114;107;95;49}},
+{1493728932;{34;108;95;82;97;105;110;95;66;97;115;101;67;97;109;112;95;48}},
+{1510506551;{34;108;95;82;97;105;110;95;66;97;115;101;67;97;109;112;95;49;}}}
+
+Magic_id = {-- magic id
+
+	{'  🙎 character spells',
+		{
+	    { 'cat curse', 847145578 }, 
+	    { 'Chibi Height', -305102667 },
+        { 'Height Small 3x', 1692428656 },
+        { 'Size Small 3x', 2142718166 },
+        { 'Height Large 3x', 891098028 },
+        { 'Size Large 3x', -1879316162 },
+        {'Glow', 1097748727},
+        { 'Energy', 1750685908 },
+        { 'Anti Gravity', 1860519737 },
+        { 'Dragon Buster', -932650381 },
+        { 'Dispel the darkness', 383062578 },
+        { 'Rain resistance', -1463943689 },
+        { 'Wax 2x', -1727483534 },
+        { 'Flying Blessing', -1362469224 }
+		}
+	},
+	{' 🎒 Props Spells',
+		{
+	    {"Love Fireworks",1403584133},
+        {"Red velvet umbrella",1621987452},
+        { 'The Voice of Aurora', 137268536 },
+        { 'ball game suit', -913145276 }, 
+        {'Umbrella', -992017029 },
+        { 'Snowman back decoration', 1080405300 },
+        { 'Cat back ornament', 1436679857 },
+        { "Summer Umbrella", 2878211958 },
+        { "Seesaw of Love", 3874114315 },
+        { "Summer Shell", 4123817368 },
+        { "Marshmallow", 3165352994 },
+        { "Lantern", 1319710173 },
+        { 'Treble Piano Magic', -1202427550 },
+        { 'Trumpet instrument', -359346310 },
+        { 'tassel tambourine', 454864430 },
+        {'Summer yellow umbrella', -1416755338 },
+        { 'Marshmallow shelf', -1129614302 },
+        { 'Electric Guitar', 332997197 },
+        { 'Chickens piano', 1275481440 },
+        { 'White Guitar', 970364197 },
+        { 'Love Boat', 303877523 },
+        { 'lantern', 1319710173 },
+        { 'banquet table', 256924066 },
+        {'harp', -1001892262},
+        { 'Swing', 1064080243 },
+        { 'Seesaw', -2095749161 },
+        { 'tea table', 10058409 },
+        { 'transparent umbrella', 1167393926 },
+        { 'Firework Stick', 227018419 },
+        {'fox', -2057431024},
+        { 'Halloween Chair', -797688127 },
+        { 'Pumpkin', 125584301 },
+        { 'Tea table for three', 1598845731 }
+		}
+	},
+	{'👗️ cape spells',
+		{
+        {'Aurora orange cloak', 939730131 },
+        {'Yeti Cloak', -940505450 },
+        { 'Concert Teleporter', 1360796960 },
+        { 'Snow Cloak', -940505450 },
+        { 'Cat Cloak', 583315364 },
+        { 'Love Cloak', -1340077527 },
+        { 'Cocktail Cape', -824842930 },
+        { 'robe cloak', -742697939 },
+        { 'Platinum Cloak', 330655056 },
+        {'Magic Season Tassel Cloak', -383842131 },
+        {'Red ball cloak', -1991740469 },
+        { 'Magic Season Cloak', 3911125165 },
+        { 'Turtle Cloak', -700035318 },
+        { 'Koi Cloak', 573237039 },
+        { 'Green Bud Cloak', 2079599063 },
+        { 'TGC Cloak', 540856305 },
+        { 'Ghostbat Cloak', 625581156 },
+        { 'Spider silk cloak', 930203946 },
+        { 'Snowflake Cloak', -784831205 },
+        { 'Christmas cloak', 1306675982 },
+        { 'White Bird Cloak', -1623262339 },
+        { 'petal cloak', -6043825 },
+        { 'follow light bulb', 1375571404 },
+        {'Spring Cloak', -445538750 },
+        { 'Sakura Cloak', 162066154 },
+        { 'ocean cloak', 329684861 },
+        {'robe cloak', 3552269357 },
+        {'Black scarf cloak', 2303226827 },
+        { 'Phoenix Cloak', 3470124366 },
+        { 'New Years Cloak', 3849428546 },
+        { 'Dream Season Aunt Cloak', 1436621948 },
+        {'Dream season red velvet cloak', -308941587 },
+        {'Dream season graduation cloak', -1822337532 },
+        { 'Rainbow Cloak', -195929339 },
+        {'Little Prince scarf and cloak', -2087661926 },
+        {'planet jacket cloak', 1402240423 },
+        { 'Halloween cloak', 769892976 }
+		}
+	},
+	{' 🦱 hair spells',
+	    {
+        {'Aurora hairstyle', 239584271 },
+        { 'Snowman head', 419537417 },
+        { 'Star Moon Crown', -1989753674 },
+        { 'Cat head', 4269954660 },
+        { 'runaway hair', 239584271 },
+        { 'Travel love hairstyle', -53791328 },
+        {'koi head', -1543558130 },
+        { 'Pumpkin hat', 1046521292 },
+        { 'Wizard Hat', 1983755432 },
+        { 'Lion dance hat', 2093744529 },
+        { 'Ruhasa Hairstyle', 1052417823 },
+        { 'Princess hairstyle', -58608787 },
+        { 'Ming hat', 62904179 },
+        { 'Wool hat', 3471701278 },
+        { 'Snowman head', 577559403 },
+        { 'Double ball head', -2099997114 },
+        { 'felt hat', -823266018 },
+        { 'Sakura hairstyle', 373243257 },
+        {'Dream season hair', 1059767859 },
+        { 'Halloween hairstyle', -1760741911 },
+        {'Halloween long hair', 116679863 }
+		}
+	},
+	{' 🎭 mask spells',
+		{
+        { 'Snowman Mask', 858950093 },
+        { 'Cat mask', 3393326356 },
+        { 'White Fox Mask', 784922793 },
+        { 'Red Rabbit Mask', 964659005 },
+        { 'Red Beard Mask', -1260896304 },
+        { 'Red Rabbit Mask', 1715614234 },
+        { 'Rin Winter Mask', -218615327 },
+        {'Tauren mask', -849020465 },
+        { 'Mask with roses', -938578505 },
+        { 'Cocktail mask', 1794621037 },
+        { 'cockscomb mask', -163651962 },
+        {'Spring Red Face Mask', -1636163586 },
+        { 'Dream Season Peacock Mask', 771982951 },
+        {'Dream season graduation mask', 144876107 },
+        { 'White Fox Mask', 784922793 }
+		}
+	},
+	{' 👑 head spells',
+		{
+        { "Xingyue hair ornament", 2305213622 },
+        { "Rainbow Hat", 3773476314 },
+        { "Rainbow Earrings", 2704677687 },
+        { "Rainbow Headphones", 2525758368 },
+        { "Withered Horn", 1123843208 },
+        { "Red-Eyed Pumpkin", 125584301 },
+        { 'Bunny headdress', 3446227585 },
+        {'Pippi Shrimp Birthday Hat', 3589061110 },
+        { 'Bond love hair accessories', 2050094531 },
+        { 'Koi hair accessories', 551055685 },
+        { 'horn hair ornament', -1609905368 },
+        { 'Jellyfish Shoulders', 329235560 },
+        { 'Sea Turtle Shoulders', 1943995802 },
+        { 'Antlers', 1909998088 },
+        { 'Christmas hat', -1409683913 },
+        { 'Banquet bow tie', 8361886 },
+        { 'Snowman headdress', 2685061928 },
+        { 'Orange headdress', -1616733323 },
+        { 'ocean necklace', -1938239955 },
+        { 'Rainbow Earrings', -290700605 },
+        { 'Rainbow Flower', 2141511649 },
+        { 'Rabbit headdress', -848739711 },
+        { 'shell headdress', -171149928 },
+        { 'Beach sunshade headwear', 2052387583 },
+        { 'crab headdress', 901504997 },
+        {'Wizard Single Hat', -75786201 },
+        { 'Halloween corner', 1123843208 }
+		}
+	},
+	{'👖pants spells',
+		{
+        {"New Pants",483128979},
+        {'Aurora pants', -1134828593 },
+        { 'Snowman body', -1535254839 },
+        { 'runaway pants', 3160138703 },
+        { 'red cotton trousers', 22984390 },
+        { 'Snowman Pants', -1575436757 },
+        { 'Knight pants', -495233219 },
+        { 'Halloween pants', 969946279 }
+		}
+	},
+	{'🌠Tail spells',
+		{
+        { 'Rainbow trailing', 147016038 },
+        { 'Rainbow trailing', 1301293614 },
+        { 'Turquoise trail', 1318288330 },
+        {'Black trail', -176902809 },
+        { 'Blue trail', -1951801352 },
+        { 'cyan trailing', 1918290563 },
+        { 'Green trailing', 637646527 },
+        {'Purple pink tail', -1527316661 },
+        { 'Orange trail', 1237283438 },
+        { 'purple trail', 470393304 },
+        { 'purple tail', -1071076330 },
+        {'red tail', -1304862813 },
+        {'Yellow tail', -1354381164 },
+        { 'pink tail', 1665476229 }
+		}
+	},
+    	{' 📢 Sound spells',
+		{
+        { 'Kizuna AI call', -1881863468 },
+        { 'Bond love call 2', 2413103828 },
+        {'Voice calling', 959071590 },
+        {'Kunpeng calling', 1814753890 },
+        { 'Dark Crab Call', 1725047129 },
+        { 'Jellyfish calling', -957441587 }
+		}
+	},
+	{'🔅Teleport spells',
+		{
+        { 'Teleport Sanctuary ', 598305233 },
+        { 'Teleport Isle Elder', 103122035 }, 
+        { 'Teleport Forest Cave', 224110574 },
+        { 'Teleport Prairie Elder', -1633629698 },
+        { 'Teleport You & I', 1153544860 },
+        { 'Transfer Rainforest elder', -1256468339 },
+        { 'Teleportation Ark', -210323960 },
+        { 'Teleport Hermit Valley', 1660914074 },
+        { 'Teleport Valley Elder', 248080515 },
+        { 'Teleport Wasteland Elder', -1172691679 }
+		}
+	},
+	{' 🤝 Friendship spells',
+		{
+        { 'Friendship back', 1405645877 },
+        { 'Friendship Bear Hug', 1677246236 },
+        { 'Friendship Warp', 998754260 },
+        { 'Friendship fight', 2137753158 },
+        { 'Two people go', 953841005 }
+		}
+	},
+	{'⚡special spells',
+		{ 
+		{'Timeline Birthday Crab ', 875460884 },
+        { 'Lucky Fireworks', 4010083509 },
+        { 'Timeline Day & Night', 539651423 },
+        { 'New Year Fireworks', 898079755 },
+        { 'Timeline Oreo ', 959071590 },
+        { 'candle trick', 1441565188 },
+        { 'Firework Stick Magic', -284883787 },
+        { 'Timeline Nature Turtle', 1212897503 }
+		}
+	},
+	{'❓10.4 Unknown spells',
+		{
+        { 'Unknown magic 1', -305102667 },
+        { 'Unknown Magic 2', -25012636 },
+        { 'Unknown Magic 3', -901640940 },
+        { 'Unknown Magic 4', -705906186 },
+        {'Unknown Magic 5', -420852981 },
+        { 'Unknown Magic 6', -1897034137 },
+        {'Unknown Magic 7', -1590289609 },
+        { 'Unknown Magic 8', -1769208928 },
+        { 'Unknown Magic 9', -521490982 },
+        { 'Unknown Magic 10', -834438493 },
+        { 'Unknown Magic 11', -356890497 },
+        { 'Unknown Magic 12', 43899279 },
+        { 'Unknown Magic 13', 1403584133 },
+        { 'Unknown Magic 14', 483128979 },
+        {'Unknown Magic 15', 1621987452}
+		}
+	},
+    {' 💫Unclassified spells',
+		{
+        { 'Unknown Magic 1', 1067647386 },
+        { 'Rain resistance', 2831023607 },
+        { 'Big guy', 2415651134 },
+        { 'Flying Blessing', 2932498072 },
+        { 'Christmas hat', 2885283383 },
+        { 'Auspicious snow cloak', 3510136091 },
+        { 'Meatball head', 2194970182 },
+        { 'Spring orange headdress', 2678233973 },
+        { 'horn mask', 3445946831 },
+        { 'blush mask', 2658803710 },
+        { 'Flower Mask', 3356388791 },
+        { 'Seesaw', 2199218135 },
+        { 'beak beard', 3034070992 },
+        { 'Princess head', 4236358509 },
+        { 'quail mask', 4131315334 },
+        { 'Yeti Pants', 2719530539 },
+        { 'harp magic', 3293075034 },
+        { 'Teleport Yunye Palace', 2661337598 },
+        { 'petal cloak', 4288923471 },
+        { 'White Bird Cloak', 2671704957 },
+        { 'White Bird Mask', 4076351969 },
+        { 'Transfer Rainforest cg', 3038498957 },
+        { 'Rejuvenation', 3989864629 },
+        { 'Black Trail', 4118064487 },
+        { 'Blue Trail', 2343165944 },
+        { 'pink trail', 2767650635 },
+        { 'Purple Trail', 3223890966 },
+        { 'red trail', 2990104483 },
+        { 'Yellow Trail', 2940586132 },
+        { 'Top Piano', 3362316915 },
+        { 'Top Piano', 3092539746 },
+        { 'horn', 3935620986 },
+        {'Red-striped cloak', 3986025709 },
+        { 'Teleportation Ark', 4084643336 },
+        { 'Transfer tomb soil cg', 3122275617 },
+        {'carp head', 2751409166 },
+        { 'Travel love hairstyle', 4241175968 },
+        { 'Love Cloak', 2954889769 },
+        { 'Turtle Cloak', 3594931978 },
+        { 'spider silk hairstyle', 2534225385 },
+        { 'Unknown magic 42', 2397933159 },
+        { 'Unknown Magic 43', 809787442 },
+        { 'The Voice of Aurora', 3460528803 },
+        { 'A dress dedicated to love', 782433094 },
+        { 'Snowman Magic', 2759712457 },
+        { 'Invalid magic', 3938076799 },
+        { 'goal', 3381822020 },
+        {'Christmas bucket (new)', 3354461846 },
+        {'Christmas bucket (old)', 1762827508 },
+        { 'Snowball', 1440439821 },
+        { 'Snowflake Headdress', 1372838509 },
+        { 'clear magic', nil }
+	}
+	},
+  }
+
+DONZ = {
+    --常驻先祖
+	{414084241,'point',"晨岛指向"},
+	{3666569351,'nothanks',"晨岛拒绝"},
+	{4249009249,'come',"晨岛跟随"},
+	{64338276,'butterfly',"云野引蝶"},
+	{1060667581,'thumbsup',"云野拍手"},
+	{2851084244,'wave',"云野挥手"},
+	{1466879858,'yawn',"云野打哈欠"},
+	{3063270590,'laugh',"云野大笑"},
+	{1568825369,'beacon',"云野举蜡烛"},
+	{2540775602,'bird',"云野鸟叫"},
+	{3881128326,'wipe',"云野擦汗"},
+	{3930381583,'cold',"雨林打颤"},
+	{3576552037,'shy',"雨林害羞"},
+	{2381086145,'pout',"雨林生气"},
+	{1464190897,'seek',"雨林捉迷藏"},
+	{4182042971,'cry',"雨林哭泣"},
+	{419578801,'ohno',"雨林烦躁"},
+	{1156673674,'sorry',"雨林磕头"},
+	{1728053750,'whale',"雨林鱼叫"},
+	{3307167098,'strong',"霞谷叉腰"},
+	{3809307521,'backflip',"霞谷后空翻"},
+	{416637648,'handstand',"霞谷倒立"},
+	{3768849824,'manta',"霞谷鲲叫"},
+	{1942389483,'bow',"霞谷鞠躬"},
+	{2395108553,'proud',"霞谷抱手"},
+	{2859830090,'cheer',"霞谷欢呼"},
+	{3630339793,'die',"墓土晕倒"},
+	{4155738138,'sneaky',"墓土鬼鬼祟祟"},
+	{2886532097,'scared',"墓土埋头"},
+	{1060292445,'brave',"墓土站姿"},
+	{1999438929,'salute',"墓土敬礼"},
+	{2159324587,'lookaround',"墓土遥望"},
+	{2041153668,'force',"禁阁气功"},
+	{2017461200,'ghost',"禁阁鲲叫"},
+	{3576140497,'love',"禁阁站姿"},
+	{3594096657,'pray',"禁阁祈祷"},
+	{2797886853,'float',"禁阁打坐"},
+	--感恩季
+    {3270784407,'sass�������������������',"感恩季狐狸"},
+    {1841001535,'salutation�������������',"感恩季伸展"},
+    {3416766502,'sarcastic��������������',"感恩季功夫"},
+    {3637782525,'joy��������������������',"感恩季蹦跶"},
+    {1972794995,'acknowledge������������',"感恩季敬礼"},
+    {3811807379,'kungfu�����������������',"感恩季抱拳"},
+	--追光季
+	{1372682856,'doublefive','追光季击掌'},
+	{638820386,'lazycool','追光季站姿'},
+	{3143328229,'tripleaxel','追光季旋转'},
+	{1543189191,'crabvoice','追光季螃蟹'},
+	{3828216322,'shh','追光季嘘嘘'},
+	{1880348208,'carry','追光季背背'},
+	--归属季
+	{3921932554,'celebrate','归属季礼花'},
+	{1375735318,'loopdance','归属季蹦迪'},
+	{627603397,'sparkler','归属季指挥'},
+	{391633837,'wise','归属季站姿'},
+	{3613216684,'dontgo','归属季别走'},
+	{560443823,'hairtousle','归属季摸头'},
+	--音韵季
+	{669089267,'welcome','音韵季邀请'},
+	{4162136220,'dance','音韵季舞蹈'},
+	{3723728503,'kiss','音韵季飞吻'},
+	{3379075209,'juggle','音韵季杂技'},
+	{1801995405,'respect','音韵季骑士跪'},
+	{2093468251,'think','音韵季疑惑'},
+	--魔法季
+	{967947706,'nod','魔法季点头'},
+	{2120182059,'scare','魔法季惊吓'},
+	{1251050323,'playfight','魔法季打人'},
+	{2248102924,'shrug','魔法季疑问'},
+	{235271310,'crabwalk','魔法季螃蟹'},
+	{651520861,'doze','魔法季瞌睡'},
+	--圣岛季
+	{1996231227,'jelly','圣岛季水母'},
+	{1179404396,'timid','圣岛季站姿'},
+	{970386679,'rally','圣岛季加油'},
+	{3122155373,'grumpy','圣岛季生气'},
+	{1295259432,'gratitude','圣岛季爱心'},
+	{2427814255,'bellyscratch','圣岛季拍肚'},
+	--预言季
+	{2326309241,'deepbreath','预言季呼吸'},
+	{1888998250,'dustoff','预言季擦肩'},
+	{2560266987,'balance','预言季倒立'},
+	{3098835268,'chestpound','预言季强壮'},
+	--梦想季
+	{2937389342,'peek','梦想季窥探'},
+	{3492441000,'spintrick','梦想季旋技'},
+	{145501185,'bearhug','梦想季熊抱'},
+	{3468476451,'showdance','梦想季炫舞'},
+	--重组季
+	{426613036,'chuckle','重组季大笑'},
+	{377944600,'marching','重组季踏步'},
+	{2943317549,'tsktsk','重组季指点'},
+	{1634224908,'facepalm','重组季无赖'},
+	{2089048596,'bubbles','重组季泡泡'},
+	{1772370534,'eww','重组季嫌弃'},
+	--小王子季
+	{1451035010,'scheme','王子季阴谋'},
+	{2576848471,'sneeze','王子季打喷嚏'},
+	{3908063293,'slouch','王子季好累'},
+	{3542801962,'stretch','王子季懒腰'},
+	{4063849814,'gloat','王子季欢呼'},
+	{95651247,'beckon','王子季命令'},
+	--飞行季
+	{2148472180,'babymanta','飞行季叫声'},
+	{3356677225,'nerdy','飞行季站姿'},
+	{2746631714,'voila','飞行季瞧瞧'},
+	{2704724884,'pointup','飞行季向上'},
+	--深渊季
+	{2301512864,'wait','深渊季等我'},
+	{3480156608,'evillaugh','深渊季笑生'},
+	{2405673242,'ouch','深渊季哎呦'},
+	{1529416578,'anxious','深渊季看着'},
+	--表演季
+	{3431578562,'headbob','表演季头巾'},
+	{2912184286,'duetdance','表演季动作'},
+	{3688883494,'handshake','表演季握手'},
+	{1394749743,'awww�','表演季鼓掌'},
+	--破晓季
+	{1557607952,'darkvoidspace01','破晓季冥龙'},
+	{1607940809,'darkvoidspace02','破晓季冥花'},
+	{3665814150,'lightvoidspace01','破晓季遥鲲'},
+	{3649036531,'lightvoidspace02','破晓季水母'},
+	--霞谷欧若拉季
+	{4025945604,'armwave','欧若拉旅行'},
+	{2492441724,'raisetheroof','欧若拉矿工'},
+	{3251817329,'twirl','欧若拉战士'},
+	{4257024023,'rhythmicclap','欧若拉希望'},
+        --缅怀季节
+    {1882115025,'plead',"缅怀辩护"},
+	{369978686,'tiptoe',"缅怀踮着脚走的"},
+    {1454094152,'grief',"缅怀悲伤"},
+    {3434601530,'injured',"缅怀受伤的"},
+}
+
+
+resulta={
+    {2081768701;-1475869311;-1475870469;-1475867244;2060386341;-1475869891;-1475867188;-1475869894;-1475869369;2060386402;2060386350;2060386346;2060386388;-1475869726;2060386373;2060386422;-1475869746;2060386390;2060386333;-1475867243;2060386378;-1475867241;-1475869295;2060386396;2060386398;2060386369;-1475869728;2060386367;-1475867187;2060386360;-1475867237;2060386362;2060386361;2060386331;2060386326;2060386365;2060386404;-11796312;2060386355;2060386403;-1475870470;-1475868052;2060386371;-1475869888;-1475869306;-1475869317;2060386386;2060386322;-1475869736;2060386399;-1475867239;-1475869739;-1475867248;2060386385;2060386358;-1475867247;-1475869734;2060386426;-11796317;2060386420;2060386405;-1475867246;2060386393;2060386392;2060386339;2060386379;-1475869733;-1475867307;2060386335;-1475869730;2060386408;-1475870615;-1475870434;-1475869900;2060386419;2060386425;2060386324;2060386380;2060386349;2060386401;-1475869883;-1475868057;2060386383;-1475869750;2060386318;2060386321;2060386328;2060386338;2060386421;2060386319;2060386363;-1475869354;-1475869368;-11796328;-1475869889;2060386364;-1475869353;2060386359;-1475869732;2060386375;-1475869351;-11796323;-1475869297;-1475869296;2060386384;-1475869292;2060386368;-1475867234;2060386344;-1475869893;2060386353;2060386387;-1475869314;2060386376;-1475867402;-1475867400;2060386317;2060386336;2060386351;-1475869884;2060386394;2060386329;-1475869312;-1475869299;-1475869897;-11796311;-1475867240;2060386332;-1475867238;2060386357;-1475867235;-1475869352;-1475867233;2060386334;-1475869722;-1475869898;-1475869727;-11796327;-11796325;-1475869305;-1475869316;-11796322;2060386348;2060386320;-11796318;2060386323;2060386423;-1475869723;2060386370;2060386409;-11796316;-11796314;2060386372;-1475869301;2060386327;2060386428;-11796310;2060386382;-11796309;-1475868053;-11796326;2060386407;-1475869735;2060386345;2060386381;2060386356;2060386374;2060386391;-1475870511;-1475867189;2060386400;2060386325;2060386366;2060386377;2060386342;2060386337;2060386410;-1475869291;-1475869744;-1475869731;-1475867392;-11796324;-11796313;-1475869882;-11796320;-1475869300;-11796321;2060386427;-1475867403;-1475867401;2060386330;-1475869737;-1475868754;2060386352;-11796315;2060386395;-1475867191;-1475867190;-1475869886;-1475869432;-1475869738;-11796319;-1475867242;-1475869729;2060386316;2060386343;2060386340;2060386397;2060386347;-1475869881;-1475869350;-1475867404;-1475869745;2060386354;2060386429;-1475869899;-1475869298;-1475867311;-1475869293;2060386389;-1475869887;2060386411;-1475867236;-1475869892;-1475867245;-1475867167;-1475867166;-1475868583;-1475868245;-1475868266;-1475868244;-1475868246;-1475867107;-1475868237;-1475867165;-1475867164;-1475867163;-1475868587;-1475869079;-1475869073;-1475869069;-1475869068;-1475869070;-1475869064;-1475869059;-1475868272;-1475869055;-1475869063;-1475867111;-1475867162;-1475867160;-1475867161;-1475867106;-1475867108;-1475868257;-1475868256;-1475868258;-1475868268;-1475869074;-1475869075;-1475867172;-1475867170;-1475867109;-1475868584;-1475868252;-1475868249;-1475868250;-1475868248;-1475868247;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475867095;-1475869072;-1475867156;-1475867155;-1475869071;-1475869067;-1475869065;-1475869066;-1475868255;-1475868254;-1475868253;-1475868267;-1475868582;-1475867157;-1475867159;-1475867158;-1475867105};
+    {164626931;840696279;-11796145;-11796153;-11796359;-11796326;-11796299;-11796331;-11796221;-11796335;-11796292;-11796114;-11796354;-11796134;840696285;-11796159;-11796294;-11796237;-11796366;-11796228;-11796233;-11796123;-11796141;-11796287;-11796224;-11796146;-11796162;-11796167;-11796273;-11796143;-11796283;840696280;-11796124;-11796290;-11796297;840696276;-11796308;-11796360;-11796148;840696278;-11796163;-11796150;-11796278;-11796338;-11796109;-11796132;-11796276;-11796131;-11796357;-11796169;-11796312;-11796234;-11796137;-11796365;-11796155;-11796217;-11796099;-11796291;-11796144;-11796115;-11796277;-11796302;-11796348;-11796102;-11796122;-11796285;-11796333;-11796346;-11796107;-11796101;-11796231;-11796129;-11796158;-11796168;-11796307;-11796230;-11796269;-11796236;-11796317;-11796339;-11796171;-11796110;840696274;-11796282;-11796311;-11796271;-11796322;-1848049379;-11796274;-11796293;-11796272;-11796218;-11796324;-11796147;-11796157;-11796313;-11796320;-11796288;-11796321;-11796119;840696283;-11796229;-11796226;-11796314;-11796270;-11796315;-11796174;-11796305;-11796173;-11796118;-1848049380;-11796140;-11796139;-11796337;-11796295;-11796223;-11796136;-11796164;-11796128;-11796319;-11796340;-11796069;-11796281;-11796100;-11796172;-11796225;-11796161;-11796113;-11796286;-11796219;-11796279;-11796133;-11796152;-11796166;-11796316;-11796165;-11796367;-11796160;-11796298;-11796235;840696282;-11796332;-11796336;-11796154;-11796301;-11796220;840696277;-11796309;-11796135;-11796227;-11796323;-11796149;-11796275;-11796104;-11796108;-11796345;-11796329;-11796318;-11796170;-11796328;-11796306;-11796356;-11796138;-11796232;-11796303;-11796105;-11796327;-11796106;-11796130;-11796284;-11796142;-11796120;-11796151;-11796300;-11796358;-11796355;-11796156;-11796103;-11796280;-11796296;-11796304;2093678875;2093678875;2093678983;2093678983;2093678983;2093678983;2093678983;2093678983;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678940;2093678940;2093678940;2093678940;2093678940;2093678940;2060386386;2060386372;2060386387;2060386388;2060386426;2060386427;2060386421;34603138;2060386418;2060386423;2060386419;2060386420;2060386422;-11796411;-11796410;-11796409;2060386390;2060386385;2060386397;2060386389;2060386405;2060386396;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2060386401;2060386402;2060386403;2060386391;2060386399;2060386392;2060386393;2060386409;2060386431;34603094;34603095;2060386430;2060386429;-11796353;2060386428;-11796408;-11796407;-11796386;-11796385;-11796384;-11796383;-11796382;-11796381;2093678849;2093678849;2093678849;2093678849;2093678849;2093678849;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;34603102;2060386374;2060386424;2060386425;2060386414;-11796404;-11796403;-11796402;-11796401;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796394;-11796393;-11796391;-11796390;-11796389;-11796388;-11796387;-11796380;-11796379;2093678953;2093678953;2093678953;2093678953;2093678953;2093678953};
+    {-2135324521;-11796204;-11796409;1167523990;-11796189;-11796202;1167523973;-11796379;1167523987;-11796404;-11796383;-11796368;-11796387;1167524013;1167524012;-11796394;1167524051;1167524071;1167524055;1167524073;1167524062;1167523991;1167524087;1167524093;1167523985;1167524084;1167524080;1167524058;1167524089;1167524081;1167523975;1167523995;1167524052;1167524005;1167524088;-11796216;-11796380;-11796227;-11796381;-11796366;-11796207;-11796199;-11796190;-11796376;-11796224;-11796211;1167523989;-11796201;-11796407;-11796198;-11796371;-11796370;-11796405;-11796229;-11796230;-11796402;-11796226;-11796408;-11796228;-11796406;-11796232;-11796197;1167524044;-11796186;-11796378;1167523986;-11796184;-11796185;-11796219;-11796385;-11796384;-11796188;-11796206;-11796377;1167524083;1167524059;-11796396;1167524085;1167524053;-11796209;-11796231;1167524043;1167524078;-11796382;-11796215;-11796208;-11796369;-11796395;-11796386;-11796220;-11796375;-11796392;1167524086;-11796367;-11796393;-11796210;1167523948;-11796213;-11796200;1167524042;-1948973999;34603327;34603326;-1948974989;-1948974299;-1948974299;-1948974299;-1948974299;34603298;34603300;2060386398;-11796326;-11796325;-11796324;-1848049365;2060386390;-1848049357;2060386404;2060386403;2060386394;2060386389;2060386393;2060386392;-11796321;-11796320;-11796319;-11796318;-11796317;-11796316;-11796315;-11796314;-11796313;-11796267;-11796266;-11796265;-11796264;-11796263;-11796262;-11796261;-11796260;-11796259;2060386480;2060386485;2060386484;2060386503;2060386502;2060386483;2060386481;2060386504;2060386479;2060386454;2060386455;2060386462;2060386452;2060386457;2060386459;2060386451;2060386458;2060386449;2060386406;2060386439;2060386434;2060386563;2060386448;2060386405;-11796311;-11796310;34603376;34603382;34603385;2060386489;2060386490;34603402;34603403;2060386488;34603380;-1948974929;-1948974929;-1948974929;-1948974929;-1948974929;2060386540;2060386541;2060386536;2060386539;2060386456;2060386460;2060386461;2060386466;2060386467;2060386559;2060386391;2060386493;2060386494;2060386495;2060386496;2060386497;2060386498;2060386534;2060386530;2060386533;2060386531;2060386499;2060386500;2060386506;2060386507;2060386508;-11796286;-11796285;-11796284;-11796283;-11796282;-11796281;-11796280;-11796279;-11796306;-11796305;-11796304;-11796303;-11796302;-11796301;-11796300;-11796299;-11796298;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;2060386445;2060386447;2060386442;2060386443;2060386444;2060386446;2060386603;2060386604;-11796278;-11796277;-11796276;-11796275;-11796274;-11796273;-11796272;-11796271;-11796270;2060386600;2060386402;2060386601;2060386551;2060386602;2060386395;2060386396;2060386472;2060386599;-11796257;-11796256;-11796255;-11796254;-11796253;-11796252;-11796251;-11796250;-11796249;-11796295;-11796294;-11796293;-11796292;-11796291;-11796290;-11796289;-11796288;-1948974839;-1948974842;2060386468;2060386478;2060386535;-1948974584;-1948974580;34603347;-1765408585;-1765408582;-1948974797;-1948974796;-1948974637;-1948974636;-1948974635;-1948974634;-1948974633;-1948974858;-1948974857;840695978;840695979;840695980;840695981;34603420;-1948973998;-1948974847;-1948974833;-1948974815;-1948974731};
+    {-1237641587;-11795904;-11795924;1293287546;-11795902;-881917946;-11795928;-11795937;1293288159;-11795935;-11795881;-11795942;1293287745;1293287547;1293287621;-11795916;-11795892;-11795907;-11795927;-11795920;-11795883;-11795896;-11795910;-11795900;1293287618;1293287756;-11795887;1293288990;1293287936;1293287750;-11795886;1293288989;1293288986;-11795885;1293287959;1926758854;1293288988;-11795890;1293288160;-11795912;1293288161;-11795899;-11795921;-11795882;1293288163;1293288991;1293287545;1293287960;1293287942;1293287951;1293287619;1293287747;-11795943;-11795936;1293287749;1293287755;1293287620;1293287617;-11795908;-11795934;-11795930;-11795929;-11795909;-11795919;-11795931;1293287549;-11795889;-11795926;-11795925;1293288162;-11795933;-11795898;-11795893;1926758937;-11795938;-1855455090;-11795888;-11795932;-11795903;-11795884;-11795891;-1466630124;-11795894;-11795940;-11795917;1293288993;1293287616;-11795911;-11795918;1293287544;-11795895;-11795914;-11795913;-11795897;-11795915;-11795923;-11795939;-11795906;-11795905;1293287548;1293288164;1293287941;-11796134;-11796133;-11796132;-11796131;-11796130;-11796128;-11796127;-11796126;-11796125;-11796124;-11796123;-11796121;-11796120;-11796119;-11796118;-11796117;-11796116;-11796114;-11796113;-11796112;-11796111;-11796110;-11796109;-11796107;-11796106;-11796105;-11796104;-11796103;-11796102;-11796100;-11796099;-11796098;-11796097;-11796096;-11796095;-11796093;-11796092;-11796091;-11796090;-11796089;-11796088;-11796086;-11796085;-11796084;-11796083;-11796082;-11796081;-11796079;-11796078;-11796077;-11796076;-11796075;-11796074;-11796141;-11796140;-11796139;-11796138;-11796137;-11796073;2060386369;2060386370;2060386368;2060386367;2060386365;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386378;2060386381;2060386375;2060386376;2060386377;2060386394;2060386396;2060386406;2060386833;2060386392;2060386393;-1855455206;-1855455204;-1855455205;-1855455207;-1855455096;-1855455218;-1855455222;-1855455214;-1855455216;-1855455213;-1855455223;-1855455177;-1855455174;-1855455179;-1855455178;-1855455176;-1855455217;-1855455230;-1855455210;-1855455226;-1855455231;-1855455227;-1855455076;-1855455075;-1855455074;-1855455073;-1855455072;-1855455071;-1855455070;-1855455069;-1855455068;-1855455064;-1855455061;-1855455060;-1855455056;-1855455048;-1855455012;-1855455006;-1855455005;-1855455003;-1855454968;-1855454967;-1855454965;-1855454962;-1855454961;-1855454958;-1855455162;-1855455038;-1855454995;-1855454994;-1855454993;-1855454991;2060386364;2060386380;2060386844;2060387026;2060387027;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400};
+    {-1455381650;-11796171;-11795862;-11795860;-1541078608;-11795876;-11796076;-11795866;-11796166;-1541078761;-11795857;-1541078606;-1541078760;-11795861;-11796221;-11796054;-11796126;-1541078591;-11796216;-11795874;-11796071;-11796134;-11796226;-11796053;-11796086;-11795873;-11795937;-11795864;-11796222;-11795863;-11796058;-1541078755;-1541078596;-11796091;-11796229;-11796075;-11796125;-11796121;-1541078781;-1541078782;-11796060;-11796228;-11796214;-11796123;-11796088;-11795877;-11796064;-11796199;-11796082;-11795926;-11795935;-11796074;-11796220;-11796170;-11796092;-11796084;-11796388;-11796050;-11796223;-1541078600;-11795879;-11796048;-1541078593;-11796062;-11796218;-11796089;-11796097;-11796095;-11796132;-11796073;-1541078594;-11796078;-11796225;-11796044;-1541078762;-11796169;-11795855;-11795907;-11796061;-11796113;-11796217;-11796178;-1541078607;-11796099;-11795932;-11796219;-11796070;-11796133;-11796080;-1541078599;-11796212;-11796079;-11796055;-11796098;-11795867;-11796066;-11795875;-11796122;-11796179;-11796258;-11795887;-11795854;2060386339;-11795913;-11796072;-11796244;-11796101;-11795905;-1541078754;-11796239;-11796042;-11795856;-11796094;-11796068;-1541078601;-11796215;-11795897;-11795858;-1541078597;-11796230;-11796197;-11796382;-1541078604;-11796087;-11796093;-11795886;-11795859;-11795885;-11796096;-11796083;-11796077;-11796065;-11795928;-11796063;-11795918;-11795871;-11795868;-11796227;-11796085;-11795906;-1541078598;-11796067;-11795865;-11795950;-1541078592;-1541078595;-11796049;-11796177;-11795872;-11796057;-11796213;-11796224;-11796209;-11796090;-11796232;-11796069;1842806871;1842806871;1842806871;1842806871;2060386413;2060386411;2060386410;2060386478;2060386479;2060386481;2060386475;2060386489;2060386477;2060386490;34603227;2060386507;2060386373;2060386520;2060386376;2060386509;2060386522;-1541078808;-1541078807;-1541078806;-1541078805;-1541078804;-1541078803;-1541078802;-1541078801;-1541078800;-11796130;-11796129;-11796128;-1541078784;-1541078784;-1541078784;-1541078784;2060386383;2060386388;2060386384;2060386380;2060386381;2060386382;2060386379;2060386408;2060386530;2060386529;2060386528;2060386531;2060386526;2060386407;2060386532;2060386527;-1541078819;-1541078818;-1541078817;-1541078816;-1541078815;-1541078814;-1541078813;-1541078812;-1541078811;-11796153;-11796152;-11796151;-11796150;-11796149;-11796148;-11796147;-11796146;2060386496;2060386493;2060386492;2060386482;-1948974396;2060386491;2060386494;-1948974387;2060386392;2060386390;2060386505;2060386391;2060386495;2060386504;2060386389;2060386503;2060386393;2060386465;2060386466;2060386416;2060386395;2060386396;2060386394;34603371;34603370;2060386417;-11796162;-11796161;-11796160;-11796159;-11796158;-11796157;-11796156;-11796155;-11796154;-11796145;-11796144;-11796143;-11796142;-11796141;-11796139;-11796138;-11796137};
+    {864432821;-11796452;-11796145;-11796153;-11796460;-11796390;-11796140;-11796418;-11796383;-11796387;-11796114;-11796054;-11796422;-11796157;-11796134;-11796053;-11796083;-11796463;-11796469;-11796086;-11796419;-11796149;-11796119;-11796058;-11796454;-11796385;-11796421;-11796108;-11796085;-11796052;-11796389;-11796123;-11796444;-11796088;-11796141;-11796082;-11796047;-11796411;-11796146;-11796425;-11796078;-11796143;-11796124;-11796084;-11796457;-11796158;-11796117;-11796065;-11796417;-11796136;-11796407;-11796128;-11796446;-11796148;-11796163;-11796150;-11796132;-11796443;-11796470;-11796414;-11796466;-11796109;-11796106;-11796468;-11796382;-11796388;-11796397;-11796161;-11796131;-11796116;-11796380;-11796453;-11796137;-11796155;-11796113;-11796164;-11796118;-11796156;-11796111;-11796384;-11796133;-11796115;-11796445;-11796080;-11796144;-11796055;-11796152;-11796402;-11796451;-11796139;-11796066;-11796462;-11796162;-11796420;-11796122;34603802;-11796135;-11796154;-11796165;-11796160;-11796125;-11796120;-11796107;-11796461;-11796459;-11796072;-11796110;-11796167;-11796064;-11796121;-11796142;-11796151;-11796159;-11796129;-11796068;-11796458;-11796168;-11796423;-11796073;-11796138;-11796386;-11796127;-11796071;-11796130;-11796112;-11796456;-11796381;-11796455;-11796079;2060386317;-11796049;-11796465;-11796467;-11796464;-11796069;2060386527;-11796267;-11796266;-11796265;-11796264;-11796263;-11796262;-11796261;-11796260;-11796259;-11796258;-11796257;-11796256;-11796254;-11796253;-11796252;-11796251;-11796250;-11796249;-11796248;-11796247;-11796246;-11796245;-11796244;-11796243;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;-11796332;-11796331;-11796330;-11796329;-11796328;-11796327;-11796326;-11796325;-11796324;-11796323;-11796322;-11796321;2060386518;2060386517;2060386519;-11796293;-11796292;-11796291;-11796290;-11796289;-11796288;-11796287;-11796286;-11796285;-11796284;-11796283;-11796282;2060386467;2060386468;2060386469;2060386470;2060386521;2060386522;2060386523;-11796343;2060386344;-11796342;-11796341;-11796340;-11796339;-11796338;-11796337;-11796336;-11796335;2060386347;2060386348;-11796319;-11796318;-11796317;-11796316;-11796315;-11796314;-11796313;-11796312;-11796311;-11796310;-11796309;-11796308;-11796306;-11796305;-11796304;-11796303;-11796302;-11796301;-11796300;-11796299;-11796298;-11796297;-11796296;-11796295;-11796280;-11796279;-11796278;-11796277;-11796276;-11796275;-11796274;-11796273;-11796272;-11796271;-11796270;-11796269;2060386384;2060386383;2060386387;2060386386;2060386385;2060386500;2060386496;2060386498;2060386499;2060386497};
+    {-1936060159;-11795976;-11796409;-11796189;2105409728;-11796110;2105409720;2402;-11795982;-11796390;-11795995;-11796418;-11796166;-11795954;2105409707;-11796415;34604580;-11795979;-11796038;-11795958;-11796400;2105409703;-11796387;-11796221;-11796335;-11796126;2212;-11796344;-11796412;2401;-11796472;2400;-11795937;-11795966;-11796419;-11796227;-11796350;-11796406;-11796125;-11796352;-11796383;-11796119;2105409727;-11796360;-11796178;-11796152;-11796147;-11796146;-11796145;-11796138;-11796347;-11796137;2105409722;34603265;-11796121;-11795975;-11796118;-11796417;-11796090;-11796107;-11796106;-11796168;-11796105;-11795952;-11796385;-11796100;-11796037;-11796096;-11796093;-11796103;-11796422;-11796408;-11796031;-11796039;-11796158;-11795959;-11796104;-11796176;-11796005;-11796002;-11796001;-11795997;-11796421;-11796044;-11796000;-11795983;-11795981;-11795978;-11796165;-11795977;-11795973;-11795970;-11795992;-11795964;-11795961;-11796036;-11795956;-11796099;-11795953;-11796160;-11796134;-11795951;-11796157;-11795948;-11795946;-11795943;-11796382;-11795942;-11795941;-11795938;-11795955;-11796389;-11796345;-11796405;-11796140;2105409701;-11796139;-11795939;-11796123;-11795993;-11795971;-11796042;2105409699;-11796212;-11796343;-11795947;-11795957;-11796388;-11796226;2105409706;-11796009;2105409713;-11796120;-11796023;-11795945;-11796151;-11795968;-11796088;-11796114;-11796109;-11796141;-11796399;-11796112;-11796153;-11796091;-11796130;-11795969;-11796410;-11796342;2105409719;-11796370;-11796156;-11796174;-11796045;-11795980;-11796175;-11796181;-11796184;-11796186;-11796179;-11796135;-11796149;-11796167;-11795930;-11796346;-11796006;-11796182;-11796162;-11796358;2105409705;-11796368;-11796113;2105409725;-11796161;-11796187;2105409702;-11796411;-11796416;-11796122;-11796040;-11796423;-11795944;-11796173;-11796398;-11796102;-11796159;-11795974;-11795949;-11796177;-11796047;34604581;-11796170;-11796143;-11796183;-11796092;-11796124;-11795994;-11796414;-11796117;-11796136;-11796043;-11796034;-11796164;-11796407;-11796128;-11796148;-11796163;-11796089;-11796097;-11796391;-1848049553;2213;2210;-11796095;-11796132;-11796046;-11796424;-11796041;-11796172;2209;-11796353;-11796131;-11796116;-11796169;34604543;405405699;-11796155;-11796029;34604569;2105409700;-11796185;-11796180;-11796111;-11795972;-11796384;-11796133;-11796188;-11795940;34604570;-11796144;-11796033;-11795965;-11796115;-11796032;-11796098;-11796348;-11796420;2403;-11796333;-11796336;-11796154;-11796028;-11796024;-11796101;-11796035;-11796094;-11795960;2105409711;-11795967;-11795963;-11796386;-11796127;-11795927;-11796142;-11796213;34604582;-11795950;-11796049;2211};
+    {1638008359;-11795924;-11796110;-11795890;1167524309;-11796395;-11796342;-11796410;-11796145;-11796282;-11796076;-11796268;-11795947;-11796390;-11795882;-11796326;-11796404;-11796266;-11796418;-11796322;-11796267;-11795954;-11796274;-11796383;-11795958;-11796293;-11796272;-11796292;-11796114;-11796422;-11796126;-11796257;-11796071;-11796324;-11796354;-11795936;2060386422;-11796364;-11795928;-11796255;-11795964;-11796320;-11796083;-11796344;-11796288;-11795944;-11796256;-11795891;-11796105;-11795937;-11795966;-11796259;-11795934;-11795930;-11795929;-11795961;-11796119;-1848049540;2060386421;-11796091;-11796385;-11796104;-11796421;-11796294;1167524310;-11796108;-11795943;-11795931;-11796085;-1848049543;-11796314;-11796345;-11796389;-11796270;-11796123;-11796262;-11796088;-11796315;-11796141;-11796149;-11796082;-11795889;-11795926;-11796305;-11796318;-11796265;-11796411;-11796074;-11796146;-11796273;-11795881;-11796134;-11795925;-11796078;-11796143;-11796125;-11796092;-11796283;-11796124;-11796306;-11796084;-11796388;-11796067;-11796290;-11796406;-11796297;-11796139;-11796337;-11795955;-11796414;-11796341;1167524313;-11796136;-11796308;-11796407;-11795942;-11796303;1167524311;-11795938;-11796319;-11796148;-11796089;-11796097;-11796340;-11796338;-11796095;-11796109;-11795888;-11796132;-11796106;-11796100;-11796073;-11796343;-11796397;-11796353;1167524312;-11796325;-11796131;-11796116;-11795927;-11796137;-11796365;-11796113;-11796029;-11796099;-11795932;-11796118;-11796103;-11796111;-11795969;-11796070;-11796291;-11795883;-11796384;-11795885;-11796133;-11795941;-11796080;-11795940;-11796144;-11796079;-11795939;-11796316;-11795965;-11796253;-11796402;-11796289;-11796098;-11796254;-11796066;-11796298;-11796420;-11796263;-11795949;-11795946;-11796102;-11796122;-11795971;-11796346;-11796121;-11796258;-11795887;-11796304;-11796323;-11796072;2060386419;-11796101;-11795957;-11796275;-11796264;-11796075;-11796279;-11796129;-11796094;-11795956;1167524315;-11796068;-11795960;-11796295;-11795933;-11795918;-11796382;-11796020;-11795962;-11796087;-11795967;-11795959;-11795952;-11796351;-11796261;-11796271;-11796307;-11796269;-11796138;-11796386;-11796140;-11795953;-11796252;-11796127;2060386417;-11795923;1167524314;-11796093;-11795886;-11796135;-11796096;-11796317;-11796130;-11796112;-11795948;-11796387;-11796355;-11796077;-11795968;-11796142;-11796120;-11796281;-11796260;2060386418;-11795950;-11796321;-11796339;-11796280;-11796296;-11795963;-11795935;-11796090;-11796352;-11796081;2060386420;-11796417;-11796115;-11796117;-11796069};
+    {-1987505335;-11796204;1482555571;-11796452;-11796448;-11796202;-11796018;-11796311;-11796076;-11796025;-11796460;34603487;-11796030;-1948974986;-11796299;-11796418;-11796322;-11795977;-11796267;-11796021;2105409563;-11796415;-11796400;-11796293;-11796403;-11796310;1482555567;-11796292;-11796466;-11796054;1482555575;-11796313;-11796320;-11796288;-11796463;-11796412;2105409568;-11796401;-11796419;2105409564;-11796058;-11796454;-11796013;-11796027;-11796421;-11796012;-11796060;-11796214;-11796314;1482555582;-11796270;-11796207;1482555807;-11796088;-11796199;34603254;1482555814;-11796265;-11796287;-11796006;-11796162;-11796425;-11796398;-11796328;-11796283;-11796471;-11796023;-11796211;-11796290;2105409566;-11796457;-11796414;-11796043;-11796034;-11796048;34603258;-11796308;-11796198;-11796446;-11796319;-11796007;-11796278;-11796089;-11796010;-11795978;34603496;1482555577;-11796132;-11796046;-11796015;-2089680819;-11796039;-11796041;-11796026;-11796276;-11796131;34603255;-11796295;34603494;-11796169;-11796036;-11795991;-11796453;-11796029;-11796205;-11796286;-11796045;1482555572;-11795972;-11796133;34603492;-11796445;1482555578;-11796206;-11796316;-11796055;-2089680822;-11796402;1482555573;-11796300;-11796451;-11796298;-11796274;-11796284;-11796307;-11796291;1482555579;-11796281;-11796289;-11796417;-11796277;-11796305;-11796273;-11796399;-11796262;-11796462;-2089680818;2105409562;-11796302;-11796037;1482555805;-11796410;-11796296;-11796323;-11796271;-11796301;-11796315;-11796032;-11796024;-11796014;-11796003;-11796009;-11796008;-11796280;-11796002;-11796001;-11795993;1482555827;1482555820;-11796266;-11795971;-11796272;-11796312;-11795952;-11796052;-11796017;1482555580;-11796038;-11796297;-11796285;-11796321;-11796279;-11796004;1482555581;-11796019;-11796411;-11796416;-11796040;-11796318;-11796294;-11796263;-11796420;-11796306;-11795976;-11796268;-11796028;-11796309;-11796304;-11796459;-11796275;-11796264;34603256;-11796075;-11796042;34603257;2105409567;-11796035;2105409565;-11796458;-11796020;-11795967;-11796031;-11795963;-11796168;-11796203;-11796413;-2089680821;34603493;-11796269;-1948974984;-11796077;-11796449;-2089680817;-11796317;-2089680820;-11796456;-11796220;-11796465;-11796450;-11796461;2105409561;-11796016;34603495;-11796049;-11796455;-11796467;34603259;-11796200;-11796090;1482555576;-11796464;-11796447};
+    {1241316521;-11795976;-11796308;1185742898;-11796171;-11795985;-11796163;-11796278;-11796089;-11796196;-11795860;-11796342;-11795978;-11796379;-11795833;-11796311;-11796359;-11795888;-11796268;-11795899;-11796025;-11796073;-11796326;-11796026;-11796299;-11796361;-11795995;-11796353;-11796166;-11795869;-11795977;-11796427;-11796331;-11796192;-11796037;-11795892;-11796295;-11796357;-11796021;-11796300;-11796350;-11796365;-11796193;-11796378;-11796368;-11795831;-11796029;-11796358;-11795861;-11796293;-11796118;-11796387;-11796221;-11795835;-11796335;-11796292;-11795883;-11795972;-11795975;-11795870;-11796362;-11796002;-11796114;-11795880;-11796349;-11795878;-11796188;-11795894;-11796080;-11796216;-11795842;-11796079;-11796354;-11796033;-11796206;-11796364;-11796440;-11796255;-11796301;-11795965;-11796022;-11795964;-11796367;-11796374;-11796277;-11795896;-11796083;-11796254;-11795836;-11796344;-11796348;1185742896;-11796003;-11796019;-11796321;-11796086;-11795891;-11796333;-11795984;-11795966;-11796017;-11796419;1185742890;-11796028;-11796014;-11796296;-11796119;-11796024;1185742887;-11796013;-11796091;1185742889;-11796076;-11796101;-11796366;-11795834;-11796012;-11795845;-11796085;-11795859;-11795849;-11796251;-11796129;-11796214;-11796256;-11796345;-11796052;-11796023;-11796215;-11796020;-11796208;-11796207;-11795897;-11796087;-11796176;-11795967;-11795853;-11796031;-11795963;-11796329;-11796203;-11796351;-11796369;-11796082;-11796009;-11795974;-11796190;-11796287;-11796074;-11796081;-11796088;-11795848;-11796375;-11795886;1185742853;-11796302;-11796261;-11795875;-11795838;-11796170;-11795873;-11796183;-11796051;-11795855;-11796191;-11795895;1185742888;-11796471;-11796309;1185742894;-11796018;-11795854;-11795898;-11795876;-11796220;-11795832;-11795840;-11796050;-11795881;-11796276;-11796046;-11796015;-11796356;-11796297;-11796343;-11796042;-11796016;-11796172;1185742895;-11795994;-11795877;-11796307;-11796312;-11796004;-11796252;-11795973;-11796195;-11796205;-11796352;-11796355;-11796341;-11796310;-11795884;-11795846;-11796363;-11796090;-11796201;-11796464;-11796260;-11795971;-11796334;-11796298};
+    {295816905;1167524520;2093678845;-1855455182;1167524508;1167524494;-53346071;1167524518;-53346073;-1466630133;1167524514;1167524488;-53346198;1167524506;-53346051;-53346035;-53346063;1167524493;-53346061;-473038846;1167524510;-473038842;-53346075;1167524507;1167524486;1167524511;2093678846;1167524502;1167524532;-53346057;-473038640;-1466630127;-53346223;-53346055;1167524487;-53346059;-53346067;-473038641;1167524503;1167524496;-1466630138;2093678763;-53346047;-53346049;-53346037;-53346229;-53346225;1167524500;1167524489;-1466630131;1167524515;-53346045;2105409619;1167524490;-1466630126;-1466630128;2093678847;-1466630129;-53346078;34603672;1167524519;-53346043;-473038844;-53346039;-53346077;2093678843;-473038845;-53346224;1167524505;2093678842;1167524516;1167524504;-1466630132;1167524495;1167524498;1167524533;1167524517;2093678844;-53346053;1167524512;-53346232;-473038843;1167524509;-53346231;1167524501;1167524497;-473038638;1167524492;-53346069;-1466630097;-53346041;1167524499;1167524491;1167524513;2105409825;2105409825;2105409825;-1466630125;-1466630124;-1466630121;-1466630120;-1466630119;-1466630118;-1466630117;-1466630116;-1466630115;-1466630114;-1466630113;-1466630112;-1466630111;-1466630110;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409775;2105409777;2105409779;2105409780;2105409781;2105409991;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409981;2105409846;2105409846;2105409846;2105409846;2105409846;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
+    {-1212213378;-1855454770;-1855454497;-1855454668;-1855454908;-1855455188;-1855454025;-1855454923;-1855454513;-1855454643;-1855454534;-1855454931;-1855454651;-1855454819;-1855454510;-1855454675;-1855454928;-1855454026;-1855455185;-1855453950;-1855455079;-1855453706;-1855454684;-1855454605;-1855455065;-1855454919;-1855454542;-1855453498;-1855454776;-1855455166;-1855455010;-1855454518;-1855454591;-1855454023;-1855453838;-1855454504;-1855453840;-1855454716;-1855455153;-1855453839;-1855454938;-1855454024;-1855454588;-1855455098;-1855454593;-1855454027;-1855455018;-1855453841;-1855455175;-1855454602;-1855454948;-1855454600;-1855454905;-1855454650;-1855454598;-1855454932;-1855454501;-1855454532;-1855454512;-1855454604;-1855454029;-1855454580;-1855454899;-1855454946;-1855454493;-1855454774;-1855454665;-1855455052;-1855454949;-1475867167;-1475867166;-1475868583;-1475868245;-1475868266;-1475868244;-1475868246;-1475867107;-1475868237;-1475867165;-1475867164;-1475867163;-1475868587;-1475869079;-1475869073;-1475869069;-1475869068;-1475869070;-1475869064;-1475869059;-1475868272;-1475869055;-1475869063;-1475867111;-1475867162;-1475867160;-1475867161;-1475867106;-1475867108;-1475868257;-1475868256;-1475868258;-1475868268;-1475869074;-1475869075;-1475867172;-1475867170;-1475867109;-1475868584;-1475868252;-1475868249;-1475868250;-1475868248;-1475868247;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475867095;-1475869072;-1475867156;-1475867155;-1475869071;-1475869067;-1475869065;-1475869066;-1475868255;-1475868254;-1475868253;-1475868267;-1475868582;-1475867157;-1475867159;-1475867158;-1475867105};
+    {-1817621630;-11796409;-11796448;-11796342;-11796410;-11796145;-11796153;-11796379;-11796311;-11796326;-1541078909;-11796299;-11796140;-11796418;-11796322;-11796331;-11796192;-11796415;-11796368;-1541078902;-11796449;-11796400;-11796431;-11796310;-11796335;-11796363;-11796422;-11796071;-11796324;-11796147;-11796354;-1541078910;-11796364;-11796301;-11796313;-11796320;-11796344;-11796463;-11796412;-1541078891;-11796469;-11796321;-11796086;-11796149;-11796408;-11796229;-11796152;-11796259;-11796305;-11796390;-11796085;-11796345;-11796444;-11796088;-11796141;-11796199;-11796082;-11796411;-11796146;-11796074;-11796425;-11796423;-11796328;-11796084;-11796348;-11796067;-11796461;-11796356;-11796406;-11796447;-11796079;-11796233;-11796414;-11796470;-11796142;-11796367;-11796252;-11796315;-11796424;-11796341;-11796223;-11796201;-11796194;-11796334;-11796319;-11796148;-11796089;-11796371;-11796340;-11796338;-11796076;-11796073;-11796343;-11796439;-11796300;-11796193;-11796155;-11796378;-11796099;-11796468;-11796349;-11796080;-11796157;-11796144;-11796433;-11796316;-11796440;-11796358;-11796419;-11796451;-11796248;-11796083;-11796066;-11796377;-11796302;-11796401;-11796102;-11796445;-11796462;-11796362;-11796360;-11796434;-11796426;-11796347;-11796357;-11796151;-11796325;-11796336;-1541078895;-11796417;-11796456;-11796333;-11796432;-11796359;-1541078904;-11796143;-11796200;-11796438;-11796374;-11796198;-11796346;-11796195;-11796370;-11796154;-11796353;-11796156;-11796150;-11796437;-11796355;-11796139;-11796309;-11796138;-11796107;-11796337;-11796196;-11796242;-11796312;-11796392;-11796361;-11796375;-11796068;-11796314;-11796303;-11796304;-11796081;-11796323;-11796077;-11796450;-11796465;-11796352;-1541078897;-11796332;-11796070;-11796376;-11796069;-11796446;-11796072;-11796365;-11796416;-11796436;-11796318;-11796366;-11796435;-11796100;-11796420;-11796380;-11796101;-11796177;-11796075;-11796429;-11796087;-1541078896;-11796413;-11796430;-11796472;-11796373;-1541078892;-11796327;-11796317;-11796191;-11796330;-1541078903;-11796339;-11796247;-11796467;-11796372;-11796090};
+    {-1944435120;-11796145;-11796153;-11796359;-11796368;-11796400;2060386350;-11796394;-11796363;2060386346;-1848049507;-11796354;-11796364;-11796149;-11796381;-11796366;-11796389;2060386338;-11796141;2060386323;-11796146;-11796398;-11796143;-11796356;-1848049585;-11796438;2060386324;-11796360;-11796148;-11796391;1167524006;2060386326;-11796353;-1848049505;-11796357;-11796350;2060386325;-11796365;-11796378;1167524450;-11796144;1167523977;1167523992;-11796347;2060386320;-1848049536;2060386344;-11796379;-11796390;-11796404;-11796140;-11796152;-11796383;-1848049586;-11796403;-11796147;-11796157;1167524468;1167524470;1167524066;-11796401;2060386345;-11796385;-1848049506;2060386352;-11796376;-11796388;-11796139;2060386353;1167524647;-11796361;-11796380;-11796358;-1848049510;-11796355;-11796156;-1848049514;-11796138;-11796384;-11796395;1167524057;-11796367;-11796402;1167524648;-11796151;-11796377;-11796387;-11796399;-11796154;2060386327;-11796396;2060386354;-1848049513;-11796351;1167524469;-11796382;1167524447;-11796155;-11796150;-11796369;-11796386;-11796375;-11796392;-11796352;1167524448;1167523932;2060386351;-11796393;-11796362;-11796142;2060386329;2060386305;1167524516;1167524449;1167524486;1167524606;1167524607;1167524608;1167524609;1167524612;1167524613;1167524614;1167524611;1528234068;1528234068;1528234068;1167524886;1167524887;1167524889;1167524890;1167524891;1167524892;1167524883;1167524894;1167524896;1167524803;1167524848;1167524781;1167524839;1167524849;1167524840;1167524788;1167524842;1167524797;1167524789;1167524792;1167524802;1167524798;1167524832;1167524509;1167524471;34603170;1167524511;1167524056;1167524510;1167524851;1167524854;1167524855;1167524856;1167524858;1167524861;1167524862;1167524865;1167524866;1167524868;1167524869;1167524870;1167524871;1167524872;1167524857};
+    {1147491976;-11796198;-11796110;-11796395;-11796342;-11796340;-11796338;-11796109;-11796311;-11796100;-11796343;-11796326;-11796197;-11796353;-11796322;-11796331;-11796192;-11796196;-11796312;-11796352;-11796099;-11796108;-11796301;-11796394;-11796335;-11796389;-11796362;-11796399;-11796344;-11796349;-11796188;-11796354;-11796316;-11796336;-11796193;-11796320;-11796350;-11796248;-11796348;-11796242;-11796346;-11796229;-11796106;-11796361;-11796274;-11796314;-11796315;-11796200;-11796310;-11796319;-11796321;-11796189;-11796105;-11796194;-11796333;-11796397;-11796332;-11796259;-11796324;-11796195;-11796396;-11796317;-11796328;-11796103;-11796313;-11796318;-11796102;-11796355;-11796308;-11796323;-11796107;-11796104;-11796101;-11796233;-11796345;-11796329;-11796347;-11796199;-11796190;-11796392;-11796327;-11796398;-11796191;-11796393;-11796339;-11796337;-11796247;-11796252;-11796341;-11796223;-11796201;-1765408696;-1765408697;1926758635;1926758636;1926758633;-11796429;-11796428;-11796427;-11796426;-11796425;-11796424;-11796423;-11796422;-11796421;-11796420;-1765408694;-1765408692;-1765408693;-11796436;-11796435;-11796434;-11796414;-11796413;-11796412;-11796452;-11796451;-11796450;-11796410;-11796409;-11796408;-11796406;-11796405;-11796404;-11796402;-11796401;-11796400;-11796418;-11796417;-11796416;2060386331;2060386332;2060386333;2060386414;2060386415;2060386416;-1765408736;-1765408732;-1765408731;-1765408730;-1765408729;-1765408728;-1765408727;-1765408726;-1765408725;-1765408724;-1765408723;-1765408722;-1765408721;-1765408720;-1765408719;-1765408718;-1765408717;-1765408716;-1765408715;-1765408714;-1765408713;-1765408712;-1765408711;-1765408710;-1765408705;-1765408699;-1765408698;1926758637;1926758638;1926758639;-11796474;-11796473;-11796472;-11796471;-11796470;-11796469;-11796468};
+    {1597085778;-11796308;-11796303;-1948974520;-11796282;-11796268;-11796271;-11796299;-11796276;-1948974505;-11796274;-11796300;-1948974508;-11796286;-11796291;-11796292;-11796277;-1948974507;-1948974518;-11796289;-11796298;-11796288;-1948974504;-11796285;-1948974522;-11796304;-11796301;-11796294;-11796275;-11796279;-11796270;-11796307;-11796269;-11796305;-1948974509;-1948974521;-11796273;-1948974517;-11796283;-11796278;-11796293;-11796284;-11796302;-11796281;-11796290;-11796267;-11796295;-11796297;-1948974506;-11796280;-11796296;-1948974519;-11796272;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;-11796370;-11796369;-11796368;-11796367;-11796366;-11796365;-11796364;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796394;-11796415;-11796414;-11796413;-11796412;-11796411;-11796410;-11796409;-11796432;-11796431;-11796430;-11796429;-11796428;-11796427;-11796426;-11796467;-11796465;-11796463;-11796461;-11796449;-11796448;-11796447;-11796445;-11796444;-11796443;-11796442;-11796441;-11796440;-11796439;-11796438;-11796437;-11796436;-11796435;-11796434;-11796384;-11796383;-11796382;-11796381;-11796380;-11796379;-11796378;-11796377;-11796376;-11796375;-11796374;-11796373;-11796355;-11796354;-11796353;-11796352;-11796351;-11796350;-11796349;-11796348;-11796347;-11796346;-11796345;-11796344;-11796362;-11796361;-11796360;-11796359;-11796358;-11796357;-11796356;-11796391;-11796390;-11796389;-11796388;-11796387;-11796386;-11796385;-11796407;-11796406;-11796405;-11796404;-11796403;-11796402;-11796401;-11796424;-11796423;-11796422;-11796421;-11796420;-11796419;-11796418};
+    {-136010643;-11796476;-1948975068;-1948975081;-1948975049;-1948975083;-1948975044;-1948975091;-1948975033;-1948975048;-1948975046;-1948975080;-1948975074;-1948975037;-1948975082;-1948975078;-1948975079;-1948975077;-1948975073;-1948975047;-1948975051;-1948975034;-1948975042;-11796478;-1948975090;-1948975066;-1765408760;-1948975063;-11796477;-1948975032;-1948975043;-1948975035;-1948975076;-1765408763;-1948975041;-1948975072;-1948975040;-1948975038;-1948975052;-1948975084;-1948975039;-1948975036;-1948975045;-1765408759;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;-11796370;-11796369;-11796368;-11796367;-11796366;-11796365;-11796364;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796394;-11796415;-11796414;-11796413;-11796412;-11796411;-11796410;-11796409;-11796432;-11796431;-11796430;-11796429;-11796428;-11796427;-11796426;-11796467;-11796465;-11796463;-11796461;-11796449;-11796448;-11796447;-11796445;-11796444;-11796443;-11796442;-11796441;-11796440;-11796439;-11796438;-11796437;-11796436;-11796435;-11796434;-11796384;-11796383;-11796382;-11796381;-11796380;-11796379;-11796378;-11796377;-11796376;-11796375;-11796374;-11796373;-11796355;-11796354;-11796353;-11796352;-11796351;-11796350;-11796349;-11796348;-11796347;-11796346;-11796345;-11796344;-11796362;-11796361;-11796360;-11796359;-11796358;-11796357;-11796356;-11796391;-11796390;-11796389;-11796388;-11796387;-11796386;-11796385;-11796407;-11796406;-11796405;-11796404;-11796403;-11796402;-11796401;-11796424;-11796423;-11796422;-11796421;-11796420;-11796419;-11796418};
+    {-1644045427;-11796342;-11796311;-11796076;-11796299;-11796322;-11796274;-11796272;-11796310;-11796335;-11796324;-11796301;-11796313;-11796344;-11796294;-11796314;-11796270;-11796315;-11796305;-11796318;-11796287;-11796273;-11796283;-11796306;-11796297;-11796337;-11796341;-11796308;-11796303;-11796319;-11796338;-11796343;-11796276;-11796295;-11796286;-11796080;-11796079;-11796316;-11796277;-11796302;-11796285;-11796336;-11796309;-11796304;-11796323;-11796284;-11796075;-11796279;-11796298;-11796278;-11796282;-11796340;-11796271;-11796300;-11796081;-11796077;-11796296;-11796317;-11796281;-11796320;-11796307;-11796312;-11796339;-11796280;-11796275;-11796433;-11796432;-11796443;-11796441;-11796439;-11796442;-11796440;-11796438;-11796437;2060386339;2060386344;2060386332;2060386355;2060386338;2060386329;2060386328;2060386333;2060386330;2060386334;2060386347;2060386348;-11796429;-11796428;-11796427;-11796426;-11796425;-11796424;-11796423;-11796422;-11796421;-11796420;-11796419;-11796418;-11796456;-11796455;-11796454;-11796453;-11796452;-11796451;-11796450;-11796449;-11796448;-11796447;-11796446;-11796445;-11796408;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796469;-11796468;-11796467;-11796466;-11796465;-11796464;-11796463;-11796462;-11796461;-11796460;-11796459;-11796458;-11796416;-11796415;-11796414;-11796413;-11796412;-11796411;-11796410;-1765407649;-1765407648;-1765407647;-1765407645;-1765407644;-1765407643;-1765407642;-1765407641;-1765407640;-1765407639;-1765407638;-1765407637;-1765407636;-1765407635;-1765407634;-1765407632;-1765407631;-1765407630;-11796403;-11796405;-11796404;-11796402;-11796407;-11796401;-11796406};
+    {170656205;-11795976;-11796171;-11796056;-11796166;-11795977;-11795954;-11795958;-11796257;-11796071;-11796160;-11796083;-11796159;-11796259;-11795961;-11796047;-11796174;-11796175;-11796305;-11796167;-11795951;-11796306;-1848049380;-11795955;-11796057;-11796043;-11796048;-11796308;-11796164;-11796161;-11795956;-11796073;-11796039;-11796041;-11796172;-11796037;-11796169;-11796061;-11795964;-11796080;-11796055;-11795965;-11796165;-11796036;-11796044;-11796059;-11796045;-11796084;-11796040;-11796258;-11796304;-11795970;-11796072;-11795957;-11796035;-11796173;-11795962;-11795959;-11795952;-11795953;-11796262;-11796260;-11795950;-11796307;-11795968;-11796162;-11796112;-11795974;-11796049;-11795971;-11796069;-1765407641;-11796455;-11796346;-11796345;-11796342;-11796337;-11796335;-11796331;-11796330;-11796328;-11796320;-11796319;-11796318;-11796317;-11796314;-11796313;-11796312;-11796311;-11796310;-11796254;-11796253;-11796252;-11796251;-11796250;-11796248;-11796247;-11796246;-11796245;-11796244;-11796243;-11796241;-11796240;-11796239;-11796238;-11796237;-11796236;-11796223;-11796222;-11796221;-11796220;-11796219;-11796218;-11796216;-11796215;-11796214;-11796213;-11796212;-11796211;-11796209;-11796208;-11796207;-11796206;-11796205;-11796204;-11796202;-11796201;-11796200;-11796199;-11796198;-11796196;-11796195;-11796194;-11796193;-11796192;-11796191;-11796189;-11796188;-11796187;-11796186;-11796185;-11796184;-11796182;-11796181;-11796180;-11796179;-11796178;-11796177;-11796026;-11796025;-11796024;-11796023;-11796022;-11796021};
+    {1649439303;-11795904;-11795924;-11795902;-11795901;-11795928;486;2093678728;-11795997;-11795943;-1541078220;-11795994;-11795981;479;-1541078214;-11795892;405405802;-11795972;-11796002;2093678985;-1541078419;-11795910;-11796003;-11795900;-11795970;-11795933;2093679137;-1541078734;-11795968;2093678984;-11795998;-11795950;-1541078733;-11795922;-11795912;-11795899;-11795921;2093678920;-11795995;-11795977;2093679133;2105409868;2105409869;2093678842;405405804;-1541078872;-11795941;405405805;-1541078215;2093679134;2093679135;-11795980;-11795908;2105409867;-11795934;-1541078874;-11795930;-11795929;2093678921;-1541078864;-11795909;2093678983;-11795919;-1541078213;-11795979;-11795907;-11795954;-11795916;-11796046;-11795949;-11795939;-11795936;-11795937;-11795920;-11795925;-1541078226;-11795923;-11796081;-11795975;-11795999;-11796085;-11796029;-11795971;-11795918;-11795896;-11795973;-11795906;-11795905;-11796006;-11795931;-11795969;-11796000;-11795911;-11795947;-11795927;-11795895;-11795893;-11795894;-11795926;-11795946;-11795942;-11795974;-11796045;-11795945;405405806;-11795951;-1541078871;-11795898;-11795996;-11795938;482;-11795978;-11795888;2093678778;-11796004;-11795903;2093678982;405405803;-11795940;-11795917;2093678721;-11795913;-11795915;-11795897;-11795952;405405801;-1541078731;-11795953;-1541078219;-11795948;2093678986;-11796420;-11796454;-11796421;-11796406;-11796405;-11796404;1926758753;1926758766;-11796332;-11796258;-11796240;-11796239;-11796238};
+    {-2115418256;-11796360;2060386366;-11796409;2060386374;2060386432;2060386364;2060386361;-11796470;2060386413;2060386344;-11796311;-11796359;2060386331;-11796268;-11796460;2060386343;-11796424;2060386341;-11796404;-11796266;2060386340;2060386424;2060386359;-11796267;2060386433;-11796357;-11796312;2060386325;-11796415;-11796400;2060386336;-11796355;-11796466;2060386346;-11796422;2060386337;-11796257;2060386371;2060386423;2060386373;2060386422;-11796465;-11796316;-11796255;2060386332;-11796253;-11796402;2060386363;-11796254;-11796462;2060386410;-11796463;-11796420;-11796412;-11796401;-11796461;2060386345;-11796256;-11796469;2060386372;2060386414;-11796259;2060386415;-11796419;2060386334;2060386431;2060386368;2060386339;2060386375;2060386365;-11796356;-11796459;-11796258;-11796408;2060386429;2060386342;-11796421;2060386333;2060386369;2060386426;-11796264;2060386378;2060386412;-11796398;-11796314;2060386430;2060386327;-11796262;-11796315;-11796269;-11796265;-11796411;2060386417;-11796425;2060386427;-11796458;2060386335;-11796423;-11796406;-11796399;-11796261;-11796416;-11796413;-11796358;2060386367;2060386425;2060386324;2060386428;2060386328;2060386338;-11796251;-11796317;-11796410;-11796313;-11796403;2060386377;-11796260;2060386362;2060386411;-11796457;2060386323;2060386370;2060386416;-11796468;2060386326;-11796407;-11796263;-11796405;2060386360;-11796414;2060386376;-11796467;-11796252;2060386379;-11796250;2060386329;-11796417;-11796464;2060386418};
+    {312004957;2060386366;-11796409;-11796416;1167523884;-11796148;-11796150;2060386357;-11796089;2060386362;-11796448;-11796391;-11796395;-11796145;-11796153;-11796076;-11796073;-11796460;-11796390;-11796397;-11796140;2060386340;2060386365;2060386359;34603041;-11796426;-11796383;-11796415;-11796453;-11796433;-11796155;-11796449;-11796400;-11796399;-11796431;-11796387;-11796394;1167523885;-11796070;-11796466;-11796384;-11796422;-11796475;-11796080;-11796071;1167523880;-11796144;-11796079;-11796147;-11796465;-11796157;-11796451;-11796083;-11796462;-11796463;-11796420;2060386352;-11796401;-11796461;-11796469;-11796086;2060386322;-11796149;-11796154;-11796396;-11796454;2060386354;-11796468;2060386328;2060386321;-11796385;-11796459;-11796072;-11796474;2060386333;-11796075;34603042;-11796429;-11796085;-11796068;-11796389;-11796382;-11796458;-11796087;2060386358;-11796138;2060386318;-11796088;-11796141;-11796430;-11796472;-11796082;2060386315;1167523879;-11796386;-11796074;-11796081;-11796392;-11796398;-11796143;-11796476;2060386314;2060386307;34603039;-11796151;-11796432;-11796084;-11796388;-11796152;-11796067;2060386339;2060386356;1167523878;2060386316;2060386355;2060386332;2060386331;-11796427;-11796156;2060386320;-11796146;-11796139;-11796142;2060386338;2060386319;-11796361;2060386353;2060386360;2060386317;-11796455;-11796467;-11796066;-11796077;2060386306;-11796473;2060386329;-11796090;-11796464;-11796069};
+    {2050064391;-11796308;-11796476;-11796416;-11796452;-11796443;-11796448;2093678914;-11796470;-11796432;2093678954;-11796468;-11796460;-11796326;2093678716;2093678718;-11796424;2093678849;-11796439;-11796418;2093678939;-11796427;-11796295;-11796426;-11796300;-11796453;2093678916;-11796449;-11796478;-11796431;2093678837;-11796466;2093678918;2093679072;-11796445;-11796475;-11796465;-11796255;-11796301;2093678917;-11796277;-11796451;2093678846;2093679079;-11796254;-11796463;-11796420;2093678941;-11796461;-11796256;-11796469;-11796321;2093678913;2093679084;2093678864;2093678963;-11796454;-11796459;-11796446;-11796474;-11796421;2093678949;2093679088;2093678965;-11796440;-11796429;2093678964;-11796251;2093678707;2093678950;-11796444;-11796430;2093678935;2093678962;-11796287;2093679090;-11796457;2093678850;2093678871;2093678937;2093678938;2093678955;-11796425;2093678915;-11796302;-11796423;-11796261;-11796435;-11796441;2093678822;2093678727;-11796419;2093678966;-11796456;-11796296;-11796471;-11796442;-11796473;-11796422;2093678940;-11796260;2093679070;2093678919;-11796472;-11796436;2093679078;2093679092;2093679074;2093678847;2093678952;-11796477;-11796297;2093678961;2093678960;-11796299;-11796447;-11796428;2093679094;2093678951;2093678953;-11796455;-11796450;2093678741;-11796467;2093679068;-11796252;-11796438;-11796462;-11796298;2093678936;-11796433;2093679069;-11796417;-11796464;2093679091};
+    {-1050035699;-11796476;-11796448;-11796145;-11796282;-11796153;-11796379;-11796311;-11796390;-11796326;1293287554;-11796140;1293287690;-1541078828;-11796152;-11796331;-11796325;-11796400;-11796293;-11796387;-11796394;-11796310;-11796292;-11796475;-1855455135;-11796442;-11796147;-11796332;-11796157;-11796313;-11796288;-11796401;-11796469;-1541078829;-11796149;-11796381;2060386333;-11796294;-11796389;-11796329;-11796141;-11796411;-11796287;-11796146;-11796143;-11796328;-11796283;-11796471;-11796473;-11796306;1293287528;-11796388;-11796290;-11796406;-11796297;-11796447;-11796457;-11796414;-11796407;-11796303;-11796416;-11796148;-11796278;-11796443;-1855455057;-11796470;-11796391;-11796441;1293287720;-11796468;-1541078827;1293287523;-11796312;-11796380;2060386325;-11796155;-11796378;-11796156;-11796291;-11796384;-11796281;2060386308;-11796144;-11796440;1293287530;-11796289;-11796462;-11796302;-1855455046;-11796285;-11796154;-11796309;1293287689;-11796304;2060386321;-11796474;2060386322;-11796279;-11796139;-11796465;-11796150;-11796382;1293287531;-11796472;-11796386;-11796327;-11796466;-11796445;-11796456;-1172111224;-11796142;-11796284;-11796151;-11796307;2060386307;-11796295;-11796385;-1541078826;-11796280;-11796286;-11796393;-11796314;2060386334;-11796138;-11796305;-11796308;2060386310;-11796467;-11796296;-11796437;-1172111187;-1172111219;-11796464};
+    {2060214456;-11796299;2060386476;2060386486;2060386485;2060386391;2060386487;2060386478;2060386338;2060386442;2060386484;2060386369;2060386360;2060386376;1674052671;2060386474;2060386362;2060386464;2060386468;2060386365;2060386359;-11796378;2060386403;2060386371;2060386423;2060386401;2060386435;2060386368;2060386483;2060386358;2060386370;2060386335;2060386448;2060386428;1926758854;2060386364;-11796379;2060386475;1674052665;2060386363;2060386470;2060386466;2060386471;2060386415;2060386446;2060386444;2060386462;2060386452;-11796305;2060386377;2060386353;2060386366;2060386432;-11796371;2060386347;2060386472;-11796300;2060386436;2060386465;2060386445;2060386454;-11796374;2060386441;-11796377;2060386447;2060386372;2060386469;-11796301;2060386429;2060386380;2060386463;2060386450;2060386395;2060386389;-11796373;2060386417;-11796375;-11796392;2060386374;2060386451;2060386477;-11796372;2060386375;2060386453;2093678875;2093678983;2093678983;2093678983;2093678983;2093678862;2093678862;2093678862;2093678862;2093678940;2093678940;2093678940;2093678940;2093678927;2093678927;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678849;2093678849;2093678849;2093678849;2093678953;2093678953;2093678953;2093678953};
+    {507487826;2060386357;2060386364;2060386344;-11796076;2060386341;2060386350;2060386337;-11796071;2060386311;2060386319;498;2060386391;1167524689;1167524691;2060386378;-11796085;-11796207;2060386314;2060386338;2060386312;-11796088;2060386315;-11796074;2060386367;500;2060386307;2060386377;2060386353;2060386360;2060386376;2060386379;2060386348;-11796089;2060386362;2060386361;2060386331;2060386316;2060386326;2060386343;2060386340;2060386365;2060386359;2060386383;2060386347;2060386325;2060386355;2060386336;-11796070;2060386308;-11796080;2060386371;-11796079;1167524690;-11796206;2060386332;-11796066;2060386384;2060386372;2060386322;2060386309;2060386368;2060386375;2060386354;2060386321;-11796072;-11796209;-11796075;-11796073;2060386366;-11796068;2060386363;-11796208;-11796087;-11796067;2060386327;2060386334;2060386381;-11796077;2060386370;-11796081;2060386358;499;2060386335;2060386306;2060386385;2060386324;2060386318;2060386328;2060386356;2060386369;2060386330;2060386313;2060386323;2060386382;2060386374;2060386320;2060386310;2060386342;2060386351;2060386317;2060386329;-11796090;-11796069;-11796175;-11796174;-11796173;-11796172;-11796171;-11796170;-11796169;-11796168;-11796167;-11796166;-11796165;-11796164};
+    {-1900248111;-1138884564;-1138884560;-1138884603;-1948974517;-1138884584;-1138884527;-1138884491;-1138884533;-1138884528;-1138884572;34603495;-1138884591;-1948974608;-1138884585;-1138884578;-1138884531;-1138884592;-1948974607;-1948974516;-1948974519;-1138884582;-1948974611;-1948974609;-1948974520;-1948974612;-1948974515;-1138884555;-1138884589;-1138884567;-1138884583;-1138884581;34603487;-1138884546;34603494;-1948974610;-1138884526;-1138884565;-1138884598;-1138884569;-1138884571;-1138884538;-1138884548;-1138884550;-1138884568;-1138884525;-1138884559;-1138884537;-1138884553;-1138884570;-1138884574;-1138884541;-1138884552;-1138884577;-1138884586;-1138884530;-1138884587;-1138884562;-1138884594;-1138884595;-1138884604;-1138884539;-1138884602;-1138884532;-1138884529;-1138884549;-1138884596;-1138884599;-1138884545;-1138884605;-1138884551;-1138884580;-1138884544;-1138884542;34603492;-1138884563;-1138884554;-1138884489;-1138884597;-1138884540;-1138884575;-1138884601;-1138884600;-1138884588;-1138884576;-1138884535;-1138884561;-1138884566;-1138884556;-1138884557;34603493;-1138884547;-1138884543;-1138884593;-1138884536;-1138884590;-1138884534;-1138884558;-1948974518;-1138884579};
+    {748712866;2093679187;-11796145;-11796153;-11796140;-11796152;2093679055;2093679129;2093679093;2093679106;-11796147;2093679107;2093679180;2093679120;-11796149;2093679087;-11796141;-2015297144;-11796146;2093679098;2093679096;2093679075;-2015297143;2093679054;-11796139;2093679094;2093679060;2093679202;-11796148;-11796150;2093679067;-2015297146;2093679127;2093679126;2093678823;2093678826;2093678889;2093678895;2093679058;2093679097;2093679112;2093679113;2093679117;2093679131;2093679083;2093679073;2093678929;2093679077;2093679057;2093679115;2093679133;-2015297148;-11796155;-11796156;2093679132;2093679092;2093679104;2093679006;2093679121;2093679089;2093679086;2093679059;2093679110;2093679090;2093679108;2093678831;-2015297150;2093679056;2093679081;2093679099;2093679111;-11796144;2093679088;2093679076;2093679103;-2015297147;2093678818;2093679095;2093679079;-2015297145;-11796417;-11796154;2093679194;2093679085;-2015297149;2093679105;2093679114;-11796138;-11796151;2093679109;-11796142;2093679118;-11796143;2093679078;2093679125;2093679116;2093679080;2093679130;2093679091};
+    {-1574275404;-11796145;-11796153;-11796149;-11796287;-11796143;-11796283;-11796297;-11796150;-11796278;-11796155;-11796144;-11796289;-11796285;-1627586479;-11796140;-11796152;-11796157;-11796288;-1855452427;-11796151;-11796139;-11796290;-11796295;-11796286;-11796156;-11796281;-11796282;-11796291;-1855452431;-11796293;-11796154;-11796292;-11796141;-11796147;-11796294;-11796138;-11796146;-11796284;-11796142;-11796148;-11796280;-11796296;-11796279;-11796327;-11796326;-11796325;-11796324;-11796323;-11796322;-11796321;-11796380;-11796379;-11796378;-11796377;-11796363;-11796362;-11796361;-11796343;-11796342;-11796341;-11796340;-11796339;-11796338;-11796337;-11796351;-11796350;-11796349;-11796348;-11796347;-11796346;-11796345;-11796388;-11796387;-11796386;-11796385;-11796384;-11796383;-11796382;-11796411;-11796410;-11796409;-11796408;-11796400;-11796399;-11796398;-11796396;-11796395;-11796394;-11796393;-11796392;-11796391;-11796390;-11796359;-11796358;-11796357;-11796356;-11796355;-11796354;-11796353};
+    --{263580627;-11796476;-1335754701;2105409874;-11796395;-11796311;-11796359;-11796390;2105409873;2105409992;-11796383;-11796415;-11796400;-11796478;-11796387;-11796475;-1335754680;-11796313;2105409971;-11796355;-11796401;2105409869;2105409872;-11796385;-11796381;-11796314;2105409990;-11796389;-1335754668;-11796398;1482555782;-11796388;2105409991;-11796356;-11796477;-1335754702;-1335754729;-11796360;-11796416;-1335754718;-11796397;2105409974;-11796357;-11796312;-11796380;-11796378;-11796358;2105409973;-1335754647;-11796384;-1335754691;2105409975;-11796316;-11796315;2105409994;-11796377;-11796399;-1335754690;-1335754657;-1335754658;-11796479;-1335754679;-1335754717;2105409976;-11796396;-11796386;2105409989;-11796374;2105409871;-1335754646;-11796382;-11796413;-1335754728;-11796414;2105409972;-1335754669;-11796375;-11796317;-11796379;-11796391;-11796393;-11796392;-11796376;2105409993};
+    {817373972;-11796443;-11796470;-11796432;-11796441;-11796468;-11796439;-11796418;-11796353;-11796365;-11796433;-11796451;-11796400;-11796431;-11796406;-11796454;-11796434;-11796442;-11796465;-11796440;-11796367;498;499;-11796462;-11796463;-11796461;-11796469;-11796473;-11796364;500;-11796474;-11796445;-11796472;-11796460;-11796428;-11796427;-11796437;-11796426;-11796357;-11796363;-11796457;-11796471;-11796456;-11796459;-11796449;-11796450;-11796466;-11796354;-11796368;-11796429;-11796452;-11796438;-11796444;-11796453;-11796366;-11796435;-11796455;-11796458;-11796355;-11796430;-11796425;-11796352;-11796436;-11796356;-11796467;-11796464;-11796175;-11796174;-11796173;-11796172;-11796171;-11796170;-11796169;-11796168;-11796167;-11796166;-11796165;-11796164};
+    {2518601;-11796308;-11796435;-11796303;-11796319;-11796443;-11796391;-11796395;-11796390;-11796424;-11796397;-11796299;-11796439;-11796386;-11796312;-11796427;-11796389;-11796426;-11796383;-11796300;-11796380;-11796378;-11796400;-11796431;-11796387;-11796422;-11796445;-11796428;-11796442;-11796440;-11796367;-11796374;-11796302;-11796321;-11796393;-11796396;-11796385;-11796317;-11796375;-11796392;-11796369;-11796371;-11796368;-11796377;-11796379;-11796381;-11796311;-11796309;-11796384;-11796316;-11796306;-11796305;-11796304;-11796310;-11796398;-11796298;-11796366;-11796430;-11796429;-11796432;-11796314;-11796437;-11796444;-11796318;-11796373;-11796441;-11796425;-11796423;-11796436;-11796421;-11796297;-11796296;-11796438;-11796372;-11796434};
+    {-161371567;-11796071;-11796083;-11796086;-11796088;-11796082;-11796084;-11796067;-11796089;-11796073;-11796070;-11796080;-11796066;-11796072;-11796075;-11796068;-11796076;-11796087;-11796079;-11796081;-11796085;-11796069;-11796074;-11796077;-11796090;-1541078482;-1541078482;-1541078482;-1541078482;-1541078501;-1541078489;-1541077972;-1541077972;-1541077972;-1541077972;-1541077979;-1541077979;-1541077979;-1541077979;-1541078593;-1541078582;-1541078589;-1541078590;-1541078548;-1541078525;-1541078524;-1541077989;-1541077988;-1541077987;-1541077986;-1541077985;-1541077984;-1541077983;-1541077965;-1541077965;-1541077965;-1541077965};
+    {-977706424;2060386357;2060386364;2060386350;2060386349;2060386346;2060386337;2060386311;2060386363;2060386319;2060386345;2060386328;2060386360;2060386333;2060386331;2060386370;2060386330;2060386338;2060386352;2060386312;2060386318;2060386313;2060386369;2060386367;2060386376;2060386324;2060386366;2060386336;2060386374;2060386348;2060386362;2060386361;2060386326;2060386343;2060386340;2060386325;2060386355;2060386372;2060386322;2060386334;2060386368;2060386339;2060386375;2060386354;2060386342;2060386327;2060386332;2060386373;2060386356;2060386320;2060386310;2060386321;2060386358;2060386314;2060386344;2060386351};
+    {1887730855;-11795976;-11796460;-11795977;-11796478;-11796466;-11796475;1293289203;-11796465;1293288535;1293289206;-11796119;-11795974;1293288897;-11796471;1293288554;-11796470;-11795978;-11795971;-11796129;1293289269;-11796118;-11795972;-11796002;-11796046;1293288900;-11796474;-11796472;-11796469;-11796114;-11796473;-11795973;-11795964;-11796476;-11796467;-11796461;-11796468;-11796459;-11795975;-11795966;-11796477;-11796463;-11795965;-11796462;1293289266;-11796042;1293288484;-11795967;-11795963;1293288481;1293288546;2093678694;1293287987;1293288176;-11796464;1293288469};
+    {-768833570;-11796476;-11796449;-11796400;2060386349;2060386486;2060386388;2060386485;-11796412;2060386390;2060386306;2060386468;2060386355;2060386488;2060386504;-11796434;2060386387;2060386356;2060386475;-11796390;-114950141;-1765408587;-11796408;405405705;2060386353;2060386489;2060386348;2060386347;1185742864;-11796395;-11796451;2060386389;2060386474;405405704;-11796436;2060386305;2060386307;-881917928;-881917923;-881917922;2105410001;2105410001;2105409997;2105409989;2105409985;2105409993;-11796258;-11796240;-11796239;-11796238};
+    {1323747701;-1541078874;-1855454159;-1541078872;1482555820;1482555807;-1855455008;-1855454409;-1541078871;-1475867566;-809369585;-809369583;-809369573;-809369578;-1475870010;-1475866992;-1475867021;-1475866924;-1475870494;-1475866937;-1475869652;-1475869444;-1475869521;-1475869696;-1475869752;-1475868325;-1475867681;-1475866982;-1475867822;-1475869597;-1475869357;-1475869983;-1475869190;-1475869856;-1475866911;-1475867002;-1475867811;-1475867586;-1475869320;-1475866894;-1475869221;-1475870154;-1475867807;-1475867568;-1475869663};
+    {-1934656620;-11796476;-11796395;-11796379;-11796311;-11796359;-11796390;-11796383;-11796415;-11796400;-11796478;-11796387;-11796475;-11796313;-11796385;-11796381;-11796389;-11796398;-11796388;-11796356;-11796414;-11796360;-11796416;-11796391;-11796397;-11796357;-11796312;-11796380;-11796378;-11796384;-11796386;-11796377;-11796401;-11796479;-11796396;-11796355;-11796358;-11796413;-11796316;-11796375;-11796477;-11796315;-11796317;-11796382;-11796392;-11796374;-11796314;-11796376;-11796399;1482555782;-11796393};
+    {-410824576;-11796476;-11795978;-11796046;-11795977;-11796478;-11796118;-11795972;-11795975;-11796002;-11796114;-11796465;-11795965;-11795964;2093679120;-11796463;-11796461;2093679119;-11796469;-11795966;-11796119;-11796474;-11796042;-11796129;-11795963;-11796462;-11796472;-11795967;-11795973;2093679121;-11796477;-11796470;-11796468;-11796466;-11796471;2093679118;-11796460;-11796475;-11795974;-11796473;-11796459;-11795971;-11795976;2093679117;-11796467;2093679116;-11796464};
+    {567986524;-587661257;-587661296;-587661241;-587661298;-587661282;-587661258;-587661244;-587661234;-587661267;-587661305;-587661272;-587661273;-587661307;-587661302;-587661300;-587661290;-587661281;-587661270;-587661287;-587661268;-587661239;-587661280;-587661285;-587661240;-587661278;-587661277;-587661266;-587661274;-587661297;-587661259;-587661255;-587661289;-587661251;-587661250;-587661249;-587661232;-587661310;-587661304;-587661237;-587661230;-587661242;-587661236;-587661233;-587661261;-587661264;-587661291;-587661260;-587661301;-587661235;-587661269;-587661231;-587661299;-587661292;-587661284;-587661288;-587661254;-587661238;-587661309;-587661276;-587661286;-587661283;-587661246;-587661306;-587661245;-587661295;-587661253;-587661294;-587661247;-587661263;-587661229;-587661252;-587661262;-587661265;-587661256;-587661271;-587661243;-587661279;-587661248;-587661275;-587661303;1167523919;1167523922;1167523920;1167523917;1167523899;1167523898;1167523902;1167523904;1167523906;1167523905;1167523924;1167523923;1167523882;1167523879;1167523874;1167523873;1167523864;1167523928;1167523932;1167523934;1167523938;1167523941;1167523946;1167523947;1167523952;1167523955;1167523959;1167523961;1167523965;1167523968;1167523973;1167523974;1167523979;1167523982;1167523986;1167523988;1167523992;1167523995;1167524000;1167524001;1167524006;1167524009;1167524013;1167524015;1167524018;1167524022;1167524024;1167524028;1167524032;1167524036;1167524037;1167524040;1167524046;1167524050;1167523893;1167524054;1167524057;1167524062;1167524063;1167524068;1167524071;1167524075;1167524077;1167524082;1167524085;1167524087;1167524091;1167524094;1167524099;1167524100;1167524105;1167524108;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
+    {1705189686;1674051595;1674051597;1674051596;1674051598;1674051593;1674051592;1674051594;1674051600;1674051599;1167523919;1167523922;1167523920;1167523917;1167523899;1167523898;1167523902;1167523904;1167523906;1167523905;1167523924;1167523923;1167523882;1167523879;1167523874;1167523873;1167523864;1167523928;1167523932;1167523934;1167523938;1167523941;1167523946;1167523947;1167523952;1167523955;1167523959;1167523961;1167523965;1167523968;1167523973;1167523974;1167523979;1167523982;1167523986;1167523988;1167523992;1167523995;1167524000;1167524001;1167524006;1167524009;1167524013;1167524015;1167524018;1167524022;1167524024;1167524028;1167524032;1167524036;1167524037;1167524040;1167524046;1167524050;1167523893;1167524054;1167524057;1167524062;1167524063;1167524068;1167524071;1167524075;1167524077;1167524082;1167524085;1167524087;1167524091;1167524094;1167524099;1167524100;1167524105;1167524108;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
+    {-1184245578;-1765408541;-11796474;405405709;-11796464;2105409825;2105409825;2105409825;-1466630125;-1466630124;-1466630121;-1466630120;-1466630119;-1466630118;-1466630117;-1466630116;-1466630115;-1466630114;-1466630113;-1466630112;-1466630111;-1466630110;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409775;2105409777;2105409779;2105409780;2105409781;2105409991;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409981;2105409846;2105409846;2105409846;2105409846;2105409846;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
+    {1612139937;-11796406;-1475867566;-809369585;-809369583;-809369573;-809369578;-1475870010;-1475866992;-1475867021;-1475866924;-1475870494;-1475866937;-1475869652;-1475869444;-1475869521;-1475869696;-1475869752;-1475868325;-1475867681;-1475866982;-1475867822;-1475869597;-1475869357;-1475869983;-1475869190;-1475869856;-1475866911;-1475867002;-1475867811;-1475867586;-1475869320;-1475866894;-1475869221;-1475870154;-1475867807;-1475867568;-1475869663};
+    {1190972738;-11796476;-11796468;-11796326;-1848049579;-11796325;2060386336;-11796475;2060386337;-11796332;-11796465;498;499;-1848049626;-11796479;450;-11796474;-11796328;2060386329;-11796333;-11796478;2060386339;-11796467;-1848049628;2060386341;2060386326;-11796466;-11796329;2060386340;-11796327;2060386338;-1848049597;-1848049624;451;449;500;2060386335;-11796473;-1848049590;-11796477;-11796464};
+    {1759178769;2105409609;-11796310;2105409583;2060386307;-11795892;-11795883;-11795896;-11796285;-11795900;-11795887;2105409581;-11795886;-11795895;-11795890;-11795899;-11795882;-11796383;2105409606;-11795891;-11795898;-11795888;-11795889;2105409584;-11795893;-11796463;-11795884;-11795894;-11796206;-2015297409;-11795897;-11795881;2105409610;-11795885};
+    {-224855659;-1172110256;-1172110836;-1172110280;-1172110270;-1172110837;-1172110266;-1172110248;-1172110271;-1172110981;-1172110979;-1172110262;-1172110259;-1172110257;-1172110909;-1172110254;-1172110284;-1172110253;-1172110261;-1172110264;-1172110956;-1172110282;-1172110247;-1172110807;-1172110258};
+    {649101397;-11795890;-11795899;1293287674;-11795882;1293287872;-11796383;1293287873;-11795889;-11795898;-11795893;-11795892;-11795884;-11795894;-11796206;1293287675;-11795896;-11795900;-11795887;-11795897;-11795888;-11795885;-11795886;-11795895;-11795881;1293287865;-11795891;1293287864;-11795883};
+    {128844448;-11796452;506;-11796311;-11796359;-11796449;-11796313;924;-11796314;-11796315;-1765408760;-11796356;-11796406;-11796360;-11796407;-11796357;-11796312;-11796453;-11796358;-11796355;-11796451;867;-11796317;-11796316;-1765408758;-1765408759;-11796450;-11796455;-11796454};
+    {-1243448568;2060386410;2060386406;-11796432;-11796429;2060386412;2060386341;2060386460;2060386457;1674051698;2060386459;2060386349;2060386405;2060386458;2060386357;2060386408;2060386456;1926758854};
+    {-1036005362;2060386410;2060386459;2060386412;2060386341;1674051713;2060386457;2060386460;2060386349;1674051739;-11796429;2060386456;1674051695;-11796432;2060386408;2060386458};
+    {1844499196;1167524221;1167523888;1167523878;1167523877;1167523895;1167523876;1167524306;1167524160;1167524220;1167524307;1167524218;1167524219;1167523889;1167523880};
 }
 
 crwings = {
@@ -1678,80 +2590,7 @@ off = '¦❌¦'
 
 
 
---动态执行函数
-btk={"🌤️","⛅","🌥️","☁️","🌦️","🌧️","⛈️","🌩️","🌨️","❄️"}
 
-
-
-rwsl=319--任务数量
-rwjg=0xA04--任务间隔
-rwjg2=0xF00--任务结束
-
-
-
-
-
-
-
-
-
-
-
-
---原地跑图
-resulta={
-    {2081768701;-1475869311;-1475870469;-1475867244;2060386341;-1475869891;-1475867188;-1475869894;-1475869369;2060386402;2060386350;2060386346;2060386388;-1475869726;2060386373;2060386422;-1475869746;2060386390;2060386333;-1475867243;2060386378;-1475867241;-1475869295;2060386396;2060386398;2060386369;-1475869728;2060386367;-1475867187;2060386360;-1475867237;2060386362;2060386361;2060386331;2060386326;2060386365;2060386404;-11796312;2060386355;2060386403;-1475870470;-1475868052;2060386371;-1475869888;-1475869306;-1475869317;2060386386;2060386322;-1475869736;2060386399;-1475867239;-1475869739;-1475867248;2060386385;2060386358;-1475867247;-1475869734;2060386426;-11796317;2060386420;2060386405;-1475867246;2060386393;2060386392;2060386339;2060386379;-1475869733;-1475867307;2060386335;-1475869730;2060386408;-1475870615;-1475870434;-1475869900;2060386419;2060386425;2060386324;2060386380;2060386349;2060386401;-1475869883;-1475868057;2060386383;-1475869750;2060386318;2060386321;2060386328;2060386338;2060386421;2060386319;2060386363;-1475869354;-1475869368;-11796328;-1475869889;2060386364;-1475869353;2060386359;-1475869732;2060386375;-1475869351;-11796323;-1475869297;-1475869296;2060386384;-1475869292;2060386368;-1475867234;2060386344;-1475869893;2060386353;2060386387;-1475869314;2060386376;-1475867402;-1475867400;2060386317;2060386336;2060386351;-1475869884;2060386394;2060386329;-1475869312;-1475869299;-1475869897;-11796311;-1475867240;2060386332;-1475867238;2060386357;-1475867235;-1475869352;-1475867233;2060386334;-1475869722;-1475869898;-1475869727;-11796327;-11796325;-1475869305;-1475869316;-11796322;2060386348;2060386320;-11796318;2060386323;2060386423;-1475869723;2060386370;2060386409;-11796316;-11796314;2060386372;-1475869301;2060386327;2060386428;-11796310;2060386382;-11796309;-1475868053;-11796326;2060386407;-1475869735;2060386345;2060386381;2060386356;2060386374;2060386391;-1475870511;-1475867189;2060386400;2060386325;2060386366;2060386377;2060386342;2060386337;2060386410;-1475869291;-1475869744;-1475869731;-1475867392;-11796324;-11796313;-1475869882;-11796320;-1475869300;-11796321;2060386427;-1475867403;-1475867401;2060386330;-1475869737;-1475868754;2060386352;-11796315;2060386395;-1475867191;-1475867190;-1475869886;-1475869432;-1475869738;-11796319;-1475867242;-1475869729;2060386316;2060386343;2060386340;2060386397;2060386347;-1475869881;-1475869350;-1475867404;-1475869745;2060386354;2060386429;-1475869899;-1475869298;-1475867311;-1475869293;2060386389;-1475869887;2060386411;-1475867236;-1475869892;-1475867245;-1475867167;-1475867166;-1475868583;-1475868245;-1475868266;-1475868244;-1475868246;-1475867107;-1475868237;-1475867165;-1475867164;-1475867163;-1475868587;-1475869079;-1475869073;-1475869069;-1475869068;-1475869070;-1475869064;-1475869059;-1475868272;-1475869055;-1475869063;-1475867111;-1475867162;-1475867160;-1475867161;-1475867106;-1475867108;-1475868257;-1475868256;-1475868258;-1475868268;-1475869074;-1475869075;-1475867172;-1475867170;-1475867109;-1475868584;-1475868252;-1475868249;-1475868250;-1475868248;-1475868247;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475867095;-1475869072;-1475867156;-1475867155;-1475869071;-1475869067;-1475869065;-1475869066;-1475868255;-1475868254;-1475868253;-1475868267;-1475868582;-1475867157;-1475867159;-1475867158;-1475867105};
-    {164626931;840696279;-11796145;-11796153;-11796359;-11796326;-11796299;-11796331;-11796221;-11796335;-11796292;-11796114;-11796354;-11796134;840696285;-11796159;-11796294;-11796237;-11796366;-11796228;-11796233;-11796123;-11796141;-11796287;-11796224;-11796146;-11796162;-11796167;-11796273;-11796143;-11796283;840696280;-11796124;-11796290;-11796297;840696276;-11796308;-11796360;-11796148;840696278;-11796163;-11796150;-11796278;-11796338;-11796109;-11796132;-11796276;-11796131;-11796357;-11796169;-11796312;-11796234;-11796137;-11796365;-11796155;-11796217;-11796099;-11796291;-11796144;-11796115;-11796277;-11796302;-11796348;-11796102;-11796122;-11796285;-11796333;-11796346;-11796107;-11796101;-11796231;-11796129;-11796158;-11796168;-11796307;-11796230;-11796269;-11796236;-11796317;-11796339;-11796171;-11796110;840696274;-11796282;-11796311;-11796271;-11796322;-1848049379;-11796274;-11796293;-11796272;-11796218;-11796324;-11796147;-11796157;-11796313;-11796320;-11796288;-11796321;-11796119;840696283;-11796229;-11796226;-11796314;-11796270;-11796315;-11796174;-11796305;-11796173;-11796118;-1848049380;-11796140;-11796139;-11796337;-11796295;-11796223;-11796136;-11796164;-11796128;-11796319;-11796340;-11796069;-11796281;-11796100;-11796172;-11796225;-11796161;-11796113;-11796286;-11796219;-11796279;-11796133;-11796152;-11796166;-11796316;-11796165;-11796367;-11796160;-11796298;-11796235;840696282;-11796332;-11796336;-11796154;-11796301;-11796220;840696277;-11796309;-11796135;-11796227;-11796323;-11796149;-11796275;-11796104;-11796108;-11796345;-11796329;-11796318;-11796170;-11796328;-11796306;-11796356;-11796138;-11796232;-11796303;-11796105;-11796327;-11796106;-11796130;-11796284;-11796142;-11796120;-11796151;-11796300;-11796358;-11796355;-11796156;-11796103;-11796280;-11796296;-11796304;2093678875;2093678875;2093678983;2093678983;2093678983;2093678983;2093678983;2093678983;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678862;2093678940;2093678940;2093678940;2093678940;2093678940;2093678940;2060386386;2060386372;2060386387;2060386388;2060386426;2060386427;2060386421;34603138;2060386418;2060386423;2060386419;2060386420;2060386422;-11796411;-11796410;-11796409;2060386390;2060386385;2060386397;2060386389;2060386405;2060386396;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678927;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2093678914;2060386401;2060386402;2060386403;2060386391;2060386399;2060386392;2060386393;2060386409;2060386431;34603094;34603095;2060386430;2060386429;-11796353;2060386428;-11796408;-11796407;-11796386;-11796385;-11796384;-11796383;-11796382;-11796381;2093678849;2093678849;2093678849;2093678849;2093678849;2093678849;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;2093678901;34603102;2060386374;2060386424;2060386425;2060386414;-11796404;-11796403;-11796402;-11796401;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796394;-11796393;-11796391;-11796390;-11796389;-11796388;-11796387;-11796380;-11796379;2093678953;2093678953;2093678953;2093678953;2093678953;2093678953};
-    {-2135324521;-11796204;-11796409;1167523990;-11796189;-11796202;1167523973;-11796379;1167523987;-11796404;-11796383;-11796368;-11796387;1167524013;1167524012;-11796394;1167524051;1167524071;1167524055;1167524073;1167524062;1167523991;1167524087;1167524093;1167523985;1167524084;1167524080;1167524058;1167524089;1167524081;1167523975;1167523995;1167524052;1167524005;1167524088;-11796216;-11796380;-11796227;-11796381;-11796366;-11796207;-11796199;-11796190;-11796376;-11796224;-11796211;1167523989;-11796201;-11796407;-11796198;-11796371;-11796370;-11796405;-11796229;-11796230;-11796402;-11796226;-11796408;-11796228;-11796406;-11796232;-11796197;1167524044;-11796186;-11796378;1167523986;-11796184;-11796185;-11796219;-11796385;-11796384;-11796188;-11796206;-11796377;1167524083;1167524059;-11796396;1167524085;1167524053;-11796209;-11796231;1167524043;1167524078;-11796382;-11796215;-11796208;-11796369;-11796395;-11796386;-11796220;-11796375;-11796392;1167524086;-11796367;-11796393;-11796210;1167523948;-11796213;-11796200;1167524042;-1948973999;34603327;34603326;-1948974989;-1948974299;-1948974299;-1948974299;-1948974299;34603298;34603300;2060386398;-11796326;-11796325;-11796324;-1848049365;2060386390;-1848049357;2060386404;2060386403;2060386394;2060386389;2060386393;2060386392;-11796321;-11796320;-11796319;-11796318;-11796317;-11796316;-11796315;-11796314;-11796313;-11796267;-11796266;-11796265;-11796264;-11796263;-11796262;-11796261;-11796260;-11796259;2060386480;2060386485;2060386484;2060386503;2060386502;2060386483;2060386481;2060386504;2060386479;2060386454;2060386455;2060386462;2060386452;2060386457;2060386459;2060386451;2060386458;2060386449;2060386406;2060386439;2060386434;2060386563;2060386448;2060386405;-11796311;-11796310;34603376;34603382;34603385;2060386489;2060386490;34603402;34603403;2060386488;34603380;-1948974929;-1948974929;-1948974929;-1948974929;-1948974929;2060386540;2060386541;2060386536;2060386539;2060386456;2060386460;2060386461;2060386466;2060386467;2060386559;2060386391;2060386493;2060386494;2060386495;2060386496;2060386497;2060386498;2060386534;2060386530;2060386533;2060386531;2060386499;2060386500;2060386506;2060386507;2060386508;-11796286;-11796285;-11796284;-11796283;-11796282;-11796281;-11796280;-11796279;-11796306;-11796305;-11796304;-11796303;-11796302;-11796301;-11796300;-11796299;-11796298;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;34603372;2060386445;2060386447;2060386442;2060386443;2060386444;2060386446;2060386603;2060386604;-11796278;-11796277;-11796276;-11796275;-11796274;-11796273;-11796272;-11796271;-11796270;2060386600;2060386402;2060386601;2060386551;2060386602;2060386395;2060386396;2060386472;2060386599;-11796257;-11796256;-11796255;-11796254;-11796253;-11796252;-11796251;-11796250;-11796249;-11796295;-11796294;-11796293;-11796292;-11796291;-11796290;-11796289;-11796288;-1948974839;-1948974842;2060386468;2060386478;2060386535;-1948974584;-1948974580;34603347;-1765408585;-1765408582;-1948974797;-1948974796;-1948974637;-1948974636;-1948974635;-1948974634;-1948974633;-1948974858;-1948974857;840695978;840695979;840695980;840695981;34603420;-1948973998;-1948974847;-1948974833;-1948974815;-1948974731};
-    {-1237641587;-11795904;-11795924;1293287546;-11795902;-881917946;-11795928;-11795937;1293288159;-11795935;-11795881;-11795942;1293287745;1293287547;1293287621;-11795916;-11795892;-11795907;-11795927;-11795920;-11795883;-11795896;-11795910;-11795900;1293287618;1293287756;-11795887;1293288990;1293287936;1293287750;-11795886;1293288989;1293288986;-11795885;1293287959;1926758854;1293288988;-11795890;1293288160;-11795912;1293288161;-11795899;-11795921;-11795882;1293288163;1293288991;1293287545;1293287960;1293287942;1293287951;1293287619;1293287747;-11795943;-11795936;1293287749;1293287755;1293287620;1293287617;-11795908;-11795934;-11795930;-11795929;-11795909;-11795919;-11795931;1293287549;-11795889;-11795926;-11795925;1293288162;-11795933;-11795898;-11795893;1926758937;-11795938;-1855455090;-11795888;-11795932;-11795903;-11795884;-11795891;-1466630124;-11795894;-11795940;-11795917;1293288993;1293287616;-11795911;-11795918;1293287544;-11795895;-11795914;-11795913;-11795897;-11795915;-11795923;-11795939;-11795906;-11795905;1293287548;1293288164;1293287941;-11796134;-11796133;-11796132;-11796131;-11796130;-11796128;-11796127;-11796126;-11796125;-11796124;-11796123;-11796121;-11796120;-11796119;-11796118;-11796117;-11796116;-11796114;-11796113;-11796112;-11796111;-11796110;-11796109;-11796107;-11796106;-11796105;-11796104;-11796103;-11796102;-11796100;-11796099;-11796098;-11796097;-11796096;-11796095;-11796093;-11796092;-11796091;-11796090;-11796089;-11796088;-11796086;-11796085;-11796084;-11796083;-11796082;-11796081;-11796079;-11796078;-11796077;-11796076;-11796075;-11796074;-11796141;-11796140;-11796139;-11796138;-11796137;-11796073;2060386369;2060386370;2060386368;2060386367;2060386365;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386823;2060386378;2060386381;2060386375;2060386376;2060386377;2060386394;2060386396;2060386406;2060386833;2060386392;2060386393;-1855455206;-1855455204;-1855455205;-1855455207;-1855455096;-1855455218;-1855455222;-1855455214;-1855455216;-1855455213;-1855455223;-1855455177;-1855455174;-1855455179;-1855455178;-1855455176;-1855455217;-1855455230;-1855455210;-1855455226;-1855455231;-1855455227;-1855455076;-1855455075;-1855455074;-1855455073;-1855455072;-1855455071;-1855455070;-1855455069;-1855455068;-1855455064;-1855455061;-1855455060;-1855455056;-1855455048;-1855455012;-1855455006;-1855455005;-1855455003;-1855454968;-1855454967;-1855454965;-1855454962;-1855454961;-1855454958;-1855455162;-1855455038;-1855454995;-1855454994;-1855454993;-1855454991;2060386364;2060386380;2060386844;2060387026;2060387027;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400;2060386400};
-    {-1455381650;-11796171;-11795862;-11795860;-1541078608;-11795876;-11796076;-11795866;-11796166;-1541078761;-11795857;-1541078606;-1541078760;-11795861;-11796221;-11796054;-11796126;-1541078591;-11796216;-11795874;-11796071;-11796134;-11796226;-11796053;-11796086;-11795873;-11795937;-11795864;-11796222;-11795863;-11796058;-1541078755;-1541078596;-11796091;-11796229;-11796075;-11796125;-11796121;-1541078781;-1541078782;-11796060;-11796228;-11796214;-11796123;-11796088;-11795877;-11796064;-11796199;-11796082;-11795926;-11795935;-11796074;-11796220;-11796170;-11796092;-11796084;-11796388;-11796050;-11796223;-1541078600;-11795879;-11796048;-1541078593;-11796062;-11796218;-11796089;-11796097;-11796095;-11796132;-11796073;-1541078594;-11796078;-11796225;-11796044;-1541078762;-11796169;-11795855;-11795907;-11796061;-11796113;-11796217;-11796178;-1541078607;-11796099;-11795932;-11796219;-11796070;-11796133;-11796080;-1541078599;-11796212;-11796079;-11796055;-11796098;-11795867;-11796066;-11795875;-11796122;-11796179;-11796258;-11795887;-11795854;2060386339;-11795913;-11796072;-11796244;-11796101;-11795905;-1541078754;-11796239;-11796042;-11795856;-11796094;-11796068;-1541078601;-11796215;-11795897;-11795858;-1541078597;-11796230;-11796197;-11796382;-1541078604;-11796087;-11796093;-11795886;-11795859;-11795885;-11796096;-11796083;-11796077;-11796065;-11795928;-11796063;-11795918;-11795871;-11795868;-11796227;-11796085;-11795906;-1541078598;-11796067;-11795865;-11795950;-1541078592;-1541078595;-11796049;-11796177;-11795872;-11796057;-11796213;-11796224;-11796209;-11796090;-11796232;-11796069;1842806871;1842806871;1842806871;1842806871;2060386413;2060386411;2060386410;2060386478;2060386479;2060386481;2060386475;2060386489;2060386477;2060386490;34603227;2060386507;2060386373;2060386520;2060386376;2060386509;2060386522;-1541078808;-1541078807;-1541078806;-1541078805;-1541078804;-1541078803;-1541078802;-1541078801;-1541078800;-11796130;-11796129;-11796128;-1541078784;-1541078784;-1541078784;-1541078784;2060386383;2060386388;2060386384;2060386380;2060386381;2060386382;2060386379;2060386408;2060386530;2060386529;2060386528;2060386531;2060386526;2060386407;2060386532;2060386527;-1541078819;-1541078818;-1541078817;-1541078816;-1541078815;-1541078814;-1541078813;-1541078812;-1541078811;-11796153;-11796152;-11796151;-11796150;-11796149;-11796148;-11796147;-11796146;2060386496;2060386493;2060386492;2060386482;-1948974396;2060386491;2060386494;-1948974387;2060386392;2060386390;2060386505;2060386391;2060386495;2060386504;2060386389;2060386503;2060386393;2060386465;2060386466;2060386416;2060386395;2060386396;2060386394;34603371;34603370;2060386417;-11796162;-11796161;-11796160;-11796159;-11796158;-11796157;-11796156;-11796155;-11796154;-11796145;-11796144;-11796143;-11796142;-11796141;-11796139;-11796138;-11796137};
-    {864432821;-11796452;-11796145;-11796153;-11796460;-11796390;-11796140;-11796418;-11796383;-11796387;-11796114;-11796054;-11796422;-11796157;-11796134;-11796053;-11796083;-11796463;-11796469;-11796086;-11796419;-11796149;-11796119;-11796058;-11796454;-11796385;-11796421;-11796108;-11796085;-11796052;-11796389;-11796123;-11796444;-11796088;-11796141;-11796082;-11796047;-11796411;-11796146;-11796425;-11796078;-11796143;-11796124;-11796084;-11796457;-11796158;-11796117;-11796065;-11796417;-11796136;-11796407;-11796128;-11796446;-11796148;-11796163;-11796150;-11796132;-11796443;-11796470;-11796414;-11796466;-11796109;-11796106;-11796468;-11796382;-11796388;-11796397;-11796161;-11796131;-11796116;-11796380;-11796453;-11796137;-11796155;-11796113;-11796164;-11796118;-11796156;-11796111;-11796384;-11796133;-11796115;-11796445;-11796080;-11796144;-11796055;-11796152;-11796402;-11796451;-11796139;-11796066;-11796462;-11796162;-11796420;-11796122;34603802;-11796135;-11796154;-11796165;-11796160;-11796125;-11796120;-11796107;-11796461;-11796459;-11796072;-11796110;-11796167;-11796064;-11796121;-11796142;-11796151;-11796159;-11796129;-11796068;-11796458;-11796168;-11796423;-11796073;-11796138;-11796386;-11796127;-11796071;-11796130;-11796112;-11796456;-11796381;-11796455;-11796079;2060386317;-11796049;-11796465;-11796467;-11796464;-11796069;2060386527;-11796267;-11796266;-11796265;-11796264;-11796263;-11796262;-11796261;-11796260;-11796259;-11796258;-11796257;-11796256;-11796254;-11796253;-11796252;-11796251;-11796250;-11796249;-11796248;-11796247;-11796246;-11796245;-11796244;-11796243;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;2060386326;-11796332;-11796331;-11796330;-11796329;-11796328;-11796327;-11796326;-11796325;-11796324;-11796323;-11796322;-11796321;2060386518;2060386517;2060386519;-11796293;-11796292;-11796291;-11796290;-11796289;-11796288;-11796287;-11796286;-11796285;-11796284;-11796283;-11796282;2060386467;2060386468;2060386469;2060386470;2060386521;2060386522;2060386523;-11796343;2060386344;-11796342;-11796341;-11796340;-11796339;-11796338;-11796337;-11796336;-11796335;2060386347;2060386348;-11796319;-11796318;-11796317;-11796316;-11796315;-11796314;-11796313;-11796312;-11796311;-11796310;-11796309;-11796308;-11796306;-11796305;-11796304;-11796303;-11796302;-11796301;-11796300;-11796299;-11796298;-11796297;-11796296;-11796295;-11796280;-11796279;-11796278;-11796277;-11796276;-11796275;-11796274;-11796273;-11796272;-11796271;-11796270;-11796269;2060386384;2060386383;2060386387;2060386386;2060386385;2060386500;2060386496;2060386498;2060386499;2060386497};
-    {-1936060159;-11795976;-11796409;-11796189;2105409728;-11796110;2105409720;2402;-11795982;-11796390;-11795995;-11796418;-11796166;-11795954;2105409707;-11796415;34604580;-11795979;-11796038;-11795958;-11796400;2105409703;-11796387;-11796221;-11796335;-11796126;2212;-11796344;-11796412;2401;-11796472;2400;-11795937;-11795966;-11796419;-11796227;-11796350;-11796406;-11796125;-11796352;-11796383;-11796119;2105409727;-11796360;-11796178;-11796152;-11796147;-11796146;-11796145;-11796138;-11796347;-11796137;2105409722;34603265;-11796121;-11795975;-11796118;-11796417;-11796090;-11796107;-11796106;-11796168;-11796105;-11795952;-11796385;-11796100;-11796037;-11796096;-11796093;-11796103;-11796422;-11796408;-11796031;-11796039;-11796158;-11795959;-11796104;-11796176;-11796005;-11796002;-11796001;-11795997;-11796421;-11796044;-11796000;-11795983;-11795981;-11795978;-11796165;-11795977;-11795973;-11795970;-11795992;-11795964;-11795961;-11796036;-11795956;-11796099;-11795953;-11796160;-11796134;-11795951;-11796157;-11795948;-11795946;-11795943;-11796382;-11795942;-11795941;-11795938;-11795955;-11796389;-11796345;-11796405;-11796140;2105409701;-11796139;-11795939;-11796123;-11795993;-11795971;-11796042;2105409699;-11796212;-11796343;-11795947;-11795957;-11796388;-11796226;2105409706;-11796009;2105409713;-11796120;-11796023;-11795945;-11796151;-11795968;-11796088;-11796114;-11796109;-11796141;-11796399;-11796112;-11796153;-11796091;-11796130;-11795969;-11796410;-11796342;2105409719;-11796370;-11796156;-11796174;-11796045;-11795980;-11796175;-11796181;-11796184;-11796186;-11796179;-11796135;-11796149;-11796167;-11795930;-11796346;-11796006;-11796182;-11796162;-11796358;2105409705;-11796368;-11796113;2105409725;-11796161;-11796187;2105409702;-11796411;-11796416;-11796122;-11796040;-11796423;-11795944;-11796173;-11796398;-11796102;-11796159;-11795974;-11795949;-11796177;-11796047;34604581;-11796170;-11796143;-11796183;-11796092;-11796124;-11795994;-11796414;-11796117;-11796136;-11796043;-11796034;-11796164;-11796407;-11796128;-11796148;-11796163;-11796089;-11796097;-11796391;-1848049553;2213;2210;-11796095;-11796132;-11796046;-11796424;-11796041;-11796172;2209;-11796353;-11796131;-11796116;-11796169;34604543;405405699;-11796155;-11796029;34604569;2105409700;-11796185;-11796180;-11796111;-11795972;-11796384;-11796133;-11796188;-11795940;34604570;-11796144;-11796033;-11795965;-11796115;-11796032;-11796098;-11796348;-11796420;2403;-11796333;-11796336;-11796154;-11796028;-11796024;-11796101;-11796035;-11796094;-11795960;2105409711;-11795967;-11795963;-11796386;-11796127;-11795927;-11796142;-11796213;34604582;-11795950;-11796049;2211};
-    {1638008359;-11795924;-11796110;-11795890;1167524309;-11796395;-11796342;-11796410;-11796145;-11796282;-11796076;-11796268;-11795947;-11796390;-11795882;-11796326;-11796404;-11796266;-11796418;-11796322;-11796267;-11795954;-11796274;-11796383;-11795958;-11796293;-11796272;-11796292;-11796114;-11796422;-11796126;-11796257;-11796071;-11796324;-11796354;-11795936;2060386422;-11796364;-11795928;-11796255;-11795964;-11796320;-11796083;-11796344;-11796288;-11795944;-11796256;-11795891;-11796105;-11795937;-11795966;-11796259;-11795934;-11795930;-11795929;-11795961;-11796119;-1848049540;2060386421;-11796091;-11796385;-11796104;-11796421;-11796294;1167524310;-11796108;-11795943;-11795931;-11796085;-1848049543;-11796314;-11796345;-11796389;-11796270;-11796123;-11796262;-11796088;-11796315;-11796141;-11796149;-11796082;-11795889;-11795926;-11796305;-11796318;-11796265;-11796411;-11796074;-11796146;-11796273;-11795881;-11796134;-11795925;-11796078;-11796143;-11796125;-11796092;-11796283;-11796124;-11796306;-11796084;-11796388;-11796067;-11796290;-11796406;-11796297;-11796139;-11796337;-11795955;-11796414;-11796341;1167524313;-11796136;-11796308;-11796407;-11795942;-11796303;1167524311;-11795938;-11796319;-11796148;-11796089;-11796097;-11796340;-11796338;-11796095;-11796109;-11795888;-11796132;-11796106;-11796100;-11796073;-11796343;-11796397;-11796353;1167524312;-11796325;-11796131;-11796116;-11795927;-11796137;-11796365;-11796113;-11796029;-11796099;-11795932;-11796118;-11796103;-11796111;-11795969;-11796070;-11796291;-11795883;-11796384;-11795885;-11796133;-11795941;-11796080;-11795940;-11796144;-11796079;-11795939;-11796316;-11795965;-11796253;-11796402;-11796289;-11796098;-11796254;-11796066;-11796298;-11796420;-11796263;-11795949;-11795946;-11796102;-11796122;-11795971;-11796346;-11796121;-11796258;-11795887;-11796304;-11796323;-11796072;2060386419;-11796101;-11795957;-11796275;-11796264;-11796075;-11796279;-11796129;-11796094;-11795956;1167524315;-11796068;-11795960;-11796295;-11795933;-11795918;-11796382;-11796020;-11795962;-11796087;-11795967;-11795959;-11795952;-11796351;-11796261;-11796271;-11796307;-11796269;-11796138;-11796386;-11796140;-11795953;-11796252;-11796127;2060386417;-11795923;1167524314;-11796093;-11795886;-11796135;-11796096;-11796317;-11796130;-11796112;-11795948;-11796387;-11796355;-11796077;-11795968;-11796142;-11796120;-11796281;-11796260;2060386418;-11795950;-11796321;-11796339;-11796280;-11796296;-11795963;-11795935;-11796090;-11796352;-11796081;2060386420;-11796417;-11796115;-11796117;-11796069};
-    {-1987505335;-11796204;1482555571;-11796452;-11796448;-11796202;-11796018;-11796311;-11796076;-11796025;-11796460;34603487;-11796030;-1948974986;-11796299;-11796418;-11796322;-11795977;-11796267;-11796021;2105409563;-11796415;-11796400;-11796293;-11796403;-11796310;1482555567;-11796292;-11796466;-11796054;1482555575;-11796313;-11796320;-11796288;-11796463;-11796412;2105409568;-11796401;-11796419;2105409564;-11796058;-11796454;-11796013;-11796027;-11796421;-11796012;-11796060;-11796214;-11796314;1482555582;-11796270;-11796207;1482555807;-11796088;-11796199;34603254;1482555814;-11796265;-11796287;-11796006;-11796162;-11796425;-11796398;-11796328;-11796283;-11796471;-11796023;-11796211;-11796290;2105409566;-11796457;-11796414;-11796043;-11796034;-11796048;34603258;-11796308;-11796198;-11796446;-11796319;-11796007;-11796278;-11796089;-11796010;-11795978;34603496;1482555577;-11796132;-11796046;-11796015;-2089680819;-11796039;-11796041;-11796026;-11796276;-11796131;34603255;-11796295;34603494;-11796169;-11796036;-11795991;-11796453;-11796029;-11796205;-11796286;-11796045;1482555572;-11795972;-11796133;34603492;-11796445;1482555578;-11796206;-11796316;-11796055;-2089680822;-11796402;1482555573;-11796300;-11796451;-11796298;-11796274;-11796284;-11796307;-11796291;1482555579;-11796281;-11796289;-11796417;-11796277;-11796305;-11796273;-11796399;-11796262;-11796462;-2089680818;2105409562;-11796302;-11796037;1482555805;-11796410;-11796296;-11796323;-11796271;-11796301;-11796315;-11796032;-11796024;-11796014;-11796003;-11796009;-11796008;-11796280;-11796002;-11796001;-11795993;1482555827;1482555820;-11796266;-11795971;-11796272;-11796312;-11795952;-11796052;-11796017;1482555580;-11796038;-11796297;-11796285;-11796321;-11796279;-11796004;1482555581;-11796019;-11796411;-11796416;-11796040;-11796318;-11796294;-11796263;-11796420;-11796306;-11795976;-11796268;-11796028;-11796309;-11796304;-11796459;-11796275;-11796264;34603256;-11796075;-11796042;34603257;2105409567;-11796035;2105409565;-11796458;-11796020;-11795967;-11796031;-11795963;-11796168;-11796203;-11796413;-2089680821;34603493;-11796269;-1948974984;-11796077;-11796449;-2089680817;-11796317;-2089680820;-11796456;-11796220;-11796465;-11796450;-11796461;2105409561;-11796016;34603495;-11796049;-11796455;-11796467;34603259;-11796200;-11796090;1482555576;-11796464;-11796447};
-    {1241316521;-11795976;-11796308;1185742898;-11796171;-11795985;-11796163;-11796278;-11796089;-11796196;-11795860;-11796342;-11795978;-11796379;-11795833;-11796311;-11796359;-11795888;-11796268;-11795899;-11796025;-11796073;-11796326;-11796026;-11796299;-11796361;-11795995;-11796353;-11796166;-11795869;-11795977;-11796427;-11796331;-11796192;-11796037;-11795892;-11796295;-11796357;-11796021;-11796300;-11796350;-11796365;-11796193;-11796378;-11796368;-11795831;-11796029;-11796358;-11795861;-11796293;-11796118;-11796387;-11796221;-11795835;-11796335;-11796292;-11795883;-11795972;-11795975;-11795870;-11796362;-11796002;-11796114;-11795880;-11796349;-11795878;-11796188;-11795894;-11796080;-11796216;-11795842;-11796079;-11796354;-11796033;-11796206;-11796364;-11796440;-11796255;-11796301;-11795965;-11796022;-11795964;-11796367;-11796374;-11796277;-11795896;-11796083;-11796254;-11795836;-11796344;-11796348;1185742896;-11796003;-11796019;-11796321;-11796086;-11795891;-11796333;-11795984;-11795966;-11796017;-11796419;1185742890;-11796028;-11796014;-11796296;-11796119;-11796024;1185742887;-11796013;-11796091;1185742889;-11796076;-11796101;-11796366;-11795834;-11796012;-11795845;-11796085;-11795859;-11795849;-11796251;-11796129;-11796214;-11796256;-11796345;-11796052;-11796023;-11796215;-11796020;-11796208;-11796207;-11795897;-11796087;-11796176;-11795967;-11795853;-11796031;-11795963;-11796329;-11796203;-11796351;-11796369;-11796082;-11796009;-11795974;-11796190;-11796287;-11796074;-11796081;-11796088;-11795848;-11796375;-11795886;1185742853;-11796302;-11796261;-11795875;-11795838;-11796170;-11795873;-11796183;-11796051;-11795855;-11796191;-11795895;1185742888;-11796471;-11796309;1185742894;-11796018;-11795854;-11795898;-11795876;-11796220;-11795832;-11795840;-11796050;-11795881;-11796276;-11796046;-11796015;-11796356;-11796297;-11796343;-11796042;-11796016;-11796172;1185742895;-11795994;-11795877;-11796307;-11796312;-11796004;-11796252;-11795973;-11796195;-11796205;-11796352;-11796355;-11796341;-11796310;-11795884;-11795846;-11796363;-11796090;-11796201;-11796464;-11796260;-11795971;-11796334;-11796298};
-    {295816905;1167524520;2093678845;-1855455182;1167524508;1167524494;-53346071;1167524518;-53346073;-1466630133;1167524514;1167524488;-53346198;1167524506;-53346051;-53346035;-53346063;1167524493;-53346061;-473038846;1167524510;-473038842;-53346075;1167524507;1167524486;1167524511;2093678846;1167524502;1167524532;-53346057;-473038640;-1466630127;-53346223;-53346055;1167524487;-53346059;-53346067;-473038641;1167524503;1167524496;-1466630138;2093678763;-53346047;-53346049;-53346037;-53346229;-53346225;1167524500;1167524489;-1466630131;1167524515;-53346045;2105409619;1167524490;-1466630126;-1466630128;2093678847;-1466630129;-53346078;34603672;1167524519;-53346043;-473038844;-53346039;-53346077;2093678843;-473038845;-53346224;1167524505;2093678842;1167524516;1167524504;-1466630132;1167524495;1167524498;1167524533;1167524517;2093678844;-53346053;1167524512;-53346232;-473038843;1167524509;-53346231;1167524501;1167524497;-473038638;1167524492;-53346069;-1466630097;-53346041;1167524499;1167524491;1167524513;2105409825;2105409825;2105409825;-1466630125;-1466630124;-1466630121;-1466630120;-1466630119;-1466630118;-1466630117;-1466630116;-1466630115;-1466630114;-1466630113;-1466630112;-1466630111;-1466630110;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409775;2105409777;2105409779;2105409780;2105409781;2105409991;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409981;2105409846;2105409846;2105409846;2105409846;2105409846;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
-    {-1212213378;-1855454770;-1855454497;-1855454668;-1855454908;-1855455188;-1855454025;-1855454923;-1855454513;-1855454643;-1855454534;-1855454931;-1855454651;-1855454819;-1855454510;-1855454675;-1855454928;-1855454026;-1855455185;-1855453950;-1855455079;-1855453706;-1855454684;-1855454605;-1855455065;-1855454919;-1855454542;-1855453498;-1855454776;-1855455166;-1855455010;-1855454518;-1855454591;-1855454023;-1855453838;-1855454504;-1855453840;-1855454716;-1855455153;-1855453839;-1855454938;-1855454024;-1855454588;-1855455098;-1855454593;-1855454027;-1855455018;-1855453841;-1855455175;-1855454602;-1855454948;-1855454600;-1855454905;-1855454650;-1855454598;-1855454932;-1855454501;-1855454532;-1855454512;-1855454604;-1855454029;-1855454580;-1855454899;-1855454946;-1855454493;-1855454774;-1855454665;-1855455052;-1855454949;-1475867167;-1475867166;-1475868583;-1475868245;-1475868266;-1475868244;-1475868246;-1475867107;-1475868237;-1475867165;-1475867164;-1475867163;-1475868587;-1475869079;-1475869073;-1475869069;-1475869068;-1475869070;-1475869064;-1475869059;-1475868272;-1475869055;-1475869063;-1475867111;-1475867162;-1475867160;-1475867161;-1475867106;-1475867108;-1475868257;-1475868256;-1475868258;-1475868268;-1475869074;-1475869075;-1475867172;-1475867170;-1475867109;-1475868584;-1475868252;-1475868249;-1475868250;-1475868248;-1475868247;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475869078;-1475867095;-1475869072;-1475867156;-1475867155;-1475869071;-1475869067;-1475869065;-1475869066;-1475868255;-1475868254;-1475868253;-1475868267;-1475868582;-1475867157;-1475867159;-1475867158;-1475867105};
-    {-1817621630;-11796409;-11796448;-11796342;-11796410;-11796145;-11796153;-11796379;-11796311;-11796326;-1541078909;-11796299;-11796140;-11796418;-11796322;-11796331;-11796192;-11796415;-11796368;-1541078902;-11796449;-11796400;-11796431;-11796310;-11796335;-11796363;-11796422;-11796071;-11796324;-11796147;-11796354;-1541078910;-11796364;-11796301;-11796313;-11796320;-11796344;-11796463;-11796412;-1541078891;-11796469;-11796321;-11796086;-11796149;-11796408;-11796229;-11796152;-11796259;-11796305;-11796390;-11796085;-11796345;-11796444;-11796088;-11796141;-11796199;-11796082;-11796411;-11796146;-11796074;-11796425;-11796423;-11796328;-11796084;-11796348;-11796067;-11796461;-11796356;-11796406;-11796447;-11796079;-11796233;-11796414;-11796470;-11796142;-11796367;-11796252;-11796315;-11796424;-11796341;-11796223;-11796201;-11796194;-11796334;-11796319;-11796148;-11796089;-11796371;-11796340;-11796338;-11796076;-11796073;-11796343;-11796439;-11796300;-11796193;-11796155;-11796378;-11796099;-11796468;-11796349;-11796080;-11796157;-11796144;-11796433;-11796316;-11796440;-11796358;-11796419;-11796451;-11796248;-11796083;-11796066;-11796377;-11796302;-11796401;-11796102;-11796445;-11796462;-11796362;-11796360;-11796434;-11796426;-11796347;-11796357;-11796151;-11796325;-11796336;-1541078895;-11796417;-11796456;-11796333;-11796432;-11796359;-1541078904;-11796143;-11796200;-11796438;-11796374;-11796198;-11796346;-11796195;-11796370;-11796154;-11796353;-11796156;-11796150;-11796437;-11796355;-11796139;-11796309;-11796138;-11796107;-11796337;-11796196;-11796242;-11796312;-11796392;-11796361;-11796375;-11796068;-11796314;-11796303;-11796304;-11796081;-11796323;-11796077;-11796450;-11796465;-11796352;-1541078897;-11796332;-11796070;-11796376;-11796069;-11796446;-11796072;-11796365;-11796416;-11796436;-11796318;-11796366;-11796435;-11796100;-11796420;-11796380;-11796101;-11796177;-11796075;-11796429;-11796087;-1541078896;-11796413;-11796430;-11796472;-11796373;-1541078892;-11796327;-11796317;-11796191;-11796330;-1541078903;-11796339;-11796247;-11796467;-11796372;-11796090};
-    {-1944435120;-11796145;-11796153;-11796359;-11796368;-11796400;2060386350;-11796394;-11796363;2060386346;-1848049507;-11796354;-11796364;-11796149;-11796381;-11796366;-11796389;2060386338;-11796141;2060386323;-11796146;-11796398;-11796143;-11796356;-1848049585;-11796438;2060386324;-11796360;-11796148;-11796391;1167524006;2060386326;-11796353;-1848049505;-11796357;-11796350;2060386325;-11796365;-11796378;1167524450;-11796144;1167523977;1167523992;-11796347;2060386320;-1848049536;2060386344;-11796379;-11796390;-11796404;-11796140;-11796152;-11796383;-1848049586;-11796403;-11796147;-11796157;1167524468;1167524470;1167524066;-11796401;2060386345;-11796385;-1848049506;2060386352;-11796376;-11796388;-11796139;2060386353;1167524647;-11796361;-11796380;-11796358;-1848049510;-11796355;-11796156;-1848049514;-11796138;-11796384;-11796395;1167524057;-11796367;-11796402;1167524648;-11796151;-11796377;-11796387;-11796399;-11796154;2060386327;-11796396;2060386354;-1848049513;-11796351;1167524469;-11796382;1167524447;-11796155;-11796150;-11796369;-11796386;-11796375;-11796392;-11796352;1167524448;1167523932;2060386351;-11796393;-11796362;-11796142;2060386329;2060386305;1167524516;1167524449;1167524486;1167524606;1167524607;1167524608;1167524609;1167524612;1167524613;1167524614;1167524611;1528234068;1528234068;1528234068;1167524886;1167524887;1167524889;1167524890;1167524891;1167524892;1167524883;1167524894;1167524896;1167524803;1167524848;1167524781;1167524839;1167524849;1167524840;1167524788;1167524842;1167524797;1167524789;1167524792;1167524802;1167524798;1167524832;1167524509;1167524471;34603170;1167524511;1167524056;1167524510;1167524851;1167524854;1167524855;1167524856;1167524858;1167524861;1167524862;1167524865;1167524866;1167524868;1167524869;1167524870;1167524871;1167524872;1167524857};
-    {1147491976;-11796198;-11796110;-11796395;-11796342;-11796340;-11796338;-11796109;-11796311;-11796100;-11796343;-11796326;-11796197;-11796353;-11796322;-11796331;-11796192;-11796196;-11796312;-11796352;-11796099;-11796108;-11796301;-11796394;-11796335;-11796389;-11796362;-11796399;-11796344;-11796349;-11796188;-11796354;-11796316;-11796336;-11796193;-11796320;-11796350;-11796248;-11796348;-11796242;-11796346;-11796229;-11796106;-11796361;-11796274;-11796314;-11796315;-11796200;-11796310;-11796319;-11796321;-11796189;-11796105;-11796194;-11796333;-11796397;-11796332;-11796259;-11796324;-11796195;-11796396;-11796317;-11796328;-11796103;-11796313;-11796318;-11796102;-11796355;-11796308;-11796323;-11796107;-11796104;-11796101;-11796233;-11796345;-11796329;-11796347;-11796199;-11796190;-11796392;-11796327;-11796398;-11796191;-11796393;-11796339;-11796337;-11796247;-11796252;-11796341;-11796223;-11796201;-1765408696;-1765408697;1926758635;1926758636;1926758633;-11796429;-11796428;-11796427;-11796426;-11796425;-11796424;-11796423;-11796422;-11796421;-11796420;-1765408694;-1765408692;-1765408693;-11796436;-11796435;-11796434;-11796414;-11796413;-11796412;-11796452;-11796451;-11796450;-11796410;-11796409;-11796408;-11796406;-11796405;-11796404;-11796402;-11796401;-11796400;-11796418;-11796417;-11796416;2060386331;2060386332;2060386333;2060386414;2060386415;2060386416;-1765408736;-1765408732;-1765408731;-1765408730;-1765408729;-1765408728;-1765408727;-1765408726;-1765408725;-1765408724;-1765408723;-1765408722;-1765408721;-1765408720;-1765408719;-1765408718;-1765408717;-1765408716;-1765408715;-1765408714;-1765408713;-1765408712;-1765408711;-1765408710;-1765408705;-1765408699;-1765408698;1926758637;1926758638;1926758639;-11796474;-11796473;-11796472;-11796471;-11796470;-11796469;-11796468};
-    {1597085778;-11796308;-11796303;-1948974520;-11796282;-11796268;-11796271;-11796299;-11796276;-1948974505;-11796274;-11796300;-1948974508;-11796286;-11796291;-11796292;-11796277;-1948974507;-1948974518;-11796289;-11796298;-11796288;-1948974504;-11796285;-1948974522;-11796304;-11796301;-11796294;-11796275;-11796279;-11796270;-11796307;-11796269;-11796305;-1948974509;-1948974521;-11796273;-1948974517;-11796283;-11796278;-11796293;-11796284;-11796302;-11796281;-11796290;-11796267;-11796295;-11796297;-1948974506;-11796280;-11796296;-1948974519;-11796272;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;-11796370;-11796369;-11796368;-11796367;-11796366;-11796365;-11796364;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796394;-11796415;-11796414;-11796413;-11796412;-11796411;-11796410;-11796409;-11796432;-11796431;-11796430;-11796429;-11796428;-11796427;-11796426;-11796467;-11796465;-11796463;-11796461;-11796449;-11796448;-11796447;-11796445;-11796444;-11796443;-11796442;-11796441;-11796440;-11796439;-11796438;-11796437;-11796436;-11796435;-11796434;-11796384;-11796383;-11796382;-11796381;-11796380;-11796379;-11796378;-11796377;-11796376;-11796375;-11796374;-11796373;-11796355;-11796354;-11796353;-11796352;-11796351;-11796350;-11796349;-11796348;-11796347;-11796346;-11796345;-11796344;-11796362;-11796361;-11796360;-11796359;-11796358;-11796357;-11796356;-11796391;-11796390;-11796389;-11796388;-11796387;-11796386;-11796385;-11796407;-11796406;-11796405;-11796404;-11796403;-11796402;-11796401;-11796424;-11796423;-11796422;-11796421;-11796420;-11796419;-11796418};
-    {-136010643;-11796476;-1948975068;-1948975081;-1948975049;-1948975083;-1948975044;-1948975091;-1948975033;-1948975048;-1948975046;-1948975080;-1948975074;-1948975037;-1948975082;-1948975078;-1948975079;-1948975077;-1948975073;-1948975047;-1948975051;-1948975034;-1948975042;-11796478;-1948975090;-1948975066;-1765408760;-1948975063;-11796477;-1948975032;-1948975043;-1948975035;-1948975076;-1765408763;-1948975041;-1948975072;-1948975040;-1948975038;-1948975052;-1948975084;-1948975039;-1948975036;-1948975045;-1765408759;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;2060386365;-11796370;-11796369;-11796368;-11796367;-11796366;-11796365;-11796364;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796394;-11796415;-11796414;-11796413;-11796412;-11796411;-11796410;-11796409;-11796432;-11796431;-11796430;-11796429;-11796428;-11796427;-11796426;-11796467;-11796465;-11796463;-11796461;-11796449;-11796448;-11796447;-11796445;-11796444;-11796443;-11796442;-11796441;-11796440;-11796439;-11796438;-11796437;-11796436;-11796435;-11796434;-11796384;-11796383;-11796382;-11796381;-11796380;-11796379;-11796378;-11796377;-11796376;-11796375;-11796374;-11796373;-11796355;-11796354;-11796353;-11796352;-11796351;-11796350;-11796349;-11796348;-11796347;-11796346;-11796345;-11796344;-11796362;-11796361;-11796360;-11796359;-11796358;-11796357;-11796356;-11796391;-11796390;-11796389;-11796388;-11796387;-11796386;-11796385;-11796407;-11796406;-11796405;-11796404;-11796403;-11796402;-11796401;-11796424;-11796423;-11796422;-11796421;-11796420;-11796419;-11796418};
-    {-1644045427;-11796342;-11796311;-11796076;-11796299;-11796322;-11796274;-11796272;-11796310;-11796335;-11796324;-11796301;-11796313;-11796344;-11796294;-11796314;-11796270;-11796315;-11796305;-11796318;-11796287;-11796273;-11796283;-11796306;-11796297;-11796337;-11796341;-11796308;-11796303;-11796319;-11796338;-11796343;-11796276;-11796295;-11796286;-11796080;-11796079;-11796316;-11796277;-11796302;-11796285;-11796336;-11796309;-11796304;-11796323;-11796284;-11796075;-11796279;-11796298;-11796278;-11796282;-11796340;-11796271;-11796300;-11796081;-11796077;-11796296;-11796317;-11796281;-11796320;-11796307;-11796312;-11796339;-11796280;-11796275;-11796433;-11796432;-11796443;-11796441;-11796439;-11796442;-11796440;-11796438;-11796437;2060386339;2060386344;2060386332;2060386355;2060386338;2060386329;2060386328;2060386333;2060386330;2060386334;2060386347;2060386348;-11796429;-11796428;-11796427;-11796426;-11796425;-11796424;-11796423;-11796422;-11796421;-11796420;-11796419;-11796418;-11796456;-11796455;-11796454;-11796453;-11796452;-11796451;-11796450;-11796449;-11796448;-11796447;-11796446;-11796445;-11796408;-11796400;-11796399;-11796398;-11796397;-11796396;-11796395;-11796469;-11796468;-11796467;-11796466;-11796465;-11796464;-11796463;-11796462;-11796461;-11796460;-11796459;-11796458;-11796416;-11796415;-11796414;-11796413;-11796412;-11796411;-11796410;-1765407649;-1765407648;-1765407647;-1765407645;-1765407644;-1765407643;-1765407642;-1765407641;-1765407640;-1765407639;-1765407638;-1765407637;-1765407636;-1765407635;-1765407634;-1765407632;-1765407631;-1765407630;-11796403;-11796405;-11796404;-11796402;-11796407;-11796401;-11796406};
-    {170656205;-11795976;-11796171;-11796056;-11796166;-11795977;-11795954;-11795958;-11796257;-11796071;-11796160;-11796083;-11796159;-11796259;-11795961;-11796047;-11796174;-11796175;-11796305;-11796167;-11795951;-11796306;-1848049380;-11795955;-11796057;-11796043;-11796048;-11796308;-11796164;-11796161;-11795956;-11796073;-11796039;-11796041;-11796172;-11796037;-11796169;-11796061;-11795964;-11796080;-11796055;-11795965;-11796165;-11796036;-11796044;-11796059;-11796045;-11796084;-11796040;-11796258;-11796304;-11795970;-11796072;-11795957;-11796035;-11796173;-11795962;-11795959;-11795952;-11795953;-11796262;-11796260;-11795950;-11796307;-11795968;-11796162;-11796112;-11795974;-11796049;-11795971;-11796069;-1765407641;-11796455;-11796346;-11796345;-11796342;-11796337;-11796335;-11796331;-11796330;-11796328;-11796320;-11796319;-11796318;-11796317;-11796314;-11796313;-11796312;-11796311;-11796310;-11796254;-11796253;-11796252;-11796251;-11796250;-11796248;-11796247;-11796246;-11796245;-11796244;-11796243;-11796241;-11796240;-11796239;-11796238;-11796237;-11796236;-11796223;-11796222;-11796221;-11796220;-11796219;-11796218;-11796216;-11796215;-11796214;-11796213;-11796212;-11796211;-11796209;-11796208;-11796207;-11796206;-11796205;-11796204;-11796202;-11796201;-11796200;-11796199;-11796198;-11796196;-11796195;-11796194;-11796193;-11796192;-11796191;-11796189;-11796188;-11796187;-11796186;-11796185;-11796184;-11796182;-11796181;-11796180;-11796179;-11796178;-11796177;-11796026;-11796025;-11796024;-11796023;-11796022;-11796021};
-    {1649439303;-11795904;-11795924;-11795902;-11795901;-11795928;486;2093678728;-11795997;-11795943;-1541078220;-11795994;-11795981;479;-1541078214;-11795892;405405802;-11795972;-11796002;2093678985;-1541078419;-11795910;-11796003;-11795900;-11795970;-11795933;2093679137;-1541078734;-11795968;2093678984;-11795998;-11795950;-1541078733;-11795922;-11795912;-11795899;-11795921;2093678920;-11795995;-11795977;2093679133;2105409868;2105409869;2093678842;405405804;-1541078872;-11795941;405405805;-1541078215;2093679134;2093679135;-11795980;-11795908;2105409867;-11795934;-1541078874;-11795930;-11795929;2093678921;-1541078864;-11795909;2093678983;-11795919;-1541078213;-11795979;-11795907;-11795954;-11795916;-11796046;-11795949;-11795939;-11795936;-11795937;-11795920;-11795925;-1541078226;-11795923;-11796081;-11795975;-11795999;-11796085;-11796029;-11795971;-11795918;-11795896;-11795973;-11795906;-11795905;-11796006;-11795931;-11795969;-11796000;-11795911;-11795947;-11795927;-11795895;-11795893;-11795894;-11795926;-11795946;-11795942;-11795974;-11796045;-11795945;405405806;-11795951;-1541078871;-11795898;-11795996;-11795938;482;-11795978;-11795888;2093678778;-11796004;-11795903;2093678982;405405803;-11795940;-11795917;2093678721;-11795913;-11795915;-11795897;-11795952;405405801;-1541078731;-11795953;-1541078219;-11795948;2093678986;-11796420;-11796454;-11796421;-11796406;-11796405;-11796404;1926758753;1926758766;-11796332;-11796258;-11796240;-11796239;-11796238};
-    {-2115418256;-11796360;2060386366;-11796409;2060386374;2060386432;2060386364;2060386361;-11796470;2060386413;2060386344;-11796311;-11796359;2060386331;-11796268;-11796460;2060386343;-11796424;2060386341;-11796404;-11796266;2060386340;2060386424;2060386359;-11796267;2060386433;-11796357;-11796312;2060386325;-11796415;-11796400;2060386336;-11796355;-11796466;2060386346;-11796422;2060386337;-11796257;2060386371;2060386423;2060386373;2060386422;-11796465;-11796316;-11796255;2060386332;-11796253;-11796402;2060386363;-11796254;-11796462;2060386410;-11796463;-11796420;-11796412;-11796401;-11796461;2060386345;-11796256;-11796469;2060386372;2060386414;-11796259;2060386415;-11796419;2060386334;2060386431;2060386368;2060386339;2060386375;2060386365;-11796356;-11796459;-11796258;-11796408;2060386429;2060386342;-11796421;2060386333;2060386369;2060386426;-11796264;2060386378;2060386412;-11796398;-11796314;2060386430;2060386327;-11796262;-11796315;-11796269;-11796265;-11796411;2060386417;-11796425;2060386427;-11796458;2060386335;-11796423;-11796406;-11796399;-11796261;-11796416;-11796413;-11796358;2060386367;2060386425;2060386324;2060386428;2060386328;2060386338;-11796251;-11796317;-11796410;-11796313;-11796403;2060386377;-11796260;2060386362;2060386411;-11796457;2060386323;2060386370;2060386416;-11796468;2060386326;-11796407;-11796263;-11796405;2060386360;-11796414;2060386376;-11796467;-11796252;2060386379;-11796250;2060386329;-11796417;-11796464;2060386418};
-    {312004957;2060386366;-11796409;-11796416;1167523884;-11796148;-11796150;2060386357;-11796089;2060386362;-11796448;-11796391;-11796395;-11796145;-11796153;-11796076;-11796073;-11796460;-11796390;-11796397;-11796140;2060386340;2060386365;2060386359;34603041;-11796426;-11796383;-11796415;-11796453;-11796433;-11796155;-11796449;-11796400;-11796399;-11796431;-11796387;-11796394;1167523885;-11796070;-11796466;-11796384;-11796422;-11796475;-11796080;-11796071;1167523880;-11796144;-11796079;-11796147;-11796465;-11796157;-11796451;-11796083;-11796462;-11796463;-11796420;2060386352;-11796401;-11796461;-11796469;-11796086;2060386322;-11796149;-11796154;-11796396;-11796454;2060386354;-11796468;2060386328;2060386321;-11796385;-11796459;-11796072;-11796474;2060386333;-11796075;34603042;-11796429;-11796085;-11796068;-11796389;-11796382;-11796458;-11796087;2060386358;-11796138;2060386318;-11796088;-11796141;-11796430;-11796472;-11796082;2060386315;1167523879;-11796386;-11796074;-11796081;-11796392;-11796398;-11796143;-11796476;2060386314;2060386307;34603039;-11796151;-11796432;-11796084;-11796388;-11796152;-11796067;2060386339;2060386356;1167523878;2060386316;2060386355;2060386332;2060386331;-11796427;-11796156;2060386320;-11796146;-11796139;-11796142;2060386338;2060386319;-11796361;2060386353;2060386360;2060386317;-11796455;-11796467;-11796066;-11796077;2060386306;-11796473;2060386329;-11796090;-11796464;-11796069};
-    {2050064391;-11796308;-11796476;-11796416;-11796452;-11796443;-11796448;2093678914;-11796470;-11796432;2093678954;-11796468;-11796460;-11796326;2093678716;2093678718;-11796424;2093678849;-11796439;-11796418;2093678939;-11796427;-11796295;-11796426;-11796300;-11796453;2093678916;-11796449;-11796478;-11796431;2093678837;-11796466;2093678918;2093679072;-11796445;-11796475;-11796465;-11796255;-11796301;2093678917;-11796277;-11796451;2093678846;2093679079;-11796254;-11796463;-11796420;2093678941;-11796461;-11796256;-11796469;-11796321;2093678913;2093679084;2093678864;2093678963;-11796454;-11796459;-11796446;-11796474;-11796421;2093678949;2093679088;2093678965;-11796440;-11796429;2093678964;-11796251;2093678707;2093678950;-11796444;-11796430;2093678935;2093678962;-11796287;2093679090;-11796457;2093678850;2093678871;2093678937;2093678938;2093678955;-11796425;2093678915;-11796302;-11796423;-11796261;-11796435;-11796441;2093678822;2093678727;-11796419;2093678966;-11796456;-11796296;-11796471;-11796442;-11796473;-11796422;2093678940;-11796260;2093679070;2093678919;-11796472;-11796436;2093679078;2093679092;2093679074;2093678847;2093678952;-11796477;-11796297;2093678961;2093678960;-11796299;-11796447;-11796428;2093679094;2093678951;2093678953;-11796455;-11796450;2093678741;-11796467;2093679068;-11796252;-11796438;-11796462;-11796298;2093678936;-11796433;2093679069;-11796417;-11796464;2093679091};
-    {-1050035699;-11796476;-11796448;-11796145;-11796282;-11796153;-11796379;-11796311;-11796390;-11796326;1293287554;-11796140;1293287690;-1541078828;-11796152;-11796331;-11796325;-11796400;-11796293;-11796387;-11796394;-11796310;-11796292;-11796475;-1855455135;-11796442;-11796147;-11796332;-11796157;-11796313;-11796288;-11796401;-11796469;-1541078829;-11796149;-11796381;2060386333;-11796294;-11796389;-11796329;-11796141;-11796411;-11796287;-11796146;-11796143;-11796328;-11796283;-11796471;-11796473;-11796306;1293287528;-11796388;-11796290;-11796406;-11796297;-11796447;-11796457;-11796414;-11796407;-11796303;-11796416;-11796148;-11796278;-11796443;-1855455057;-11796470;-11796391;-11796441;1293287720;-11796468;-1541078827;1293287523;-11796312;-11796380;2060386325;-11796155;-11796378;-11796156;-11796291;-11796384;-11796281;2060386308;-11796144;-11796440;1293287530;-11796289;-11796462;-11796302;-1855455046;-11796285;-11796154;-11796309;1293287689;-11796304;2060386321;-11796474;2060386322;-11796279;-11796139;-11796465;-11796150;-11796382;1293287531;-11796472;-11796386;-11796327;-11796466;-11796445;-11796456;-1172111224;-11796142;-11796284;-11796151;-11796307;2060386307;-11796295;-11796385;-1541078826;-11796280;-11796286;-11796393;-11796314;2060386334;-11796138;-11796305;-11796308;2060386310;-11796467;-11796296;-11796437;-1172111187;-1172111219;-11796464};
-    {2060214456;-11796299;2060386476;2060386486;2060386485;2060386391;2060386487;2060386478;2060386338;2060386442;2060386484;2060386369;2060386360;2060386376;1674052671;2060386474;2060386362;2060386464;2060386468;2060386365;2060386359;-11796378;2060386403;2060386371;2060386423;2060386401;2060386435;2060386368;2060386483;2060386358;2060386370;2060386335;2060386448;2060386428;1926758854;2060386364;-11796379;2060386475;1674052665;2060386363;2060386470;2060386466;2060386471;2060386415;2060386446;2060386444;2060386462;2060386452;-11796305;2060386377;2060386353;2060386366;2060386432;-11796371;2060386347;2060386472;-11796300;2060386436;2060386465;2060386445;2060386454;-11796374;2060386441;-11796377;2060386447;2060386372;2060386469;-11796301;2060386429;2060386380;2060386463;2060386450;2060386395;2060386389;-11796373;2060386417;-11796375;-11796392;2060386374;2060386451;2060386477;-11796372;2060386375;2060386453;2093678875;2093678983;2093678983;2093678983;2093678983;2093678862;2093678862;2093678862;2093678862;2093678940;2093678940;2093678940;2093678940;2093678927;2093678927;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678888;2093678849;2093678849;2093678849;2093678849;2093678953;2093678953;2093678953;2093678953};
-    {507487826;2060386357;2060386364;2060386344;-11796076;2060386341;2060386350;2060386337;-11796071;2060386311;2060386319;498;2060386391;1167524689;1167524691;2060386378;-11796085;-11796207;2060386314;2060386338;2060386312;-11796088;2060386315;-11796074;2060386367;500;2060386307;2060386377;2060386353;2060386360;2060386376;2060386379;2060386348;-11796089;2060386362;2060386361;2060386331;2060386316;2060386326;2060386343;2060386340;2060386365;2060386359;2060386383;2060386347;2060386325;2060386355;2060386336;-11796070;2060386308;-11796080;2060386371;-11796079;1167524690;-11796206;2060386332;-11796066;2060386384;2060386372;2060386322;2060386309;2060386368;2060386375;2060386354;2060386321;-11796072;-11796209;-11796075;-11796073;2060386366;-11796068;2060386363;-11796208;-11796087;-11796067;2060386327;2060386334;2060386381;-11796077;2060386370;-11796081;2060386358;499;2060386335;2060386306;2060386385;2060386324;2060386318;2060386328;2060386356;2060386369;2060386330;2060386313;2060386323;2060386382;2060386374;2060386320;2060386310;2060386342;2060386351;2060386317;2060386329;-11796090;-11796069;-11796175;-11796174;-11796173;-11796172;-11796171;-11796170;-11796169;-11796168;-11796167;-11796166;-11796165;-11796164};
-    {-1900248111;-1138884564;-1138884560;-1138884603;-1948974517;-1138884584;-1138884527;-1138884491;-1138884533;-1138884528;-1138884572;34603495;-1138884591;-1948974608;-1138884585;-1138884578;-1138884531;-1138884592;-1948974607;-1948974516;-1948974519;-1138884582;-1948974611;-1948974609;-1948974520;-1948974612;-1948974515;-1138884555;-1138884589;-1138884567;-1138884583;-1138884581;34603487;-1138884546;34603494;-1948974610;-1138884526;-1138884565;-1138884598;-1138884569;-1138884571;-1138884538;-1138884548;-1138884550;-1138884568;-1138884525;-1138884559;-1138884537;-1138884553;-1138884570;-1138884574;-1138884541;-1138884552;-1138884577;-1138884586;-1138884530;-1138884587;-1138884562;-1138884594;-1138884595;-1138884604;-1138884539;-1138884602;-1138884532;-1138884529;-1138884549;-1138884596;-1138884599;-1138884545;-1138884605;-1138884551;-1138884580;-1138884544;-1138884542;34603492;-1138884563;-1138884554;-1138884489;-1138884597;-1138884540;-1138884575;-1138884601;-1138884600;-1138884588;-1138884576;-1138884535;-1138884561;-1138884566;-1138884556;-1138884557;34603493;-1138884547;-1138884543;-1138884593;-1138884536;-1138884590;-1138884534;-1138884558;-1948974518;-1138884579};
-    {748712866;2093679187;-11796145;-11796153;-11796140;-11796152;2093679055;2093679129;2093679093;2093679106;-11796147;2093679107;2093679180;2093679120;-11796149;2093679087;-11796141;-2015297144;-11796146;2093679098;2093679096;2093679075;-2015297143;2093679054;-11796139;2093679094;2093679060;2093679202;-11796148;-11796150;2093679067;-2015297146;2093679127;2093679126;2093678823;2093678826;2093678889;2093678895;2093679058;2093679097;2093679112;2093679113;2093679117;2093679131;2093679083;2093679073;2093678929;2093679077;2093679057;2093679115;2093679133;-2015297148;-11796155;-11796156;2093679132;2093679092;2093679104;2093679006;2093679121;2093679089;2093679086;2093679059;2093679110;2093679090;2093679108;2093678831;-2015297150;2093679056;2093679081;2093679099;2093679111;-11796144;2093679088;2093679076;2093679103;-2015297147;2093678818;2093679095;2093679079;-2015297145;-11796417;-11796154;2093679194;2093679085;-2015297149;2093679105;2093679114;-11796138;-11796151;2093679109;-11796142;2093679118;-11796143;2093679078;2093679125;2093679116;2093679080;2093679130;2093679091};
-    {-1574275404;-11796145;-11796153;-11796149;-11796287;-11796143;-11796283;-11796297;-11796150;-11796278;-11796155;-11796144;-11796289;-11796285;-1627586479;-11796140;-11796152;-11796157;-11796288;-1855452427;-11796151;-11796139;-11796290;-11796295;-11796286;-11796156;-11796281;-11796282;-11796291;-1855452431;-11796293;-11796154;-11796292;-11796141;-11796147;-11796294;-11796138;-11796146;-11796284;-11796142;-11796148;-11796280;-11796296;-11796279;-11796327;-11796326;-11796325;-11796324;-11796323;-11796322;-11796321;-11796380;-11796379;-11796378;-11796377;-11796363;-11796362;-11796361;-11796343;-11796342;-11796341;-11796340;-11796339;-11796338;-11796337;-11796351;-11796350;-11796349;-11796348;-11796347;-11796346;-11796345;-11796388;-11796387;-11796386;-11796385;-11796384;-11796383;-11796382;-11796411;-11796410;-11796409;-11796408;-11796400;-11796399;-11796398;-11796396;-11796395;-11796394;-11796393;-11796392;-11796391;-11796390;-11796359;-11796358;-11796357;-11796356;-11796355;-11796354;-11796353};
-    --{263580627;-11796476;-1335754701;2105409874;-11796395;-11796311;-11796359;-11796390;2105409873;2105409992;-11796383;-11796415;-11796400;-11796478;-11796387;-11796475;-1335754680;-11796313;2105409971;-11796355;-11796401;2105409869;2105409872;-11796385;-11796381;-11796314;2105409990;-11796389;-1335754668;-11796398;1482555782;-11796388;2105409991;-11796356;-11796477;-1335754702;-1335754729;-11796360;-11796416;-1335754718;-11796397;2105409974;-11796357;-11796312;-11796380;-11796378;-11796358;2105409973;-1335754647;-11796384;-1335754691;2105409975;-11796316;-11796315;2105409994;-11796377;-11796399;-1335754690;-1335754657;-1335754658;-11796479;-1335754679;-1335754717;2105409976;-11796396;-11796386;2105409989;-11796374;2105409871;-1335754646;-11796382;-11796413;-1335754728;-11796414;2105409972;-1335754669;-11796375;-11796317;-11796379;-11796391;-11796393;-11796392;-11796376;2105409993};
-    {817373972;-11796443;-11796470;-11796432;-11796441;-11796468;-11796439;-11796418;-11796353;-11796365;-11796433;-11796451;-11796400;-11796431;-11796406;-11796454;-11796434;-11796442;-11796465;-11796440;-11796367;498;499;-11796462;-11796463;-11796461;-11796469;-11796473;-11796364;500;-11796474;-11796445;-11796472;-11796460;-11796428;-11796427;-11796437;-11796426;-11796357;-11796363;-11796457;-11796471;-11796456;-11796459;-11796449;-11796450;-11796466;-11796354;-11796368;-11796429;-11796452;-11796438;-11796444;-11796453;-11796366;-11796435;-11796455;-11796458;-11796355;-11796430;-11796425;-11796352;-11796436;-11796356;-11796467;-11796464;-11796175;-11796174;-11796173;-11796172;-11796171;-11796170;-11796169;-11796168;-11796167;-11796166;-11796165;-11796164};
-    {2518601;-11796308;-11796435;-11796303;-11796319;-11796443;-11796391;-11796395;-11796390;-11796424;-11796397;-11796299;-11796439;-11796386;-11796312;-11796427;-11796389;-11796426;-11796383;-11796300;-11796380;-11796378;-11796400;-11796431;-11796387;-11796422;-11796445;-11796428;-11796442;-11796440;-11796367;-11796374;-11796302;-11796321;-11796393;-11796396;-11796385;-11796317;-11796375;-11796392;-11796369;-11796371;-11796368;-11796377;-11796379;-11796381;-11796311;-11796309;-11796384;-11796316;-11796306;-11796305;-11796304;-11796310;-11796398;-11796298;-11796366;-11796430;-11796429;-11796432;-11796314;-11796437;-11796444;-11796318;-11796373;-11796441;-11796425;-11796423;-11796436;-11796421;-11796297;-11796296;-11796438;-11796372;-11796434};
-    {-161371567;-11796071;-11796083;-11796086;-11796088;-11796082;-11796084;-11796067;-11796089;-11796073;-11796070;-11796080;-11796066;-11796072;-11796075;-11796068;-11796076;-11796087;-11796079;-11796081;-11796085;-11796069;-11796074;-11796077;-11796090;-1541078482;-1541078482;-1541078482;-1541078482;-1541078501;-1541078489;-1541077972;-1541077972;-1541077972;-1541077972;-1541077979;-1541077979;-1541077979;-1541077979;-1541078593;-1541078582;-1541078589;-1541078590;-1541078548;-1541078525;-1541078524;-1541077989;-1541077988;-1541077987;-1541077986;-1541077985;-1541077984;-1541077983;-1541077965;-1541077965;-1541077965;-1541077965};
-    {-977706424;2060386357;2060386364;2060386350;2060386349;2060386346;2060386337;2060386311;2060386363;2060386319;2060386345;2060386328;2060386360;2060386333;2060386331;2060386370;2060386330;2060386338;2060386352;2060386312;2060386318;2060386313;2060386369;2060386367;2060386376;2060386324;2060386366;2060386336;2060386374;2060386348;2060386362;2060386361;2060386326;2060386343;2060386340;2060386325;2060386355;2060386372;2060386322;2060386334;2060386368;2060386339;2060386375;2060386354;2060386342;2060386327;2060386332;2060386373;2060386356;2060386320;2060386310;2060386321;2060386358;2060386314;2060386344;2060386351};
-    {1887730855;-11795976;-11796460;-11795977;-11796478;-11796466;-11796475;1293289203;-11796465;1293288535;1293289206;-11796119;-11795974;1293288897;-11796471;1293288554;-11796470;-11795978;-11795971;-11796129;1293289269;-11796118;-11795972;-11796002;-11796046;1293288900;-11796474;-11796472;-11796469;-11796114;-11796473;-11795973;-11795964;-11796476;-11796467;-11796461;-11796468;-11796459;-11795975;-11795966;-11796477;-11796463;-11795965;-11796462;1293289266;-11796042;1293288484;-11795967;-11795963;1293288481;1293288546;2093678694;1293287987;1293288176;-11796464;1293288469};
-    {-768833570;-11796476;-11796449;-11796400;2060386349;2060386486;2060386388;2060386485;-11796412;2060386390;2060386306;2060386468;2060386355;2060386488;2060386504;-11796434;2060386387;2060386356;2060386475;-11796390;-114950141;-1765408587;-11796408;405405705;2060386353;2060386489;2060386348;2060386347;1185742864;-11796395;-11796451;2060386389;2060386474;405405704;-11796436;2060386305;2060386307;-881917928;-881917923;-881917922;2105410001;2105410001;2105409997;2105409989;2105409985;2105409993;-11796258;-11796240;-11796239;-11796238};
-    {1323747701;-1541078874;-1855454159;-1541078872;1482555820;1482555807;-1855455008;-1855454409;-1541078871;-1475867566;-809369585;-809369583;-809369573;-809369578;-1475870010;-1475866992;-1475867021;-1475866924;-1475870494;-1475866937;-1475869652;-1475869444;-1475869521;-1475869696;-1475869752;-1475868325;-1475867681;-1475866982;-1475867822;-1475869597;-1475869357;-1475869983;-1475869190;-1475869856;-1475866911;-1475867002;-1475867811;-1475867586;-1475869320;-1475866894;-1475869221;-1475870154;-1475867807;-1475867568;-1475869663};
-    {-1934656620;-11796476;-11796395;-11796379;-11796311;-11796359;-11796390;-11796383;-11796415;-11796400;-11796478;-11796387;-11796475;-11796313;-11796385;-11796381;-11796389;-11796398;-11796388;-11796356;-11796414;-11796360;-11796416;-11796391;-11796397;-11796357;-11796312;-11796380;-11796378;-11796384;-11796386;-11796377;-11796401;-11796479;-11796396;-11796355;-11796358;-11796413;-11796316;-11796375;-11796477;-11796315;-11796317;-11796382;-11796392;-11796374;-11796314;-11796376;-11796399;1482555782;-11796393};
-    {-410824576;-11796476;-11795978;-11796046;-11795977;-11796478;-11796118;-11795972;-11795975;-11796002;-11796114;-11796465;-11795965;-11795964;2093679120;-11796463;-11796461;2093679119;-11796469;-11795966;-11796119;-11796474;-11796042;-11796129;-11795963;-11796462;-11796472;-11795967;-11795973;2093679121;-11796477;-11796470;-11796468;-11796466;-11796471;2093679118;-11796460;-11796475;-11795974;-11796473;-11796459;-11795971;-11795976;2093679117;-11796467;2093679116;-11796464};
-    {567986524;-587661257;-587661296;-587661241;-587661298;-587661282;-587661258;-587661244;-587661234;-587661267;-587661305;-587661272;-587661273;-587661307;-587661302;-587661300;-587661290;-587661281;-587661270;-587661287;-587661268;-587661239;-587661280;-587661285;-587661240;-587661278;-587661277;-587661266;-587661274;-587661297;-587661259;-587661255;-587661289;-587661251;-587661250;-587661249;-587661232;-587661310;-587661304;-587661237;-587661230;-587661242;-587661236;-587661233;-587661261;-587661264;-587661291;-587661260;-587661301;-587661235;-587661269;-587661231;-587661299;-587661292;-587661284;-587661288;-587661254;-587661238;-587661309;-587661276;-587661286;-587661283;-587661246;-587661306;-587661245;-587661295;-587661253;-587661294;-587661247;-587661263;-587661229;-587661252;-587661262;-587661265;-587661256;-587661271;-587661243;-587661279;-587661248;-587661275;-587661303;1167523919;1167523922;1167523920;1167523917;1167523899;1167523898;1167523902;1167523904;1167523906;1167523905;1167523924;1167523923;1167523882;1167523879;1167523874;1167523873;1167523864;1167523928;1167523932;1167523934;1167523938;1167523941;1167523946;1167523947;1167523952;1167523955;1167523959;1167523961;1167523965;1167523968;1167523973;1167523974;1167523979;1167523982;1167523986;1167523988;1167523992;1167523995;1167524000;1167524001;1167524006;1167524009;1167524013;1167524015;1167524018;1167524022;1167524024;1167524028;1167524032;1167524036;1167524037;1167524040;1167524046;1167524050;1167523893;1167524054;1167524057;1167524062;1167524063;1167524068;1167524071;1167524075;1167524077;1167524082;1167524085;1167524087;1167524091;1167524094;1167524099;1167524100;1167524105;1167524108;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
-    {1705189686;1674051595;1674051597;1674051596;1674051598;1674051593;1674051592;1674051594;1674051600;1674051599;1167523919;1167523922;1167523920;1167523917;1167523899;1167523898;1167523902;1167523904;1167523906;1167523905;1167523924;1167523923;1167523882;1167523879;1167523874;1167523873;1167523864;1167523928;1167523932;1167523934;1167523938;1167523941;1167523946;1167523947;1167523952;1167523955;1167523959;1167523961;1167523965;1167523968;1167523973;1167523974;1167523979;1167523982;1167523986;1167523988;1167523992;1167523995;1167524000;1167524001;1167524006;1167524009;1167524013;1167524015;1167524018;1167524022;1167524024;1167524028;1167524032;1167524036;1167524037;1167524040;1167524046;1167524050;1167523893;1167524054;1167524057;1167524062;1167524063;1167524068;1167524071;1167524075;1167524077;1167524082;1167524085;1167524087;1167524091;1167524094;1167524099;1167524100;1167524105;1167524108;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
-    {-1184245578;-1765408541;-11796474;405405709;-11796464;2105409825;2105409825;2105409825;-1466630125;-1466630124;-1466630121;-1466630120;-1466630119;-1466630118;-1466630117;-1466630116;-1466630115;-1466630114;-1466630113;-1466630112;-1466630111;-1466630110;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409855;2105409775;2105409777;2105409779;2105409780;2105409781;2105409991;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409962;2105409981;2105409846;2105409846;2105409846;2105409846;2105409846;2105409846;2105409948;2105409945;2105409946;2105409947;2105409951;2105409953;2105409954;2105409955;2105409966;2105409967;2105409969;2105409970;2105409971;2105409972;2105409973;2105409975;2105409976;2105409977;2105409978;2105409979;2105409980;2105409873;2105409873;2105409873;2105409873;2105409873};
-    {1612139937;-11796406;-1475867566;-809369585;-809369583;-809369573;-809369578;-1475870010;-1475866992;-1475867021;-1475866924;-1475870494;-1475866937;-1475869652;-1475869444;-1475869521;-1475869696;-1475869752;-1475868325;-1475867681;-1475866982;-1475867822;-1475869597;-1475869357;-1475869983;-1475869190;-1475869856;-1475866911;-1475867002;-1475867811;-1475867586;-1475869320;-1475866894;-1475869221;-1475870154;-1475867807;-1475867568;-1475869663};
-    {1190972738;-11796476;-11796468;-11796326;-1848049579;-11796325;2060386336;-11796475;2060386337;-11796332;-11796465;498;499;-1848049626;-11796479;450;-11796474;-11796328;2060386329;-11796333;-11796478;2060386339;-11796467;-1848049628;2060386341;2060386326;-11796466;-11796329;2060386340;-11796327;2060386338;-1848049597;-1848049624;451;449;500;2060386335;-11796473;-1848049590;-11796477;-11796464};
-    {1759178769;2105409609;-11796310;2105409583;2060386307;-11795892;-11795883;-11795896;-11796285;-11795900;-11795887;2105409581;-11795886;-11795895;-11795890;-11795899;-11795882;-11796383;2105409606;-11795891;-11795898;-11795888;-11795889;2105409584;-11795893;-11796463;-11795884;-11795894;-11796206;-2015297409;-11795897;-11795881;2105409610;-11795885};
-    {-224855659;-1172110256;-1172110836;-1172110280;-1172110270;-1172110837;-1172110266;-1172110248;-1172110271;-1172110981;-1172110979;-1172110262;-1172110259;-1172110257;-1172110909;-1172110254;-1172110284;-1172110253;-1172110261;-1172110264;-1172110956;-1172110282;-1172110247;-1172110807;-1172110258};
-    {649101397;-11795890;-11795899;1293287674;-11795882;1293287872;-11796383;1293287873;-11795889;-11795898;-11795893;-11795892;-11795884;-11795894;-11796206;1293287675;-11795896;-11795900;-11795887;-11795897;-11795888;-11795885;-11795886;-11795895;-11795881;1293287865;-11795891;1293287864;-11795883};
-    {128844448;-11796452;506;-11796311;-11796359;-11796449;-11796313;924;-11796314;-11796315;-1765408760;-11796356;-11796406;-11796360;-11796407;-11796357;-11796312;-11796453;-11796358;-11796355;-11796451;867;-11796317;-11796316;-1765408758;-1765408759;-11796450;-11796455;-11796454};
-    {-1243448568;2060386410;2060386406;-11796432;-11796429;2060386412;2060386341;2060386460;2060386457;1674051698;2060386459;2060386349;2060386405;2060386458;2060386357;2060386408;2060386456;1926758854};
-    {-1036005362;2060386410;2060386459;2060386412;2060386341;1674051713;2060386457;2060386460;2060386349;1674051739;-11796429;2060386456;1674051695;-11796432;2060386408;2060386458};
-    {1844499196;1167524221;1167523888;1167523878;1167523877;1167523895;1167523876;1167524306;1167524160;1167524220;1167524307;1167524218;1167524219;1167523889;1167523880};
-}
 
 
 
@@ -4477,6 +5316,109 @@ function getCords()
     return array, bool;
 end
 
+function FastCR(name)
+	local m = nil
+	local points = fastpoints[name]
+
+	local after = 3000
+	local skip_p = false
+	local skip = false
+
+	m = get_map()
+
+	for i, v in ipairs(points) do
+		if m ~= v.map then
+			change_map(v.map)
+		end
+
+		gg.sleep(3000)
+
+		m = get_map()
+
+		if m ~= v.map then
+			gg.toast("Please, enter "..name.." or be at Home and try again.")
+			return
+		end
+		break
+	end
+
+	for i, v in ipairs(points) do
+		skip_p = false
+		skip = false
+
+		if v.type == "tp" or v.type == "tp-mv" then 
+			while get_map() ~= v.map do
+				gg.sleep(2000)
+			end
+
+			change_map(v.to_map)
+
+			while get_map() ~= v.to_map do
+				gg.sleep(2000)
+			end 
+
+			if v.type == "tp" then
+				skip_p = true
+			end
+
+			gg.sleep(2000)
+			
+		elseif v.type == "mv" then
+			while get_map() ~= v.map do
+				gg.sleep(2000)
+			end
+
+			skip = v.skip
+
+			if skip then
+				gg.sleep(3000)
+			end
+		end
+
+		if skip_p ~= true then
+			gg.setValues({
+				{address = coords['x'], flags = gg.TYPE_FLOAT, value = v.x},
+				{address = coords['y'], flags = gg.TYPE_FLOAT, value = v.y},
+				{address = coords['z'], flags = gg.TYPE_FLOAT, value = v.z}
+			})
+		end
+
+		if skip ~= true then
+			collect_waxes()
+		end
+
+		gg.sleep(after)
+	end
+end
+
+function AbsorbWings()
+    local offset = nentity + offsets.wl_pos
+    local values1 = {}
+    local values2 = {}
+    local count = 0
+
+    for i = 0, 11 do
+        ad = offset + i * 0x130 + 0xA8
+        st = getadd(ad, gg.TYPE_DWORD)
+
+        if st == 1 then
+            count = count + 1
+            table.insert(values1, {address = ad, value = 4, flags = gg.TYPE_DWORD})
+            table.insert(values2, {address = ad, value = 8, flags = gg.TYPE_DWORD})
+        end
+    end
+
+    gg.setValues(values1)
+    gg.sleep(200)
+    gg.setValues(values2)
+    
+    if count == 0 then
+        gg.toast("Aqui no se encuentran alas")
+    else
+        gg.toast("Alas encontradas: "..count)
+    end            
+end
+
 function getposit()
 	local values = gg.getValues({
 		{address = coords["z"], flags = gg.TYPE_FLOAT},
@@ -4503,40 +5445,34 @@ function UnlockSeason()
 end
 
 function rapidfarm()
-    -- Activar el set_autoburn
-    set_autoburn(true)
-
-    local cords, bool = getCords()
+	local cords, bool = getCords();
     if bool then
         for i, v in ipairs(cords) do
-            if gg.isVisible(true) then
-                break
-            end
+			if gg.isVisible(true) then
+				break;
+			end
             gg.setValues({
-                {
-                    address = coords.x,
-                    flags = gg.TYPE_FLOAT,
-                    value = v[1],
-                },
-                {
-                    address = coords.y,
-                    flags = gg.TYPE_FLOAT,
-                    value = v[2],
-                },
-                {
-                    address = coords.z,
-                    flags = gg.TYPE_FLOAT,
-                    value = v[3],
-                },
-            })
-            gg.sleep(700)
+            {
+                address = coords.x,
+                flags = gg.TYPE_FLOAT,
+                value = v[1],
+            },
+            {
+                address = coords.y,
+                flags = gg.TYPE_FLOAT,
+                value = v[2],
+            },
+            {
+                address = coords.z,
+                flags = gg.TYPE_FLOAT,
+                value = v[3],
+            },
+        });
+        gg.sleep(1100);
         end
     else
-        gg.toast("There are no routes here at the moment")
+        return gg.toast("There are no routes here at the moment");
     end
-
-    -- Desactivar el set_autoburn
-    set_autoburn(false)
 end
 
 function slowfarm()
@@ -5387,6 +6323,64 @@ function find_cometics_emotes()
 	gg.setRanges(old_ranges)
 end
 
+function find_portal_offset()
+	gg.setRanges(gg.REGION_C_ALLOC)
+	gg.clearResults()
+	gg.searchNumber(":Ap08Intro", gg.TYPE_BYTE)
+	local len = gg.getResultsCount()
+	if len == 0 then
+		offsets.portal2_off = 0
+		gg.toast("Failed")
+		return
+	end
+	gg.refineNumber(":A", gg.TYPE_BYTE)
+	local values = gg.getResults(gg.getResultCount())
+	if type(nentity) ~= "table" then
+		gg.clearResults()
+		gg.searchNumber("1099746509", gg.TYPE_DWORD)
+		nentity = gg.getResults(1)[1]
+	end
+	for i = #values, 1, -1 do
+		if values[i].address > nentity.address then
+			table.remove(values, i)
+		end
+	end
+	portal = return_min(nentity.address, values, true)
+	gg.clearResults()
+	gg.searchNumber(16777216, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, portal.address, portal.address + 0x70)
+	local len = gg.getResultsCount()
+	if len == 0 then
+		offsets.portal2_off = 0
+		gg.toast("Failed")
+		return
+	end
+	portal2 = gg.getResults(1)[1]
+	offsets.portal2_off = portal2.address - nentity.address
+	portal2.name = "portal2"
+	gg.addListItems({portal2})
+	gg.clearResults()
+	gg.setRanges(old_ranges)
+end
+
+function show_offsets()
+	check_offsets()
+	local output = ""
+	output = output.."Found offsets:\n"
+	output = output.."ptoplayer = "..string.format("%x", offsets.ptoplayer).."\n"
+	output = output.."player -> pos_x = "..string.format("%x", offsets.pos_off).."\n"
+	output = output.."ptoentity = "..string.format("%x", offsets.ptoentity).."\n"
+	output = output.."ptonentity = "..string.format("%x", offsets.ptonentity).."\n"
+	output = output.."nentity -> curmap = -"..string.format("%x", -offsets.curmap_off).."\n"
+	output = output.."nentity -> plants = "..string.format("%x", offsets.plants).."\n"
+	output = output.."nentity -> gamespeed_off = -"..string.format("%x", -offsets.gamespeed_off).."\n"
+	output = output.."nentity -> portal2_off = -"..string.format("%x", -offsets.portal2_off).."\n"
+	output = output.."chat = "..string.format("%x", offsets.chat).."\n"
+	output = output.."ptoemotes = "..string.format("%x", offsets.ptoemotes).."\n"
+	output = output.."ptocloset = "..string.format("%x", offsets.ptocloset)
+
+	gg.alert(output, "ok")
+end
+
 function return_min(n, values, only_address)
 	local m = {address = 0xFFFFFFFFFF, value = 999999999}
 	for k, v in ipairs(values) do
@@ -5431,11 +6425,11 @@ function add_position()
   end
   
   function add_position_n()
-	gg.toast("Next time you open GG, the position will be written")
+	gg.toast("Presiona el icono GG para escribir")
 	while true do
 		if gg.isVisible(true) then
 			gg.setVisible(false)
-			gg.toast("Position was written.")
+			gg.toast("Posicion Guardada.")
 			break
 		end
 		gg.sleep(100)
@@ -5580,27 +6574,31 @@ function FragmentsRun()
     return array, bool;
 end
 
-so = gg.getRangesList("libBootloader.so")[1].start
---setvalue(so + qh, 16, 8.89715548E-21)
---setvalue(so + qh, 16, 8.89715548E-21)
---gg.setVisible(so + qh)
+gg.setVisible(false)
 gg.setRanges(gg.REGION_C_ALLOC)
-gg.searchNumber("32,481,138,503,150,965", gg.TYPE_QWORD)
+gg.searchNumber('32,481,138,503,150,965', gg.TYPE_QWORD)
 if gg.getResultsCount() == 0 then
-  gg.setRanges(gg.REGION_OTHER)
-  gg.searchNumber("32,481,138,503,150,965", gg.TYPE_QWORD, 8.89715548E-21, gg.SIGN_EQUAL, 0, -1, 1)
+    gg.setRanges(gg.REGION_OTHER)
+    gg.searchNumber('32,481,138,503,150,965', gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 1)
 end
 pl = gg.getResults(1)
-addr = pl[1].address
-sh = addr + 407040
-sh2 = addr + 407044
-pants = addr + 411068
-hair = addr + 411060
-mask = addr + 411064
-neck = addr + 411068
-prop = addr + 411084
-wingl = addr + 239840
-mfdz = addr + 452584
+if pl ~= nil then
+    addr = pl[1].address
+end
+gg.clearResults()
+
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber('7,020,670,180,468,457,475', gg.TYPE_QWORD)
+if gg.getResultsCount() == 0 then
+    gg.setRanges(gg.REGION_OTHER)
+    gg.searchNumber('7,020,670,180,468,457,475', gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 1)
+end
+pl = gg.getResults(1)
+if pl ~= nil then
+    addr2 = pl[1].address
+end
+gg.clearResults()
+
 
 spc = on
 sn1 = ""
@@ -5684,6 +6682,35 @@ ik1 = 5794336
 ik2 = 5794340
 fh = 5787580
 ais = 8682216
+lu = 0x55C744
+lu_v = -6.555061262349375E-27
+
+function ca_live()
+	sh = addr + 0x63600 --人物発光
+	sh2 = sh + 0x4 --人物発光
+	pants = addr + 0x645BC --clothes
+	hair = addr + 0x645B4 --clothes
+	mask = addr + 0x645B8 --clothes
+	neck = addr + 0x645BC --clothes
+	prop = addr + 0x645CC --clothes
+	wingl = addr + 0x3A8E0 --winged light
+	mfdz = addr + 0x6E7E8 --spell
+	sps = 0x2660 --spell trigger
+	getm = addr + 0x62500 --getmap
+	px = addr + 0x5D248 --pos x
+	py = addr + 0x5D24C --pos y
+	pz = addr + 0x5D250 --pos z
+	pose = addr + 0x606A0
+	ic = addr + 0x6260C --Invisible Cape
+	cl = addr + 0x1269E00 --Open Closet
+	gs = addr2 - 0x18C
+	rx = addr2 - 0x298FC
+	ry = addr2 - 0x298F8
+	sx = addr2 - 0x1B31E0
+	sy = addr2 - 0x1B31DC
+	qm = addr2 - 0x214
+	device = addr2 - 0x1B31BC
+end
 
 function setvalue(address, flags, value)
 	local tt = {}
@@ -5693,6 +6720,7 @@ function setvalue(address, flags, value)
 	tt[1].value = value
 	gg.setValues(tt)
 end
+
 function frzvalue(address, flags, value)
 	local tt = {}
 	tt[1] = {}
@@ -6230,13 +7258,13 @@ function SUIamazing()
 	  suiv1 = on
 	end
 	if suiv1 == on then
-		setvalue(so + va, 16, -9010873890000)
-		gg.toast("Enabled - Amazing View")
-		setvalue(so + va, 16, -9010873890000)
+		setvalue(so+va,16,-9.01087389e12)
+        gg.toast("Enabled - Realistic Graphics")
+        setvalue(so+va,16,-9.01087389e12)
 	else
-		setvalue(so + va, 16, va_v)
-		gg.toast("Disabled - Amazing View")
-		setvalue(so + va, 16, va_v)
+		setvalue(so+va,16,va_v)
+        gg.toast("Disabled - Realistic Graphics")
+        setvalue(so+va,16,va_v)
 	end
 end
 
@@ -6549,6 +7577,7 @@ glow2 = nsl
 glow3 = sl
 
 
+
 function orange1()
 	local cords, bool = orange2();
     if bool then
@@ -6585,46 +7614,145 @@ function lolol()
 end
 
 
-function getpos()
-  local storage = "/sdcard/position.txt" -- ruta del archivo de almacenamiento
-  local x, y, z = gg.getPos() -- obtener la posición actual del personaje
-  local file = io.open(storage, "w") -- abrir el archivo en modo escritura
-  file:write(x.."\n"..y.."\n"..z) -- escribir las coordenadas en el archivo
-  file:close() -- cerrar el archivo
-  gg.toast("Posición guardada!") -- mostrar un mensaje al usuario
+function invisiblecape()
+    ca_live()
+    if suiu2 == on then
+      suiu2 = off
+    else
+      suiu2 = on
+    end
+    if suiu2 == on then
+		frzvalue(ic,16,0)
+        gg.toast("Enabled - Invisible Cape")
+        frzvalue(ic,16,0)
+    else
+		frzvalue(ic,16,1)
+        gg.toast("Disabled - Invisible Cape")
+        frzvalue(ic,16,1)
+    end
 end
 
-
-function loadpos()
-  local storage = "/sdcard/position.txt" -- ruta del archivo de almacenamiento
-  local file = io.open(storage, "r") -- abrir el archivo en modo lectura
-  if file then -- si se abrió el archivo correctamente
-    local x = tonumber(file:read("*line")) -- leer la primera línea y convertirla en número
-    local y = tonumber(file:read("*line")) -- leer la segunda línea y convertirla en número
-    local z = tonumber(file:read("*line")) -- leer la tercera línea y convertirla en número
-    file:close() -- cerrar el archivo
-    gg.setPos(x, y, z) -- establecer las coordenadas del personaje
-    gg.toast("Posición cargada!") -- mostrar un mensaje al usuario
-  else
-    gg.toast("Error al cargar la posición!") -- mostrar un mensaje de error si no se pudo abrir el archivo
-  end
+function lightplayers()
+    alert = gg.alert('Light up to all players?', 'Yes', 'No')
+    if alert == 1 then
+        lightf()
+    end
 end
 
+function lightf()
+    setvalue(so+lu,16,-9.01087389e12)
+    gg.toast("Light Up to Players")
+    setvalue(so+lu,16,-9.01087389e12)
+    gg.sleep(100)
+    setvalue(so+lu,16,lu_v)
+    gg.sleep(10)
+    setvalue(so+lu,16,lu_v)
+end
 
+function quickhome()
+	if suiu2 == on then
+	    suiu2 = off
+	else
+	    suiu2 = on
+	end
+	if suiu2 == on then
+	    setvalue(so+qh,16,8.89715548e-21)
+	else
+	    setvalue(so+qh,16,8.61260535e-21)
+	end
+end
 
+function orange2()
+    local array = {};
+    local bool;
+    local map = get_map();
+    for i, v in ipairs(orangepoints) do
+        if v.map == map then
+            bool = true;
+            table.insert(array, {v.x, v.y, v.z});
+        end
+    end
+    return array, bool;
+end
 
+function orange1()
+	local cords, bool = orange2();
+    if bool then
+        for i, v in ipairs(cords) do
+			if gg.isVisible(true) then
+				break;
+			end
+            gg.setValues({
+            {
+                address = coords.x,
+                flags = gg.TYPE_FLOAT,
+                value = v[3],
+            },
+            {
+                address = coords.y,
+                flags = gg.TYPE_FLOAT,
+                value = v[2],
+            },
+            {
+                address = coords.z,
+                flags = gg.TYPE_FLOAT,
+                value = v[1],
+            },
+        });
+        gg.sleep(1000);
+        end
+    else
+        return gg.toast("There are no routes here at the moment");
+    end
+end
 
+function Register()
+	Variable ={}
+    Variable["RegisterURL"] = "https://newskyshot.000webhostapp.com/Register.php"
+    Prompt = gg.prompt({"Username","Password","ConfirmPassword","Back"},nil,{"text","text","text","checkbox"})
+	    if not Prompt then
+	    return
+	    end
+	    if Prompt[4] then
+	    return
+	end
 
+    Variable["TempRegister"]  = '{"Username":"'..Prompt[1]..'","Password":"'..Prompt[2]..'","ConfirmPassword":"'..Prompt[3]..'"}'
+    ResponseContent = gg.makeRequest(Variable["RegisterURL"],nil,Variable["TempRegister"]).content
+    pcall(load(ResponseContent))
+end
 
+function users() 
+	gg.alert([[{"Admin":{"password":"Password"},
+	"Gusanito":{"password":"ANES2014896"},
+	"Skyshot":{"password":"S123O987T"},
+	"Xavier":{"password":"1999"},
+	"Shiiro":{"password":"1234"},
+	"123":{"password":"456"},
+	"haw":{"password":"!Password1234"},
+	"kscasl":{"password":"baiduyunpan97"},
+	"Daniel":{"password":"1234"},
+	"xelend":{"password":"9196899"},
+	"KiaraEli":{"password":"Elieli"},
+	"Anzu":{"password":"13579"},
+	"1223":{"password":"3211"},
+	"Edith":{"password":"@L03e1t3"},
+	"Limon":{"password":"Manzanas"},
+	"Leox":{"password":"0090"},
+	"1":{"password":"1"},
+	"clammer":{"password":"1010"},
+	"bunbun":{"password":"1234"},
+	"bigsecret":{"password":"BigSecret"},
+	"0963u":{"password":"3690"},
+	"shana":{"password":"123621"},
+	"wesley":{"password":"1234"},
+	"letmein":{"password":"letmein"},
+	"FiripinSan":{"password":"@L03e1t3"}
+	,"anico":{"password":"agaraev17"},
+	"gokhan":{"password":"gokhan1234"},
+	"spawn2":{"password":"705995}]])
 
-
-
-
-
-
-
-
-
+end
 
 gx.vars.settings = {
 	wdistance = settings.wdistance,
@@ -6634,7 +7762,6 @@ gx.set_signs({[false] = '¦❌¦', [true] = '¦🧡¦'})
 gx.set_back_text("|⬅️| Back")
 
 gx.add_menu({
-
 	title = "ONE-SHOT",
 	name = "main",
 	menu = {
@@ -6645,21 +7772,73 @@ gx.add_menu({
 		{"[🌎] World", {gx.open_menu, {"worldmenu"}}},
 		{"[💫] magic", {lolol}},
 		{"[👤] Skykid mods", {gx.open_menu, {"Fun"}}},
-		{"[🌟] Ultra rapid farm!!", {ydks}},				
+		{"[🌟] Ultra rapid farm!!", {ydks}},
+		{"[📜] Developer mod", {gx.open_menu, {"Developer"}}},			
 	},
-	type = "choice"
+	type = "choice",
+	colors = {
+		background = 0xFFFFFFFF,
+		title = 0xFF303F9F,
+		text = 0xFF212121,
+		selected = 0xFFE0E0E0,
+		highlight = 0xFF3949AB
+	}
+})
+
+
+
+
+
+gx.add_menu({
+	title = " Position Writer: ",
+	name = "coordinates",
+	menu = {
+		{"[📝] write Pos", {add_position}},
+		{"[🖊️] Write pos (Press GG)", {add_position_n}},
+		{"[❌] Delete last pos", {del_position}},
+		{"[📝] Show post write", {gx.open_menu, {"delmenu"}}},
+		{"[🗑️] Delete all pos", {del_all}},
+		{"[⚙️] Save and delete pos ", {save_to_file}}
+	},
+	
+	--gx._block_repeat = false,
+	menu_repeat = false,
+	type = "back",
+})
+
+gx.add_menu({
+	title = " Developer mod: ",
+	name = "Developer",
+	menu = {
+		--{"[🖊️] Register users", {Register}},
+		{"[📜] show offsets", {show_offsets}},
+		{"[💾] Update script ", {find_all_offsets}},
+		{"[✏️] write cordinates ", {gx.open_menu, {"coordinates"}}}
+	},
+	
+	--gx._block_repeat = false,
+	menu_repeat = true,
+	type = "xback",
+})
+
+gx.add_menu({
+	title = "Delete pos:",
+	name = "delmenu",
+	use_menu_function = true,
+	f = {del_position, {"{gxindex}"}},
+	menu = {makeposmenu},
+	type = "xback",
+	menu_repeat = true
 })
 
 gx.add_menu({
 	title = "world menu: ",
 	name = "worldmenu",
 	menu = {
-	    {"[🌎] Save", {getpos}},
-	    {"[🌎] Load", {loadpos}},
-		{"[🌬️] Remove Wind Wall", {RemoveWind}},
+        {"[🌬️] Remove Wind Wall", {RemoveWind}},
 		{"[⛔️] Remove Barrier", {RemoveBarrier}},
 		{"[☁️] Remove Clouds ", {gx.editor.switch, {tostring(clouds_results[1].address).."a 1D | 0D", "{gxbool}"}}},
-	    {"[🌈] Amazing View (SUI) {gxsign}", {SUIamazing}},
+	    {"[🌈] Graphics HD (SUI) {gxsign}", {SUIamazing}},
 		{"[🌒] Darkness 1", {Darkness1}},
 		{"[🌗] Darkness 2", {Darkness2}},
 		{"[🌑] Darkness 3", {Darkness3}},
@@ -6679,6 +7858,7 @@ gx.add_menu({
 		{"[🕯️] Slow Farm", {slowfarm}},
 		{"[🍊] Orange run", {orange1}},	
 		{"[🦋] Wings run", {rapidwings}},
+		{"[🦋] Absorb wings", {wing}},
 		{"[🕯️] Coliseum Fragments", {Frun}},
 		{"[🔥] Burning mods ", {burnMod}},			
 	},
@@ -6691,9 +7871,12 @@ gx.add_menu({
 	name = "Fun",
 	menu = {
 		{"[📶] Online (SUI)", {online}},
+        {"[💥] Rapid home (SUI) {gxsign}", {quickhome}},
 		{"[📜] Read chats (SUI) {gxsign}", {Readchats}},
 		{"[👥] Friendsnode y chats {gxsign}", {node}},
 		{"[🌟] Body glow (SUI) {gxsign}", {glown}},
+        {"[🌟] Lighting all players (SUI) {gxsign}", {lightplayers}},
+		{"[👔] Invisible cape (SUI) {gxsign}", {invisiblecape}},
 		{"[👤] Emotes lvl 4 (SUI) {gxsign}", {Suiemote}},
 		{"[👤] Player view (SUI) {gxsign}", {SIUplayers}},
 		{"[✈️] JET MODE (SUI)", {jetmode}},
@@ -6703,7 +7886,6 @@ gx.add_menu({
 		{"[🎧] iOS Headphone (SUI) {gxsign}", {iosphone}},
 		{"[🧯] Unlimited Oxygen (SUI) {gxsign}", {SuiOxygen}},
 		{"[❤️] Flashing Heart (SUI) {gxsign}", {Suihearts}},
-		{"[🔋] Floating and charge", {wing_charge}},
 		{"[⚡] Energy (SUI)", {suimenuem}},
 		{"[😍] Wings power", {wingpower}},
 		{"[👔] Unlock clothes (Bian) {gxsign}", {clothes}},
@@ -6714,30 +7896,6 @@ gx.add_menu({
 	type = "back",
 })
 
-gx.add_menu({
-	title = "Wings: ",
-	name = "wingsmenu",
-	pre_f = {uwc},
-	menu = {
-		{"[🔢] wings counter", {set_wings}},
-		{"[🌟] throw wings⚠️", {throw_wings}},
-		{"[💥] wings explosion⚠️", {explode_wings}}
-	},
-	type = "back",
-})
-
-gx.add_menu({
-	title = "Fun menu: ",
-	name = "funmenu",
-	menu = {
-		{"[💤] Fake sleep {gxsign}", {gx.editor.switch, {tostring(player + offsets.sleeping).."a 1D | 257Df", "{gxbool}"}}},
-		{"[📣] Super shout", {supershout}},
-		{"[✨] spams magic {gxsign}", {pmagic, {9, -1727483534, 0, "{gxbool}"}}},
-		{"[🎇] Infinity fireworks {gxsign}", {gx.editor.switch, {tostring(player + offsets.famount_off).."a 5D | 5Df", "{gxbool}"}}},
-		{"[🦋] Cape spam", {capespam}}
-	},
-	type = "back"
-})
 
 gx.add_menu({
 	title = "Delete pos:",
