@@ -13,8 +13,9 @@
 - **libRomanDev** - Substitutes the Beta server with the Dev one (an even more private server, originally only for TGC devs)
 - **libfun** - Universal mod, but paid and poorly maintained
 
-Discontinued **(do not use!)**
-- **reHell** or **libgxost** - Universal mod with many great features
+Discontinued - **!! do not use !!**
+- **reHell** or **libgxost** - Universal mod, no longer maintained
+- **libHellboy** - Universal mod, no longer maintained
 
 ⬆️ <ins>It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.</ins> ⬆️
 
@@ -25,7 +26,7 @@ Discontinued **(do not use!)**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/lukas0x1/SML-filehost/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1097612001032818870/libaw4c.1.3.5.so).
+1. Download **Canvas.apk** from [here](https://github.com/lukas0x1/SML-filehost/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1119000686076637254/libaw4c.1.3.7.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Hit **"Done"** *(don't open yet!)*.
@@ -53,6 +54,7 @@ Telegram - AutoWax RU: https://t.me/ruautowax
 Discord - Official Sky Server: https://discord.com/invite/thatskygame  
 Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
 Discord - Spooky Shelter: https://discord.gg/fDFU5QWKgh
+Discord - Abomination server: https://discord.gg/axFwncUUqb
 Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX  
 Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ  
 Discord - Skyshot Scripts: https://discord.com/invite/SC5GekNvfW  
