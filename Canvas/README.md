@@ -1,5 +1,9 @@
 # Welcome to Canvas!
 
+## 📢 Deprecation Notice (June 28, 2023):
+
+In light of the AutoWax creator's access to Sky being revoked, the AutoWax team has announced in a [message](https://t.me/skyautowax/102) dated June 28, 2023, that they are 'open sourcing Canvas itself, AW4C, and the verification bot.' This implies that while AutoWax is no longer being maintained, its source code will continue to be available as a public archive. This will allow others to freely use, modify, and reproduce the source code.
+
 ## What's Canvas?
 - ⚙️ **Canvas**, also known as **Sky Modloader**, is a lightweight wrapper around the Sky app made by [@artdeell](https://github.com/artdeell) and [@lukas0x1](https://github.com/lukas0x1). It takes up a sole **~15 MB** of your phone's storage and hooks into Sky at runtime, thus acting as "bridge" and providing an interface that developers can build plug-ins on top of. It's completely modular, so you can load existing plug-ins or write your own. The main advantage of Canvas over traditional mods is that it doesn't require elevated privileges or any specific programming skills. Canvas is important, but requires libs to be fully operational.
 
