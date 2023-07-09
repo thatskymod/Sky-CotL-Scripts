@@ -1,4 +1,4 @@
-gg.alert("Welcome to Skyshot")
+gg.alert("I still do not know if I will update the script again for the next update, many things have happened, especially I did not like that they uploaded my code to github without my permission, I guess they are things that happen, know all what I thank you for accompanying me all this time, I love you")
 
 scriptv = {process = {live = 'com.tgc.sky.android', canvas = "git.artdeell.skymodloader", beta = "com.tgc.sky.android.test.gold"}}
 gameinfo = gg.getTargetInfo()
@@ -59,20 +59,30 @@ utfrequest = function(utf, fb, fbpy, fbpya, fbpyb, fbz) for i = 1, #utf do local
 namerequest = function(name, fb, fbpya, fbpyb, fbz) local sc = {} for i = 1, #name do get(sc,fb + ((i - 1) * 4),4,name[i]) end gg['setValues'](sc) request(fb,fbpya,fbpyb,fbz)end
 
 local so=gg.getRangesList('libBootloader.so')[1].start
-rwdz=addrjump(addrjump(so,0x161BED0)+0x4CED40,0)+0x20C--人物核心
+rwdz=addrjump(addrjump(so,0x16BFCA0)+0x434640,0)+0x22C--人物核心
 gg.addListItems({{address=rwdz ,flags = 32,name="rwdz"}})
-sddz=addrjump(so,0x161BED0)+0x1C8--速度核心
+sddz=addrjump(so,0x16BFCA0)+0x1C8--速度核心
 gg.addListItems({{address=sddz ,flags = 16,name="sddz"}})
 jiasuaddr=sddz
 --——————————速度配置——————————
-mrrw=  sddz + 0x255528  --原地任务  √
-dtaddr = sddz + 0x21F75DC   --地图判断  √
-
-
+hzdz=sddz-0x1FEAF8--画质地址
+mrrw=  sddz + 0x256D68--原地任务
+zdjila=sddz+0x3FC550--自动礼包
+Any_daddr = sddz  + 0x1705D54--任意门
+ydgypy = sddz + 0x1C6FB58--原地光翼
+xjdiaoxiang=ydgypy+0xEF0--献祭
+dtaddr = sddz + 0x230809C--地图判断
+fbdz=sddz+0xA58   
+--——————————人物配置——————————
+zspy=rwdz + 0x348C--坐姿
+ydxgsd=rwdz-0x226C94--赛道
+dengjiaddr=rwdz-0x22CA4--光翼数量√
+hqhgxz=rwdz-0x2270A4--常驻—回归先祖
+--——————————Cd配置——————————
 
 
 --——————————基本配置——————————
---加速
+
 function jiasu(x)tmp={}seaio(tmp,jiasuaddr,16,x,true)gg.setValues(tmp)gg.addListItems(tmp)end
 
 
@@ -112,26 +122,6 @@ end
 
 --——————————原地功能——————————
 
-mrrwid = {}
-function finishites()
-    local tmp2 = {}
-    for i = 1, rwsl do
-        tmp2[i] = { address = mrrw + 4 + (mrrwid[i] - 1) * 8, flags = 16 }
-    end
-    tmp2 = gg.getValues(tmp2)
-    for i = 1, rwsl do
-        tmp2[i].value = tmp2[i].value + 60
-    end
-    gg.setValues(tmp2)
-    tmp2 = {}
-    for v = 1, rwsl do
-        tmp2[v] = { address = mrrw + rwjg + 4 * v, flags = 4, value = mrrwid[v] }
-    end
-    gg.setValues(tmp2)
-    local tmp3 = { { address = mrrw + rwjg2, flags = 4, value = rwsl } }
-    gg.setValues(tmp3)
-end
-
 function seaio1(t,a,b,c,d) 
     t[#t+1]={} 
     t[#t][init_tabkey[1]]=a
@@ -145,13 +135,13 @@ function seaio1(t,a,b,c,d)
 end
 
 offsets = {
-	ptoplayer = 0x172F518,
-	pos_off = 0x4773B0, --pos_x
-	ptoentity = 0x17157E0,
-	ptonentity = 0x57CFEC,
-	curmap_off = -0x172542C,
-	plants = 0xD4AFF8,
-	gamespeed_off = -0x1650CF4,
+	ptoplayer = 0x17CB108,
+	pos_off = 0x47F070, --pos_x
+	ptoentity = 0x17AB690,
+	ptonentity = 0x57D24C,
+	curmap_off = -0x1827F9C,
+	plants = 0xDE0158,
+	gamespeed_off = -0x174D024,
 	ssdz = 0x22E9DB0,
 	chat = 0x5BC25C,
 	magic = 0xffffffffed411384 ,
@@ -181,7 +171,7 @@ offsets = {
 	props_off = 0x45E104,
 	famount_off = 0x45E104 + 0x15D0,
 	portal_off = 0x40EB08,
-	portal2_off = -0x46D50,
+	portal2_off = -0x467E0,
 	vcandles = 0x4E62B4,
 	vcandles_dist = 0x70,
 	pchat = 0xB6B3725,
@@ -4275,6 +4265,7 @@ function find_adds()
 	nentity_test = getadd(nentity, gg.TYPE_DWORD) == 1099746509
 	candles = find_candles()
 	plants = find_plants()
+	
 
 	if not(nentity_test) then
 		gg.searchNumber(1099746509, gg.TYPE_DWORD)
@@ -5255,28 +5246,7 @@ function DoPoints(points, cr_mode, use_candle)
 	end
 end
 
-function settingsmenu()
-	local smenu = gg.choice({
-		"Distance breackwall: "..settings.wdistance,
-		"Use Autoburn in AutoCandleRun: "..sign(settings.useautoburn)
-	}, nil, "settings:")
 
-	if smenu == nil then 
-		return
-	end
-
-	if smenu == 1 then
-		local wbd = gg.prompt({"Default distance: "..settings.wdistance}, {[1] = settings.wdistance}, {[1] = "number"})
-		if wbd ~= nil then
-			settings.wdistance = wbd[1]
-		end
-
-		gg.toast("Distance breackwall: "..settings.wdistance)
-	elseif smenu == 2 then
-		settings.useautoburn = not(settings.useautoburn)
-		gg.toast("Use Autoburn in AutoCandleRun: "..sign(settings.useautoburn))
-	end
-end
 
 function update()
 	if cosmetic_lock == on then
@@ -5303,18 +5273,6 @@ function update()
 	end
 end
 
-function getCords()
-    local array = {};
-    local bool;
-    local map = get_map();
-    for i, v in ipairs(crpoints) do
-        if v.map == map then
-            bool = true;
-            table.insert(array, {v.x, v.y, v.z});
-        end
-    end
-    return array, bool;
-end
 
 function FastCR(name)
 	local m = nil
@@ -5444,36 +5402,76 @@ function UnlockSeason()
 	gg.toast(" CLEAR QUEST ON ")
 end
 
-function rapidfarm()
-	local cords, bool = getCords();
-    if bool then
-        for i, v in ipairs(cords) do
-			if gg.isVisible(true) then
-				break;
-			end
-            gg.setValues({
-            {
-                address = coords.x,
-                flags = gg.TYPE_FLOAT,
-                value = v[1],
-            },
-            {
-                address = coords.y,
-                flags = gg.TYPE_FLOAT,
-                value = v[2],
-            },
-            {
-                address = coords.z,
-                flags = gg.TYPE_FLOAT,
-                value = v[3],
-            },
-        });
-        gg.sleep(1100);
-        end
-    else
-        return gg.toast("There are no routes here at the moment");
+function setDelay(newDelay)
+    local delay = tonumber(newDelay)
+    if delay then
+        gg.alert("Nuevo retraso: " .. delay) -- Muestra el valor del nuevo retraso
+        return delay
     end
 end
+
+function rapidfarm()
+    local cords, bool = getCords();
+
+    if bool then
+        for i, v in ipairs(cords) do
+            if gg.isVisible(true) then
+                break;
+            end
+
+            gg.setValues({
+                {
+                    address = coords.x,
+                    flags = gg.TYPE_FLOAT,
+                    value = v[1],
+                },
+                {
+                    address = coords.y,
+                    flags = gg.TYPE_FLOAT,
+                    value = v[2],
+                },
+                {
+                    address = coords.z,
+                    flags = gg.TYPE_FLOAT,
+                    value = v[3],
+                },
+            })
+
+            gg.sleep(settings.delay)
+        end
+    else
+        return gg.toast("There are no routes here at the moment")
+    end
+end
+
+settings = {
+
+	wdistance = 5.0,
+	delay = 700
+}
+
+function settingsmenu()
+    local delay = gg.prompt({"Enter delay time in milliseconds for RapidFarm: "..settings.delay}, {[1] = settings.delay}, {[1] = "number"})
+    if delay[1] ~= nil then
+        settings.delay = delay[1]
+        gg.toast("Delay for RapidFarm: "..settings.delay)
+    end
+end
+
+function getCords()
+    local array = {};
+    local bool;
+    local map = get_map();
+    for i, v in ipairs(crpoints) do
+        if v.map == map then
+            bool = true;
+            table.insert(array, {v.x, v.y, v.z});
+        end
+    end
+    return array, bool;
+end
+
+
 
 function slowfarm()
 	local map = get_map()
@@ -6574,6 +6572,728 @@ function FragmentsRun()
     return array, bool;
 end
 
+function Capes()
+  ca_live()
+  local sp = gg.choice(
+    {'Yeti Cape',
+    'Wings of AURORA',
+    'Cat Cape',
+    'Platinum Cape',
+    'Fish Cape',
+    'TGC Cape',
+    'Ghostbat Cape',
+    'Spider Cape',
+    'Christmas Cape',
+    'Snowflake Cape',
+    'Old Winter Feast Cape',
+    'White Bird Cape',
+    'Petal Cape',
+    'Fortune Cape',
+    'Sakura Cape',
+    'Wisteria Cape',
+    'Ocean Cape',
+    'Dream Season Cape',
+    'Rainbow Cape',
+    'Little Prince Scarf Cape',
+    'Little Prince Asteroid Jacket',
+    'Bloom Cape 2023',
+    'Alchemist Cape',
+    'Earth Cape',
+    'Light Scholar Cape',
+    'Giving In Cape',
+    'Postman Cape',
+    'Turtle Cape',
+    'Dead Leaves Cape'},
+    nil,"Cape")
+    
+  if sp == nil then
+    -- Opción cancelada, no se hace nada
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-940505450)
+    spn1 = 'Yeti cloak'
+    spark1()
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1326646141)
+    spn1 = 'Aurora concert cloak'
+    spark1()
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz+0x00,4,583315364)
+    spn1 = 'Cat cloak'
+    spark1()
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz+0x00,4,330655056)
+    spn1 = 'Platinum cloak'
+    spark1()
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz+0x00,4,573237039)
+    spn1 = 'Fish cloak'
+    spark1()
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz+0x00,4,540856305)
+    spn1 = 'TGC cloak'
+    spark1()
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz+0x00,4,625581156)
+    spn1 = 'Ghostbat cloak'
+    spark1()
+  elseif sp == 8 then
+    setsp1()
+    setvalue(mfdz+0x00,4,930203946)
+    spn1 = 'Spider cloak'
+    spark1()
+  elseif sp == 9 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1306675982)
+    spn1 = 'Christmas cloak'
+    spark1()
+  elseif sp == 10 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-784831205)
+    spn1 = 'Snowflake cloak'
+    spark1()
+  elseif sp == 11 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1762827508)
+    spn1 = 'Old winter feast cloak'
+    spark1()
+  elseif sp == 12 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1623262339)
+    spark1()
+  elseif sp == 13 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-6043825)
+    spn1 = 'Petal cloak'
+    spark1()
+  elseif sp == 14 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-445538750)
+    spn1 = 'Fortune cloak'
+    spark1()
+  elseif sp == 15 then
+    setsp1()
+    setvalue(mfdz+0x00,4,162066154)
+    spn1 = 'Sakura cloak'
+    spark1()
+  elseif sp == 16 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1244390069)
+    spn1 = 'Wisteria cloak'
+    spark1()
+  elseif sp == 17 then
+    setsp1()
+    setvalue(mfdz+0x00,4,329684861)
+    spn1 = 'Ocean cloak'
+    spark1()
+  elseif sp == 18 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1822337532)
+    spn1 = 'Dream season cloak'
+    spark1()
+  elseif sp == 19 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-195929339)
+    spn1 = 'Rainbow cloak'
+    spark1()
+  elseif sp == 20 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-2087661926)
+    spn1 = 'Little Prince Scarf Cape'
+    spark1()
+  elseif sp == 21 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1402240423)
+    spn1 = 'Little Prince Asteroid Jacket'
+    spark1()
+  elseif sp == 22 then
+    setsp1()
+    setvalue(mfdz+0x00,4,549258087)
+    spn1 = 'Dob cloak'
+    spark1()
+  elseif sp == 23 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-383842131)
+    spark1()
+  elseif sp == 24 then
+    setsp1()
+    setvalue(mfdz+0x00,4,2079599063)
+    spark1()
+  elseif sp == 25 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1375571404)
+    spark1()
+  elseif sp == 26 then
+    setsp1()
+    setvalue(mfdz+0x00,4,939730131)
+    spark1()
+  elseif sp == 27 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-308941587)
+    spark1()
+  elseif sp == 28 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-700035318)
+    spark1()
+  elseif sp == 29 then
+    setsp1()
+    setvalue(mfdz+0x00,4,769892976)
+    spark1()
+  end
+end
+
+function Pants()
+  ca_live()
+  local sp = gg.choice(
+    {
+      'Fortune Pants',
+      'Runaway Outfit',
+      'Prince Sword Suit',
+      'Halloween Pants',
+      'Rainbow Pants',
+      'Bloom Pants',
+      'To The Love Outfit',
+      'Snowman Body'
+    },
+    nil,"Pants") 
+
+
+  if sp == nil then
+    -- Opción cancelada
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 483128979)
+    spark1()
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 3160138703)
+    spark1()
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -495233219)
+    spark1()
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 969946279)
+    spark1()
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 1482655023)
+    spark1()
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -105193858)
+    spark1()
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 782433094)
+    spark1()
+  elseif sp == 8 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -1535254839)
+    spark1()
+  end
+end
+
+function Hairstyles()
+  ca_live()
+  local sp = gg.choice(
+    {
+      'Runaway Hairstyle',
+      'Fish Head',
+      'Pumpkin Head',
+      'Wizard Hat',
+      'Sakura Hairstyle',
+      'Cat Hairstyle',
+      'Halloween Spider Hairstyle',
+      'Halloween Longhair',
+      'Christmas Hat',
+      'Dream Season Hairstyle',
+      'Bun Hairstyle',
+      'Snowman Head',
+      'Lion Head',
+      'Rainbow Hat',
+      'Knitted Hat',
+      'Fortune Hat'
+    },
+    nil,
+    "Hairstyle"
+  )
+
+  if sp == nil then
+    -- Opción cancelada
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 239584271)
+    spark1()
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -1543558130)
+    spark1()
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 1046521292)
+    spark1()
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 1983755432)
+    spark1()
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 373243257)
+    spark1()
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 4269954660)
+    spark1()
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -1760741911)
+    spark1()
+  elseif sp == 8 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 116679863)
+    spark1()
+  elseif sp == 9 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 2885283383)
+    spark1()
+  elseif sp == 10 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 1059767859)
+    spark1()
+  elseif sp == 11 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -2099997114)
+    spark1()
+  elseif sp == 12 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 419537417)
+    spark1()
+  elseif sp == 13 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, 2093744529)
+    spark1()
+  elseif sp == 14 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -521490982)
+    spark1()
+  elseif sp == 15 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -2092825638)
+    spark1()
+  elseif sp == 16 then
+    setsp1()
+    setvalue(mfdz + 0x00, 4, -823266018)
+    spark1()
+  end
+end
+ 
+function Masks()
+  ca_live()
+  local sp = gg.choice(
+    {'Rhythm Season Mask',
+    'Cat Mask',
+    'Rabbit Mask',
+    'Red Fox Mask',
+    'Ox Mask', 
+    'Dream Season Mask',
+    'Fortune Mask',
+    'Rose Mask',
+    'Winter Feast Goggle',
+    'Whirling Mask',
+    'Tiger Mask',
+    'Weasel Mask'},
+    nil," Mask")
+  
+  if sp == nil then
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-218615327)
+    spark1()
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-901640940)
+    spark1()
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz+0x00,4,371568737)
+    spark1()
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz+0x00,4,964659005)
+    spark1()
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-849020465)
+    spark1()
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz+0x00,4,144876107)
+    spark1()
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1636163586)
+    spark1()
+  elseif sp == 8 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-938578505)
+    spark1()
+  elseif sp == 9 then
+    setsp1()
+    setvalue(mfdz+0x00,4,858950093)
+    spark1()
+  elseif sp == 10 then
+    setsp1()
+    setvalue(mfdz+0x00,4,771982951)
+    spark1()
+  elseif sp == 11 then
+    setsp1()
+    setvalue(mfdz+0x00,4,475055967)
+    spark1()
+  elseif sp == 12 then
+    setsp1()
+    setvalue(mfdz+0x00,4,784922793)
+    spark1()
+  end
+end
+
+function Accesorys()
+  ca_live()
+  local sp = gg.choice(
+    {'Rainbow Earring',
+    'Rainbow Headphone',
+    'Summer Hat',
+    'Halloween Horn',
+    'Antler',
+    'Flower Crown',
+    'Tiara We Can Touch',
+    'Fish Headdress',
+    'Rabbit Headdress',
+    'Orange Headdress',
+    'Kizuna AI Headband',
+    'Ribbon Necklace',
+    'Jellyfish Shouldress',
+    'Turtle Shouldress',
+    'Ocean Necklace',
+    'Holly Necklace',
+    'Coral Headdress',
+    'Snowflake Headdress',
+    'Flower Headdress',
+    'Double Flower Headdress',
+    'Rainbow Headdress',
+    'Shell Headdress',
+    'Single Wizard Hat',
+    --'Transparent Muffler',
+    'Winter Feast Muffler'},
+    nil,"Slot1 Accessory")
+  
+  if sp == nil then
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1590289609)
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz+0x00,4,2525758368)
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz+0x00,4,2052387583)
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1123843208)
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1909998088)
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz+0x00,4,942365523)
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1989753674)
+  elseif sp == 8 then
+    setsp1()
+    setvalue(mfdz+0x00,4,551055685)
+  elseif sp == 9 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-848739711)
+  elseif sp == 10 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1616733323)
+  elseif sp == 11 then
+    setsp1()
+    setvalue(mfdz+0x00,4,2050094531)
+  elseif sp == 12 then
+    setsp1()
+    setvalue(mfdz+0x00,4,43899279)
+  elseif sp == 13 then
+    setsp1()
+    setvalue(mfdz+0x00,4,329235560)
+  elseif sp == 14 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1943995802)
+  elseif sp == 15 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-1938239955)
+  elseif sp == 16 then
+    setsp1()
+    setvalue(mfdz+0x00,4,8361886)
+  end
+end
+
+function Props()
+  ca_live()
+  local sp = gg.choice(
+    {'Fireworks',
+    'Love Fireworks',
+    'Voice of AURORA',
+    'Christmas Table',
+    'Halloween Table',
+    'Bloom Pink Teaset',
+    'Bloom Purple Teaset',
+    'Picnic',
+    'Gondola',
+    'Seesaw'},
+    nil, "Prop")
+  
+  if sp == nil then
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz+0x00,4,227018419)
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1403584133)
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz+0x00,4,137268536)
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz+0x00,4,256924066)
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-797688127)
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz+0x00,4,10058409)
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1598845731)
+  elseif sp == 8 then
+    setsp1()
+    setvalue(mfdz+0x00,4,185406188)
+  elseif sp == 9 then
+    setsp1()
+    setvalue(mfdz+0x00,4,303877523)
+  elseif sp == 10 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-2095749161)
+  elseif sp == 11 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1064080243)
+  end
+end
+
+function Props2()
+  ca_live()
+  local sp = gg.choice(
+    {'Swing',
+    'Pumpkin',
+    'Summer Tent',
+    'Marshmallow',
+    'Fox',
+    'Cat',
+    'Pioneer Umbrella'},
+    nil, "Prop")
+  
+  if sp == nil then
+  elseif sp == 1 then
+    setsp1()
+    setvalue(mfdz+0x00,4,125584301)
+  elseif sp == 2 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1414743743)
+  elseif sp == 3 then
+    setsp1()
+    setvalue(mfdz+0x00,4,3165352994)
+  elseif sp == 4 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-2057431024)
+  elseif sp == 5 then
+    setsp1()
+    setvalue(mfdz+0x00,4,1436679857)
+  elseif sp == 6 then
+    setsp1()
+    setvalue(mfdz+0x00,4,-992017029)
+  elseif sp == 7 then
+    setsp1()
+    setvalue(mfdz+0x00,4,2878211958)
+  end
+end
+
+function Others()
+  ca_live()
+  local sp = gg.choice(
+    {'Height Small',
+    'Size Small',
+    'Height Big',
+    'Size Big',
+    'Kizuna AI Call',
+    'Glow',
+    'Fast Charge',
+    'Anti Gravity',
+    'Anti Rain',
+    'Anti Krill',
+    'Krill Cat',
+    'Crab Trick',
+    'Candle Trick',
+    'Friendship Back',
+    'Friendship Bear Hug',
+    'Friendship Warp',
+    'Friendship Fight',
+    'Turquoise Trail'},
+    nil, "Slot1 Others")
+
+  if sp == nil then
+  elseif sp >= 1 and sp <= 17 then
+    setsp1()
+    if sp == 1 then
+      setvalue(mfdz+0x00,4,1692428656)
+    elseif sp == 2 then
+      setvalue(mfdz+0x00,4,2142718166)
+    elseif sp == 3 then
+      setvalue(mfdz+0x00,4,891098028)
+    elseif sp == 4 then
+      setvalue(mfdz+0x00,4,-1879316162)
+    elseif sp == 5 then
+      setvalue(mfdz+0x00,4,-1881863468)
+    elseif sp == 6 then
+      setvalue(mfdz+0x00,4,1097748727)
+    elseif sp == 7 then
+      setvalue(mfdz+0x00,4,1750685908)
+    elseif sp == 8 then
+      setvalue(mfdz+0x00,4,1860519737)
+    elseif sp == 9 then
+      setvalue(mfdz+0x00,4,-1463943689)
+    elseif sp == 10 then
+      setvalue(mfdz+0x00,4,-932650381)
+    elseif sp == 11 then
+      setvalue(mfdz+0x00,4,847145578)
+    elseif sp == 12 then
+      setvalue(mfdz+0x00,4,901504997)
+    elseif sp == 13 then
+      setvalue(mfdz+0x00,4,1441565188)
+    elseif sp == 14 then
+      setvalue(mfdz+0x00,4,1405645877)
+    elseif sp == 15 then
+      setvalue(mfdz+0x00,4,1677246236)
+    elseif sp == 16 then
+      setvalue(mfdz+0x00,4,998754260)
+    elseif sp == 17 then
+      setvalue(mfdz+0x00,4,2137753158)
+    end
+  end
+end
+
+function Others2()
+  ca_live()
+  local sp = gg.choice(
+    {'Black Trail',
+    'Blue Trail',
+    'Cyan Trail',
+    'Green Trail',
+    'Purple Pink Trail',
+    'Orange Trail',
+    'Pink Trail',
+    'Purple Trail',
+    'Red Trail',
+    'Yellow Trail',
+    'Rainbow Trail'},
+
+    nil, "Others")
+
+  if sp == nil then
+  elseif sp >= 1 and sp <= 12 then
+    setsp1()
+    if sp == 1 then
+      setvalue(mfdz+0x00,4,-1354381164)
+    elseif sp == 2 then
+      setvalue(mfdz+0x00,4,-1951801352)
+    elseif sp == 3 then
+      setvalue(mfdz+0x00,4,1918290563)
+    elseif sp == 4 then
+      setvalue(mfdz+0x00,4,637646527)
+    elseif sp == 5 then
+      setvalue(mfdz+0x00,4,-1527316661)
+    elseif sp == 6 then
+      setvalue(mfdz+0x00,4,1237283438)
+    elseif sp == 7 then
+      setvalue(mfdz+0x00,4,470393304)
+    elseif sp == 8 then
+      setvalue(mfdz+0x00,4,-1071076330)
+    elseif sp == 9 then
+      setvalue(mfdz+0x00,4,-1304862813)
+    elseif sp == 10 then
+      setvalue(mfdz+0x00,4,-1354381164)
+    elseif sp == 11 then
+      setvalue(mfdz+0x00,4,147016038)
+
+    end
+  end
+end
+
+
+
+
+
+
+function trollcape()
+  ca_live()
+  local capes = {
+    {-940505450, 'Yeti Cape'},
+    {1326646141, 'Wings of AURORA'},
+    {583315364, 'Cat Cape'},
+    {330655056, 'Platinum Cape'},
+    {573237039, 'Fish Cape'},
+    {540856305, 'TGC Cape'},
+    {625581156, 'Ghostbat Cape'},
+    {930203946, 'Spider Cape'},
+    {1306675982, 'Christmas Cape'},
+    {-784831205, 'Snowflake Cape'},
+    {1762827508, 'Old Winter Feast Cape'},
+    {-1623262339, 'White Bird Cape'},
+    {-6043825, 'Petal Cape'},
+    {-445538750, 'Fortune Cape'},
+    {162066154, 'Sakura Cape'},
+    {-1244390069, 'Wisteria Cape'},
+    {329684861, 'Ocean Cape'},
+    {-1822337532, 'Dream Season Cape'},
+    {-195929339, 'Rainbow Cape'},
+    {-2087661926, 'Little Prince Scarf Cape'},
+    {1402240423, 'Little Prince Asteroid Jacket'},
+    {549258087, 'Bloom Cape 2023'},
+    {-383842131, 'Alchemist Cape'},
+    {2079599063, 'Earth Cape'},
+    {1375571404, 'Light Scholar Cape'},
+    {939730131, 'Giving In Cape'},
+    {-308941587, 'Postman Cape'},
+    {-700035318, 'Turtle Cape'},
+    {769892976, 'Dead Leaves Cape'}
+  }
+
+  for i, cape in ipairs(capes) do
+    gg.sleep(1000) -- Delay de 1 segundo
+
+    setsp1()
+    setvalue(mfdz + 0x00, 4, cape[1])
+  end
+end
+
+
 gg.setVisible(false)
 gg.setRanges(gg.REGION_C_ALLOC)
 gg.searchNumber('32,481,138,503,150,965', gg.TYPE_QWORD)
@@ -6652,36 +7372,36 @@ glow1 = nsl
 glow2 = nsl
 glow3 = sl
 
-va = 4843048
+va = 4993528
 va_v = 1.192416902995319E-7
-em = 5791224
-dm = 8284852
+em = 5958436
+dm = 8520876
 jm = 10530856
 cu = 4423384
-eu = 11653336
+eu = 11996972
 eu_v = -1.832657726481557E-4
 fu = 9302916
 hq = 10220592
-bc = 7721784
-bp = 6975592
+bc = 7937240
+bp = 7146196
 bp_v = -1.8345301214139909E-4
-aw1 = 12916960
-aw2 = 20998692
-sof = 5844836
-sch = 6526064
+aw1 = 13335168
+aw2 = 22630868
+sof = 6013652
+sch = 6701812
 sj = 10568736
 fd = 10607792
-rw = 7678172
-rb = 6790380
-rc = 23179080
-qh = 9700316
-ih = 5806924
+rw = 7891476
+rb = 6959856
+rc = 23850264
+qh = 9987192
+ih = 5955528
 uf = 9710428
 uo = 5788448
-ik1 = 5794336
-ik2 = 5794340
-fh = 5787580
-ais = 8682216
+ik1 = 5961544
+ik2 = 5961548
+fh = 5954732
+ais = 8955220
 lu = 0x55C744
 lu_v = -6.555061262349375E-27
 
@@ -7161,6 +7881,7 @@ function getmode()
 end
 
 function glown()
+    ca_live()
     suiw1 = (suiw1 == "on") and "off" or "on"
     if suiw1 == "on" then
         frzvalue(sh, 16, 999)
@@ -7616,21 +8337,22 @@ end
 
 function invisiblecape()
     ca_live()
-    if suiu2 == on then
-      suiu2 = off
+    if suiu2 == "on" then -- Actualización: Cambiar on a "on"
+        suiu2 = "off" -- Actualización: Cambiar off a "off"
     else
-      suiu2 = on
+        suiu2 = "on" -- Actualización: Cambiar on a "on"
     end
-    if suiu2 == on then
-		frzvalue(ic,16,0)
+    if suiu2 == "on" then -- Actualización: Cambiar on a "on"
+        frzvalue(ic, 16, 0)
         gg.toast("Enabled - Invisible Cape")
-        frzvalue(ic,16,0)
+        frzvalue(ic, 16, 0)
     else
-		frzvalue(ic,16,1)
+        frzvalue(ic, 16, 1)
         gg.toast("Disabled - Invisible Cape")
-        frzvalue(ic,16,1)
+        frzvalue(ic, 16, 1)
     end
 end
+
 
 function lightplayers()
     alert = gg.alert('Light up to all players?', 'Yes', 'No')
@@ -7661,6 +8383,23 @@ function quickhome()
 	    setvalue(so+qh,16,8.61260535e-21)
 	end
 end
+function iap()
+	gg.clearResults()
+	gg.setRanges(gg.REGION_CODE_APP)
+	gg.searchNumber(':season', 1,false, gg.SIGN_EQUAL,0, -1)
+	gg.getResults(1000)
+	gg.editAll(':global', 1)
+	gg.clearResults()
+    gg.setRanges(gg.REGION_OTHER| gg.REGION_C_ALLOC)
+    gg.searchNumber(':global', 1,false,gg.SIGN_EQUAL,0, -1)
+    gg.getResults(1000)
+    gg.editAll('0', 1)
+	gg.toast("Open The Store")
+	MTD1 = 1
+end
+
+MTD1 = nil
+
 
 function orange2()
     local array = {};
@@ -7706,53 +8445,6 @@ function orange1()
     end
 end
 
-function Register()
-	Variable ={}
-    Variable["RegisterURL"] = "https://newskyshot.000webhostapp.com/Register.php"
-    Prompt = gg.prompt({"Username","Password","ConfirmPassword","Back"},nil,{"text","text","text","checkbox"})
-	    if not Prompt then
-	    return
-	    end
-	    if Prompt[4] then
-	    return
-	end
-
-    Variable["TempRegister"]  = '{"Username":"'..Prompt[1]..'","Password":"'..Prompt[2]..'","ConfirmPassword":"'..Prompt[3]..'"}'
-    ResponseContent = gg.makeRequest(Variable["RegisterURL"],nil,Variable["TempRegister"]).content
-    pcall(load(ResponseContent))
-end
-
-function users() 
-	gg.alert([[{"Admin":{"password":"Password"},
-	"Gusanito":{"password":"ANES2014896"},
-	"Skyshot":{"password":"S123O987T"},
-	"Xavier":{"password":"1999"},
-	"Shiiro":{"password":"1234"},
-	"123":{"password":"456"},
-	"haw":{"password":"!Password1234"},
-	"kscasl":{"password":"baiduyunpan97"},
-	"Daniel":{"password":"1234"},
-	"xelend":{"password":"9196899"},
-	"KiaraEli":{"password":"Elieli"},
-	"Anzu":{"password":"13579"},
-	"1223":{"password":"3211"},
-	"Edith":{"password":"@L03e1t3"},
-	"Limon":{"password":"Manzanas"},
-	"Leox":{"password":"0090"},
-	"1":{"password":"1"},
-	"clammer":{"password":"1010"},
-	"bunbun":{"password":"1234"},
-	"bigsecret":{"password":"BigSecret"},
-	"0963u":{"password":"3690"},
-	"shana":{"password":"123621"},
-	"wesley":{"password":"1234"},
-	"letmein":{"password":"letmein"},
-	"FiripinSan":{"password":"@L03e1t3"}
-	,"anico":{"password":"agaraev17"},
-	"gokhan":{"password":"gokhan1234"},
-	"spawn2":{"password":"705995}]])
-
-end
 
 gx.vars.settings = {
 	wdistance = settings.wdistance,
@@ -7766,14 +8458,13 @@ gx.add_menu({
 	name = "main",
 	menu = {
 		{"[⬆️] Break wall: {gx:settings.wdistance}", {pmove, {"{gx:settings.wdistance}"}}},
-		{"[🚀] Rapid Farm", {rapidfarm}},
 		{"[👥] Farming mode ", {gx.open_menu, {"farmmenu"}}},
 		{"[🌎] Go to", {_goto}},
 		{"[🌎] World", {gx.open_menu, {"worldmenu"}}},
-		{"[💫] magic", {lolol}},
+		--{"[💫] magic", {gx.open_menu, {"magicmenu"}}},
 		{"[👤] Skykid mods", {gx.open_menu, {"Fun"}}},
-		{"[🌟] Ultra rapid farm!!", {ydks}},
-		{"[📜] Developer mod", {gx.open_menu, {"Developer"}}},			
+		
+		--{"[📜] Developer mod", {gx.open_menu, {"Developer"}}},			
 	},
 	type = "choice",
 	colors = {
@@ -7784,6 +8475,12 @@ gx.add_menu({
 		highlight = 0xFF3949AB
 	}
 })
+
+function removesp()
+    ufrzvalue(mfdz+0x00,4,0)
+    setvalue(mfdz+0x0,4,0)
+end
+
 
 
 
@@ -7813,7 +8510,7 @@ gx.add_menu({
 		--{"[🖊️] Register users", {Register}},
 		{"[📜] show offsets", {show_offsets}},
 		{"[💾] Update script ", {find_all_offsets}},
-		{"[✏️] write cordinates ", {gx.open_menu, {"coordinates"}}}
+		--{"[✏️] write cordinates ", {gx.open_menu, {"coordinates"}}}
 	},
 	
 	--gx._block_repeat = false,
@@ -7858,9 +8555,12 @@ gx.add_menu({
 		{"[🕯️] Slow Farm", {slowfarm}},
 		{"[🍊] Orange run", {orange1}},	
 		{"[🦋] Wings run", {rapidwings}},
-		{"[🦋] Absorb wings", {wing}},
 		{"[🕯️] Coliseum Fragments", {Frun}},
-		{"[🔥] Burning mods ", {burnMod}},			
+		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
+		{"[🌟] Ultra rapid farm!!", {ydks}},
+		{"[⚙️]Change delay RF ", {settingsmenu}},
+		
+		
 	},
 	menu_repeat = false,
 	type = "back",
@@ -7872,30 +8572,51 @@ gx.add_menu({
 	menu = {
 		{"[📶] Online (SUI)", {online}},
         {"[💥] Rapid home (SUI) {gxsign}", {quickhome}},
+        --{"[👔] Invisible cape (SUI) {gxsign}", {invisiblecape}},
 		{"[📜] Read chats (SUI) {gxsign}", {Readchats}},
 		{"[👥] Friendsnode y chats {gxsign}", {node}},
-		{"[🌟] Body glow (SUI) {gxsign}", {glown}},
-        {"[🌟] Lighting all players (SUI) {gxsign}", {lightplayers}},
-		{"[👔] Invisible cape (SUI) {gxsign}", {invisiblecape}},
-		{"[👤] Emotes lvl 4 (SUI) {gxsign}", {Suiemote}},
+		--{"[🌟] Body glow (SUI) {gxsign}", {glown}},
+        --{"[🌟] Lighting all players (SUI) {gxsign}", {lightplayers}},
+        --{"[👤] Emotes lvl 4 (SUI) {gxsign}", {Suiemote}},
 		{"[👤] Player view (SUI) {gxsign}", {SIUplayers}},
-		{"[✈️] JET MODE (SUI)", {jetmode}},
-		{"[👊] Power (SUI)", {suimenua}},
-		{"[🌟] Unlimited Fireworks (SUI) {gxsign}", {SIUfire}},
+		--{"[✈️] JET MODE (SUI)", {jetmode}},
+		--{"[👊] Power (SUI)", {suimenua}},
+		--{"[🌟] Unlimited Fireworks (SUI) {gxsign}", {SIUfire}},
         {"[🦐] Immune Krill Attack (SUI) {gxsign}", {suikrills}},
-		{"[🎧] iOS Headphone (SUI) {gxsign}", {iosphone}},
+		--{"[🎧] iOS Headphone (SUI) {gxsign}", {iosphone}},
 		{"[🧯] Unlimited Oxygen (SUI) {gxsign}", {SuiOxygen}},
 		{"[❤️] Flashing Heart (SUI) {gxsign}", {Suihearts}},
 		{"[⚡] Energy (SUI)", {suimenuem}},
 		{"[😍] Wings power", {wingpower}},
 		{"[👔] Unlock clothes (Bian) {gxsign}", {clothes}},
 		{"[🎉] Unlock season (Bian) {gxsign}", {UnlockSeason}},
-		{"[😍] Quick steps  {gxsign}", {quick}}
+		{"[😍] Quick steps  {gxsign}", {quick}},
+		{"[💲] SStore load  ", {iap}} 
 	},
 	menu_repeat = false,
 	type = "back",
 })
 
+gx.add_menu({
+	title = "Magic menu: ",
+	name = "magicmenu",
+	menu = {
+		{"[🦋] Cape trick (SKYSHOT)", {trollcape}},
+	    {"[🦋] Capes", {Capes}},
+	    {"[👖] Pants", {Pants}},
+		{"[🦰] Hairstyle", {Hairstyles}},
+		{"[🎭]  Mask", {Masks}},	
+		{"[👓] Accessory", {Accesorys}},
+		{"[🫖] Prop", {Props}},
+		{"[🫖] Prop2", {Props2}},
+		{"[📻] Others", {Others}},
+		{"[📻] Others2", {Others2}},
+		{"[🇹🇷] Remove spells !!", {removesp}},
+		
+	},
+	menu_repeat = false,
+	type = "back",
+})
 
 gx.add_menu({
 	title = "Delete pos:",
