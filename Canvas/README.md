@@ -55,11 +55,13 @@ To update your existing mods (files ending in *.so), do the following:
 ## Credits & Resources:
 Telegram - AutoWax EN: https://t.me/skyautowax  
 Telegram - AutoWax RU: https://t.me/ruautowax  
-Telegram - Abomination Channel: https://t.me/skysenseofficial  
+Telegram - AutoWax.[pvt.ltd]"
+ https://t.me/onemodofficial  
+Telegram - Sky Mod's And Lua: https://t.me/skyModsandlua  
 Discord - Official Sky Server: https://discord.com/invite/thatskygame  
 Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
-Discord - Spooky Shelter: https://discord.gg/fDFU5QWKgh  
-Discord - Abomination server: https://discord.gg/axFwncUUqb  
+Discord - Spooky Shelter: https://discord.com/invite/fDFU5QWKgh  
+Discord - SKY[1]MOD server: https://discord.com/invite/HQe3y4aUVb  
 Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX  
 Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ  
 Discord - Skyshot Scripts: https://discord.com/invite/SC5GekNvfW  
