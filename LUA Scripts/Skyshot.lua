@@ -431,13 +431,13 @@ end
 
 
 offsets = {
-	ptoplayer = 0x18571B8,
-	pos_off = 0x4BCDC0, --pos_x
-	ptoentity = 0x1837460,
-	ptonentity = 0x56397C,
-	curmap_off = -0x184D13C,
-	plants = 0xE035E8,
-	gamespeed_off = -0x17621E4,
+	ptoplayer = 0x18A82B8,
+	pos_off = 0x4C5C10, --pos_x
+	ptoentity = 0x1888480,
+	ptonentity = 0x5B6DCC,
+	curmap_off = -0x18CC89C,
+	plants = 0xE03878,
+	gamespeed_off = -0x17CF034,
 	ssdz = 0x22E9DB0,
 	chat = 0x5BC25C,
 	magic = 0xffffffffed411384 ,
@@ -467,7 +467,7 @@ offsets = {
 	props_off = 0x45E104,
 	famount_off = 0x45E104 + 0x15D0,
 	portal_off = 0x40EB08,
-	portal2_off = -0x468D0,
+	portal2_off = -0x7FAF0,
 	vcandles = 0x4E62B4,
 	vcandles_dist = 0x70,
 	pchat = 0xB6B3725,
@@ -4928,7 +4928,7 @@ gx.add_menu({
 		{"[👤] Player mods", {gx.open_menu, {"Playermenu"}}},
 		{"[📍]  Show location", {show_location}},
 		--{"[💔] maps", {maps}},
-		--{"[💫] Developer", {gx.open_menu, {"Developer"}}},
+		{"[💫] Developer", {gx.open_menu, {"Developer"}}},
 	},
 	type = "choice"
 })
