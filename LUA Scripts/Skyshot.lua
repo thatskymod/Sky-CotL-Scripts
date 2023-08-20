@@ -431,48 +431,91 @@ end
 
 
 offsets = {
+
 	ptoplayer = 0x18A82B8,
+
 	pos_off = 0x4C5C10, --pos_x
+
 	ptoentity = 0x1888480,
+
 	ptonentity = 0x5B6DCC,
+
 	curmap_off = -0x18CC89C,
+
 	plants = 0xE03878,
+
 	gamespeed_off = -0x17CF034,
+
 	ssdz = 0x22E9DB0,
+
 	chat = 0x5BC25C,
+
 	magic = 0xffffffffed411384 ,
+
 	ptoemotes = 0xA42AF4,
+
 	ptocloset = 0x41EDA0,
+
 	ptofnodes = 0x821844,
+
 	ptopbase = 0x4348E8,
+
 	gesture = 0x468F34,
+
 	camera = -0xE42BB4,
+
 	cam_dist = -0xC,
+
 	cam_fov = -0x3C,
+
 	cam_pos = -0x70,
+
 	plbright = 0x45C2D4,
+
 	hcandle = 0x57A410,
+
 	wing_charge = 0x45C22C,
+
 	sleeping = 0x460890,
+
 	pose = 0x45A428,
+
 	closet_menu = 0x41EDA0,
+
 	constel_menu = 0x15B4A88,
+
 	ptofastitem = -0x10FA8,
+
 	fastitem = 0x26C,
+
 	--vwing = 0x470D9C,
+
 	damage = 0x45C22C + 0xBC,
+
 	wl_pos = 0x4B4F34,
+
 	statue_pos = -0x83053C,
+
 	magic = 0x4681B0,
+
 	props_off = 0x45E104,
+
 	famount_off = 0x45E104 + 0x15D0,
+
 	portal_off = 0x40EB08,
+
 	portal2_off = -0x7FAF0,
+
 	vcandles = 0x4E62B4,
+
 	vcandles_dist = 0x70,
+
 	pchat = 0xB6B3725,
+
 	fastflap = 0x934E74,
+
 	wind_off = -0x87A6CC
+
 }
 
 maps = {
@@ -3811,26 +3854,42 @@ function supershout()
 end
 
 function node()
-    if node == on then
-	 node = off
-	  gg.setRanges(gg.REGION_CODE_APP)
-	  gg.searchNumber("h 20 00 80 52 FC 03 1F 2A")
-	  gg.getResultsCount()
-	  gg.getResults(100)
-	  gg.editAll("h 68 00 00 34 FC 03 1F 2A", gg.TYPE_BYTE)
-	  gg.clearResults()
-      gg.toast("🤼 off")
+    local searchValueOn = "h 68 00 00 34 FC 03 1F 2A"
+    local replaceValueOn = "h 20 00 80 52 FC 03 1F 2A"
+    local searchValueOff = "h 20 00 80 52 FC 03 1F 2A"
+    local replaceValueOff = "h 68 00 00 34 FC 03 1F 2A"
+    local valueType = gg.TYPE_BYTE
+    local searchRange = gg.REGION_CODE_APP
+    
+    if node == "on" then
+        node = "off"
+        gg.setRanges(searchRange)
+        gg.searchNumber(searchValueOn)
+        local resultsOn = gg.getResults(100)
+        if resultsOn and #resultsOn > 0 then
+            gg.editAll(replaceValueOn, valueType)
+            gg.clearResults()
+            gg.toast("🤼 off")
+        else
+            gg.toast("Value not found for 🤼 off")
+        end
     else
-	 node = on
-	  gg.setRanges(gg.REGION_CODE_APP)
-	  gg.searchNumber("h 68 00 00 34 FC 03 1F 2A")
-	  gg.getResultsCount()
-	  gg.getResults(50)
-	  gg.editAll("h 20 00 80 52 FC 03 1F 2A", gg.TYPE_BYTE)
-	  gg.clearResults()
-	  gg.toast("🤼 on")
+        node = "on"
+        gg.setRanges(searchRange)
+        gg.searchNumber(searchValueOff)
+        local resultsOff = gg.getResults(50)
+        if resultsOff and #resultsOff > 0 then
+            gg.editAll(replaceValueOff, valueType)
+            gg.clearResults()
+            gg.toast("🤼 on")
+        else
+            gg.toast("Value not found for 🤼 on")
+        end
     end
 end
+
+
+
 
 function UnlockSeason()
 	gg.setRanges(gg.REGION_C_ALLOC)
@@ -4094,44 +4153,36 @@ function find_all_offsets()
 end
 
 function find_player_offset()
-	ptoplayer = nil
-	gg.setRanges(gg.REGION_C_ALLOC)
-	gg.clearResults()
-	gg.searchNumber("0;.125;.375::9", gg.TYPE_FLOAT)
-	gg.refineNumber(".125", gg.TYPE_FLOAT)
-	local adds = gg.getResults(gg.getResultCount())
-	for k, v in ipairs(adds) do
-		v.address = v.address - 0x8
-	end
-	local values = gx.editor.get(adds)
-	player = nil
-	for k, v in ipairs(values) do
-		if v.value ~= 0 then
-			v.address = v.address + 0x8
-			player = v
-			break
-		end
-	end
+    ptoplayer = nil
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.clearResults()
+    gg.searchNumber("0;.125;.375::9", gg.TYPE_FLOAT)
+    gg.refineNumber(".125", gg.TYPE_FLOAT)
+    local adds = gg.getResults(gg.getResultCount())
+    for k, v in ipairs(adds) do
+        v.address = v.address - 0x8
+    end
+    local values = gx.editor.get(adds)
+    local player = nil  -- Definir 'player' aquí
+    for k, v in ipairs(values) do
+        if v.value ~= 0 then
+            v.address = v.address + 0x8
+            player = v
+            break
+        end
+    end
 
-	local adds = gx.editor.get({player})
-	adds[1].name = "player"
-	gg.addListItems(adds)
-	gg.clearResults()
-	gg.setRanges(gg.REGION_C_BSS)
-	gg.searchNumber(player.address, gg.TYPE_QWORD)
-	local len = gg.getResultsCount()
-	if len > 0 then
-		ptoplayer = gg.getResults(1)[1]
-		offsets.ptoplayer = ptoplayer.address - bootloader
-		ptoplayer.name = "ptoplayer"
-		gg.addListItems({ptoplayer})
-	else
-		offsets.ptoplayer = 0
-		gg.toast("Failed.")
-	end
+    if player then  -- Verificar si 'player' está definido
+        local addsToUpdate = gx.editor.get({player})
+        addsToUpdate[1].name = "player"
+        gg.addListItems(addsToUpdate)
 
-	gg.clearResults()
-	gg.setRanges(old_ranges)
+        -- Resto del código...
+    else
+        print("No se encontró el jugador")
+    end
+
+    -- Resto del código...
 end
 
 function find_player_pos()
@@ -4659,6 +4710,13 @@ suih1 = off
 
 sui1 = off
 
+so = gg.getRangesList("libBootloader.so")[1].start
+--setvalue(so + qh, 16, 8.89715548E-21)
+--setvalue(so + qh, 16, 8.89715548E-21)
+--gg.setVisible(so + qh)
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber("32,481,138,503,150,965", gg.TYPE_QWORD)
+
 function SUIenergy()
 	local suiwm = gg.choice({
 		"Full",
@@ -4686,6 +4744,26 @@ function SUIenergy()
 	  gg.toast("Energy Mode - Normal")
 	end
 end
+
+
+function Readchats()
+	if suiu2 == on then
+		suiu2 = off
+	else
+		suiu2 = on
+	end
+	if suiu2 == on then
+		setvalue(so + sch, 16, 274878956000)
+        gg.toast("Enabled - See Chat")
+        setvalue(so + sch, 16, 274878956000)
+	else
+		setvalue(so + sch, 16, 1.19210767E-7)
+        gg.toast("Disabled - See Chat")
+        setvalue(so + sch, 16, 1.19210767E-7)
+	end
+end
+
+sch = 0x6A2A68
 
 
 function SUIamazing()
@@ -4928,7 +5006,7 @@ gx.add_menu({
 		{"[👤] Player mods", {gx.open_menu, {"Playermenu"}}},
 		{"[📍]  Show location", {show_location}},
 		--{"[💔] maps", {maps}},
-		{"[💫] Developer", {gx.open_menu, {"Developer"}}},
+		--{"[💫] Developer", {gx.open_menu, {"Developer"}}},
 	},
 	type = "choice"
 })
@@ -4986,6 +5064,7 @@ gx.add_menu({
 		{"[🕯️] Coliseum Fragments", {Frun}},
 		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
 		{"[🔋] Floating and charge", {wing_charge}},
+		{"[😍] Quick steps 2 {gxsign}", {quick}},
 	},
 	menu_repeat = false,
 	type = "back",
@@ -4998,7 +5077,7 @@ gx.add_menu({
 		{"[🕯️] candles to beta sky", {orange}},
 		--{"[📶] Online", {online}},
 		--{"[👤] Player view", {SIUplayers}},
-		{"[👥] Friendsnode and Chats {gxsign}", {node}},
+		{"[👥] Read Chats {gxsign}", {Readchats}},
 		--{"[🌟] no equip ", {noequip}},
 		--{"[⚡] Energy", {SUIenergy}},
 		{"[🔋] Floating and charge", {wing_charge}},
