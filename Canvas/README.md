@@ -44,13 +44,13 @@ Discontinued - **!! do not use !!**
 To update your existing mods (files ending in *.so), do the following:
 1. Find and download a newer version of your mod.
 2. Navigate to the **Mod Manager** on your home screen.
-3. **Remove** the desired mod *(press the recycle bin icon next to its name)*.
+3. **Remove** the desired mod. To do so, press the 🗑️ (recycle bin) icon next to its name.
 4. Tap **"Add Mod"** > locate your new mod > import it.
 5. Close **Mod Manager** *(swipe from your recent apps)*.
 6. Your mod is updated and ready to use!
 
 ## Is Canvas safe?
-- Canvas, in its core form, is entirely [safe](https://www.virustotal.com/gui/file/b6cf70bfc5148b9043bee6c40f5d4662af95a7e28444bd75f2eda868cab290a7/), and its source code was recently disclosed to the [public](https://github.com/artdeell/Canvas-Open-Source), which further contributes to its transparency. It does permit modifications, from either third-party sources or not, to take complete charge of your active Sky instance, which includes the ability to access your account information and more. Therefore, exercising discretion and considering user reviews prior to usage is strongly recommended. Additionally, certain modifications present features viewed as 'risky', such as spam honk, teleportation by coordinates, auto melt, and more. These can attract attention from others and potentially result in reporting to TGC. It's important to note that any actions related to **cheating**, **hacking** or **exploiting** are **expressly forbidden** by TGC's [EULA/ToS](https://thatgamecompany.helpshift.com/hc/en/17-sky-children-of-the-light/faq/460-eula-terms-of-service/). Accounts identified as participating in these activities may be subject to **permanent closure**.
+- Canvas, in its core form, is entirely [safe](https://www.virustotal.com/gui/file/309ca0dd72deed9d3642419fb39f2e470df3b37df95890a7814b0e2c5cea01f8), and its source code was recently disclosed to the [public](https://github.com/artdeell/Canvas-Open-Source), which further contributes to its transparency. It does permit modifications, from either third-party sources or not, to take complete charge of your active Sky instance, which includes the ability to access your account information and more. Therefore, exercising discretion and considering user reviews prior to usage is strongly recommended. Additionally, certain modifications present features viewed as 'risky', such as spam honk, teleportation by coordinates, auto melt, and more. These can attract attention from others and potentially result in reporting to TGC. It's important to note that any actions related to **cheating**, **hacking** or **exploiting** are **expressly forbidden** by TGC's [EULA/ToS](https://thatgamecompany.helpshift.com/hc/en/17-sky-children-of-the-light/faq/460-eula-terms-of-service/). Accounts identified as participating in these activities may be subject to **permanent closure**.
 
 ## Credits & Resources:
 Telegram - AutoWax EN: https://t.me/skyautowax  
@@ -59,6 +59,7 @@ Telegram - AutoWax.[pvt.ltd]:
  https://t.me/onemodofficial  
 Telegram - Sky Mod's And Lua: https://t.me/skyModsandlua  
 Telegram - Sky Mods: https://t.me/ThatSkyMod  
+
 Discord - Official Sky Server: https://discord.com/invite/thatskygame  
 Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
 Discord - Spooky Shelter: https://discord.com/invite/fDFU5QWKgh  
