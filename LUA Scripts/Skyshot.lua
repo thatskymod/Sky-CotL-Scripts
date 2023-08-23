@@ -429,94 +429,51 @@ function mapcolor()
 end
 
 
-
 offsets = {
-
-	ptoplayer = 0x18A82B8,
-
+	ptoplayer = 0x18AB668,
 	pos_off = 0x4C5C10, --pos_x
-
-	ptoentity = 0x1888480,
-
+	ptoentity = 0x188B550,
 	ptonentity = 0x5B6DCC,
-
-	curmap_off = -0x18CC89C,
-
+	curmap_off = -0x18CCABC,
 	plants = 0xE03878,
-
-	gamespeed_off = -0x17CF034,
-
+	gamespeed_off = -0x17CF0344,
 	ssdz = 0x22E9DB0,
-
 	chat = 0x5BC25C,
-
 	magic = 0xffffffffed411384 ,
-
 	ptoemotes = 0xA42AF4,
-
 	ptocloset = 0x41EDA0,
-
 	ptofnodes = 0x821844,
-
 	ptopbase = 0x4348E8,
-
 	gesture = 0x468F34,
-
 	camera = -0xE42BB4,
-
 	cam_dist = -0xC,
-
 	cam_fov = -0x3C,
-
 	cam_pos = -0x70,
-
 	plbright = 0x45C2D4,
-
 	hcandle = 0x57A410,
-
 	wing_charge = 0x45C22C,
-
 	sleeping = 0x460890,
-
 	pose = 0x45A428,
-
 	closet_menu = 0x41EDA0,
-
 	constel_menu = 0x15B4A88,
-
 	ptofastitem = -0x10FA8,
-
 	fastitem = 0x26C,
-
 	--vwing = 0x470D9C,
-
 	damage = 0x45C22C + 0xBC,
-
 	wl_pos = 0x4B4F34,
-
 	statue_pos = -0x83053C,
-
 	magic = 0x4681B0,
-
 	props_off = 0x45E104,
-
 	famount_off = 0x45E104 + 0x15D0,
-
 	portal_off = 0x40EB08,
-
 	portal2_off = -0x7FAF0,
-
 	vcandles = 0x4E62B4,
-
 	vcandles_dist = 0x70,
-
 	pchat = 0xB6B3725,
-
 	fastflap = 0x934E74,
-
 	wind_off = -0x87A6CC
-
 }
+
 
 maps = {
 	{"Home", "CandleSpace"},
