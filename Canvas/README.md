@@ -57,8 +57,7 @@ Telegram - AutoWax EN: https://t.me/skyautowax
 Telegram - AutoWax RU: https://t.me/ruautowax  
 Telegram - AutoWax.[pvt.ltd]:
  https://t.me/onemodofficial  
-Telegram - Sky Mod's And Lua: https://t.me/skyModsandlua  
-Telegram - Sky Mods: https://t.me/ThatSkyMod  
+
 
 Discord - Official Sky Server: https://discord.com/invite/thatskygame  
 Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
