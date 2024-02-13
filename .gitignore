@@ -1,0 +1,18 @@
+# .gitignore
+# This is a technical file used to blacklist certain files and directories from being tracked in this Git repository.
+# It's useful for temporarily excluding files that might cause conflicts or are not needed in the repository, such as incompatible code.
+# IMPORTANT: Comments in this file must be placed at the beginning of a line.
+# The files listed below are specifically being excluded from this project:
+
+# Removed for crashing:
+libsmite-1.0.7d.so
+
+# Incompatible:
+libsmusic.so
+
+# Possible crash on Android 14
+libfpschanger.so
+
+# Blacklist libfun
+libfun.so
+funny_*.apk
