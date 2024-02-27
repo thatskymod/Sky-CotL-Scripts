@@ -8,15 +8,16 @@
 
 ## Available Libs:
 - **libdukun** (ex. **libaw4c**) - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
+- **liblangit** - Like above, a highly versatile tool for AutoCR, WL collection, and visual trickery.
 - **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc.
-- **libRomanBeta** - Universal mod for Sky Beta
-- **libfun** - Universal mod, but paid and poorly maintained
+- **libRomanBeta** - Universal mod for Sky Beta.
+- **libfun** - Universal mod, but paid and poorly maintained.
 
 Discontinued - **!! do not use !!**
 - **AutoWax** or **libaw4c** - A popular program that utilized the Sky protocol (API) to collect candles, quests, spirits and winged light. Development stopped.
 - **reHell** or **libgxost** - Universal mod, no longer maintained
 - **libHellboy** - Universal mod, no longer maintained
-- **libRomanDev** - Redirects all game traffic to the Dev server (a private server reserved for TGC staff). Access is now restricted, if you're still facing "Game Data Corrupted" screens, make sure to remove/disable mods/settings related to this server.
+- **libRomanDev** - Redirects all game traffic to the Dev server (a private server reserved for TGC staff). Access is now restricted, if you're facing a "Game Data Corrupted" screen, make sure to remove/disable mods/settings related to this server.
 
 ⬆️ <ins>It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.</ins> ⬆️
 
@@ -27,7 +28,7 @@ Discontinued - **!! do not use !!**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://cdn.discordapp.com/attachments/1015510665013776454/1199673202268459018/libdukun142.so).
+1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libdukun142.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Hit **"Done"** *(don't open yet!)*.
