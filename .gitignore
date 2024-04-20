@@ -6,8 +6,10 @@
 
 # Removed for crashing:
 libsmite-1.0.7d.so
+libsmite-1.1.1.so
 
 # Incompatible:
+libdukun142.so
 libsmusic.so
 
 # Possible crash on Android 14

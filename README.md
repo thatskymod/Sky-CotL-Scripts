@@ -16,8 +16,8 @@ We aim to democratize game customization, allowing all players to discover and e
 Telegram - thatskymod: https://t.me/thatskymod  
 Telegram - AutoWax EN: https://t.me/skyautowax  
 Telegram - AutoWax RU: https://t.me/ruautowax  
-Telegram - Sky Mod's And Lua: https://t.me/skyModsandlua  
-Telegram - Sky Mods: https://t.me/ThatSkyMods  
+Telegram - Dukun Langit (PDi-Sky): https://t.me/pdis_publicaccess  
+Telegram - Sky Mods: https://t.me/thatskymode  
 Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat  
 Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1  
 
