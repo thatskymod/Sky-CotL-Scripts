@@ -28,7 +28,7 @@ Discontinued - **!! do not use !!**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libLangit021rc.so).
+1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libLangit022rc.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Find the newly added **"Canvas"** in your app drawer. It looks somewhat like a black and white icon resembling a clock.
@@ -48,6 +48,9 @@ To update your existing mods (files ending in *.so), do the following:
 
 ## Is Canvas safe?
 - Canvas, in its core form, is entirely [safe](https://www.virustotal.com/gui/file/a5877df5b01ea407ad9bb9b55ed0585666524c17a40cff40b50f21785923db9d/), and its source code is publicly [available](https://github.com/artdeell/Canvas-Open-Source). This contributes to the app's transparency, and allows others to view, use, modify, and reproduce its source code. Canvas does permit modifications, from either third-party sources or not, to take complete charge of your active Sky instance, which includes the ability to access your account information and more. Therefore, exercising discretion and considering user reviews prior to usage is strongly recommended. Certain modifications present features viewed as 'risky', such as spam honk, teleportation by coordinates, auto melt, and more. These can attract attention from others and potentially result in reporting to TGC. It's important to note that any actions related to **cheating**, **hacking** or **exploiting** are **expressly forbidden** by TGC's [EULA/ToS](https://thatgamecompany.helpshift.com/hc/en/17-sky-children-of-the-light/faq/460-eula-terms-of-service/). Accounts identified as participating in these activities may be subject to **permanent closure**.
+
+## Additional documentation
+Information on how to use particular functions is provided here: [DOCS.md](./DOCS.md)
 
 ## Credits & Resources
 This section has moved to [Credits & Resources](../README.md#credits--resources)
