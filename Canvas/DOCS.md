@@ -30,3 +30,13 @@ You’ve got a couple of options:
 - You can also use your browser's download function to save it as a local file and later load it into AutoWax.
 
 Once you’re all set, hit **"Run"** to finalize the collection. For the increased wing level to take effect, please restart your game.
+
+## Outfit Visibility
+
+Are the spells, outfits, and props activated through mods visible to other players nearby?
+
+**No**. These customizations are visible **only to you**.
+
+This was once possible but has since been patched. From a technical standpoint, the server now mandates that you **own** an outfit (i.e., have it officially in your inventory) for it to be visible to other players. This is a technical limitation beyond our control. If the server-side ownership verification fails, other players will see you wearing the default outfits (starter mask, onion hair, brown cape). They might even observe your character having broken legs. Here's an example of what this might look like: https://www.youtube.com/watch?v=ZZBRWp0zhwE
+
+Therefore it is generally not recommended to use this type of tweak in the presence of other players. It clearly reveals that you have acquired your appearance by means you should not have.
