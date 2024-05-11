@@ -11,7 +11,7 @@
 - **liblangit** - Like above, a highly versatile tool for AutoCR, WL collection, and visual trickery.
 - **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc.
 - **libRomanBeta** - Universal mod for Sky Beta.
-- **libfun** - Universal mod, but paid and poorly maintained.
+- **libfun** - Universal mod, but paid and poorly maintained in the past.
 
 Discontinued - **!! do not use !!**
 - **AutoWax** or **libaw4c** - A popular program that utilized the Sky protocol (API) to collect candles, quests, spirits and winged light. Development stopped.
@@ -28,27 +28,32 @@ Discontinued - **!! do not use !!**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libLangit021rc.so).
+1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libLangit022rc.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
-4. Hit **"Done"** *(don't open yet!)*.
-5. Find the newly added **"Mod Manager"** in your app drawer.
-6. Hit **"Add Mod"** on the top left. Navigate to your downloads and import **libdukun.so**.
+4. Find the newly added **"Canvas"** in your app drawer. It looks somewhat like a black and white icon resembling a clock.
+5. Hit **"Add Mod"** on the top left of the **"Mods"** section.
+6. Navigate to your downloads and import **libLangit.so**.
 7. Repeat step 6 for any other mods you might have.
-8. Close **Mod Manager** *(swipe from your recent apps)*.
-9. Launch **Canvas**, sign in to Sky and enjoy!
+8. Select your Sky version from underneath the **"Play"** section, sign in to Sky and enjoy!
 
 ## Updating old Mods
 To update your existing mods (files ending in *.so), do the following:
 1. Find and download a newer version of your mod.
-2. Navigate to the **Mod Manager** on your home screen.
+2. Navigate to the **Canvas** on your home screen.
 3. **Remove** the desired mod. To do so, press the 🗑️ (recycle bin) icon next to its name.
 4. Tap **"Add Mod"** > locate your new mod > import it.
-5. Close **Mod Manager** *(swipe from your recent apps)*.
+5. Confirm that the mod has been imported successfully.
 6. Your mod is updated and ready to use!
 
 ## Is Canvas safe?
 - Canvas, in its core form, is entirely [safe](https://www.virustotal.com/gui/file/a5877df5b01ea407ad9bb9b55ed0585666524c17a40cff40b50f21785923db9d/), and its source code is publicly [available](https://github.com/artdeell/Canvas-Open-Source). This contributes to the app's transparency, and allows others to view, use, modify, and reproduce its source code. Canvas does permit modifications, from either third-party sources or not, to take complete charge of your active Sky instance, which includes the ability to access your account information and more. Therefore, exercising discretion and considering user reviews prior to usage is strongly recommended. Certain modifications present features viewed as 'risky', such as spam honk, teleportation by coordinates, auto melt, and more. These can attract attention from others and potentially result in reporting to TGC. It's important to note that any actions related to **cheating**, **hacking** or **exploiting** are **expressly forbidden** by TGC's [EULA/ToS](https://thatgamecompany.helpshift.com/hc/en/17-sky-children-of-the-light/faq/460-eula-terms-of-service/). Accounts identified as participating in these activities may be subject to **permanent closure**.
+
+## Knowledge Base
+Answers to frequently asked questions and usage guides for particular functions are provided here: [DOCS.md](./DOCS.md)
+
+## Troubleshooting
+Please visit the [Troubleshooting Guide](./TROUBLESHOOTING.md) to learn solutions for common problems.
 
 ## Credits & Resources
 This section has moved to [Credits & Resources](../README.md#credits--resources)
