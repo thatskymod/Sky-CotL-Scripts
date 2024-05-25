@@ -9,6 +9,7 @@ libsmite-1.0.7d.so
 libsmite-1.1.1.so
 
 # Incompatible:
+libaw4c.1.4.1.so
 libdukun142.so
 libsmusic.so
 
