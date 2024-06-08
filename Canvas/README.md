@@ -28,7 +28,7 @@ Discontinued - **!! do not use !!**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libLangit032.so).
+1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/raw/main/Canvas/Libs/libLangit033.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Find the newly added **"Canvas"** in your app drawer. It looks somewhat like a black and white icon resembling a clock.
