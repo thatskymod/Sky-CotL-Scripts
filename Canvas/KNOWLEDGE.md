@@ -22,7 +22,7 @@ Each winged light in Sky has its own unique codename or `id`. Here's what they l
 
 And the list just keeps going! This means that you need to specify the particular wing `id`s you're after. Rest assured, there's no need to memorize a single thing.
 
-We've got a wing list ready for you to grab and pop right into the WL collector prompt: [236_wing_code_thatskymod.txt](https://raw.githubusercontent.com/thatskymod/Sky-CotL-Scripts/main/Canvas/Misc/236_wing_code_thatskymod.txt).
+We've got a wing list ready for you to grab and pop right into the WL collector prompt: [237_wing_code_thatskymod.txt](https://raw.githubusercontent.com/thatskymod/Sky-CotL-Scripts/main/Canvas/Misc/237_wing_code_thatskymod.txt).
 
 You’ve got a couple of options:
 - Copy the entire list to clipboard and press **"Paste"** in the WL collector.
