@@ -13,22 +13,26 @@ This project is organized into the following directories:
 We aim to democratize game customization, allowing all players to discover and enjoy new ways of experiencing games beyond the standard gameplay.
 
 ## Credits & Resources
-Telegram - thatskymod: https://t.me/thatskymod  
-Telegram - AutoWax EN: https://t.me/skyautowax  
-Telegram - AutoWax RU: https://t.me/ruautowax  
-Telegram - Dukun Langit (PDi-Sky): https://t.me/pdis_publicaccess  
-Telegram - Sky Mods: https://t.me/thatskymode  
-Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat  
-Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1  
+### Telegram
+- Telegram - thatskymod: https://t.me/thatskymod
+- Telegram - AutoWax EN: https://t.me/skyautowax
+- Telegram - AutoWax RU: https://t.me/ruautowax
+- Telegram - Dukun Langit (PDi-Sky): https://t.me/pdis_publicaccess
+- Telegram - Langit Discussion Board: https://t.me/dukunlangit
+- Telegram - Keris Dukun: https://t.me/keris_dukun
+- Telegram - Sky Mods: https://t.me/thatskymode
+- Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat
+- Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1
 
-Discord - Official Sky Server: https://discord.com/invite/thatskygame  
-Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
-Discord - S'Kids.Nest: https://discord.com/invite/fDFU5QWKgh  
-Discord - Spooky House: https://discord.gg/bgAdjQgnxf  
-Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX  
-Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ  
-Discord - NeuraX.Script: https://discord.com/invite/SC5GekNvfW  
-Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ  
+### Discord
+- Discord - Official Sky Server: https://discord.com/invite/thatskygame
+- Discord - Canvascord: https://discord.com/invite/ekpUFWcCFN
+- Discord - Spooky House: https://discord.gg/bgAdjQgnxf
+- Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX
+- Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
+- Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ
+- Discord - That Modding Community (this is not us): https://discord.com/invite/h8sRenYG6H
+- Discord - That Sky Mod: https://discord.com/invite/am44RYcXYC
 
 MEGA - Large Collection of Sky Music Sheets: https://mega.nz/folder/mvQAQIwb#MmJdqJCZkvTY2Ma7A8YzSg  
 
