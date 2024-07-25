@@ -9,12 +9,12 @@
 ## Available Libs:
 - **libdukun** (ex. **libaw4c**) - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
 - **liblangit** - Like above, a highly versatile tool for AutoCR, WL collection, and visual trickery.
-- **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc.
 - **libRomanBeta** - Universal mod for Sky Beta.
 - **libfun** - Universal mod, but paid and poorly maintained in the past.
 
 Discontinued - **!! do not use !!**
 - **AutoWax** or **libaw4c** - A popular program that utilized the Sky protocol (API) to collect candles, quests, spirits and winged light. Development stopped.
+- **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc. No further updates.
 - **reHell** or **libgxost** - Universal mod, no longer maintained
 - **libHellboy** - Universal mod, no longer maintained
 - **libRomanDev** - Redirects all game traffic to the Dev server (a private server reserved for TGC staff). Access is now restricted, if you're facing a "Game Data Corrupted" screen, make sure to remove/disable mods/settings related to this server.
