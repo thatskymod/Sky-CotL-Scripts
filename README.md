@@ -29,7 +29,7 @@ Discord - S'Kids.Nest: https://discord.com/invite/fDFU5QWKgh
 Discord - Spooky House: https://discord.gg/bgAdjQgnxf  
 Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX  
 Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ  
-Discord - NeuraX.Script: https://discord.com/invite/SC5GekNvfW  
+Discord - Skyshot Returns: https://discord.com/invite/pyKhHPZv  
 Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ  
 Discord - That Modding Community (this is not us): https://discord.com/invite/h8sRenYG6H  
 
