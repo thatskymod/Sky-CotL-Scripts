@@ -8,11 +8,13 @@
 libsmite-1.0.7d.so
 libsmite-1.1.1.so
 libsmite-1.2.0.so
+libsmite-1.2.1.so
 
 # Incompatible:
 libLangit030rc.so
 libLangit031rc.so
 libLangit032rc.so
+libLangit035.so
 libaw4c.1.4.1.so
 libdukun142.so
 libsmusic.so

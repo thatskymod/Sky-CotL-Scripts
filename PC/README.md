@@ -1,23 +1,46 @@
-# That Sky Mod V1.9.4 Latest
+# That Sky Mod V1.9.5 Latest
 
 @XeTrinityz
 
-## 1.9.4
-Commit: `5dfe3c7`
+# That Sky Mod V1.9.5
+## Added
+```diff
++ Player Options > Camera > Utilities > Disable Zoom Restrictions
++ Player Options > Camera > Utilities > Disable Camera Rotation
++ Player Options > Camera > Positioning > Custom Zoom Limit
++ Player Options > Camera > Positioning > FOV
++ Player Options > Spells > All
++ Outfit Options > Custom > Settings > Save Outfit
++ Outfit Options > Custom > Settings > Load Outfits
++ Outfit Options > Custom > Preset Outfits
++ World Options > Visuals > Show Player Locations
+```
+## Removed
+```diff
+- World Options > Gameplay > Disable Auto Reporting
+```
+## Updates & Fixes
+- Stats
+ - The stat names are now retrieved via an endpoint
 
-### Updates & Fixes
+- Disable UI
+ - New method which disables more UI elements
 
-- **UI**
-  - The window width has been decreased slightly.
-  - Sliders now use `DragFloat`/`DragInt` which allows manual input via double-clicking, removing the need for + and - buttons.
-  - More options have been placed into columns to be more compact and reduce the need for scrolling.
-  - Selected sub-menus are now made visible by the sub-menu button color being darker.
+- First Person
+ - New method
+ - Moved to Player Options > Camera
 
-- **Semi CR**
-  - Items in the listbox are now numbered to help differentiate between locations already visited.
+- Fake Cape Level
+ - Now automatically enables when the value is > 0 and disables when < 1
 
-- **Misc**
-  - Some other bug fixes and improvements.
+- Disable Auto Reporting
+ - This is now enabled by default and can not be disabled
+
+- Teleporting
+ - This will no longer place you at ground level regardless of the Y value
+
+- Game Update
+ - Updated to Sky V26.3 [279033]
 
 ### Installation Instructions
 1. Download and install `VC_redist.x64` provided from this release.

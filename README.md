@@ -25,11 +25,9 @@ Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1
 
 Discord - Official Sky Server: https://discord.com/invite/thatskygame  
 Discord - Canvascord: https://discord.com/invite/k2JBeWkJ3b  
-Discord - S'Kids.Nest: https://discord.com/invite/fDFU5QWKgh  
 Discord - Spooky House: https://discord.gg/bgAdjQgnxf  
 Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX  
 Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ  
-Discord - Skyshot Returns: https://discord.com/invite/pyKhHPZv  
 Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ  
 Discord - That Modding Community (this is not us): https://discord.com/invite/h8sRenYG6H  
 
