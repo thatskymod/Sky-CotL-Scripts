@@ -7,13 +7,13 @@
 - 📚 **Userlibs**, or simply **Libs**, are fan-made helper programs (libraries) for Canvas that actually unleash its true power. Some of these libs include Auto CRing, melting, spell modification, or virtually anything as per your liking.
 
 ## Available Libs:
-- **libdukun** (ex. **libaw4c**) - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
-- **liblangit** - Like above, a highly versatile tool for AutoCR, WL collection, and visual trickery.
+- **liblangit** - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
 - **libRomanBeta** - Universal mod for Sky Beta.
 - **libfun** - Universal mod, but paid and poorly maintained in the past.
 
 Discontinued - **!! do not use !!**
 - **AutoWax** or **libaw4c** - A popular program that utilized the Sky protocol (API) to collect candles, quests, spirits and winged light. Development stopped.
+- **libdukun** - A successor to libaw4c, later merged into the larger and more comprehensive liblangit.
 - **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc. No further updates.
 - **reHell** or **libgxost** - Universal mod, no longer maintained
 - **libHellboy** - Universal mod, no longer maintained
