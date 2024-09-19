@@ -7,7 +7,8 @@ This project is organized into the following directories:
 - [Canvas](./Canvas/) - This directory contains scripts and resources related to the Canvas modloader. Canvas is a lightweight wrapper around the Sky app that facilitates the creation and use of plug-ins.
 - [GameGuardian](./GameGuardian/) - This directory houses GameGuardian, a tool that enables the modification of game data on Android devices by editing the device's Random Access Memory (RAM).
 - [LUA Scripts](./LUA%20Scripts/) - This directory is home to various LUA scripts. These scripts offer a variety of modifications for the game.
-- [Virtual Spaces](./Virtual%20Spaces/) - This directory contains a variety of virtual spaces. Virtual spaces are environments that allow for the execution of modified apps on Android devices without the need for root access.
+- [PC](./PC/) - All things PC and Steam related.
+- [Virtual Spaces](./Virtual%20Spaces/) - This contains a variety of virtual spaces. Virtual spaces are environments that allow for the execution of modified apps on Android devices without the need for root access.
 
 ## Goal
 We aim to democratize game customization, allowing all players to discover and enjoy new ways of experiencing games beyond the standard gameplay.
