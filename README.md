@@ -32,8 +32,7 @@ We aim to democratize game customization, allowing all players to discover and e
 - Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
 - Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ
-- Discord - That Modding Community (this is not us): https://discord.com/invite/h8sRenYG6H
-- Discord - That Sky Mod: https://discord.com/invite/am44RYcXYC
+- Discord - That Sky Mod  (this is not us): https://discord.com/invite/am44RYcXYC
 
 MEGA - Large Collection of Sky Music Sheets: https://mega.nz/folder/mvQAQIwb#MmJdqJCZkvTY2Ma7A8YzSg  
 
