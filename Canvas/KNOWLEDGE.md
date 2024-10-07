@@ -5,7 +5,7 @@
 
 This feature can be convenient if you frequently gift hearts to someone.
 
-> **Note:**  
+> [!NOTE]  
 > Unlike the name suggests, this setting does not guarantee that
 > you will receive hearts in return. Recipients must still choose to
 > send hearts back to you when they come online.
