@@ -19,7 +19,8 @@ Discontinued - **!! do not use !!**
 - **libHellboy** - Universal mod, no longer maintained
 - **libRomanDev** - Redirects all game traffic to the Dev server (a private server reserved for TGC staff). Access is now restricted, if you're facing a "Game Data Corrupted" screen, make sure to remove/disable mods/settings related to this server.
 
-⬆️ <ins>It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.</ins> ⬆️
+> [!NOTE]
+> It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.
 
 ## System Requirements:
 - A mobile phone capable of running Sky and Android not less than version 8.0 (Oreo)
