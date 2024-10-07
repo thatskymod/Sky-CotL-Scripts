@@ -1,4 +1,4 @@
-# TROUBLESHOOTING
+# Troubleshooting
 
 Should you experience crashes with Canvas at any point, please take a moment to familiarize yourself with the troubleshooting steps listed below.
 
