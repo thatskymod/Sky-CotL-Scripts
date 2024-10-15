@@ -1,44 +1,39 @@
-# That Sky Mod V2.5.1 by @XeTrinityz
+# That Sky Mod V3.2.0 by @XeTrinityz
 
 ## Added
+
 ```diff
-+ Player Options > Misc > Interactive Menus > Remote Keyboard Menu
-+ Player Options > Misc > Interactive Menus > Constellation Quick Menu
-+ Player Options > Misc > Interactive Menus > Control Input Menu
-+ Player Options > Misc > Interactive Menus > Random Game Menu
-+ Player > Misc > Facades > Increase All Currencies
-+ Player > Misc > Facades > Decrease All Currencies
-+ Player > Misc > Facades > Enable Candle Collection
-+ Player > Misc > Facades > Enable Currency Notifications
-+ Player > Misc > Facades > All Friends Gifted Hearts
-+ Player > Misc > Facades > All Friends Gifted Light 
-+ Player > Misc > Facades > All Friends Online
-+ Progression > Misc > Shops > All Shop Items
-+ World > Gameplay > Disable Gravity
-+ World > Visuals > Shrink UI
-+ World > Visuals > Enlarge UI
-+ World > Visuals > Disable Constellation Zoom
-+ World > Visuals > Show Author IDs
-+ Music > Instrument Options > Misc > Disable Dynamic Button Sizing
-+ Music > Instrument Options > Misc > Enable Reverb
-+ Music > Instrument Options > Misc > Disable Lines
-+ Music > Instrument Options > Misc > Disable Bouncing Star
-+ Settings > General > Reload Files
-+ Settings > General > Discord RPC
++ Player > Misc > Entity Interactions > Spawn Butterflies
++ Player > Misc > Avatar Actions > Join Random Game\r\n+ Outfit > Dyes > Apply Dye
++ Outfit > Dyes > Remove Dye\r\n+ Progression > Wax Tools > Start Wax Tools Auto Run
++ World > Environment > Rain Intensity
++ World > Events > Get Start Time
++ World > ESP > Darkstone ESP
+```
+
+## Removed
+```diff
+- Player > Misc > Random Game Joiner
 ```
 
 ## Updates & Fixes
-- Start Auto Run
-  - Stability improvements
+- Show Cursor
+  - This can now be set in keybinds
 
-- Disconnect Session Loop
-  - Stability Improvements
+- Keybinds
+  - Now supports mouse controls
 
-- Logs
-  - In addition to displaying logs in the menu, they will now also be saved in a file named `TSM.log`
+- Combo Boxes
+  - The background opacity of combo boxes is set to maximum when expanded
 
-- Backend
-  - Optimization
+- Commands
+  - /post now supports the following format examples
+    1. `/post /account/collect_pickup_batch -c level_id:1694829989 -c pickup_ids:[325463124, 5183528, 1474552153, 674149054, 1252953490] -c global_pickup_ids:[] -c emitters:[] `
+    2. `/post /account/get_spirit_shops -c l:1000 -c o:0 -c v:0`
+
+- Fixes
+  - Auto Play Music Sheets
+  - Instrument Easy Mode
 
 ## Automated Installation Instructions
 1. Download `ThatSkyApp.exe` from this release and run it
