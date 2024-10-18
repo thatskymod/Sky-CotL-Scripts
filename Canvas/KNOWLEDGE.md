@@ -17,8 +17,8 @@ This feature can be convenient if you frequently gift hearts to someone.
 ## Collect WL
 Each winged light in Sky has its own unique codename or `id`. Here's what they look like:
 
-> l_CandleSpace_0,l_Credits_0,l_Dawn_0,l_Dawn_1,l_Dawn_2,l_Dawn_3,l_Dawn_4,l_Dawn_5,l_Dawn_TrialsAir_0,l_Dawn_TrialsEarth_0,l_Dawn_TrialsFire_0,l_Dawn_TrialsWater_0,l_DayHubCave_0,l_Dusk_0,l_Dusk_1,l_DuskEnd_0,l_DuskGraveyard_0,l_DuskGraveyard_1,l_DuskGraveyard_2,l_DuskGraveyard_3,l_DuskGraveyard_4,l_DuskGraveyard_5,l_DuskMid_0,l_DuskMid_1,l_DuskOasis_0,l_DuskOasis_1,l_Dusk_CrabField_0,l_Dusk_CrabField_1,l_Dusk_CrabField_2  
-`----------rest trimmed for brevity----------`
+> l_CandleSpace_0,l_Credits_0,l_Dawn_0,l_Dawn_1,l_Dawn_2,l_Dawn_3,l_Dawn_4,l_Dawn_5,l_Dawn_TrialsAir_0,l_Dawn_TrialsEarth_0,l_Dawn_TrialsFire_0,l_Dawn_TrialsWater_0,l_DayHubCave_0,l_Dusk_0,l_Dusk_1,l_DuskEnd_0,l_DuskGraveyard_0,l_DuskGraveyard_1,l_DuskGraveyard_2,l_DuskGraveyard_3  
+`-----rest trimmed for brevity-----`
 
 And the list just keeps going! This means that you need to specify the particular wing `id`s you're after. Rest assured, there's no need to memorize a single thing.
 
@@ -29,6 +29,16 @@ You’ve got a couple of options:
 - You can also use your browser's download function to save it as a local file and later load it into AutoWax.
 
 Once you’re all set, hit **"Run"** to finalize the collection. For the increased wing level to take effect, please restart your game.
+
+## Reset Collected WL
+
+> [!WARNING]
+> Winged Lights collected from **Spirits** are **permanent** and cannot be reset. They may **seem to disappear** when you take damage from poisoned water, krill, or shards, but will eventually resurface once you are reborn.
+> This is a technical quirk on TGC's end and not something that mods can access or fix.
+
+LibSmite did a great job of warning users about this beforehand: https://github.com/thatskymod/Sky-CotL-Scripts/discussions/80#discussioncomment-9480710. Langit also recently implemented a similar warning (see https://github.com/thatskymod/Sky-CotL-Scripts/discussions/111#discussioncomment-10983087).
+
+In short, resetting spirit wings currently isn't possible with the tools available to us.
 
 ## Outfit Visibility
 
