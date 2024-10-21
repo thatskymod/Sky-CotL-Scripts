@@ -1,7 +1,12 @@
 # IAP Code Dump
-Updated: May 2024
-## Sky-Live-com.tgc.sky.win/0.25.2.260455
+Updated: 21 October 2024
+## Sky-Live-com.tgc.sky.win/0.27.0.292054
 
+- **CDL5**: 🕯️x 15  
+- **CDL10**: 🕯️x 35  
+- **CDL20**: 🕯️x 72  
+- **CDL50**: 🕯️x 190  
+- **SCDL5**: Season Bundle  
 - **SNC00**: Starter Pack  
 - **SNC01**: Founder's Pack  
 - **SNC03**: Days of Feast Pack  
@@ -55,6 +60,8 @@ Updated: May 2024
 - **SNC58**: Rainbow Headphones  
 - **SNC59**: Sunlight Campfire Snack Kit  
 - **SNC60**: Sunlight Jelly Shoulder Buddy  
+- **SNC61**: Cat Costume Pack  
+- **SNC62**: Feline Familiar Prop  
 - **SNC63**: Tiara We Can Touch  
 - **SNC64**: Runaway Hair  
 - **SNC65**: Voice of AURORA  
@@ -104,3 +111,23 @@ Updated: May 2024
 - **SNC113**: Cinnamoroll Pop-Up Cafe Plushie  
 - **SNC114**: Cinnamoroll Pop-Up Cafe Mini Companion  
 - **SNC115**: Cinnamoroll Pop-Up Cafe Bowtie and Cloud Cape  
+- **SNC116**: Dark Rainbow Loafers  
+- **SNC117**: Color Bubble Machine  
+- **SNC118**: SkyFest Oreo Headband  
+- **SNC119**: SkyFest Wireframe Cape  
+- **SNC120**: Tournament Tunic  
+- **SNC121**: Tournament Golden Garland  
+- **SNC123**: Moonlight Earring  
+- **SNC124**: Moonlight Frock and Updo  
+- **SNC125**: Style Dapper Trio  
+- **SNC126**: Sunlight Helios Hoops  
+- **SNC127**: Sunlight Woven Wrap  
+- **SNC128**: Mischief Withered Broom  
+- **SNC129**: Mischief Raven-feathered Cloak  
+- **SNC131**: Moomintroll Accessory Set  
+- **SNC132**: Roving Snufkin Robe Set  
+- **SNC133**: Pointed Snufkin Hat  
+- **SNC134**: Hattifattener Shoulder Buddy  
+- **SPASSP3**: Season Pack  
+- **SPASSG**: Gift Season Pass  
+- **SPASSR**: Season Pass  
