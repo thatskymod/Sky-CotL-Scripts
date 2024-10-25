@@ -1,4 +1,4 @@
-# That Sky Mod V3.2.1 by @XeTrinityz
+# That Sky Mod V3.3.0 by @XeTrinityz
 
 <!-- PROJECT LOGO -->
 <a href="https://github.com/XeTrinityz/TSM-Installer">
