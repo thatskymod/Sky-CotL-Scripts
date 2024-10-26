@@ -27,6 +27,9 @@ libsmusic-1.1.4.so
 # Possible crash on Android 14
 libfpschanger.so
 
+# Outdated and superseded by new versions
+libLangit044.so
+
 # Blacklist libfun
 libfun.so
 funny_*.apk
