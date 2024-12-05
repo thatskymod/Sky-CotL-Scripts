@@ -9,7 +9,6 @@
 ## Available Libs:
 - **liblangit** - A free helper program that collects the max number of daily available candles at the tap of a button, with extra features such WL, spirit collection, etc.
 - **libRomanBeta** - Universal mod for Sky Beta.
-- **libfun** - Universal mod, but paid and poorly maintained in the past.
 
 Discontinued - **!! do not use !!**
 - **AutoWax** or **libaw4c** - A popular program that utilized the Sky protocol (API) to collect candles, quests, spirits and winged light. Development stopped.
@@ -17,10 +16,10 @@ Discontinued - **!! do not use !!**
 - **libsMite** - Universal mod with Semi-AutoCR, Auto burn, Relationship unlocks, etc. No further updates.
 - **reHell** or **libgxost** - Universal mod, no longer maintained
 - **libHellboy** - Universal mod, no longer maintained
-- **libRomanDev** - Redirects all game traffic to the Dev server (a private server reserved for TGC staff). Access is now restricted, if you're facing a "Game Data Corrupted" screen, make sure to remove/disable mods/settings related to this server.
+- **libRomanDev** - Redirects all game traffic to the Dev server (a private server reserved for TGC staff). Access is now restricted.
 
 > [!NOTE]
-> It's worth noting that these add-ons are fan-made and can have lots of advantages (or otherwise cause trouble) depending on the author's intentions.
+> These add-ons are fan-made and can have advantages (or otherwise cause trouble) depending on the author's intentions. As for the current repository though, mods undergo a quick plausibility review, so they should generally be safe to use.
 
 ## System Requirements:
 - A mobile phone capable of running Sky and Android not less than version 8.0 (Oreo)
@@ -29,7 +28,7 @@ Discontinued - **!! do not use !!**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/blob/cf8d2b9778c6c09367f7ae4128e2822209cce520/Canvas/Libs/libLangit043.so).
+1. Download **Canvas.apk** from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases/latest/download/Canvas.apk) and **AutoWax** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/blob/6a5d6946eb5661e5e14f714d56ca0f4157b3c351/Canvas/Libs/libLangit045.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Find the newly added **"Canvas"** in your app drawer. It looks somewhat like a black and white icon resembling a clock.
@@ -48,7 +47,7 @@ To update your existing mods (files ending in *.so), do the following:
 6. Your mod is updated and ready to use!
 
 ## Is Canvas safe?
-- Canvas, in its core form, is entirely [safe](https://www.virustotal.com/gui/file/21717e9c08eeb43506ac9d47843d3839179a08fac0f2e0b08c5a0a2a28158b7e), and its source code is publicly [available](https://github.com/artdeell/Canvas-Open-Source). This contributes to the app's transparency, and allows others to view, use, modify, and reproduce its source code. Canvas does permit modifications, from either third-party sources or not, to take complete charge of your active Sky instance, which includes the ability to access your account information and more. Therefore, exercising discretion and considering user reviews prior to usage is strongly recommended. Certain modifications present features viewed as 'risky', such as spam honk, teleportation by coordinates, auto melt, and more. These can attract attention from others and potentially result in reporting to TGC. It's important to note that any actions related to **cheating**, **hacking** or **exploiting** are **expressly forbidden** by TGC's [EULA/ToS](https://thatgamecompany.helpshift.com/hc/en/17-sky-children-of-the-light/faq/460-eula-terms-of-service/). Accounts identified as participating in these activities may be subject to **permanent closure**.
+- Canvas, in its core form, is entirely [safe](https://www.virustotal.com/gui/file/21717e9c08eeb43506ac9d47843d3839179a08fac0f2e0b08c5a0a2a28158b7e), and its source code is publicly [available](https://github.com/artdeell/Canvas-Open-Source). This contributes to transparency, and allows others to view, use, modify, and reproduce its source code. Canvas does permit modifications, from either direct or third-party sources, to take complete charge of your Sky instance, which includes the ability to access your account information and more. Exercising discretion and considering user reviews prior to usage is strongly recommended. Certain modifications present features viewed as 'risky', such as spam honk, teleportation by coordinates, auto melt, and more. These can attract attention from others and potentially result in reporting to TGC. It's important to note that any actions related to **cheating**, **hacking** or **exploiting** are **expressly forbidden** by TGC's [EULA/ToS](https://thatgamecompany.helpshift.com/hc/en/17-sky-children-of-the-light/faq/460-eula-terms-of-service/). Accounts identified as participating in these activities may be subject to **permanent closure**.
 
 ## Knowledge Base
 Answers to frequently asked questions and usage guides for particular functions are provided in the [Knowledge Base](./KNOWLEDGE.md).
