@@ -4,14 +4,14 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Project Overview
 This project is organized into the following directories:
-- [Canvas](./Canvas/) - This directory contains scripts and resources related to the Canvas modloader. Canvas is a lightweight wrapper around the Sky app that facilitates the creation and use of plug-ins.
-- [GameGuardian](./GameGuardian/) - This directory houses GameGuardian, a tool that enables the modification of game data on Android devices by editing the device's Random Access Memory (RAM).
-- [LUA Scripts](./LUA%20Scripts/) - This directory is home to various LUA scripts. These scripts offer a variety of modifications for the game.
+- [Canvas](./Canvas/) - This contains scripts and resources related to the Canvas modloader. Canvas is a lightweight wrapper around the Sky app that facilitates the creation and use of plug-ins.
+- [GameGuardian](./GameGuardian/) - This houses GameGuardian, a tool that enables the modification of game data on Android devices by editing the device's Random Access Memory (RAM).
+- [LUA Scripts](./LUA%20Scripts/) - This is home to various LUA scripts. These scripts offer a variety of modifications for the game.
 - [PC](./PC/) - All things PC and Steam related.
 - [Virtual Spaces](./Virtual%20Spaces/) - This contains a variety of virtual spaces. Virtual spaces are environments that allow for the execution of modified apps on Android devices without the need for root access.
 
 ## Goal
-We aim to democratize game customization, allowing all players to discover and enjoy new ways of experiencing games beyond the standard gameplay.
+The goal is to democratize game customization, allowing all players to discover and enjoy new ways of experiencing games beyond the standard gameplay.
 
 ## Credits & Resources
 ### Telegram
