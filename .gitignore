@@ -33,3 +33,9 @@ libLangit044.so
 # Blacklist libfun
 libfun.so
 funny_*.apk
+
+# ThatSkyMod
+# Manual method no longer works due to distribution protection
+:# See https://discord.com/channels/1247220592919314522/1275512029037199423/1318987652581560370
+# Use ThatSkyApp.exe instead
+TSM.zip
