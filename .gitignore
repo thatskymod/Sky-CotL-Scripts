@@ -29,6 +29,7 @@ libfpschanger.so
 
 # Outdated and superseded by new versions
 libLangit044.so
+libLangit049.so
 
 # Blacklist libfun
 libfun.so
