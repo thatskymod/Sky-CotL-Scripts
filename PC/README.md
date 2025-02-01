@@ -23,6 +23,12 @@ TSM, or That Sky Mod, was created with the ultimate goal of being the only mod y
 2. Click `Install` (If a folder selection dialog appears, you need to select your game folder)
 3. Click `Launch Sky`
 
+## Manual Installation Instructions
+1. Download and install `VC_redist.x64` [here](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+2. Download `TSM.zip` from this release\r\n6. Download `SML` from the official repo [here](https://github.com/lukas0x1/sml-pc/releases)
+3. Right click the game in Steam and go to **Manage > Browse Local Files**\r\n8. SML: Extract `powrprof.dll`, `sml_config.json` and the `fonts` &  `mods` folders into the root of the games directory where Sky.exe is located
+4. TSM: Extract `TSM.dll` and the `TSM Resources` folder into the `mods` folder
+
 ### Contributors
 - TheSR - TSM Founder & Development Contributions
 - Lukas - SML Developer & Development Contributions

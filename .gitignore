@@ -11,13 +11,8 @@ libsmite-1.2.0.so
 libsmite-1.2.1.so
 
 # Incompatible:
-libLangit030rc.so
-libLangit031rc.so
-libLangit032rc.so
-libLangit035.so
-libLangit040.so
-libLangit041.so
-libLangit043.so
+libLangit03*.so
+libLangit04*.so
 libaw4c.1.4.1.so
 libdukun142.so
 libsmusic.so
@@ -27,16 +22,6 @@ libsmusic-1.1.4.so
 # Possible crash on Android 14
 libfpschanger.so
 
-# Outdated and superseded by new versions
-libLangit044.so
-libLangit049.so
-
 # Blacklist libfun
 libfun.so
 funny_*.apk
-
-# ThatSkyMod
-# Manual method no longer works due to distribution protection
-# See https://discord.com/channels/1247220592919314522/1275512029037199423/1318987652581560370
-# Use ThatSkyApp.exe instead
-TSM.zip
