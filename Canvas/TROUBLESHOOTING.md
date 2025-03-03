@@ -10,8 +10,12 @@ Mods operate at a very low level of the game's binary. While most mods are desig
 - Start Canvas **without** any mods. This will help you determine if the issue stems from Canvas itself or one of the mods you had installed.
 - Add mods back one by one, starting the game after each addition.
 - If a specific mod causes Canvas to crash, you will eventually identify it.
-- **Remove** the problematic mod from Canvas.
-- Optional: Delete the downloaded file from your local storage to prevent yourself from importing it again.
+- **Remove** the mod identified in the previous step.
+- Optional: Delete the downloaded file from your local storage to prevent further confusion.
+
+> [!TIP]
+> #### A mod under this name already exists
+> If you get this message, first remove the existing mod. Only then add the new version.
 
 ### Updating Canvas:
 
