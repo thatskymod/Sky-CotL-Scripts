@@ -11,6 +11,7 @@ libsmite-1.2.0.so
 libsmite-1.2.1.so
 
 # Incompatible:
+libD4C_002x.so
 libLangit03*.so
 libLangit04*.so
 libaw4c.1.4.1.so
