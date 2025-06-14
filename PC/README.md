@@ -1,14 +1,17 @@
-# That Sky Mod V3.3.0 by @XeTrinityz
-
-<!-- PROJECT LOGO -->
-<a href="https://github.com/XeTrinityz/TSM-Installer">
-  <img src="https://i.imgur.com/kAOyj2M.jpeg" alt="Logo" width="80" height="80">
-</a>
-
-An all-in-one mod menu for Sky: CoTL
-
-<!-- SOFTWARE IMAGE -->
-<img src="https://i.imgur.com/T1MobsX.png" alt="TSM Menu">
+<a id="readme-top"></a>
+<div align="center">
+  <!-- PROJECT LOGO -->
+  <h1>That Sky Mod V4.8.0 by @XeTrinityz</h1>
+  <a href="https://github.com/XeTrinityz/TSM-Installer">
+    <img src="https://i.imgur.com/kAOyj2M.jpeg" alt="Logo" width="80" height="80">
+  </a>
+  <p align="center">
+    An all-in-one mod menu for Sky: CoTL
+    <br />
+  </p>
+  <!-- SOFTWARE IMAGE -->
+  <img src="https://i.imgur.com/Qo0N44G.png" alt="TSM Menu">
+</div>
 
 ## About The Project
 
@@ -25,22 +28,32 @@ TSM, or That Sky Mod, was created with the ultimate goal of being the only mod y
 
 ## Manual Installation Instructions
 1. Download and install `VC_redist.x64` [here](https://aka.ms/vs/17/release/vc_redist.x64.exe)
-2. Download `TSM.zip` from this release\r\n6. Download `SML` from the official repo [here](https://github.com/lukas0x1/sml-pc/releases)
-3. Right click the game in Steam and go to **Manage > Browse Local Files**\r\n8. SML: Extract `powrprof.dll`, `sml_config.json` and the `fonts` &  `mods` folders into the root of the games directory where Sky.exe is located
-4. TSM: Extract `TSM.dll` and the `TSM Resources` folder into the `mods` folder
+2. Download `TSM.zip` from this release
+3. Download `SML` from the official repo [here](https://github.com/lukas0x1/sml-pc/releases)
+4. Right click the game in Steam and go to **Manage > Browse Local Files**
+5. SML: Extract `powrprof.dll`, `sml_config.json` and the `fonts` &  `mods` folders into the root of the games directory where Sky.exe is located
+6. TSM: Extract `TSM.dll` and the `TSM Resources` folder into the `mods` folder
 
-### Contributors
-- TheSR - TSM Founder & Development Contributions
-- Lukas - SML Developer & Development Contributions
-- Basem - Development Contributions
-- Dark Linux - Development Contributions
-- Samual Grey - Community Contributions
-- MikeyK - Community Contributions
-- Not Not - Community Contributions
-- Rein - Tester
-- Parssiffal - Tester
-- Goth - Tester
-- It's Dawn - Tester
-- i_umindra - Tester
-- The Cat - Tester
-- Cotton - Tester
+<div align="center">
+  
+## Contributors
+
+### Developer
+XeTrinityz
+
+### Project Founder
+TheSR
+
+### Development Contributions
+Lukas </br>
+Basem </br>
+Dark Linux
+
+### Community Contributions
+MikeyK </br>
+Samual Grey </br>
+Not Not </br>
+k0ra </br>
+yxsj245
+
+</div>
