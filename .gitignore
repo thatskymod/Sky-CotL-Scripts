@@ -5,6 +5,7 @@
 # The files listed below are specifically being excluded from this project:
 
 # Removed for crashing:
+Canvas_1.6.0.apk
 libsmite-1.0.7d.so
 libsmite-1.1.1.so
 libsmite-1.2.0.so

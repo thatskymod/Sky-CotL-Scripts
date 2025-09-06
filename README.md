@@ -20,6 +20,7 @@ The goal is to democratize game customization, allowing all players to discover 
 - Telegram - AutoWax RU: https://t.me/ruautowax
 - Telegram - Langit Discussion Board: https://t.me/dukunlangit
 - Telegram - Keris Dukun: https://t.me/keris_dukun
+- Telegram - Lib Sky: https://t.me/libsky
 - Telegram - Sky Mods: https://t.me/thatskymode
 - Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat
 - Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1
