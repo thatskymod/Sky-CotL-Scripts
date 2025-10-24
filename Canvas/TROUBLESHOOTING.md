@@ -22,7 +22,7 @@ Mods operate at a very low level of the game's binary. While most mods are desig
 Sometimes, the game may receive an update that necessitates an update for Canvas altogether. While this is rare, and Canvas might not get optimized immediately, you could try:
 
 - Uninstalling Canvas (Settings -> Apps -> Canvas -> Uninstall).
-- Downloading and installing the newest release of Canvas from [here](https://github.com/RomanChamelo/Canvas-Open-Source/releases).
+- Downloading and installing the newest release of Canvas from [here](https://github.com/XeTrinityz/ThatSkyMod-Android/releases/latest).
 - Testing the new version to see if it resolves your problem.
 - If this does not help, it is encouraged to remain patient until a new release is published. You may also consider reporting the problem and seeking help in relevant communities.
 
