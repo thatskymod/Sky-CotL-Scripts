@@ -1,4 +1,4 @@
- # Sky-CotL-Scripts
+# Sky-CotL-Scripts
 
 A public collection of mods for Sky: Children of the Light, the latest game by thatgamecompany!
 
@@ -18,9 +18,9 @@ The goal is to democratize game customization, allowing all players to discover 
 - Telegram - thatskymod: https://t.me/thatskymod
 - Telegram - AutoWax EN: https://t.me/skyautowax
 - Telegram - AutoWax RU: https://t.me/ruautowax
-- Telegram - Dukun Langit (PDi-Sky): https://t.me/pdis_publicaccess
 - Telegram - Langit Discussion Board: https://t.me/dukunlangit
 - Telegram - Keris Dukun: https://t.me/keris_dukun
+- Telegram - Lib Sky: https://t.me/libsky
 - Telegram - Sky Mods: https://t.me/thatskymode
 - Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat
 - Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1
@@ -33,7 +33,6 @@ The goal is to democratize game customization, allowing all players to discover 
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
 - Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ
 - Discord - That Sky Mod  (this is not us): https://discord.com/invite/am44RYcXYC
-- Discord - Sky:Light Awaits Test Server: https://discord.com/invite/SuzAna3yWq
 
 MEGA - Large Collection of Sky Music Sheets: https://mega.nz/folder/mvQAQIwb#MmJdqJCZkvTY2Ma7A8YzSg  
 
