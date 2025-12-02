@@ -28,6 +28,8 @@ The goal is to democratize game customization, allowing all players to discover 
 ### Discord
 - Discord - Official Sky Server: https://discord.com/invite/thatskygame
 - Discord - Canvascord: https://discord.com/invite/ekpUFWcCFN
+- Discord - Resurrected Sky: Light Awaits: https://discord.com/invite/bnVVGM4nn6
+- Discord - That Modding Community: https://discord.com/invite/XGNQx5E7
 - Discord - Spooky House: https://discord.gg/bgAdjQgnxf
 - Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
