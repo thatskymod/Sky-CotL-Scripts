@@ -1,12 +1,15 @@
 # IAP Code Dump
-Updated: 19 November 2025
-## Sky-Live-com.tgc.sky.win/0.31.1.352358
+Updated: 11 January 2026
+## Sky-Live-com.tgc.sky.win/0.32.1.363499
 
 - **CDL5**: 🕯️x 15  
 - **CDL10**: 🕯️x 35  
 - **CDL20**: 🕯️x 72  
 - **CDL50**: 🕯️x 190  
 - **SCDL5**: Season Bundle  
+- **SCDL10**: Season Bundle  
+- **SCDL20**: Season Bundle  
+- **SCDL50**: Season Bundle  
 - **SNC00**: Starter Pack  
 - **SNC01**: Founder's Pack  
 - **SNC03**: Days of Feast Pack  
@@ -15,6 +18,7 @@ Updated: 19 November 2025
 - **SNC08**: Days of Love Swing Pack  
 - **SNC09**: Earth Cape  
 - **SNC10**: Healing Pack  
+- **SNC12**: KizunaAI Pack  
 - **SNC13**: Moonlight Lantern  
 - **SNC14**: Mischief Witch Hat  
 - **SNC15**: Mischief Web Cape  
@@ -156,6 +160,22 @@ Updated: 19 November 2025
 - **SNC162**: Moonlight Garland Cape  
 - **SNC170**: Mischief Feline Accessory Duo  
 - **SNC171**: Mischief Puzzlewright's Brimmed Hat  
+- **SNC172**: Winter Scarf Cape  
+- **SNC173**: Fluffy Winter Wear  
+- **SNC174**: Snowkid Accessory  
+- **SNC175**: KizunaAI Tiered Dresswear  
+- **SNC176**: AI-GE Ribbon Dresswear  
+- **SNC177**: AI-GE TV Plush  
+- **SNC178**: Tournament Crystalline Cape  
+- **SNC179**: Tournament Sleek Skating Set  
+- **SNC180**: Fortune Token Glasses  
+- **SNC181**: Fortune Ribboned Ponytail  
+- **SNC182**: Fortune Pleated Dress  
+- **SNC183**: Fortune Plush Mount  
+- **SNC184**: Blue Pinned Cap  
+- **SNC185**: Purple Spectacles  
+- **SNC186**: Green Folded Ears  
+- **SNC187**: Yellow Paintbrush  
 - **SPASSP3**: Season Pack  
 - **SPASSG**: Gift Season Pass  
 - **SPASSR**: Season Pass  
