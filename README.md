@@ -17,7 +17,8 @@ The goal is to democratize game customization, allowing all players to discover 
 ### Telegram
 - Telegram - thatskymod: https://t.me/thatskymod
 - Telegram - AutoWax EN: https://t.me/skyautowax
-- Telegram - AutoWax RU: https://t.me/ruautowax
+- Telegram - AutoWax RU Channel: https://t.me/ruautowax
+- Telegram - AutoWax RU Chat: https://t.me/+pN6gaatEbTBhMmIy
 - Telegram - Langit Discussion Board: https://t.me/dukunlangit
 - Telegram - Keris Dukun: https://t.me/keris_dukun
 - Telegram - Lib Sky: https://t.me/libsky
@@ -28,8 +29,7 @@ The goal is to democratize game customization, allowing all players to discover 
 ### Discord
 - Discord - Official Sky Server: https://discord.com/invite/thatskygame
 - Discord - Canvascord: https://discord.com/invite/ekpUFWcCFN
-- Discord - Resurrected Sky: Light Awaits: https://discord.com/invite/bnVVGM4nn6
-- Discord - That Modding Community: https://discord.com/invite/XGNQx5E7
+- Discord - That Modding Community: https://discord.gg/tSBxCeQvZS
 - Discord - Spooky House: https://discord.gg/bgAdjQgnxf
 - Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
