@@ -77,6 +77,7 @@ jobs:
 
       - name: Fetch release notes from GitHub API
         id: release
+        if: steps.ctx.outputs.source_repo != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
