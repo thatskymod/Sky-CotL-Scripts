@@ -1,0 +1,124 @@
+name: Canvas Release
+
+on:
+  # Triggered by the VPS watcher via repository_dispatch
+  repository_dispatch:
+    types: [upstream_release]
+
+  # Manual trigger for testing or backfilling a specific release
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g. v1.7.1a)"
+        required: true
+      asset_url:
+        description: "Direct asset download URL"
+        required: true
+      dest_path:
+        description: "Repo-relative destination path (e.g. Canvas/Canvas.apk)"
+        required: true
+      sha256:
+        description: "SHA-256 digest of the asset (without sha256: prefix)"
+        required: false
+      source_repo:
+        description: "Upstream repo (e.g. skyprotocol/canvas-distribution)"
+        required: false
+
+permissions:
+  contents: write  # required to push the commit
+
+jobs:
+  process-release:
+    runs-on: ubuntu-latest
+    # Serialize runs so concurrent dispatches don't race on git push.
+    # cancel-in-progress: false means the second run queues and checks out
+    # a fresh main after the first finishes — no merge conflicts.
+    concurrency:
+      group: commit-to-main
+      cancel-in-progress: false
+
+    steps:
+      - name: Resolve event inputs
+        id: ctx
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "tag=${{ github.event.client_payload.tag }}"               >> "$GITHUB_OUTPUT"
+            echo "asset_url=${{ github.event.client_payload.asset_url }}"   >> "$GITHUB_OUTPUT"
+            echo "dest_path=${{ github.event.client_payload.dest_path }}"   >> "$GITHUB_OUTPUT"
+            echo "sha256=${{ github.event.client_payload.sha256 }}"         >> "$GITHUB_OUTPUT"
+            echo "source_repo=${{ github.event.client_payload.repo }}"      >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${{ inputs.tag }}"               >> "$GITHUB_OUTPUT"
+            echo "asset_url=${{ inputs.asset_url }}"   >> "$GITHUB_OUTPUT"
+            echo "dest_path=${{ inputs.dest_path }}"   >> "$GITHUB_OUTPUT"
+            echo "sha256=${{ inputs.sha256 }}"         >> "$GITHUB_OUTPUT"
+            echo "source_repo=${{ inputs.source_repo }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download asset
+        run: |
+          DEST="${{ steps.ctx.outputs.dest_path }}"
+          curl -fL \
+            --retry 3 \
+            --retry-delay 5 \
+            "${{ steps.ctx.outputs.asset_url }}" \
+            -o "$DEST"
+          echo "Downloaded $(du -sh "$DEST" | cut -f1) → $DEST"
+
+      - name: Verify SHA-256
+        if: steps.ctx.outputs.sha256 != ''
+        run: |
+          DEST="${{ steps.ctx.outputs.dest_path }}"
+          echo "${{ steps.ctx.outputs.sha256 }}  $DEST" | sha256sum -c -
+          echo "Checksum OK"
+
+      - name: Fetch release notes from GitHub API
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATA=$(curl -fsSL \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ steps.ctx.outputs.source_repo }}/releases/tags/${{ steps.ctx.outputs.tag }}")
+
+          # Sanity-check: tag from API must match what the watcher dispatched
+          API_TAG=$(echo "$DATA" | jq -r '.tag_name')
+          if [ "$API_TAG" != "${{ steps.ctx.outputs.tag }}" ]; then
+            echo "Tag mismatch: expected ${{ steps.ctx.outputs.tag }}, got $API_TAG"
+            exit 1
+          fi
+
+          # Surface release notes for the commit message
+          NOTES=$(echo "$DATA" | jq -r '.body // ""')
+          {
+            echo "notes<<EOF"
+            echo "$NOTES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        env:
+          RELEASE_NOTES: ${{ steps.release.outputs.notes }}
+        run: |
+          TAG="${{ steps.ctx.outputs.tag }}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          DEST="${{ steps.ctx.outputs.dest_path }}"
+          git add "$DEST"
+
+          # Skip if nothing changed (idempotent re-run for same tag)
+          if git diff --cached --quiet; then
+            echo "No changes to commit — $DEST already up to date"
+            exit 0
+          fi
+
+          printf 'chore: Updated %s to %s\n\n%s\n' "$(basename "$DEST")" "$TAG" "$RELEASE_NOTES" > /tmp/commit-msg.txt
+          git commit -F /tmp/commit-msg.txt
+          git push
