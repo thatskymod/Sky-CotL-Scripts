@@ -9,6 +9,9 @@
 # These are personal to whoever opened the project.
 .vscode/
 
+# Ignore macOS Finder cache files for folder view settings
+.DS_Store
+
 # Removed for crashing:
 Canvas_1.6.0.apk
 libsmite-1.0.7d.so
