@@ -1,0 +1,64 @@
+name: Update Sky Vars
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Sky client version
+        required: true
+      build:
+        description: Sky build number
+        required: true
+      key:
+        description: Sky build access key
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch vars from Sky backend
+        id: vars
+        run: |
+          UA="Sky-Live-com.tgc.sky.win/${{ inputs.version }}.${{ inputs.build }} (; win 0.0.00000; en)"
+
+          RESPONSE=$(curl -fsS -X POST \
+            "https://live.radiance.thatgamecompany.com/account/get_vars" \
+            -H "User-Agent: $UA" \
+            -H "x-sky-build-access-key: ${{ inputs.key }}" \
+            -H "Content-Type: application/json" \
+            -d '{}')
+
+          echo "$RESPONSE" > vars.json
+
+      - name: Convert vars to CSV
+        run: |
+          mkdir -p Utils
+
+          jq -r '
+            .vars
+            | to_entries
+            | ["key","value"],
+              (.[] | [.key, (.value|tostring)])
+            | @csv
+          ' vars.json > Utils/sky_vars.csv
+
+      - name: Commit changes if CSV updated
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git add Utils/sky_vars.csv
+          git commit -m "Update Sky vars (${{ inputs.version }}.${{ inputs.build }})"
+          git push
