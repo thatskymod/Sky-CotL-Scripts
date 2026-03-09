@@ -2,6 +2,13 @@
 
 A public collection of mods for Sky: Children of the Light, the latest game by thatgamecompany!
 
+## Quote of the Day
+<!---MOTD START-->
+**Get Creative in the Dye Workshop!**
+
+The Dye Workshop in Aviary Village is the perfect place to experiment with colors. What kind of combinations will you come up with for your favorite outfit?
+<!---MOTD END-->
+
 ## Project Overview
 This project is organized into the following directories:
 - [Canvas](./Canvas/) - This contains scripts and resources related to the Canvas modloader. Canvas is a lightweight wrapper around the Sky app that facilitates the creation and use of plug-ins.

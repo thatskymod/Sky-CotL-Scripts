@@ -1,0 +1,96 @@
+name: Update Sky MOTD
+'on':
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Sky client version
+        required: true
+      build:
+        description: Sky build number
+        required: true
+      key:
+        description: Sky build access key
+        required: true
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Fetch MOTD from Sky backend
+        id: motd
+        run: >
+          UA="Sky-Live-com.tgc.sky.win/${{ inputs.version }}.${{ inputs.build }}
+          (; win 0.0.00000; en)"
+
+
+          RESPONSE=$(curl -s -X POST \
+            "https://live.radiance.thatgamecompany.com/account/get_motd" \
+            -H "User-Agent: $UA" \
+            -H "x-sky-build-access-key: ${{ inputs.key }}" \
+            -H "Content-Type: application/json" \
+            -d '{}')
+
+          echo "$RESPONSE"
+
+          TITLE=$(echo "$RESPONSE" | jq -r '.motd_title')
+          MOTD=$(echo "$RESPONSE" | jq -r '.motd')
+
+          if [ -z "$MOTD" ] || [ "$MOTD" = "null" ]; then
+            echo "Failed to extract MOTD"
+            exit 1
+          fi
+
+          if [ -z "$TITLE" ] || [ "$TITLE" = "null" ]; then
+            TITLE="Message of the Day"
+          fi
+
+          {
+            echo "title<<EOF"
+            echo "$TITLE"
+            echo "EOF"
+            echo "motd<<EOF"
+            echo "$MOTD"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+      - name: Verify README markers
+        run: >
+          grep -q "<!---MOTD START-->" README.md || { echo "Missing MOTD START
+          marker"; exit 1; }
+
+          grep -q "<!---MOTD END-->" README.md || { echo "Missing MOTD END
+          marker"; exit 1; }
+      - name: Update README MOTD section
+        run: |
+          awk -v title="${{ steps.motd.outputs.title }}" \
+              -v motd="${{ steps.motd.outputs.motd }}" '
+          /<!---MOTD START-->/ {
+              print
+              print "**" title "**"
+              print ""
+              print motd
+              skip=1
+              next
+          }
+          /<!---MOTD END-->/ {
+              skip=0
+          }
+          !skip
+          ' README.md > README.tmp
+
+          mv README.tmp README.md
+      - name: Commit changes if README updated
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git add README.md
+          git commit -m "Update Sky MOTD"
+          git push
