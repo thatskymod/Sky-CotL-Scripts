@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**A Tranquil Place**
+**Call to Friends**
 
-If you need to relax in between your adventures, look in Aviary Village for a doorway that leads to peaceful space.  
+Sky Children are able to call to others in the Sky Kingdom. Try tapping on yourself to call to another player to see if they call back!
 <!---MOTD END-->
 
 ## Project Overview
