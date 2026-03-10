@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Call to Friends**
+**Get Creative in the Dye Workshop!**
 
-Sky Children are able to call to others in the Sky Kingdom. Try tapping on yourself to call to another player to see if they call back!
+The Dye Workshop in Aviary Village is the perfect place to experiment with colors. What kind of combinations will you come up with for your favorite outfit?
 <!---MOTD END-->
 
 ## Project Overview
