@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Daily Hint**
+**Connected in the Constellations**
 
-Did you know holding hands or standing near other players will recharge cape energy? Grab the hand of a friend and try it out!
+Want to stay connected to your friends in Sky? View their stars, share gifts, and more in your Friendship Constellation!
 <!---MOTD END-->
 
 ## Project Overview
