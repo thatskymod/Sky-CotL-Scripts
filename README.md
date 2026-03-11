@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**A Tranquil Place**
+**Daily Hint**
 
-If you need to relax in between your adventures, look in Aviary Village for a doorway that leads to peaceful space.  
+Did you know holding hands or standing near other players will recharge cape energy? Grab the hand of a friend and try it out!
 <!---MOTD END-->
 
 ## Project Overview
