@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Daily Hint**
+**Get Creative in the Dye Workshop!**
 
-Rumor has it that a friendly dog can be summoned with a group in Daylight Prairie. Grab some friends and see if you can find him!
+The Dye Workshop in Aviary Village is the perfect place to experiment with colors. What kind of combinations will you come up with for your favorite outfit?
 <!---MOTD END-->
 
 ## Project Overview
