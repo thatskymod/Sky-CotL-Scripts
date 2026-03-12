@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Connected in the Constellations**
+**Get Creative in the Dye Workshop!**
 
-Want to stay connected to your friends in Sky? View their stars, share gifts, and more in your Friendship Constellation!
+The Dye Workshop in Aviary Village is the perfect place to experiment with colors. What kind of combinations will you come up with for your favorite outfit?
 <!---MOTD END-->
 
 ## Project Overview
