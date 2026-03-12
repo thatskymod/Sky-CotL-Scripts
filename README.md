@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Get Creative in the Dye Workshop!**
+**Daily Inspiration**
 
-The Dye Workshop in Aviary Village is the perfect place to experiment with colors. What kind of combinations will you come up with for your favorite outfit?
+Adventure time is the best time! Take your friends by the hand and go exploring secrets together!
 <!---MOTD END-->
 
 ## Project Overview
