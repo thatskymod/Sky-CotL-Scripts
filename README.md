@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Daily Inspiration**
+**Beware of the Dark Dragon**
 
-Adventure time is the best time! Take your friends by the hand and go exploring secrets together!
+The Dark Dragon is hungry to consume your Light, so grab some friends and be careful out there!
 <!---MOTD END-->
 
 ## Project Overview
