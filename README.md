@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Beware of the Dark Dragon**
+**Daily Inspiration**
 
-The Dark Dragon is hungry to consume your Light, so grab some friends and be careful out there!
+“The best and most beautiful things in the world must be felt with the heart.” ❤️
 <!---MOTD END-->
 
 ## Project Overview
