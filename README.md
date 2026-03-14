@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Daily Inspiration**
+**Better with Friends**
 
-“The best and most beautiful things in the world must be felt with the heart.” ❤️
+It’s always more fun to complete daily activities with your friends, so don’t forget to invite them on your quest runs!
 <!---MOTD END-->
 
 ## Project Overview
