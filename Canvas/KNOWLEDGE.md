@@ -13,23 +13,6 @@ This feature can be convenient if you frequently gift hearts to someone.
 > Do not add people to the config unless you are certain about how it
 > works, as this function will also consume your candles.
 
-
-## Collect WL
-Each winged light in Sky has its own unique codename or `id`. Here's what they look like:
-
-> l_CandleSpace_0,l_Credits_0,l_Dawn_0,l_Dawn_1,l_Dawn_2,l_Dawn_3,l_Dawn_4,l_Dawn_5,l_Dawn_TrialsAir_0,l_Dawn_TrialsEarth_0,l_Dawn_TrialsFire_0,l_Dawn_TrialsWater_0,l_DayHubCave_0,l_Dusk_0,l_Dusk_1,l_DuskEnd_0,l_DuskGraveyard_0,l_DuskGraveyard_1,l_DuskGraveyard_2,l_DuskGraveyard_3  
-`-----rest trimmed for brevity-----`
-
-And the list just keeps going! This means that you need to specify the particular wing `id`s you're after. Rest assured, there's no need to memorize a single thing.
-
-We've got a wing list ready for you to grab and pop right into the WL collector prompt: [237_wing_code_thatskymod.txt](https://raw.githubusercontent.com/thatskymod/Sky-CotL-Scripts/main/Canvas/Misc/237_wing_code_thatskymod.txt).
-
-You’ve got a couple of options:
-- Copy the entire list to clipboard and press **"Paste"** in the WL collector.
-- You can also use your browser's download function to save it as a local file and later load it into AutoWax.
-
-Once you’re all set, hit **"Run"** to finalize the collection. For the increased wing level to take effect, please restart your game.
-
 ## Reset Collected WL
 
 > [!WARNING]
@@ -56,8 +39,8 @@ Music for Sky consists of files in the *.json or *.txt formats, often referred t
 
 Notable examples include:
 
-- **AutoWax gb (Telegram)**  
-https://t.me/+UW1yzZp-SWY0NDcy
+- **AutoWax ru (Telegram)**  
+https://t.me/+pN6gaatEbTBhMmIy
 
 - **SkyAutoMusic (Discord)**  
 https://discord.com/invite/ab8JCnb

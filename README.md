@@ -1,6 +1,13 @@
- # Sky-CotL-Scripts
+# Sky-CotL-Scripts
 
 A public collection of mods for Sky: Children of the Light, the latest game by thatgamecompany!
+
+## Quote of the Day
+<!---MOTD START-->
+**Call to Friends**
+
+Sky Children are able to call to others in the Sky Kingdom. Try tapping on yourself to call to another player to see if they call back!
+<!---MOTD END-->
 
 ## Project Overview
 This project is organized into the following directories:
@@ -17,10 +24,11 @@ The goal is to democratize game customization, allowing all players to discover 
 ### Telegram
 - Telegram - thatskymod: https://t.me/thatskymod
 - Telegram - AutoWax EN: https://t.me/skyautowax
-- Telegram - AutoWax RU: https://t.me/ruautowax
-- Telegram - Dukun Langit (PDi-Sky): https://t.me/pdis_publicaccess
+- Telegram - AutoWax RU Channel: https://t.me/ruautowax
+- Telegram - AutoWax RU Chat: https://t.me/+pN6gaatEbTBhMmIy
 - Telegram - Langit Discussion Board: https://t.me/dukunlangit
 - Telegram - Keris Dukun: https://t.me/keris_dukun
+- Telegram - Lib Sky: https://t.me/libsky
 - Telegram - Sky Mods: https://t.me/thatskymode
 - Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat
 - Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1
@@ -28,6 +36,7 @@ The goal is to democratize game customization, allowing all players to discover 
 ### Discord
 - Discord - Official Sky Server: https://discord.com/invite/thatskygame
 - Discord - Canvascord: https://discord.com/invite/ekpUFWcCFN
+- Discord - That Modding Community: https://discord.gg/tSBxCeQvZS
 - Discord - Spooky House: https://discord.gg/bgAdjQgnxf
 - Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ

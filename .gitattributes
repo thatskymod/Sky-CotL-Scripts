@@ -1,0 +1,9 @@
+# Enforce LF (Unix/Linux-style line endings) for all text files
+# Ensures consistency across platforms, avoiding issues
+# caused by mixed formats (e.g., CRLF on Windows vs. LF on Unix/Linux/macOS).
+#
+# - `* text=auto`: Detect text files automatically.
+# - `eol=lf`: Force LF format on checkout and commit.
+#
+# Applies to all files. Add specific rules below if needed.
+* text=auto eol=lf
