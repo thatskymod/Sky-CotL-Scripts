@@ -169,7 +169,6 @@ fetch_manta_fertilizer_01,2,false,2026-05-12T18:24:00Z,2026-05-12T18:26:00Z
 fetch_manta_fertilizer_01,2,false,2026-05-12T18:28:00Z,2026-05-12T18:30:00Z
 fetch_manta_fertilizer_01,2,false,2026-05-12T18:32:00Z,2026-05-12T18:34:00Z
 fetch_manta_fertilizer_01,2,false,2026-05-12T18:36:00Z,2026-05-12T18:38:00Z
-fetch_manta_fertilizer_01,2,false,2026-05-12T18:40:00Z,2026-05-12T18:42:00Z
 social_feed_prompt_digging_deep,10080,false,2026-05-11T07:00:00Z,2026-05-18T07:00:00Z
 wildlifepark_cycle_day,3,false,2026-05-12T18:03:00Z,2026-05-12T18:06:00Z
 wildlifepark_cycle_day,3,false,2026-05-12T18:15:00Z,2026-05-12T18:18:00Z
@@ -189,6 +188,7 @@ skyfest_fireworks_show_medpad,16,false,2026-05-12T18:18:00Z,2026-05-12T18:34:00Z
 skyfest_fireworks_show_medpad,16,false,2026-05-12T19:18:00Z,2026-05-12T19:34:00Z
 spiritshopitem_ap06unlock_ap12_fetch_05,99999999,true,2021-11-29T08:00:00Z,
 stormy_intensity_1,240,false,2026-05-12T16:50:00Z,2026-05-12T20:50:00Z
+aurora_minigame_vote_rotation,2,false,2026-05-12T18:02:00Z,2026-05-12T18:04:00Z
 aurora_minigame_vote_rotation,2,false,2026-05-12T18:04:00Z,2026-05-12T18:06:00Z
 aurora_minigame_vote_rotation,2,false,2026-05-12T18:06:00Z,2026-05-12T18:08:00Z
 aurora_minigame_vote_rotation,2,false,2026-05-12T18:08:00Z,2026-05-12T18:10:00Z
@@ -204,7 +204,6 @@ aurora_minigame_vote_rotation,2,false,2026-05-12T18:26:00Z,2026-05-12T18:28:00Z
 aurora_minigame_vote_rotation,2,false,2026-05-12T18:28:00Z,2026-05-12T18:30:00Z
 aurora_minigame_vote_rotation,2,false,2026-05-12T18:30:00Z,2026-05-12T18:32:00Z
 aurora_minigame_vote_rotation,2,false,2026-05-12T18:32:00Z,2026-05-12T18:34:00Z
-aurora_minigame_vote_rotation,2,false,2026-05-12T18:34:00Z,2026-05-12T18:36:00Z
 visiting_vendor_questap15,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 quest_competition_sliderace,99999999,true,2024-07-29T07:00:00Z,
 aurora_orbit,3,false,2026-05-12T19:50:00Z,2026-05-12T19:53:00Z
@@ -222,6 +221,8 @@ collectible_guard,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 visiting_vendor_questap13,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 quest_ap13_fetch_01,99999999,true,2022-01-17T08:00:00Z,
 spiritshopitem_ap06unlock_ap16_fetch_01,99999999,true,2022-10-17T07:00:00Z,
+visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:04:00Z,2026-05-12T18:04:00Z
+visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:05:00Z,2026-05-12T18:05:00Z
 visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:06:00Z,2026-05-12T18:06:00Z
 visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:07:00Z,2026-05-12T18:07:00Z
 visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:08:00Z,2026-05-12T18:08:00Z
@@ -236,15 +237,12 @@ visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:16:00Z,2026-05-12T
 visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:17:00Z,2026-05-12T18:17:00Z
 visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:18:00Z,2026-05-12T18:18:00Z
 visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:19:00Z,2026-05-12T18:19:00Z
-visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:20:00Z,2026-05-12T18:20:00Z
-visiting_vendor_ap22_miniquest_house,1440,false,2026-05-11T18:21:00Z,2026-05-12T18:21:00Z
 spiritshopitem_ap06unlock_ap16_fetch_04,99999999,true,2022-11-28T08:00:00Z,
 quest_ap22_fetch_01,99999999,true,2024-04-15T07:00:00Z,
 quest_ap24_sidequest_07,99999999,true,2024-10-14T07:00:00Z,
 te_ep_1,15,false,2026-05-12T18:00:00Z,2026-05-12T18:15:00Z
 te_ep_1,15,false,2026-05-12T18:20:00Z,2026-05-12T18:35:00Z
 te_ep_1,15,false,2026-05-12T18:40:00Z,2026-05-12T18:55:00Z
-te_ep_1,15,false,2026-05-12T19:00:00Z,2026-05-12T19:15:00Z
 spiritshopitem_ap06unlock_ap07_fetch_05,99999999,true,2020-08-10T07:00:00Z,
 quest_ap29_fetch_02,99999999,true,2026-01-17T08:00:00Z,
 quest_ap27_fetch_04,99999999,true,2025-08-11T07:00:00Z,
@@ -301,6 +299,8 @@ ap29_fetch_06_cuteclap,99999999,true,2026-02-13T08:00:00Z,
 spiritshopitem_ap06unlock_ap23_fetch_02,99999999,true,2024-07-29T07:00:00Z,
 quest_ap29_fetch_10,99999999,true,2026-03-13T07:00:00Z,
 visiting_vendor_questap23,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
+snake_coin,1,false,2026-05-12T18:03:00Z,2026-05-12T18:04:00Z
+snake_coin,1,false,2026-05-12T18:04:00Z,2026-05-12T18:05:00Z
 snake_coin,1,false,2026-05-12T18:05:00Z,2026-05-12T18:06:00Z
 snake_coin,1,false,2026-05-12T18:06:00Z,2026-05-12T18:07:00Z
 snake_coin,1,false,2026-05-12T18:07:00Z,2026-05-12T18:08:00Z
@@ -315,8 +315,6 @@ snake_coin,1,false,2026-05-12T18:15:00Z,2026-05-12T18:16:00Z
 snake_coin,1,false,2026-05-12T18:16:00Z,2026-05-12T18:17:00Z
 snake_coin,1,false,2026-05-12T18:17:00Z,2026-05-12T18:18:00Z
 snake_coin,1,false,2026-05-12T18:18:00Z,2026-05-12T18:19:00Z
-snake_coin,1,false,2026-05-12T18:19:00Z,2026-05-12T18:20:00Z
-snake_coin,1,false,2026-05-12T18:20:00Z,2026-05-12T18:21:00Z
 quest_ap22_fetch_03,99999999,true,2024-04-29T07:00:00Z,
 fireworks_show_medpad,16,false,2026-06-01T07:00:00Z,2026-06-01T07:16:00Z
 fireworks_show_medpad,16,false,2026-12-31T08:00:00Z,2026-12-31T08:16:00Z
@@ -410,6 +408,8 @@ quest_cafe_serving,99999999,true,2024-04-27T07:00:00Z,
 social_eelwatercreature,1439,false,2026-05-12T07:00:00Z,2026-05-13T06:59:00Z
 quest_ap23_fetch_04,99999999,true,2024-08-26T07:00:00Z,
 collectible_laugh,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
+visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:04:00Z,2026-05-12T18:04:00Z
+visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:05:00Z,2026-05-12T18:05:00Z
 visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:06:00Z,2026-05-12T18:06:00Z
 visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:07:00Z,2026-05-12T18:07:00Z
 visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:08:00Z,2026-05-12T18:08:00Z
@@ -424,12 +424,11 @@ visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:16:00Z,2026-05-12T1
 visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:17:00Z,2026-05-12T18:17:00Z
 visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:18:00Z,2026-05-12T18:18:00Z
 visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:19:00Z,2026-05-12T18:19:00Z
-visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:20:00Z,2026-05-12T18:20:00Z
-visiting_vendor_ap22_miniquest_shop,1440,false,2026-05-11T18:21:00Z,2026-05-12T18:21:00Z
 collectible_scared,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 ap29_fetch_01_revolvingdance,99999999,true,2026-01-16T08:00:00Z,
 mainstreet_cycle_morning_B,10,false,2026-05-12T18:00:00Z,2026-05-12T18:10:00Z
 spiritshopitem_ap06unlock_ap14_fetch_04,99999999,true,2022-05-23T07:00:00Z,
+te_ep_3,15,false,2026-05-12T17:50:00Z,2026-05-12T18:05:00Z
 te_ep_3,15,false,2026-05-12T18:10:00Z,2026-05-12T18:25:00Z
 te_ep_3,15,false,2026-05-12T18:30:00Z,2026-05-12T18:45:00Z
 te_ep_3,15,false,2026-05-12T18:50:00Z,2026-05-12T19:05:00Z
@@ -444,6 +443,8 @@ wildlifepark_cycle_overcast_night,1,false,2026-05-12T18:32:00Z,2026-05-12T18:33:
 collectible_love,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 quest_ap17_fetch_01,99999999,true,2023-01-16T08:00:00Z,
 quest_ap16_fetch_03,99999999,true,2022-11-14T08:00:00Z,
+visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:04:00Z,2026-05-12T18:04:00Z
+visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:05:00Z,2026-05-12T18:05:00Z
 visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:06:00Z,2026-05-12T18:06:00Z
 visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:07:00Z,2026-05-12T18:07:00Z
 visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:08:00Z,2026-05-12T18:08:00Z
@@ -458,8 +459,6 @@ visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:16:00Z,2026-05-12
 visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:17:00Z,2026-05-12T18:17:00Z
 visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:18:00Z,2026-05-12T18:18:00Z
 visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:19:00Z,2026-05-12T18:19:00Z
-visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:20:00Z,2026-05-12T18:20:00Z
-visiting_vendor_ap22_miniquest_social,1440,false,2026-05-11T18:21:00Z,2026-05-12T18:21:00Z
 quest_ap26_fetch_02,99999999,true,2025-05-05T07:00:00Z,
 collectible_pray,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 spiritshopitem_ap06unlock_ap13_fetch_03,99999999,true,2022-01-31T08:00:00Z,
@@ -507,7 +506,6 @@ aurora_soundbath_session,9,false,2026-05-12T18:10:00Z,2026-05-12T18:19:00Z
 aurora_soundbath_session,9,false,2026-05-12T18:20:00Z,2026-05-12T18:29:00Z
 aurora_soundbath_session,9,false,2026-05-12T18:30:00Z,2026-05-12T18:39:00Z
 aurora_soundbath_session,9,false,2026-05-12T18:40:00Z,2026-05-12T18:49:00Z
-aurora_soundbath_session,9,false,2026-05-12T18:50:00Z,2026-05-12T18:59:00Z
 spiritshopitem_ap06unlock_ap18_fetch_05,99999999,true,2023-06-12T07:00:00Z,
 collectible_lighthorn,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 collectible_lighthorn,1440,false,2026-05-13T07:00:00Z,2026-05-14T07:00:00Z
@@ -535,6 +533,7 @@ quest_ap18_fetch_03,99999999,true,2023-05-15T07:00:00Z,
 spiritshopitem_ap06unlock_ap26_fetch_04,99999999,true,2025-06-02T07:00:00Z,
 aurora_exhaleinhale,4,false,2026-05-12T19:12:00Z,2026-05-12T19:16:00Z
 spiritshopitem_ap06unlock_ap25_fetch_02,99999999,true,2025-02-03T08:00:00Z,
+global_newyear_firework_interval,5,false,2026-05-12T18:00:00Z,2026-05-12T18:05:00Z
 aurora_concert_countdown,2,false,2026-05-12T19:10:00Z,2026-05-12T19:12:00Z
 spiritshopitem_ap06unlock_ap22_miniSocial_01,99999999,true,2024-04-29T07:00:00Z,
 quest_ap23_fetch_03,99999999,true,2024-08-12T07:00:00Z,
@@ -576,7 +575,6 @@ quest_ap24_fetch_11,99999999,true,2024-12-09T08:00:00Z,
 quest_ap22_miniShop_03,99999999,true,2024-06-10T07:00:00Z,
 global_ball_beach,308160,false,2026-04-01T07:00:00Z,2026-11-01T07:00:00Z
 elder_sanctuary_patrol,1,false,2026-05-12T18:20:00Z,2026-05-12T18:21:00Z
-elder_sanctuary_patrol,1,false,2026-05-12T18:40:00Z,2026-05-12T18:41:00Z
 spiritshopitem_ap06unlock_ap20_fetch_06,99999999,true,2023-11-27T08:00:00Z,
 quest_ap24_fetch_06,99999999,true,2024-11-11T08:00:00Z,
 basecamp_rain,4320,false,2026-05-10T07:00:00Z,2026-05-13T07:00:00Z
@@ -595,7 +593,6 @@ spiritshopitem_ap06unlock_ap20_fetch_10,99999999,true,2023-12-25T08:00:00Z,
 social_dusk_embersanctuary,1439,false,2026-05-12T07:00:00Z,2026-05-13T06:59:00Z
 spiritshopitem_ap06unlock_ap07_fetch_06,99999999,true,2020-09-08T07:00:00Z,
 season_30,110880,false,2026-04-17T07:00:00Z,2026-07-03T07:00:00Z
-mainstreet_cycle_sunset_B,10,false,2026-05-12T18:40:00Z,2026-05-12T18:50:00Z
 collectible_backflip,1440,false,2026-05-12T07:00:00Z,2026-05-13T07:00:00Z
 quest_ap28_fetch_05,99999999,true,2025-11-17T08:00:00Z,
 spiritshopitem_ap06unlock_ap09_fetch_05,99999999,true,2021-02-15T08:00:00Z,
