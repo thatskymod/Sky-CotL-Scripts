@@ -19,9 +19,13 @@ jobs:
     permissions:
       contents: write
 
+    concurrency:
+      group: commit-to-main
+      cancel-in-progress: false
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Fetch vars from Sky backend
         id: vars
