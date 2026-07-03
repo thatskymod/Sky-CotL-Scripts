@@ -4,9 +4,9 @@ A public collection of mods for Sky: Children of the Light, the latest game by t
 
 ## Quote of the Day
 <!---MOTD START-->
-**Call to Friends**
+**Message of the Day**
 
-Sky Children are able to call to others in the Sky Kingdom. Try tapping on yourself to call to another player to see if they call back!
+See you in the skies!
 <!---MOTD END-->
 
 ## Project Overview
