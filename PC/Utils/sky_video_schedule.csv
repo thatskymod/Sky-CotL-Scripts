@@ -1,10 +1,27 @@
 Channel,Event,Playlist Position,Video Name,Loop,Gap (s),Preshow (s),Postshow (s),Silence Please
 aurora,aurora_minigame_5,0,aurora_concert_thank_you,false,30,0,10,true
+cinema,skyfest2026_w1,0,awd26_sel_a,true,0,0,0,false
+cinema,skyfest2026_w1,1,studio_stories_a,true,0,0,0,false
+cinema,skyfest2026_w1,2,creator_const_a,true,0,0,0,false
+cinema,skyfest2026_w1,3,awd26_sel_b,true,0,0,0,false
+cinema,skyfest2026_w1,4,studio_stories_b,true,0,0,0,false
+cinema,skyfest2026_w1,5,creator_const_b,true,0,0,0,false
+cinema,skyfest2026_w1,6,awd26_sel_c,true,0,0,0,false
+cinema,skyfest2026_w1,7,activity_tranquil,true,0,0,0,false
+cinema,skyfest2026_w1,8,awd26_sel_a,true,0,0,0,false
+cinema,skyfest2026_w1,9,studio_stories_a,true,0,0,0,false
+cinema,skyfest2026_w1,10,creator_const_a,true,0,0,0,false
+cinema,skyfest2026_w1,11,awd26_sel_b,true,0,0,0,false
+cinema,skyfest2026_w1,12,studio_stories_b,true,0,0,0,false
+cinema,skyfest2026_w1,13,creator_const_b,true,0,0,0,false
+cinema,skyfest2026_w1,14,awd26_sel_c,true,0,0,0,false
+cinema,skyfest2026_w1,15,activity_kinetic,true,0,0,0,false
 projector_ember_p1,projector_ember_p1,0,Prop_AP27Projector_p1chapters_cc,true,0,0,10,false
 te_ep_1_loop,te_ep_1,0,medpad_ch_1,true,15,0,0,true
 te_ep_2_loop,te_ep_2,0,medpad_ch_2,true,15,0,0,true
 te_ep_3_loop,te_ep_3,0,medpad_ch_3,true,15,0,0,true
 te_ep_4_loop,te_ep_4,0,medpad_ch_4,true,15,0,0,true
+thankyou,anniversary_office_video_thankyou,0,7th_celebration,false,15,10,10,false
 twinribbon,twinribbon_concert,0,twinribbon_test_1,false,0,40,0,false
 twinribbon,twinribbon_concert,1,twinribbon_test_2,false,0,40,0,false
 twinribbon,twinribbon_concert,2,twinribbon_test_3,false,0,40,0,false
