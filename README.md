@@ -23,7 +23,9 @@ The goal is to democratize game customization, allowing all players to discover 
 ## Credits & Resources
 ### Telegram
 - Telegram - thatskymod: https://t.me/thatskymod
-- Telegram - AutoWax EN: https://t.me/skyautowax
+- Telegram - AutoWax EN Channel: https://t.me/skyautowax
+- Telegram - AutoWax EN Chat: 
+https://t.me/+BPXIed1lrig2Njli
 - Telegram - AutoWax RU Channel: https://t.me/ruautowax
 - Telegram - AutoWax RU Chat: https://t.me/+pN6gaatEbTBhMmIy
 - Telegram - Langit Discussion Board: https://t.me/dukunlangit
