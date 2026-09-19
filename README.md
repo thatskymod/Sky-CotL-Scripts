@@ -40,10 +40,8 @@ https://t.me/+BPXIed1lrig2Njli
 - Discord - Canvascord: https://discord.com/invite/ekpUFWcCFN
 - Discord - That Modding Community: https://discord.gg/tSBxCeQvZS
 - Discord - Spooky House: https://discord.gg/bgAdjQgnxf
-- Discord - Hellboy Project: https://discord.com/invite/2AHfEQJggX
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
 - Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ
-- Discord - That Sky Mod  (this is not us): https://discord.com/invite/am44RYcXYC
 
 MEGA - Large Collection of Sky Music Sheets: https://mega.nz/folder/mvQAQIwb#MmJdqJCZkvTY2Ma7A8YzSg  
 
