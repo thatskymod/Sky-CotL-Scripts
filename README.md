@@ -17,6 +17,10 @@ This project is organized into the following directories:
 - [PC](./PC/) - All things PC and Steam related.
 - [Virtual Spaces](./Virtual%20Spaces/) - This contains a variety of virtual spaces. Virtual spaces are environments that allow for the execution of modified apps on Android devices without the need for root access.
 
+## PC Tools
+- [SkyLoader](https://github.com/HerokeyVN/SkyLoader) - A Windows launcher and plugin loader for Sky.
+- [Sky Toolkit v0.1.4](./PC/SkyToolkit/sky-toolkit.dll) - A utility plugin for the PC version of Sky. Install it through SkyLoader.
+
 ## Goal
 The goal is to democratize game customization, allowing all players to discover and enjoy new ways of experiencing games beyond the standard gameplay.
 
@@ -42,8 +46,11 @@ https://t.me/+BPXIed1lrig2Njli
 - Discord - Spooky House: https://discord.gg/bgAdjQgnxf
 - Discord - Sky CotL Shelter: https://discord.com/invite/MzQFnr3RPZ
 - Discord - Sky Research Lab: https://discord.com/invite/Zq7vu9TyFJ
+- Discord - Sky Community Hub (SkyLoader & Sky Toolkit): https://discord.gg/qjnenSWA6N
 
-MEGA - Large Collection of Sky Music Sheets: https://mega.nz/folder/mvQAQIwb#MmJdqJCZkvTY2Ma7A8YzSg  
+### Music Sheets
+- Sky Sheet Store: https://skysheet.store
+- MEGA - Large Collection of Sky Music Sheets: https://mega.nz/folder/mvQAQIwb#MmJdqJCZkvTY2Ma7A8YzSg
 
 ## Contributing
 Contributions are welcome. For major changes, please open an issue first to discuss what you would like to change.
