@@ -38,6 +38,8 @@ https://t.me/+BPXIed1lrig2Njli
 - Telegram - Sky Mods: https://t.me/thatskymode
 - Telegram - Sky Hackers Chat Group: https://t.me/skyhackerschat
 - Telegram - SkyHub2 Community: https://t.me/+Y7derzeLVuMzY2I1
+- Telegram - FreeSky.gb:
+https://t.me/+FDFtJV14REQ0M2Rl
 
 ### Discord
 - Discord - Official Sky Server: https://discord.com/invite/thatskygame
