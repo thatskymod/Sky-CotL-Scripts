@@ -20,6 +20,7 @@ This project is organized into the following directories:
 ## PC Tools
 - [SkyLoader](https://github.com/HerokeyVN/SkyLoader) - A Windows launcher and plugin loader for Sky.
 - [Sky Toolkit v0.1.4](./PC/SkyToolkit/sky-toolkit.dll) - A utility plugin for the PC version of Sky. Install it through SkyLoader.
+- [Moona's Bakery v2.0.0](https://github.com/LunaYuma/MoonasBakery-Sky) - A free mod menu for the Steam version of Sky, with its own loader! Player, World, Teleport, Nearby, ESP, CRs and more.
 
 ## Goal
 The goal is to democratize game customization, allowing all players to discover and enjoy new ways of experiencing games beyond the standard gameplay.
