@@ -30,7 +30,7 @@ Discontinued - **!! do not use !!**
 
 ## Getting Started
 
-1. Download **Canvas.apk** from [here](https://github.com/XeTrinityz/ThatSkyMod-Android/releases/latest) and **ThatSkyMod** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/blob/main/Canvas/Libs/libTSM.so).
+1. Download **Canvas.apk** from [here](https://github.com/skyprotocol/canvas-distribution/releases/latest) and **ThatSkyMod** from [here](https://github.com/thatskymod/Sky-CotL-Scripts/blob/main/Canvas/Libs/libTSM.so).
 2. Open your File Manager and navigate to your **Downloads** (e.g. `/storage/emulated/0/Download/`).
 3. Tap on **Canvas.apk**. If prompted, allow the installation from unknown sources and proceed.
 4. Find the newly added **"Canvas"** in your app drawer. It looks somewhat like a black and white icon resembling a clock.
